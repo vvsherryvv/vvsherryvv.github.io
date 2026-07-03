@@ -1,4 +1,4 @@
-# 盛洁熠个人主页
+# Jieyi的个人主页
 
 这是一个可直接部署到 GitHub Pages 的静态个人主页，参考 `https://ntdxyg.github.io/` 的学术主页布局制作。
 
