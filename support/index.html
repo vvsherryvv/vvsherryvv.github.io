@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Support — Wizarding OS</title>
+  <meta name="description" content="Help for Wizarding OS 0.4.4, including tasks, memories, journeys, Sample Content, backups, accessibility, and troubleshooting.">
+  <meta name="theme-color" content="#0a1024">
+  <link rel="canonical" href="https://vvsherryvv.github.io/support/">
+  <link rel="alternate" hreflang="en" href="https://vvsherryvv.github.io/support/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://vvsherryvv.github.io/zh/support/">
+  <link rel="alternate" hreflang="x-default" href="https://vvsherryvv.github.io/support/">
+  <meta property="og:title" content="Support — Wizarding OS">
+  <meta property="og:description" content="Getting started and troubleshooting for Wizarding OS 0.4.4.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vvsherryvv.github.io/support/">
+  <meta property="og:image" content="https://vvsherryvv.github.io/assets/social/og-wizarding-os.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Support — Wizarding OS">
+  <meta name="twitter:description" content="Getting started and troubleshooting for Wizarding OS 0.4.4.">
+  <meta name="twitter:image" content="https://vvsherryvv.github.io/assets/social/og-wizarding-os.jpg">
+  <link rel="icon" href="/assets/images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="shell nav-wrap"><a class="brand" href="/" aria-label="Wizarding OS home"><img src="/assets/images/app-icon.png" width="256" height="256" alt=""><span>Wizarding OS</span></a><nav class="site-nav" aria-label="Primary navigation"><a href="/#features">Features</a><a href="/privacy/">Privacy</a><a href="/support/" aria-current="page">Support</a><a class="language-link" href="/zh/support/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a></nav></div></header>
+
+  <main id="main-content" class="shell">
+    <header class="page-hero">
+      <p class="eyebrow">Help for release 0.4.4</p>
+      <h1>Support</h1>
+      <p class="lede">Wizarding OS is a local-first iPhone app for tasks, projects, saved material, journeys, happy memories, and locally generated plans. It works without an account or server connection.</p>
+    </header>
+    <div class="support-layout">
+      <article class="support-content">
+        <section id="getting-started"><h2>Getting started</h2><p>On first launch, choose a visual theme and open the Hall for today’s overview. Use Quick Actions to create a task, project scroll, library item, journey, or memory, or to open the local planning assistant and Recall Light.</p><p>Settings includes optional <strong>Sample Content</strong> for exploring the full app without using personal information.</p></section>
+        <section id="tasks"><h2>Tasks and projects</h2><p>Open Planner to add, edit, schedule, complete, copy, or delete tasks. Filters help separate open and completed work. Project Scrolls hold long-term work, subtasks, progress, and reusable templates.</p></section>
+        <section id="memories"><h2>Memories and photographs</h2><p>Open Memory Vault to add a happy memory, date, note, tags, happiness level, favorite status, and an optional photograph selected through Apple’s photo picker. Existing memories can be searched, filtered, edited, or deleted.</p><p>Memory Magic arranges compatible memories into Timeline, On This Day, Collections, aggregate Insights, and slideshows. Recall Light presents a small selection of guiding memories.</p></section>
+        <section id="travel"><h2>Journeys and travel photos</h2><p>Use Journey Archive to record a city, country, dates, notes, transport, optional manual coordinates, and multiple local photos. A journey can be reviewed as an album, collage, photo grid, or slideshow. Wizarding OS does not request location permission in this release.</p></section>
+        <section id="sample-content"><h2>Using Sample Content</h2><p>In Settings, enable Sample Content and choose to load the Sample Library. It can reset the standard demonstration records or append compatible sample records, depending on the available action. The library covers Hall, Planner, Project Scrolls, Library, Journey Archive, Memory Vault, Memory Magic, Recall Light, and the local assistant.</p><p>The exact bundled Sample Content can be removed without deleting unrelated user records.</p></section>
+        <section id="backups"><h2>Exporting and importing JSON backups</h2><p>Settings can export supported structured records and metadata as JSON. Import uses append-and-deduplicate behavior for supported backup versions, so an item may be skipped when it already exists or cannot be safely read.</p><p class="notice"><strong>Important:</strong> user-selected image bytes are not included in JSON backups. Keep original photographs separately. Exported files also leave the app’s control and should be stored or shared carefully.</p></section>
+        <section id="remove"><h2>Removing local content</h2><p>Delete individual tasks, projects, saved items, journeys, memories, or collections inside the app. Settings can remove the exact bundled Sample Content. Deleting the app removes its local container, subject to device backups managed by the user or Apple. Export a backup first when records may be needed later.</p></section>
+        <section id="accessibility"><h2>Accessibility</h2><p>Wizarding OS supports Dynamic Type, VoiceOver labels, Reduce Motion, and accessibility-aware slideshow controls. If text is truncated, increase available screen space, try portrait orientation, or use the device’s text-size and display settings. Reduce Motion limits non-essential effects in Recall Light and slideshows.</p></section>
+        <section id="offline"><h2>Offline behavior</h2><p>Core planning, memory, travel, Sample Content, backup, and local-assistant features work offline. Photos already selected into the app remain local. Operating-system sharing, App Store services, and opening external map destinations may require a network connection.</p></section>
+        <section id="troubleshooting"><h2>Troubleshooting</h2>
+          <h3>App does not launch</h3><p>Confirm the device runs a supported iOS version and has free storage, then restart the app and device. Avoid deleting the app before securing any backup you need.</p>
+          <h3>Photo does not appear</h3><p>Retry selection through the system photo picker, allow processing to finish, and confirm free storage is available. JSON imports restore photo metadata but not user-selected image bytes.</p>
+          <h3>Import skips items</h3><p>Confirm the file came from a supported Wizarding OS backup version. Existing or duplicate records may be skipped by design. The import summary reports what was accepted or skipped.</p>
+          <h3>Sample Content is missing</h3><p>Open Settings, enable Sample Content, and load the Sample Library. The visible upgrade action can prepare recognized older demonstration records without rewriting user-created memories.</p>
+          <h3>Upgrade from 0.4.3</h3><p>Install 0.4.4 over 0.4.3 using the same formal app identity. The app performs a lightweight local data migration and upgrades only precisely recognized demonstration records. Back up supported structured data first. Builds installed under an older placeholder bundle identifier use a different app container and do not migrate automatically.</p>
+        </section>
+        <section id="privacy"><h2>Privacy</h2><p>Do not send private memory text, photographs, exported backups, credentials, signing identities, or provisioning information in a support request. Read the <a href="/privacy/">Wizarding OS Privacy Policy</a> for details.</p></section>
+        <section id="contact"><h2>Contact support</h2><p>When the monitored support address is published, include the app version, iOS version, device model, the action that failed, and non-sensitive reproduction steps. This site intentionally has no contact form.</p><p class="owner-blocker">[OWNER ACTION REQUIRED: INSERT SUPPORT EMAIL]</p></section>
+      </article>
+      <nav class="side-nav" aria-label="Support sections"><strong>On this page</strong><a href="#getting-started">Getting started</a><a href="#tasks">Tasks</a><a href="#memories">Memories</a><a href="#travel">Journeys</a><a href="#sample-content">Sample Content</a><a href="#backups">Backups</a><a href="#accessibility">Accessibility</a><a href="#troubleshooting">Troubleshooting</a><a href="#contact">Contact</a></nav>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="shell footer-wrap"><div><p>© 2026 Wizarding OS.</p><p>Website information for Wizarding OS 0.4.4.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="/privacy/">Privacy Policy</a><a href="/support/">Support</a><a href="/zh/support/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a></nav></div></footer>
+</body>
+</html>
