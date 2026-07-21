@@ -461,16 +461,6 @@ main {
   text-decoration: none;
 }
 
-.owner-blocker {
-  border: 1px solid #9d653d;
-  border-radius: 0.8rem;
-  background: rgba(126, 65, 28, 0.24);
-  color: #ffe1c4;
-  padding: 1rem;
-  overflow-wrap: anywhere;
-  font-weight: 800;
-}
-
 .notice {
   border-left: 0.25rem solid var(--brass);
   background: rgba(228, 165, 104, 0.1);

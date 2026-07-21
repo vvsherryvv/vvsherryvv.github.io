@@ -43,7 +43,7 @@ bash Scripts/verify_site.sh --source
 bash Scripts/verify_site.sh --candidate
 ```
 
-Source mode validates structure, metadata, local links, image references, accessibility basics, asset metadata, privacy constraints, and prohibited claims while reporting the owner email as a blocker. Candidate mode additionally requires the approved support email and must fail until it is supplied.
+Source mode validates structure, metadata, local links, image references, accessibility basics, asset metadata, privacy constraints, prohibited claims, and the published support contact. Candidate mode applies the same contact requirements to the release candidate.
 
 For local review:
 
@@ -55,4 +55,4 @@ Then open `http://127.0.0.1:8000/`. Lighthouse and browser audits should be run 
 
 ## Release gate
 
-The site must not be merged or deployed with `[OWNER ACTION REQUIRED: INSERT SUPPORT EMAIL]`. Do not add an App Store badge or availability statement until Apple has supplied a real public listing URL.
+The site must not be merged or deployed with contact placeholders or sample email addresses. The English and Simplified Chinese privacy and support pages must show the approved address and link to the identical address. Do not add an App Store badge or availability statement until Apple has supplied a real public listing URL.
