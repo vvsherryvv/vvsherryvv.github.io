@@ -12,7 +12,8 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 ORIGIN = "https://vvsherryvv.github.io"
-PLACEHOLDER = "[OWNER ACTION REQUIRED: INSERT SUPPORT EMAIL]"
+SUPPORT_EMAIL = "JieyiSheng17@gmail.com"
+LEGACY_CONTACT_MARKER = " ".join(["[OWNER", "ACTION", "REQUIRED:", "INSERT", "SUPPORT", "EMAIL]"])
 REQUIRED_ROUTES = {
     "/": ROOT / "index.html",
     "/privacy/": ROOT / "privacy/index.html",
@@ -314,19 +315,38 @@ def audit(mode: str) -> int:
     if total_bytes > 12_000_000:
         errors.append(f"site exceeds 12 MB ({total_bytes} bytes)")
 
-    support_texts = [path.read_text(encoding="utf-8") for path in SUPPORT_CONTACT_PAGES if path.is_file()]
-    placeholder_count = sum(text.count(PLACEHOLDER) for text in support_texts)
-    if mode == "--source":
-        if placeholder_count:
-            warnings.append("owner support email is missing; candidate verification remains blocked")
-        else:
-            warnings.append("support placeholder removed; run candidate mode and confirm owner approval")
-    else:
-        if placeholder_count:
-            errors.append("candidate contains owner support email placeholder")
-        for path, text in zip(SUPPORT_CONTACT_PAGES, support_texts):
-            if "mailto:" not in text:
-                errors.append(f"{path.relative_to(ROOT)}: candidate contact must use an approved mailto link")
+    legacy_markers = [
+        LEGACY_CONTACT_MARKER,
+        "support" + "@example.com",
+    ]
+    fake_email_pattern = re.compile(r"\b[A-Z0-9._%+-]+@example\.(?:com|org|net)\b", re.IGNORECASE)
+    for path in text_files:
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        for marker in legacy_markers:
+            if marker.lower() in text.lower():
+                errors.append(f"{path.relative_to(ROOT)}: contact placeholder remains")
+        if fake_email_pattern.search(text):
+            errors.append(f"{path.relative_to(ROOT)}: sample email address remains")
+
+    mailto_pattern = re.compile(
+        r'<a\b[^>]*\bhref=["\']mailto:([^"\']+)["\'][^>]*>([^<]+)</a>',
+        re.IGNORECASE | re.DOTALL,
+    )
+    for path in SUPPORT_CONTACT_PAGES:
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8")
+        matches = mailto_pattern.findall(text)
+        if len(matches) != 1:
+            errors.append(f"{path.relative_to(ROOT)}: expected exactly one support mailto link, found {len(matches)}")
+            continue
+        target, visible = (part.strip() for part in matches[0])
+        if target != SUPPORT_EMAIL:
+            errors.append(f"{path.relative_to(ROOT)}: support mailto target is not the approved address")
+        if visible != SUPPORT_EMAIL:
+            errors.append(f"{path.relative_to(ROOT)}: visible support address is not the approved address")
+        if visible != target:
+            errors.append(f"{path.relative_to(ROOT)}: visible support address differs from mailto target")
 
     if errors:
         print(f"site verification failed ({mode}):")
