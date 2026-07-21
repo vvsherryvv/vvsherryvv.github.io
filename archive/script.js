@@ -132,13 +132,11 @@ function setLanguage(lang) {
   languageButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.lang === lang);
   });
-  localStorage.setItem("homepage-language", lang);
 }
 
 function setTheme(theme) {
   root.classList.toggle("dark", theme === "dark");
   root.classList.toggle("light", theme !== "dark");
-  localStorage.setItem("homepage-theme", theme);
 }
 
 languageButtons.forEach((button) => {
@@ -161,10 +159,9 @@ mobileLinks.querySelectorAll("a").forEach((link) => {
   });
 });
 
-const preferredTheme = localStorage.getItem("homepage-theme")
-  || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 setTheme(preferredTheme);
-setLanguage(localStorage.getItem("homepage-language") || "zh");
+setLanguage("zh");
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
