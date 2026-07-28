@@ -36,6 +36,19 @@ Website screenshots are optimized, metadata-free derivatives of the seven Englis
 
 The local app icon is derived from `Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png`. The 1200×630 social preview combines that icon with the audited Hall screenshot and original site typography. App-repository originals are not modified.
 
+## Homepage campaign artwork
+
+The English and Simplified Chinese homepages use optimized WebP derivatives of
+the approved Wizarding OS campaign artwork:
+
+- `assets/images/promo/en-01.webp` through `en-05.webp`
+- `assets/images/promo/zh-01.webp` through `zh-05.webp`
+
+Each derivative is 1086×1448, stripped of metadata, and kept below the site
+image-size limit. The homepages intentionally keep all privacy and release
+claims aligned with the audited 0.4.4 Privacy Policy rather than relying on
+text embedded in promotional artwork.
+
 ## Verification
 
 ```bash
