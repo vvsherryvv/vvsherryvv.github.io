@@ -165,6 +165,10 @@ main {
   padding-block: clamp(4rem, 9vw, 7.5rem);
 }
 
+.hero > * {
+  min-width: 0;
+}
+
 .eyebrow,
 .status {
   color: var(--brass-strong);
@@ -718,15 +722,64 @@ main {
   .nav-wrap {
     align-items: flex-start;
     flex-direction: column;
+    gap: 0.55rem;
+    padding-block: 0.8rem;
   }
 
   .site-nav {
     width: 100%;
     justify-content: flex-start;
+    gap: 0.2rem;
+  }
+
+  .site-nav a {
+    min-height: 2.6rem;
+    padding-inline: clamp(0.55rem, 2.5vw, 0.72rem);
+    font-size: clamp(0.82rem, 3.7vw, 0.93rem);
+  }
+
+  .hero {
+    gap: 2.75rem;
+    padding-block: 3rem 3.75rem;
   }
 
   .hero h1 {
-    font-size: clamp(3.2rem, 19vw, 5rem);
+    max-width: 100%;
+    font-size: clamp(2.85rem, 14vw, 4rem);
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  html[lang="zh-Hans"] .hero h1 {
+    font-size: clamp(2.7rem, 13.5vw, 3.75rem);
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+    text-wrap: pretty;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    font-size: 1.06rem;
+    overflow-wrap: break-word;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .hero-visual {
+    width: min(100%, 24rem);
   }
 
   .feature-grid,
