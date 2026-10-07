@@ -1,6 +1,6 @@
 # Wizarding OS website
 
-Static, bilingual product, privacy, and support website for Wizarding OS 0.4.4. The site is designed for GitHub Pages, works without JavaScript, and makes no network requests to third-party resources.
+Static, bilingual product website for Wizarding OS. The homepage previews the current app branch; privacy and support retain clearly scoped 0.4.4 documentation with a current-feature notice. The site is designed for GitHub Pages, works without JavaScript, and makes no network requests to third-party resources.
 
 ## Routes
 
@@ -18,7 +18,7 @@ The existing personal homepage was retained because its academic and project con
 
 The production site is plain semantic HTML and CSS. It has no runtime package manager, generator, backend, analytics, cookies, forms, remote fonts, remote scripts, third-party embeds, authentication, or database. All product images and metadata assets are served from this repository. A conservative CSP meta tag restricts content to the same origin.
 
-GitHub Actions deploys the repository root to GitHub Pages after candidate verification succeeds on `main`. Pull requests run source verification. Candidate verification intentionally remains blocked until the owner supplies and approves a real monitored support email.
+GitHub Actions deploys the repository root to GitHub Pages after candidate verification succeeds on `main`. Pull requests run source verification. Both verification modes validate the approved support contact.
 
 ## Release screenshot provenance
 
@@ -38,16 +38,13 @@ The local app icon is derived from `Assets.xcassets/AppIcon.appiconset/AppIcon-1
 
 ## Homepage campaign artwork
 
-The English and Simplified Chinese homepages use optimized WebP derivatives of
-the approved Wizarding OS campaign artwork:
+The repository retains optimized WebP derivatives of the earlier approved campaign artwork (the current homepage uses real app screenshots instead):
 
 - `assets/images/promo/en-01.webp` through `en-05.webp`
 - `assets/images/promo/zh-01.webp` through `zh-05.webp`
 
 Each derivative is 1086×1448, stripped of metadata, and kept below the site
-image-size limit. The homepages intentionally keep all privacy and release
-claims aligned with the audited 0.4.4 Privacy Policy rather than relying on
-text embedded in promotional artwork.
+image-size limit. Historical assets remain available. Current homepage copy describes opt-in remote AI explicitly; the current-feature notices distinguish it from the older local-only assistant.
 
 ## Verification
 
@@ -69,3 +66,57 @@ Then open `http://127.0.0.1:8000/`. Lighthouse and browser audits should be run 
 ## Release gate
 
 The site must not be merged or deployed with contact placeholders or sample email addresses. The English and Simplified Chinese privacy and support pages must show the approved address and link to the identical address. Do not add an App Store badge or availability statement until Apple has supplied a real public listing URL.
+
+## October 2026 product story
+
+Both homepages now explain four inputs (Plans, Projects, Library, Memory Basin),
+two assistant modes and one reward system (Herb Garden). Plans and project/subtask
+records provide work context; Library, memories and journeys provide personal
+context for chat. Personal profile means interests, preferences and experiences,
+not a personality diagnosis or an independently persisted inferred profile.
+
+Implementation reviewed at app commit `f31d79ba01660fedbe6a6c0e7a1a2390d8fd8764`
+on `codex/archive-recall-player-book-sources`, especially
+`Features/Assistant/AssistantView.swift` and `Services/RemoteAIService.swift`.
+The current implementation uses bounded selected references, not automatic access
+to all historical records or a trained personal model. Homepage copy therefore
+pairs the long-term recording vision with explicit selection and consent language.
+No claim is made that all remote planning acceptance gates have passed.
+
+### Current screenshot provenance
+
+All files below are metadata-free WebP derivatives in `assets/images/features/`.
+Chinese screenshots are labelled as such on the English page. Images link to
+full-size local assets and preserve their original aspect ratios and contents.
+
+| Derivative | Original |
+| --- | --- |
+| work-mode.webp | Owner upload IMG_3385.jpeg, 2026-10-07 |
+| reference-consent.webp | Owner upload IMG_3386.png |
+| reference-groups.webp | Owner upload IMG_3387.png |
+| reference-details.webp | Owner upload IMG_3388.png |
+| chat-mode.webp | Owner upload IMG_3389.jpeg |
+| chat-context.webp | Owner upload IMG_3390.jpeg |
+| chat-suggestions.webp | Owner upload IMG_3391.jpeg |
+| chat-followup.webp | Owner upload IMG_3392.jpeg |
+| planner.webp | Docs/Evals/Evidence/PROJECT-LINK-002/2026-09-18/iphone-planner-uncompleted.png |
+| projects.webp | Docs/Evals/Evidence/PROJECT-OVERVIEW-EDIT-003/2026-09-23/zh-Hans-iphone-overview.png |
+| library.webp | Docs/Evals/Evidence/FEEDBACK-2026-09-26/2026-10-06-archive-branch/import-root-zh-compact.png |
+| memory.webp | Docs/Evals/Evidence/MEMORY-IA-002/2026-09-09/zh-Hans-iphone-6.1-memory-root.png |
+| garden.webp | Docs/Evals/Evidence/GARDEN-PARTIAL-HARVEST-001/2026-09-22/zh-Hans-se-six.png |
+
+Repository screenshots are from the app commit above. Some are historical UI or
+explicit validation fixtures; the site labels examples and potential version
+variation. Garden evidence confirms quantity/all harvesting but does not establish
+physical-device accessibility acceptance. The October 6 grouped-reference and
+DeepSeek smoke reports establish mode-specific reference selection and a live
+chat response; broader remote-work and provider-switch acceptance remains open.
+
+### Website verification for this update
+
+- `Scripts/verify_site.sh --source` and `--candidate`: passed.
+- Chromium checks on both homepages at 1440, 375 and 320 px: no horizontal
+  overflow, no failed images, no page errors; expandable conversation opens.
+- Desktop and mobile Chinese hero screenshots inspected with a CJK font installed
+  in the verification environment. All product images keep their original ratios.
+- No JavaScript, trackers, remote runtime assets or added production dependencies.
