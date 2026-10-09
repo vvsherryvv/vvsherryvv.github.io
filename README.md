@@ -120,3 +120,13 @@ chat response; broader remote-work and provider-switch acceptance remains open.
 - Desktop and mobile Chinese hero screenshots inspected with a CJK font installed
   in the verification environment. All product images keep their original ratios.
 - No JavaScript, trackers, remote runtime assets or added production dependencies.
+
+## Product film
+
+Both homepages embed the owner-approved 45-second portrait film at `#film`.
+`assets/video/wizardingos-promo-club.mp4` is the corrected version whose final
+card displays `https://www.wizardingos.club/zh/`. It has Chinese on-screen text
+and an original synthesized instrumental score. The poster is extracted at 2s.
+The native player has controls, inline mobile playback and `preload="none"`;
+there is no autoplay or third-party embed. The hero links to the film, and a
+download link provides direct access to the MP4.
