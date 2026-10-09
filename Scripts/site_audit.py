@@ -18,11 +18,15 @@ REQUIRED_ROUTES = {
     "/": ROOT / "index.html",
     "/privacy/": ROOT / "privacy/index.html",
     "/support/": ROOT / "support/index.html",
+    "/terms/": ROOT / "terms/index.html",
     "/zh/": ROOT / "zh/index.html",
     "/zh/privacy/": ROOT / "zh/privacy/index.html",
     "/zh/support/": ROOT / "zh/support/index.html",
+    "/zh/terms/": ROOT / "zh/terms/index.html",
 }
 SUPPORT_CONTACT_PAGES = [
+    ROOT / "terms/index.html",
+    ROOT / "zh/terms/index.html",
     ROOT / "privacy/index.html",
     ROOT / "support/index.html",
     ROOT / "zh/privacy/index.html",

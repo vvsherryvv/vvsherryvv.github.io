@@ -6,9 +6,11 @@ Static, bilingual product website for Wizarding OS. The homepage previews the cu
 
 - `/` — English home
 - `/privacy/` — English Privacy Policy
+- `/terms/` — English Terms of Use
 - `/support/` — English support
 - `/zh/` — 简体中文首页
 - `/zh/privacy/` — 简体中文隐私政策
+- `/zh/terms/` — 简体中文使用条款
 - `/zh/support/` — 简体中文支持
 - `/archive/` — preserved personal homepage that previously occupied the root route
 
