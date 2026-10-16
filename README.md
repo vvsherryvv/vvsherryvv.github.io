@@ -132,3 +132,29 @@ and an original synthesized instrumental score. The poster is extracted at 2s.
 The native player has controls, inline mobile playback and `preload="none"`;
 there is no autoplay or third-party embed. The hero links to the film, and a
 download link provides direct access to the MP4.
+
+## October 16 screenshot refresh
+
+Both homepages use owner-supplied screenshots in `assets/images/october-2026/`, including both garden views. Files are optimized WebP derivatives with metadata stripped and original aspect ratios preserved. The gallery links to complete captures. Earlier reference-permission images remain in their existing section. The existing film is unchanged. The third-party NanoKVM promotional image is not published as a Wizarding OS product.
+
+App references supplied by owner: `198b91b1ac7c717456c5a0c0e58fa05850d05f09` (validation evidence) and `69f31dc2c4ee3eceb8a72a72467d236f3866d4ae` (accessibility typography). Screenshot binary provenance is owner upload, not an assertion that these images were generated from either exact commit.
+
+| Upload | Asset |
+|---|---|
+| IMG_3128.png | planner.webp |
+| IMG_3130.png | projects.webp |
+| IMG_3131.png | library.webp |
+| IMG_3132.png | memory.webp |
+| IMG_3133.png | memory-list.webp |
+| IMG_3134.png | memory-bubbles.webp |
+| IMG_3135.png | journeys.webp |
+| Picsew_20261016162843.jpeg | work-mode.webp |
+| Picsew_20261016163211.jpeg | work-conversation.webp |
+| Picsew_20261016163342.jpeg | planning-conversation.webp |
+| Picsew_20261016163416.jpeg | hall.webp |
+| Picsew_20261016163947.jpeg | chat-mode.webp |
+| Picsew_20261016162902.jpeg | persona.webp |
+| IMG_3103.png | styles.webp |
+| Picsew_20261016163903.jpeg | recall.webp |
+| IMG_3144.png | garden.webp |
+| IMG_3145.png | garden-harvest.webp |
