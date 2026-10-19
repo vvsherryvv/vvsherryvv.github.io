@@ -1,8 +1,20 @@
 const translations = {
   zh: {
+    gradDate: "2025 — 至今",
+    contactEmail: "邮件联系",
+    productType: "独立开发 · AI 应用",
+    productText: "将计划、项目、典藏与记忆汇集在一处，探索用 AI 辅助规划与回顾，并通过草药园为日常行动提供正向激励。",
+    productLink: "了解产品 →",
+    footerText: "盛洁熠 · 研究与实践",
+    backTop: "返回顶部 ↑",
+    menuOpen: "打开导航菜单",
+    menuClose: "关闭导航菜单",
+    themeLight: "切换为浅色主题",
+    themeDark: "切换为深色主题",
+
     brand: "盛洁熠",
     navAbout: "主页",
-    navProjects: "科研项目",
+    navProjects: "精选项目",
     navCompetitions: "比赛",
     navExperience: "经历",
     navAwards: "荣誉",
@@ -15,20 +27,20 @@ const translations = {
     interest2: "三维人体重建",
     interest3: "渲染与视觉生成",
     updatedLabel: "最近更新：",
-    aboutTitle: "About",
+    aboutTitle: "关于我",
     aboutP1: "我目前在华中科技大学人工智能与自动化学院攻读智能科学与技术硕士，本科毕业于华中科技大学未来技术学院人工智能专业。当前研究兴趣聚焦三维重建、三维人体重建与渲染，希望把几何建模、视觉理解和生成式方法结合到可落地的智能系统中。",
-    aboutP2: "我的项目经历覆盖多模态视觉大模型、端侧部署、SLAM 机器人系统和脑机接口。近期在 2025 年度中国青年科技创新“揭榜挂帅”擂台赛中，参与高帧频小目标检测识别任务，负责基于 Qwen2.5-VL-3B 的算法实现与代码说明文档。",
+    aboutP2: "我的项目经历覆盖多模态视觉大模型、端侧部署、SLAM 机器人系统和脑机接口。在 2025 年度中国青年科技创新“揭榜挂帅”擂台赛中，参与高帧频小目标检测识别任务，负责基于 Qwen2.5-VL-3B 的算法实现与代码说明文档。",
     educationTitle: "教育背景",
     eduGradTitle: "华中科技大学 · 人工智能与自动化学院",
     eduGradText: "智能科学与技术专业硕士研究生。课程包括智能计算系统、凸优化理论及算法、矩阵论、数量统计等。",
     eduUnderTitle: "华中科技大学 · 未来技术学院",
     eduUnderText: "人工智能专业本科。加权成绩 88.89，主修数据科学基础、数据结构与算法设计、人工智能导论、模式识别与机器学习、概率论与数理统计、光电探测技术、单片机与嵌入式系统等课程。",
-    projectsTitle: "Selected Projects",
+    projectsTitle: "精选项目",
     projectsHint: "科研与工程实践",
     project1Type: "挑战杯 / 揭榜挂帅",
     project1Title: "高帧频小目标检测、识别与端侧部署",
     project1Text: "面向低参数量国产大模型的视觉检测识别任务，负责采用 Qwen2.5-VL-3B 作为基础模型、时序差分图与红外图并行输入的算法实现，并撰写主要代码说明文档。",
-    competitionsTitle: "Competitions",
+    competitionsTitle: "竞赛成果",
     competitionsHint: "科技创新竞赛",
     competition1Type: "中国青年科技创新“揭榜挂帅”擂台赛",
     competition1Title: "全国三等奖",
@@ -46,7 +58,7 @@ const translations = {
     expStudentText: "负责党员活动组织、新闻宣传、公众号内容建设和活动摄影，包括党员进寝室宣讲、宿舍搬迁党员先锋队、纪念馆参观等活动。",
     expPracticeTitle: "社会实践与母校回访",
     expPracticeText: "担任“优秀学子回访母校”宣传队队长，并参与“聚焦未来技术，洞悉科技前沿”科技企业走访调研，完成实践日志、报告与答辩。",
-    awardsTitle: "Awards",
+    awardsTitle: "荣誉奖励",
     awardsHint: "竞赛、奖学金与综合荣誉",
     awardAcademicTitle: "学业与综合荣誉",
     awardAcademicText: "学习优秀奖学金、光谷晨星奖学金、自强奖学金、华中科技大学优秀学生干部、光电学院自强标兵。",
@@ -54,9 +66,21 @@ const translations = {
     awardCompetitionText: "2025 年度中国青年科技创新“揭榜挂帅”擂台赛全国三等奖。",
     awardPracticeTitle: "实践与校园活动",
     awardPracticeText: "校级社会实践优秀团队、社会实践优秀个人、喻晓之巅辩论赛校八强、光电师生杯羽毛球赛团队第三名。",
-    skillsTitle: "Skills"
+    skillsTitle: "专业技能"
   },
   en: {
+    gradDate: "2025 — Present",
+    contactEmail: "Email me",
+    productType: "Independent development · AI application",
+    productText: "Bringing plans, projects, collections, and memories together to explore AI-assisted planning and reflection, with a Herb Garden that encourages everyday progress.",
+    productLink: "Explore the product →",
+    footerText: "Jieyi Sheng · Research & Practice",
+    backTop: "Back to top ↑",
+    menuOpen: "Open navigation menu",
+    menuClose: "Close navigation menu",
+    themeLight: "Switch to light theme",
+    themeDark: "Switch to dark theme",
+
     brand: "Jieyi Sheng",
     navAbout: "About",
     navProjects: "Projects",
@@ -74,7 +98,7 @@ const translations = {
     updatedLabel: "Last updated: ",
     aboutTitle: "About",
     aboutP1: "I am an M.S. student in Intelligent Science and Technology at the School of Artificial Intelligence and Automation, Huazhong University of Science and Technology. I received my undergraduate training in Artificial Intelligence from HUST Future Technology College. My current interests focus on 3D reconstruction, 3D human reconstruction, and rendering, especially combining geometric modeling, visual understanding, and generative methods for practical intelligent systems.",
-    aboutP2: "My project experience covers multimodal vision-language models, edge deployment, SLAM robotics, and brain-computer interfaces. Recently, I worked on a high-frame-rate small-target detection and recognition task for the 2025 China Youth Science and Technology Innovation Challenge, implementing a Qwen2.5-VL-3B-based algorithm and writing most of the code documentation.",
+    aboutP2: "My project experience covers multimodal vision-language models, edge deployment, SLAM robotics, and brain-computer interfaces. I worked on a high-frame-rate small-target detection and recognition task for the 2025 China Youth Science and Technology Innovation Challenge, implementing a Qwen2.5-VL-3B-based algorithm and writing most of the code documentation.",
     educationTitle: "Education",
     eduGradTitle: "Huazhong University of Science and Technology · School of Artificial Intelligence and Automation",
     eduGradText: "M.S. student in Intelligent Science and Technology. Coursework includes intelligent computing systems, convex optimization theory and algorithms, matrix theory, and quantitative statistics.",
@@ -116,60 +140,86 @@ const translations = {
 };
 
 const root = document.documentElement;
+root.classList.add("js");
 const languageButtons = document.querySelectorAll("[data-lang]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
 const themeToggle = document.querySelector("#themeToggle");
 const menuToggle = document.querySelector("#menuToggle");
 const mobileLinks = document.querySelector("#mobileLinks");
 
+// URL preferences keep sharing and reloads consistent without browser storage.
+const preferences = new URLSearchParams(location.search);
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+function updateURL(key, value) {
+  const url = new URL(location.href);
+  url.searchParams.set(key, value);
+  history.replaceState(null, "", url);
+}
+function updateLabels() {
+  const dictionary = translations[root.lang] || translations.zh;
+  themeToggle.setAttribute("aria-label", root.classList.contains("dark") ? dictionary.themeLight : dictionary.themeDark);
+  menuToggle.setAttribute("aria-label", mobileLinks.classList.contains("open") ? dictionary.menuClose : dictionary.menuOpen);
+}
 function setLanguage(lang) {
-  const dictionary = translations[lang] || translations.zh;
+  lang = Object.hasOwn(translations, lang) ? lang : "zh";
+  const dictionary = translations[lang];
   root.lang = lang;
   translatableNodes.forEach((node) => {
-    const key = node.dataset.i18n;
-    if (dictionary[key]) node.textContent = dictionary[key];
+    if (dictionary[node.dataset.i18n]) node.textContent = dictionary[node.dataset.i18n];
   });
   languageButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.lang === lang);
+    const active = button.dataset.lang === lang;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
+  document.querySelector("#productLink").href = lang === "zh" ? "/zh/" : "/";
+  document.querySelector(".product-home").href = lang === "zh" ? "/zh/" : "/";
+  document.querySelector(".avatar").alt = lang === "zh" ? "盛洁熠头像" : "Portrait of Jieyi Sheng";
+  updateLabels();
 }
-
 function setTheme(theme) {
   root.classList.toggle("dark", theme === "dark");
   root.classList.toggle("light", theme !== "dark");
+  document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#0f172a" : "#fefffe";
+  updateLabels();
 }
-
+function closeMenu() {
+  mobileLinks.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  updateLabels();
+}
 languageButtons.forEach((button) => {
-  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.lang);
+    updateURL("lang", root.lang);
+  });
 });
-
 themeToggle.addEventListener("click", () => {
-  setTheme(root.classList.contains("dark") ? "light" : "dark");
+  const theme = root.classList.contains("dark") ? "light" : "dark";
+  setTheme(theme);
+  updateURL("theme", theme);
 });
-
 menuToggle.addEventListener("click", () => {
-  const isOpen = mobileLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  const open = mobileLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+  updateLabels();
 });
-
-mobileLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  });
+mobileLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && mobileLinks.classList.contains("open")) {
+    closeMenu();
+    menuToggle.focus();
+  }
 });
-
-const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-setTheme(preferredTheme);
-setLanguage("zh");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".site-nav")) closeMenu();
+});
+window.matchMedia("(min-width: 1181px)").addEventListener("change", (event) => {
+  if (event.matches) closeMenu();
+});
+systemTheme.addEventListener("change", (event) => {
+  if (!new URLSearchParams(location.search).has("theme")) setTheme(event.matches ? "dark" : "light");
+});
+setLanguage(preferences.get("lang") || "zh");
+const theme = preferences.get("theme");
+setTheme(theme === "dark" || theme === "light" ? theme : systemTheme.matches ? "dark" : "light");

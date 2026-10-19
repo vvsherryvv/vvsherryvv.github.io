@@ -2,8 +2,8 @@
   --background: #fefffe;
   --foreground: #0f172a;
   --primary: #1e293b;
-  --accent: #d4a562;
-  --accent-dark: #b8914d;
+  --accent: #876127;
+  --accent-dark: #79551f;
   --neutral-50: #f8fafc;
   --neutral-100: #f1f5f9;
   --neutral-200: #e2e8f0;
@@ -550,7 +550,7 @@ button:focus-visible {
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
   .desktop-links {
     display: none;
   }
@@ -565,6 +565,9 @@ button:focus-visible {
     gap: 0.35rem;
   }
 
+}
+
+@media (max-width: 980px) {
   .layout-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -617,4 +620,46 @@ button:focus-visible {
     flex-direction: column;
     gap: 0.25rem;
   }
+}
+
+/* Readable controls and resilient bilingual layouts. */
+.dark .language-switch button.active { color: #0f172a; }
+.nav-inner { gap: 1rem; }
+.brand, .nav-actions { flex-shrink: 0; }
+.desktop-links { gap: 0.25rem; }
+.avatar-wrap, .interest-card { max-width: 100%; }
+.card-heading { flex-wrap: wrap; gap: 0.4rem; }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+.contact-links a, .project-link { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.social-row a { width: 44px; height: 44px; }
+.language-switch button { min-width: 44px; }
+.featured-project { border-left: 3px solid var(--accent); }
+.project-link { margin-top: 0.75rem; }
+.content-column { gap: 2.75rem; }
+.section h2 { font-family: var(--font-sans); font-weight: 750; }
+.section-row span { flex-shrink: 1; }
+body { overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .nav-inner { flex-wrap: wrap; height: auto; min-height: 4rem; gap: 0.25rem; padding-block: 0.5rem; }
+  .nav-actions { gap: 0.35rem; }
+  .nav-actions .product-home { display: none; }
+  .brand { font-size: 1.05rem; }
+  .section { scroll-margin-top: 7rem; }
+}
+@media print {
+  .site-nav, .skip-link, .archive-footer, .social-row { display: none; }
+  .page-shell { padding: 0; }
+  .layout-grid { display: block; }
+  .sticky-profile { position: static; }
+  .avatar-wrap { width: 8rem; height: 6rem; box-shadow: none; }
+  .interest-card { display: none; }
+  .section { margin-top: 1.5rem; }
+  .project-card, .timeline-item, .award-card { break-inside: avoid; }
+}
+
+html:not(.js) .language-switch, html:not(.js) .icon-button, html:not(.js) .menu-button { display: none; }
+@media (max-width: 1180px) {
+  html:not(.js) .site-nav { position: static; }
+  html:not(.js) .mobile-links { display: flex; flex-wrap: wrap; }
+  html:not(.js) .page-shell { padding-top: 2rem; }
 }
