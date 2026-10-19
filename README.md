@@ -125,13 +125,23 @@ chat response; broader remote-work and provider-switch acceptance remains open.
 
 ## Product film
 
-Both homepages embed the owner-approved 45-second portrait film at `#film`.
-`assets/video/wizardingos-promo-club.mp4` is the corrected version whose final
-card displays `https://www.wizardingos.club/zh/`. It has Chinese on-screen text
-and an original synthesized instrumental score. The poster is extracted at 2s.
+Updated 2026-10-19 (WEB-PROMO-001): both homepages now embed the owner-supplied
+`WizardingOS_Narrated_Life_v3.mp4` as `assets/video/wizardingos-narrated-life-v3.mp4`
+in the hero at `#film`: 311 seconds, 1920×1080, H.264 video and AAC audio.
+Streams are copied without re-encoding; container metadata is stripped and the
+MP4 index is moved to the beginning for progressive playback. The JPEG poster
+is extracted at 2 seconds. The earlier film remains at its original URL for
+existing links, but is no longer used on either homepage.
+
 The native player has controls, inline mobile playback and `preload="none"`;
-there is no autoplay or third-party embed. The hero links to the film, and a
-download link provides direct access to the MP4.
+there is no autoplay or third-party embed. A download link provides access to
+the complete MP4. Non-video assets retain a 12 MB budget; on-demand MP4 assets
+have a separate 30 MB budget to accommodate the full owner-supplied film.
+The audit checks posters, the v3 source, landscape dimensions and opt-in loading.
+
+Both languages lead with AI-assisted planning, explain goal → review → action,
+and keep the detailed screenshot gallery available in a native disclosure.
+App Store availability, prices and app data/schema are unchanged.
 
 ## October 16 screenshot refresh
 
@@ -158,3 +168,15 @@ App references supplied by owner: `198b91b1ac7c717456c5a0c0e58fa05850d05f09` (va
 | Picsew_20261016163903.jpeg | recall.webp |
 | IMG_3144.png | garden.webp |
 | IMG_3145.png | garden-harvest.webp |
+
+### October 19 verification
+
+- Source/candidate audit and whitespace checks passed (10 HTML pages, 8 routes).
+- Browser checks: both languages at 320 CSS px; English at 1440 CSS px;
+  Chinese at 780 and 1800 CSS px. No horizontal document overflow after fixing
+  the homepage minimum width to account for a visible scrollbar.
+- Narrated video played with readyState 4, duration 311 seconds, progressing
+  beyond 19 seconds. Language switch, film anchor and screenshot disclosure
+  exercised; gallery contains 17 full-size image links.
+- H.264/AAC streams and 1920×1080 dimensions verified with ffprobe.
+- Physical iOS devices and a full screen-reader audit were not exercised.

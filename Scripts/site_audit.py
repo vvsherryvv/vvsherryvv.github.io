@@ -83,6 +83,8 @@ class PageParser(HTMLParser):
             self.links.append(("src", values["src"]))
         if tag == "link" and values.get("href"):
             self.links.append(("href", values["href"]))
+        if tag == "video" and values.get("poster"):
+            self.links.append(("poster", values["poster"]))
         if tag == "img":
             self.images.append(values)
 
@@ -316,8 +318,26 @@ def audit(mode: str) -> int:
         if path.stat().st_size > 1_500_000:
             errors.append(f"{path.relative_to(ROOT)}: image exceeds 1.5 MB")
     total_bytes = sum(path.stat().st_size for path in ROOT.rglob("*") if path.is_file() and ".git" not in path.parts)
-    if total_bytes > 12_000_000:
-        errors.append(f"site exceeds 12 MB ({total_bytes} bytes)")
+    video_bytes = sum(path.stat().st_size for path in (ROOT / "assets/video").glob("*.mp4"))
+    if total_bytes - video_bytes > 12_000_000:
+        errors.append(f"non-video assets exceed 12 MB ({total_bytes - video_bytes} bytes)")
+    if video_bytes > 30_000_000:
+        errors.append(f"on-demand video assets exceed 30 MB ({video_bytes} bytes)")
+    for home in [ROOT / "index.html", ROOT / "zh/index.html"]:
+        parser = parsers[home]
+        videos = [attrs for tag, attrs in parser.attrs if tag == "video"]
+        if len(videos) != 1:
+            errors.append(f"{home.relative_to(ROOT)}: expected one product film")
+        for video in videos:
+            if not {"controls", "playsinline"}.issubset(video) or video.get("preload") != "none" or "autoplay" in video:
+                errors.append(f"{home.relative_to(ROOT)}: film must be user-initiated with native controls")
+            if video.get("width") != "1920" or video.get("height") != "1080":
+                errors.append(f"{home.relative_to(ROOT)}: expected landscape film dimensions")
+            if not video.get("poster"):
+                errors.append(f"{home.relative_to(ROOT)}: film poster missing")
+        source = parser.first("source", src="/assets/video/wizardingos-narrated-life-v3.mp4")
+        if not source or source.get("type") != "video/mp4":
+            errors.append(f"{home.relative_to(ROOT)}: narrated v3 film missing")
 
     legacy_markers = [
         LEGACY_CONTACT_MARKER,
