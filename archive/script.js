@@ -1,34 +1,53 @@
 const translations = {
   zh: {
+    expGradAdmin: "完成研究生党支部换届材料“三上三下”审核、支部党员信息系统维护及发展对象结业材料检查。参与中央八项规定精神和党纪学习教育内容创作，制作 11 月与 2 月主题党日通知及学习摘编。",
+    expGradEvents: "参与组织 2025 三院联合党史知识竞赛等学院活动，并担任华中科技大学 2026 年研究生人工智能创新大赛主持人。",
+    expGradRoles: "担任华中科技大学研究生科学技术协会常务中心、人工智能与自动化学院研究生会学术部、学院党建中心宣传部学生干部。研究生科学技术协会在 2025 年度星级学生社团评选中获评五星学生社团。",
+    expGradTitle: "研究生学生工作",
+    paperStatus: "已投稿",
+    papersHint: "A 类论文投稿 2 篇",
+    papersTitle: "论文投稿",
+    gradDate: "2025.09 — 至今",
+    contactEmail: "邮件联系",
+    productType: "独立开发 · AI 应用",
+    productText: "将计划、项目、典藏与记忆汇集在一处，探索用 AI 辅助规划与回顾，并通过草药园为日常行动提供正向激励。",
+    productLink: "了解产品 →",
+    footerText: "盛洁熠 · 研究与实践",
+    backTop: "返回顶部 ↑",
+    menuOpen: "打开导航菜单",
+    menuClose: "关闭导航菜单",
+    themeLight: "切换为浅色主题",
+    themeDark: "切换为深色主题",
+
     brand: "盛洁熠",
     navAbout: "主页",
-    navProjects: "科研项目",
+    navProjects: "精选项目",
     navCompetitions: "比赛",
     navExperience: "经历",
     navAwards: "荣誉",
     name: "盛洁熠",
     title: "人工智能方向硕士研究生",
     institution: "华中科技大学",
-    interestsTitle: "研究兴趣",
+    interestsTitle: "兴趣与方向",
     viewDetails: "查看详情",
-    interest1: "三维重建",
-    interest2: "三维人体重建",
-    interest3: "渲染与视觉生成",
+    interest1: "App 设计与开发",
+    interest2: "三维重建与人体重建",
+    interest3: "AI 应用与交互体验",
     updatedLabel: "最近更新：",
-    aboutTitle: "About",
-    aboutP1: "我目前在华中科技大学人工智能与自动化学院攻读智能科学与技术硕士，本科毕业于华中科技大学未来技术学院人工智能专业。当前研究兴趣聚焦三维重建、三维人体重建与渲染，希望把几何建模、视觉理解和生成式方法结合到可落地的智能系统中。",
-    aboutP2: "我的项目经历覆盖多模态视觉大模型、端侧部署、SLAM 机器人系统和脑机接口。近期在 2025 年度中国青年科技创新“揭榜挂帅”擂台赛中，参与高帧频小目标检测识别任务，负责基于 Qwen2.5-VL-3B 的算法实现与代码说明文档。",
+    aboutTitle: "关于我",
+    aboutP1: "我目前在华中科技大学人工智能与自动化学院攻读智能科学与技术硕士，本科毕业于华中科技大学未来技术学院人工智能专业。我热爱 App 设计与开发，正在打造 Wizarding OS，希望把 AI 能力融入日常规划与生活记录。科研方面，我关注三维重建、三维人体重建与渲染。",
+    aboutP2: "我的项目经历覆盖多模态视觉大模型、端侧部署、SLAM 机器人系统和脑机接口。在 2025 年度中国青年科技创新“揭榜挂帅”擂台赛中，参与高帧频小目标检测识别任务，负责基于 Qwen2.5-VL-3B 的算法实现与代码说明文档。",
     educationTitle: "教育背景",
     eduGradTitle: "华中科技大学 · 人工智能与自动化学院",
-    eduGradText: "智能科学与技术专业硕士研究生。课程包括智能计算系统、凸优化理论及算法、矩阵论、数量统计等。",
+    eduGradText: "智能科学与技术专业硕士研究生。上一学年课程成绩 90.37，专业排名 13 / 62。课程包括智能计算系统、凸优化理论及算法、矩阵论、数量统计等。",
     eduUnderTitle: "华中科技大学 · 未来技术学院",
     eduUnderText: "人工智能专业本科。加权成绩 88.89，主修数据科学基础、数据结构与算法设计、人工智能导论、模式识别与机器学习、概率论与数理统计、光电探测技术、单片机与嵌入式系统等课程。",
-    projectsTitle: "Selected Projects",
+    projectsTitle: "精选项目",
     projectsHint: "科研与工程实践",
     project1Type: "挑战杯 / 揭榜挂帅",
     project1Title: "高帧频小目标检测、识别与端侧部署",
     project1Text: "面向低参数量国产大模型的视觉检测识别任务，负责采用 Qwen2.5-VL-3B 作为基础模型、时序差分图与红外图并行输入的算法实现，并撰写主要代码说明文档。",
-    competitionsTitle: "Competitions",
+    competitionsTitle: "竞赛成果",
     competitionsHint: "科技创新竞赛",
     competition1Type: "中国青年科技创新“揭榜挂帅”擂台赛",
     competition1Title: "全国三等奖",
@@ -46,7 +65,7 @@ const translations = {
     expStudentText: "负责党员活动组织、新闻宣传、公众号内容建设和活动摄影，包括党员进寝室宣讲、宿舍搬迁党员先锋队、纪念馆参观等活动。",
     expPracticeTitle: "社会实践与母校回访",
     expPracticeText: "担任“优秀学子回访母校”宣传队队长，并参与“聚焦未来技术，洞悉科技前沿”科技企业走访调研，完成实践日志、报告与答辩。",
-    awardsTitle: "Awards",
+    awardsTitle: "荣誉奖励",
     awardsHint: "竞赛、奖学金与综合荣誉",
     awardAcademicTitle: "学业与综合荣誉",
     awardAcademicText: "学习优秀奖学金、光谷晨星奖学金、自强奖学金、华中科技大学优秀学生干部、光电学院自强标兵。",
@@ -54,9 +73,28 @@ const translations = {
     awardCompetitionText: "2025 年度中国青年科技创新“揭榜挂帅”擂台赛全国三等奖。",
     awardPracticeTitle: "实践与校园活动",
     awardPracticeText: "校级社会实践优秀团队、社会实践优秀个人、喻晓之巅辩论赛校八强、光电师生杯羽毛球赛团队第三名。",
-    skillsTitle: "Skills"
+    skillsTitle: "专业技能"
   },
   en: {
+    expGradAdmin: "Reviewed graduate Party branch election materials through the three-stage submission and approval process, maintained branch membership records, and checked completion documents for prospective members. Created educational materials on the central eight-point regulation and Party discipline, and prepared November and February themed Party Day notices and study digests.",
+    expGradEvents: "Helped organize the 2025 inter-school Party history quiz competition across three schools and other school events. Hosted the HUST 2026 Graduate Artificial Intelligence Innovation Competition.",
+    expGradRoles: "Student officer in the standing affairs center of the HUST Graduate Science and Technology Association, the Academic Department of the school’s Graduate Student Union, and the Publicity Department of the school’s Party Building Center. The Graduate Science and Technology Association received a five-star rating in the 2025 student association evaluation.",
+    expGradTitle: "Graduate Student Leadership & Service",
+    paperStatus: "Submitted",
+    papersHint: "Two submissions to Category A venues",
+    papersTitle: "Paper Submissions",
+    gradDate: "Sep 2025 — Present",
+    contactEmail: "Email me",
+    productType: "Independent development · AI application",
+    productText: "Bringing plans, projects, collections, and memories together to explore AI-assisted planning and reflection, with a Herb Garden that encourages everyday progress.",
+    productLink: "Explore the product →",
+    footerText: "Jieyi Sheng · Research & Practice",
+    backTop: "Back to top ↑",
+    menuOpen: "Open navigation menu",
+    menuClose: "Close navigation menu",
+    themeLight: "Switch to light theme",
+    themeDark: "Switch to dark theme",
+
     brand: "Jieyi Sheng",
     navAbout: "About",
     navProjects: "Projects",
@@ -66,18 +104,18 @@ const translations = {
     name: "Jieyi Sheng",
     title: "M.S. Student in Artificial Intelligence",
     institution: "Huazhong University of Science and Technology",
-    interestsTitle: "Research Interests",
+    interestsTitle: "Interests & Focus",
     viewDetails: "View Details",
-    interest1: "3D reconstruction",
-    interest2: "3D human reconstruction",
-    interest3: "Rendering and visual generation",
+    interest1: "App design and development",
+    interest2: "3D scene and human reconstruction",
+    interest3: "AI applications and interaction design",
     updatedLabel: "Last updated: ",
     aboutTitle: "About",
-    aboutP1: "I am an M.S. student in Intelligent Science and Technology at the School of Artificial Intelligence and Automation, Huazhong University of Science and Technology. I received my undergraduate training in Artificial Intelligence from HUST Future Technology College. My current interests focus on 3D reconstruction, 3D human reconstruction, and rendering, especially combining geometric modeling, visual understanding, and generative methods for practical intelligent systems.",
-    aboutP2: "My project experience covers multimodal vision-language models, edge deployment, SLAM robotics, and brain-computer interfaces. Recently, I worked on a high-frame-rate small-target detection and recognition task for the 2025 China Youth Science and Technology Innovation Challenge, implementing a Qwen2.5-VL-3B-based algorithm and writing most of the code documentation.",
+    aboutP1: "I am an M.S. student in Intelligent Science and Technology at the School of Artificial Intelligence and Automation, Huazhong University of Science and Technology, where I also studied Artificial Intelligence as an undergraduate at Future Technology College. I enjoy designing and developing apps and am building Wizarding OS to bring AI into everyday planning and personal record-keeping. My research focuses on 3D reconstruction, 3D human reconstruction, and rendering.",
+    aboutP2: "My project experience covers multimodal vision-language models, edge deployment, SLAM robotics, and brain-computer interfaces. I worked on a high-frame-rate small-target detection and recognition task for the 2025 China Youth Science and Technology Innovation Challenge, implementing a Qwen2.5-VL-3B-based algorithm and writing most of the code documentation.",
     educationTitle: "Education",
     eduGradTitle: "Huazhong University of Science and Technology · School of Artificial Intelligence and Automation",
-    eduGradText: "M.S. student in Intelligent Science and Technology. Coursework includes intelligent computing systems, convex optimization theory and algorithms, matrix theory, and quantitative statistics.",
+    eduGradText: "M.S. student in Intelligent Science and Technology. Course average in the previous academic year: 90.37; ranked 13 out of 62 students in the program. Coursework includes intelligent computing systems, convex optimization theory and algorithms, matrix theory, and quantitative statistics.",
     eduUnderTitle: "Huazhong University of Science and Technology · Future Technology College",
     eduUnderText: "B.Eng. in Artificial Intelligence with a weighted average of 88.89. Coursework includes data science, data structures and algorithms, introduction to AI, pattern recognition and machine learning, probability and statistics, optoelectronic detection, microcontrollers, and embedded systems.",
     projectsTitle: "Selected Projects",
@@ -116,60 +154,86 @@ const translations = {
 };
 
 const root = document.documentElement;
+root.classList.add("js");
 const languageButtons = document.querySelectorAll("[data-lang]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
 const themeToggle = document.querySelector("#themeToggle");
 const menuToggle = document.querySelector("#menuToggle");
 const mobileLinks = document.querySelector("#mobileLinks");
 
+// URL preferences keep sharing and reloads consistent without browser storage.
+const preferences = new URLSearchParams(location.search);
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+function updateURL(key, value) {
+  const url = new URL(location.href);
+  url.searchParams.set(key, value);
+  history.replaceState(null, "", url);
+}
+function updateLabels() {
+  const dictionary = translations[root.lang] || translations.zh;
+  themeToggle.setAttribute("aria-label", root.classList.contains("dark") ? dictionary.themeLight : dictionary.themeDark);
+  menuToggle.setAttribute("aria-label", mobileLinks.classList.contains("open") ? dictionary.menuClose : dictionary.menuOpen);
+}
 function setLanguage(lang) {
-  const dictionary = translations[lang] || translations.zh;
+  lang = Object.hasOwn(translations, lang) ? lang : "zh";
+  const dictionary = translations[lang];
   root.lang = lang;
   translatableNodes.forEach((node) => {
-    const key = node.dataset.i18n;
-    if (dictionary[key]) node.textContent = dictionary[key];
+    if (dictionary[node.dataset.i18n]) node.textContent = dictionary[node.dataset.i18n];
   });
   languageButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.lang === lang);
+    const active = button.dataset.lang === lang;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
+  document.querySelector("#productLink").href = "https://www.wizardingos.club/zh/";
+  document.querySelector(".product-home").href = "https://www.wizardingos.club/zh/";
+  document.querySelector(".avatar").alt = lang === "zh" ? "盛洁熠头像" : "Portrait of Jieyi Sheng";
+  updateLabels();
 }
-
 function setTheme(theme) {
   root.classList.toggle("dark", theme === "dark");
   root.classList.toggle("light", theme !== "dark");
+  document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#0f172a" : "#fefffe";
+  updateLabels();
 }
-
+function closeMenu() {
+  mobileLinks.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  updateLabels();
+}
 languageButtons.forEach((button) => {
-  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.lang);
+    updateURL("lang", root.lang);
+  });
 });
-
 themeToggle.addEventListener("click", () => {
-  setTheme(root.classList.contains("dark") ? "light" : "dark");
+  const theme = root.classList.contains("dark") ? "light" : "dark";
+  setTheme(theme);
+  updateURL("theme", theme);
 });
-
 menuToggle.addEventListener("click", () => {
-  const isOpen = mobileLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  const open = mobileLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+  updateLabels();
 });
-
-mobileLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  });
+mobileLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && mobileLinks.classList.contains("open")) {
+    closeMenu();
+    menuToggle.focus();
+  }
 });
-
-const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-setTheme(preferredTheme);
-setLanguage("zh");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".site-nav")) closeMenu();
+});
+window.matchMedia("(min-width: 1181px)").addEventListener("change", (event) => {
+  if (event.matches) closeMenu();
+});
+systemTheme.addEventListener("change", (event) => {
+  if (!new URLSearchParams(location.search).has("theme")) setTheme(event.matches ? "dark" : "light");
+});
+setLanguage(preferences.get("lang") || "zh");
+const theme = preferences.get("theme");
+setTheme(theme === "dark" || theme === "light" ? theme : systemTheme.matches ? "dark" : "light");
