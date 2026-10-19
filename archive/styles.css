@@ -663,3 +663,6 @@ html:not(.js) .language-switch, html:not(.js) .icon-button, html:not(.js) .menu-
   html:not(.js) .mobile-links { display: flex; flex-wrap: wrap; }
   html:not(.js) .page-shell { padding-top: 2rem; }
 }
+
+.experience-details { margin: 0; padding-left: 1.2rem; color: var(--neutral-700); font-size: 0.95rem; }
+.experience-details li + li { margin-top: 0.7rem; }
