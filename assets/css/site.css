@@ -1057,7 +1057,8 @@ main {
   object-position: center;
 }
 .pet-card--scene img {
-  height: 21rem;
+  height: 18rem;
+  object-position: center 25%;
 }
 .pet-card figcaption {
   padding: 0.8rem 0.2rem 0.2rem;
