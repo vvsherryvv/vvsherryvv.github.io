@@ -1,6 +1,6 @@
-# Wizarding OS website (0.4.5)
+# Owl website (0.4.5)
 
-Static, bilingual product website for Wizarding OS `0.4.5` (TestFlight build `66`, app repository `vvsherryvv/Wizarding-App` branch `feature-20261028`, commit `c33fda7`). The site is designed for GitHub Pages, works without JavaScript on product routes, and makes no network requests to third-party resources.
+Static, bilingual product website for Owl `0.4.5` (TestFlight build `68`, app repository `vvsherryvv/Wizarding-App` branch `feature-20261028`, commit `07446eb`). The site is designed for GitHub Pages, works without JavaScript on product routes, and makes no network requests to third-party resources.
 
 ## Routes
 
