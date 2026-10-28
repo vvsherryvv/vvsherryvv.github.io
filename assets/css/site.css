@@ -1,19 +1,21 @@
 :root {
   color-scheme: dark;
-  --ink: #f7f2e8;
-  --muted: #c8cedc;
-  --night: #080d1c;
-  --night-2: #101b36;
-  --panel: #10182a;
-  --panel-soft: #15213a;
-  --line: #4d5b74;
-  --blue: #a9ceff;
-  --brass: #d8a653;
-  --brass-strong: #f5c775;
+  --ink: #f7f4ff;
+  --muted: #cbc3e3;
+  --night: #0d0b18;
+  --night-2: #17132c;
+  --panel: #191430;
+  --panel-soft: #221b40;
+  --line: rgba(169, 154, 224, 0.32);
+  --blue: #cfc2ff;
+  --brass: #b7a4f9;
+  --brass-strong: #e0d6ff;
+  --owl-purple: #897eb6;
+  --owl-purple-deep: #625494;
   --max: 74rem;
-  --radius: 1.35rem;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --radius: 1.4rem;
+  --shadow: 0 24px 64px rgba(7, 5, 18, 0.52);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 * {
@@ -30,10 +32,11 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 50% 12%, rgba(216, 166, 83, 0.06) 0 0.08rem, transparent 0.1rem) 0 0 / 5rem 5rem,
-    radial-gradient(circle at 12% 5%, rgba(54, 103, 181, 0.28), transparent 30rem),
-    radial-gradient(circle at 90% 28%, rgba(126, 53, 30, 0.18), transparent 28rem),
-    linear-gradient(180deg, #091022 0, var(--night) 42rem, #090d18 100%);
+    radial-gradient(circle at 50% 10%, rgba(224, 214, 255, 0.08) 0 0.08rem, transparent 0.1rem) 0 0 / 4.75rem 4.75rem,
+    radial-gradient(circle at 14% 6%, rgba(137, 126, 182, 0.34), transparent 32rem),
+    radial-gradient(circle at 88% 22%, rgba(118, 92, 196, 0.24), transparent 30rem),
+    radial-gradient(circle at 50% 68%, rgba(137, 126, 182, 0.16), transparent 38rem),
+    linear-gradient(180deg, #130f24 0%, var(--night) 44rem, #0b0915 100%);
   font-size: 1rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -88,8 +91,8 @@ summary:focus-visible {
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid rgba(113, 132, 164, 0.34);
-  background: rgba(8, 13, 28, 0.9);
+  border-bottom: 1px solid rgba(183, 164, 249, 0.22);
+  background: rgba(15, 12, 29, 0.84);
   backdrop-filter: blur(1rem);
   -webkit-backdrop-filter: blur(1rem);
 }
@@ -143,7 +146,7 @@ summary:focus-visible {
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  background: rgba(169, 206, 255, 0.12);
+  background: rgba(137, 126, 182, 0.22);
   color: var(--ink);
 }
 
@@ -231,9 +234,9 @@ main {
 }
 
 .button.primary {
-  border-color: #d7a149;
-  background: linear-gradient(135deg, #a55423, #7d3717);
-  box-shadow: 0 10px 28px rgba(165, 84, 35, 0.22);
+  border-color: rgba(224, 214, 255, 0.55);
+  background: linear-gradient(135deg, #897eb6 0%, #645598 100%);
+  box-shadow: 0 12px 30px rgba(137, 126, 182, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .button:hover {
@@ -952,41 +955,56 @@ main {
 .product-home { min-width:0; }
 .campaign-hero .eyebrow { overflow-wrap:anywhere; }
 
-/* Pet companions horizontal scroll-snap carousel */
+/* Pet companions & sections 01-04 horizontal scroll-snap carousels (Owl Purple theme) */
+.brand img {
+  box-shadow: 0 6px 18px rgba(137, 126, 182, 0.38);
+  border: 1px solid rgba(224, 214, 255, 0.32);
+}
+.promo-film-player video {
+  border: 1px solid rgba(183, 164, 249, 0.38);
+  background: #100d20;
+  box-shadow: 0 24px 64px rgba(8, 5, 20, 0.55), 0 0 0 1px rgba(224, 214, 255, 0.08);
+}
 .pet-carousel-header {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1rem 2rem;
-  margin-bottom: 1.5rem;
+  gap: 0.9rem 1.75rem;
+  margin-bottom: 1.25rem;
 }
 .pet-carousel-header .section-heading {
   margin-bottom: 0;
+  max-width: 46rem;
 }
 .pet-carousel-controls {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
+  flex-shrink: 0;
 }
 .pet-carousel-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(216, 166, 83, 0.45);
+  min-height: 2.5rem;
+  padding: 0.42rem 0.95rem;
+  border: 1px solid rgba(183, 164, 249, 0.42);
   border-radius: 999px;
-  background: rgba(16, 24, 42, 0.9);
+  background: linear-gradient(145deg, rgba(43, 35, 78, 0.88), rgba(24, 19, 46, 0.92));
   color: var(--ink);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: 700;
+  white-space: nowrap;
   cursor: pointer;
+  box-shadow: 0 8px 20px rgba(8, 5, 20, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 .pet-carousel-btn:hover {
   border-color: var(--brass-strong);
-  background: rgba(216, 166, 83, 0.16);
+  background: linear-gradient(145deg, rgba(137, 126, 182, 0.45), rgba(68, 56, 118, 0.65));
   color: #fff;
+  transform: translateY(-1px);
 }
 .pet-carousel-btn:focus-visible {
   outline: 0.2rem solid var(--brass-strong);
@@ -995,73 +1013,90 @@ main {
 .pet-carousel {
   display: flex;
   flex-wrap: nowrap;
+  align-items: stretch;
   gap: 1.15rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  padding: 0.25rem 0.15rem 1.2rem;
+  padding: 0.35rem 0.2rem 1.15rem;
   scrollbar-width: thin;
-  scrollbar-color: var(--brass) rgba(16, 24, 42, 0.65);
+  scrollbar-color: var(--owl-purple) rgba(23, 19, 44, 0.7);
+}
+.pet-carousel > * {
+  flex-shrink: 0;
 }
 .pet-carousel::-webkit-scrollbar {
-  height: 0.55rem;
+  height: 0.5rem;
 }
 .pet-carousel::-webkit-scrollbar-track {
-  background: rgba(16, 24, 42, 0.65);
+  background: rgba(23, 19, 44, 0.7);
   border-radius: 999px;
 }
 .pet-carousel::-webkit-scrollbar-thumb {
-  background: rgba(216, 166, 83, 0.65);
+  background: rgba(137, 126, 182, 0.75);
   border-radius: 999px;
 }
 .pet-card {
-  flex: 0 0 clamp(15.5rem, 25vw, 18.75rem);
+  flex: 0 0 clamp(16.25rem, 26vw, 19.25rem);
   scroll-snap-align: start;
   margin: 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(216, 166, 83, 0.34);
-  border-radius: 1.25rem;
-  padding: 0.85rem;
-  background: linear-gradient(165deg, #17213a 0%, #0e1526 100%);
-  box-shadow: var(--shadow);
+  justify-content: flex-start;
+  border: 1px solid rgba(183, 164, 249, 0.28);
+  border-radius: 1.35rem;
+  padding: 0.95rem;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(137, 126, 182, 0.22), transparent 60%),
+    linear-gradient(165deg, rgba(36, 29, 68, 0.92) 0%, rgba(18, 14, 36, 0.96) 100%);
+  box-shadow: 0 18px 42px rgba(6, 4, 15, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.09);
   min-width: 0;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.pet-card:hover {
+  border-color: rgba(224, 214, 255, 0.52);
+  transform: translateY(-2px);
 }
 .pet-card-badge {
   display: inline-flex;
+  align-items: center;
   align-self: flex-start;
-  margin-bottom: 0.6rem;
-  padding: 0.2rem 0.65rem;
+  margin-bottom: 0.7rem;
+  padding: 0.24rem 0.72rem;
   border-radius: 999px;
-  border: 1px solid rgba(216, 166, 83, 0.38);
-  background: rgba(216, 166, 83, 0.12);
+  border: 1px solid rgba(183, 164, 249, 0.38);
+  background: rgba(137, 126, 182, 0.2);
   color: var(--brass-strong);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.04em;
-}
-.pet-card a {
-  display: block;
-  border-radius: 0.95rem;
+  white-space: nowrap;
+  max-width: 100%;
   overflow: hidden;
-  background: #090e1d;
-  border: 1px solid rgba(113, 132, 164, 0.28);
+  text-overflow: ellipsis;
 }
-.pet-card img {
+.pet-card > a {
+  display: block;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #0d0a1a;
+  border: 1px solid rgba(183, 164, 249, 0.24);
+}
+.pet-card > a img {
   display: block;
   width: 100%;
-  height: 18rem;
+  height: 17.5rem;
   object-fit: cover;
   object-position: center;
 }
-.pet-card--scene img {
-  height: 18rem;
-  object-position: center 25%;
+.pet-card--scene > a img {
+  height: 17.5rem;
+  object-position: center 24%;
 }
 .pet-card figcaption {
-  padding: 0.8rem 0.2rem 0.2rem;
+  padding: 0.8rem 0.2rem 0.15rem;
 }
 .pet-card-title {
   display: block;
@@ -1072,111 +1107,187 @@ main {
 }
 .pet-card-sub {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 0.28rem;
   color: var(--muted);
   font-size: 0.86rem;
-  line-height: 1.45;
+  line-height: 1.48;
 }
 .pet-carousel-hint {
-  margin: 0.6rem 0 0;
+  margin: 0.55rem 0 0;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.85rem;
 }
 
-/* Section 01-04 horizontal sliding window cards */
+/* Step cards (#how-it-works) and Flow cards (Sections 01-04) */
 .step-carousel {
   list-style: none;
   margin: 0;
-  padding: 0.25rem 0.15rem 1.2rem;
+  padding: 0.35rem 0.2rem 1.15rem;
 }
 .step-card {
-  flex: 0 0 clamp(20rem, 44vw, 31rem);
-  scroll-snap-align: start;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  border: 1px solid rgba(216, 166, 83, 0.34);
-  border-radius: 1.3rem;
-  padding: 1.4rem 1.35rem;
-  background: linear-gradient(165deg, #17213a 0%, #0e1526 100%);
-  box-shadow: var(--shadow);
-  min-width: 0;
+  flex: 0 0 clamp(18.5rem, 42vw, 29rem);
+  padding: 1.25rem 1.25rem 1.3rem;
 }
 .step-card .step-number {
   color: var(--brass-strong);
-  font-family: Georgia, serif;
-  font-size: 2rem;
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: 2.1rem;
   line-height: 1;
+  margin-top: 0.15rem;
 }
 .step-card h3 {
-  font-size: 1.35rem;
-  margin: 0.75rem 0 0.5rem;
+  font-size: 1.3rem;
+  margin: 0.65rem 0 0.45rem;
   color: var(--ink);
 }
 .step-card p {
   color: var(--muted);
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   line-height: 1.6;
 }
+
 .flow-card {
-  flex: 0 0 clamp(19.5rem, 42vw, 29rem);
-  scroll-snap-align: start;
+  flex: 0 0 clamp(18.25rem, 40vw, 25.5rem);
+  padding: 0.95rem;
+}
+.flow-card .product-shot {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid rgba(216, 166, 83, 0.34);
-  border-radius: 1.3rem;
-  padding: 1.15rem;
-  background: linear-gradient(165deg, #17213a 0%, #0e1526 100%);
-  box-shadow: var(--shadow);
-  min-width: 0;
+  width: 100%;
+}
+.flow-card .product-shot a {
+  display: block;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, rgba(137, 126, 182, 0.16), #0b0917 75%);
+  border: 1px solid rgba(183, 164, 249, 0.28);
+  padding: 0.45rem;
+}
+.flow-card .product-shot img {
+  display: block;
+  width: 100%;
+  height: 21.5rem;
+  object-fit: contain;
+  object-position: top center;
+  border: 0;
+  border-radius: 0.75rem;
+  box-shadow: none;
+}
+.flow-card .product-shot figcaption {
+  margin-top: 0.5rem;
+  color: var(--brass-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
 }
 .flow-card-copy {
-  padding-bottom: 1rem;
+  padding: 0.75rem 0.2rem 0.15rem;
 }
 .flow-card-copy h3 {
-  font-size: 1.32rem;
+  font-size: 1.14rem;
   line-height: 1.35;
-  margin: 0.45rem 0 0.4rem;
+  margin: 0 0 0.3rem;
   color: var(--ink);
 }
 .flow-card-copy h4 {
-  font-size: 0.96rem;
-  line-height: 1.5;
-  margin: 0 0 0.45rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0 0 0.38rem;
   color: var(--brass-strong);
   font-weight: 700;
 }
 .flow-card-copy p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: 0.86rem;
+  line-height: 1.52;
 }
-.flow-card .product-shot a {
-  display: block;
-  border-radius: 1.05rem;
-  overflow: hidden;
-  background: #080d1c;
-  border: 1px solid rgba(216, 166, 83, 0.36);
-  padding: 0.35rem;
-}
-.flow-card .product-shot img {
-  display: block;
-  width: 100%;
-  height: 25rem;
-  object-fit: contain;
-  object-position: top center;
-  border: 0;
-  border-radius: 0.8rem;
-  box-shadow: none;
-}
-.flow-card .product-shot figcaption {
-  margin-top: 0.65rem;
-  color: var(--muted);
-  font-size: 0.84rem;
-  text-align: center;
+
+/* Mobile-specific refinements so header, headings, and sliding cards fit cleanly */
+@media (max-width: 48rem) {
+  .nav-wrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 3.6rem;
+    gap: 0.4rem 0.75rem;
+    padding-block: 0.5rem;
+  }
+  .brand {
+    min-height: 2.25rem;
+    font-size: 1.05rem;
+  }
+  .brand img {
+    width: 2.15rem;
+    height: 2.15rem;
+    border-radius: 0.6rem;
+  }
+  .site-nav {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0.25rem;
+    padding-bottom: 0.15rem;
+  }
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .site-nav a {
+    flex: 0 0 auto;
+    min-height: 2.15rem;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.82rem;
+  }
+  .section {
+    padding-block: 2.8rem;
+  }
+  .section-heading h2 {
+    font-size: clamp(1.55rem, 6.4vw, 2.1rem);
+    line-height: 1.24;
+  }
+  .section-heading p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+  .pet-carousel-header {
+    gap: 0.65rem 1rem;
+    margin-bottom: 0.9rem;
+  }
+  .pet-carousel-btn {
+    min-height: 2.25rem;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .pet-card {
+    flex: 0 0 min(78vw, 18.5rem);
+    padding: 0.8rem;
+  }
+  .pet-card > a img,
+  .pet-card--scene > a img {
+    height: 15.5rem;
+  }
+  .step-card {
+    flex: 0 0 min(82vw, 20rem);
+    padding: 1.1rem;
+  }
+  .flow-card {
+    flex: 0 0 min(80vw, 19.25rem);
+    padding: 0.8rem;
+  }
+  .flow-card .product-shot img {
+    height: 18rem;
+  }
+  .flow-card-copy h3 {
+    font-size: 1.05rem;
+  }
+  .flow-card-copy h4 {
+    font-size: 0.85rem;
+  }
+  .flow-card-copy p {
+    font-size: 0.82rem;
+  }
 }
