@@ -1,52 +1,32 @@
-# Wizarding OS website
+# Wizarding OS website (0.4.5)
 
-Static, bilingual product website for Wizarding OS. The homepage previews the current app branch; privacy and support retain clearly scoped 0.4.4 documentation with a current-feature notice. The site is designed for GitHub Pages, works without JavaScript, and makes no network requests to third-party resources.
+Static, bilingual product website for Wizarding OS `0.4.5` (TestFlight build `66`, app repository `vvsherryvv/Wizarding-App` branch `feature-20261028`, commit `c33fda7`). The site is designed for GitHub Pages, works without JavaScript on product routes, and makes no network requests to third-party resources.
 
 ## Routes
 
-- `/` — English home
-- `/privacy/` — English Privacy Policy
-- `/terms/` — English Terms of Use
-- `/support/` — English support
-- `/zh/` — 简体中文首页
-- `/zh/privacy/` — 简体中文隐私政策
-- `/zh/terms/` — 简体中文使用条款
-- `/zh/support/` — 简体中文支持
-- `/archive/` — preserved personal homepage that previously occupied the root route
+- `/` — English home (`0.4.5`)
+- `/privacy/` — English Privacy Policy (`0.4.5`)
+- `/terms/` — English Terms of Use (`0.4.5`)
+- `/support/` — English Support (`0.4.5`)
+- `/zh/` — 简体中文首页 (`0.4.5`)
+- `/zh/privacy/` — 简体中文隐私政策 (`0.4.5`)
+- `/zh/terms/` — 简体中文使用条款 (`0.4.5`)
+- `/zh/support/` — 简体中文支持与帮助 (`0.4.5`)
+- `/archive/` — preserved personal homepage
 
-The existing personal homepage was retained because its academic and project content remains useful. It was moved to `/archive/`, its images were re-encoded without metadata, and its preference storage was removed so the public site does not use cookies, local storage, or session storage.
+## 0.4.5 Product Positioning & Content Structure
 
-## Architecture and privacy
+1. **Three-step core loop (`拆解目标 → 安排待办 → 反馈总结`)**:
+   - Legacy collection modules (`草药园 Herb Garden`, `典藏馆 Library`, `记忆盆 Memory Basin`, `回忆之光 Recall Light`, `旅程 Journeys`, and `四大输入 Four Inputs`) have been removed from the 0.4.5 app and from the website navigation and sections.
+   - The homepage focuses on breaking down goals in the Assistant, scheduling steps in Plans, and checking off progress in Daily Review.
+2. **03 Interactive Tutorial (`新手教程`)**:
+   - Reflects the 10-step guided onboarding in `Features/Minimal/MinimalViews.swift` using the exact in-app prompt: `点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。` (`Tap the input and describe a goal. For example: read a book this week, 20 minutes a day.`).
+3. **04 Reference Materials & Upcoming Roadmap (`我们对用户的了解 / 参考资料`)**:
+   - Clearly distinguishes **Reference Materials** (live in `0.4.5`, local-first, opt-in, excludes photos and keys) from **“What we know about you / 我们对用户的了解”** (positioned as **coming soon / 即将上线**, not claimed as already shipped).
 
-The production site is plain semantic HTML and CSS. It has no runtime package manager, generator, backend, analytics, cookies, forms, remote fonts, remote scripts, third-party embeds, authentication, or database. All product images and metadata assets are served from this repository. A conservative CSP meta tag restricts content to the same origin.
+## Screenshot Provenance & Placeholder Notice
 
-GitHub Actions deploys the repository root to GitHub Pages after candidate verification succeeds on `main`. Pull requests run source verification. Both verification modes validate the approved support contact.
-
-## Release screenshot provenance
-
-Website screenshots are optimized, metadata-free derivatives of the seven English 0.4.4 Release screenshots from `vvsherryvv/Wizarding-OS`, branch `codex/0.4.4-app-store-release`, commit `bc437c4`.
-
-| App source | Website derivative | Dimensions |
-| --- | --- | --- |
-| `Docs/AppStore/Screenshots/EN/01-wizarding-hall.jpg` | `assets/images/screenshot-hall.jpg` | 828×1800 |
-| `Docs/AppStore/Screenshots/EN/02-magic-planner.jpg` | `assets/images/screenshot-planner.jpg` | 828×1800 |
-| `Docs/AppStore/Screenshots/EN/03-memory-vault.jpg` | `assets/images/screenshot-memory-vault.jpg` | 828×1800 |
-| `Docs/AppStore/Screenshots/EN/04-memory-magic.jpg` | `assets/images/screenshot-memory-magic.jpg` | 828×1800 |
-| `Docs/AppStore/Screenshots/EN/05-collections.jpg` | `assets/images/screenshot-collections.jpg` | 828×1800 |
-| `Docs/AppStore/Screenshots/EN/06-journey-archive.jpg` | `assets/images/screenshot-journey-archive.jpg` | 828×1800 |
-| `Docs/AppStore/Screenshots/EN/07-recall-light.jpg` | `assets/images/screenshot-recall-light.jpg` | 828×1800 |
-
-The local app icon is derived from `Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png`. The 1200×630 social preview combines that icon with the audited Hall screenshot and original site typography. App-repository originals are not modified.
-
-## Homepage campaign artwork
-
-The repository retains optimized WebP derivatives of the earlier approved campaign artwork (the current homepage uses real app screenshots instead):
-
-- `assets/images/promo/en-01.webp` through `en-05.webp`
-- `assets/images/promo/zh-01.webp` through `zh-05.webp`
-
-Each derivative is 1086×1448, stripped of metadata, and kept below the site
-image-size limit. Historical assets remain available. Current homepage copy describes opt-in remote AI explicitly; the current-feature notices distinguish it from the older local-only assistant.
+All 13 images in `assets/images/features/*.webp`, 17 gallery images in `assets/images/october-2026/*.webp`, and 7 `828×1800` JPEG derivatives in `assets/images/screenshot-*.jpg` have been regenerated without EXIF/XMP metadata from `0.4.5` evidence captures, with a clearly labeled placeholder image (`assets/images/features/daily-review-sheet.webp`, `assets/images/october-2026/08-daily-review-sheet.webp`, `assets/images/screenshot-05-daily-review.jpg`) for the `AssistantReviewCard` Daily Review sheet pending a real-device capture.
 
 ## Verification
 
@@ -54,129 +34,3 @@ image-size limit. Historical assets remain available. Current homepage copy desc
 bash Scripts/verify_site.sh --source
 bash Scripts/verify_site.sh --candidate
 ```
-
-Source mode validates structure, metadata, local links, image references, accessibility basics, asset metadata, privacy constraints, prohibited claims, and the published support contact. Candidate mode applies the same contact requirements to the release candidate.
-
-For local review:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://127.0.0.1:8000/`. Lighthouse and browser audits should be run against this local origin before merge.
-
-## Release gate
-
-The site must not be merged or deployed with contact placeholders or sample email addresses. The English and Simplified Chinese privacy and support pages must show the approved address and link to the identical address. Do not add an App Store badge or availability statement until Apple has supplied a real public listing URL.
-
-## October 2026 product story
-
-Both homepages now explain four inputs (Plans, Projects, Library, Memory Basin),
-two assistant modes and one reward system (Herb Garden). Plans and project/subtask
-records provide work context; Library, memories and journeys provide personal
-context for chat. Personal profile means interests, preferences and experiences,
-not a personality diagnosis or an independently persisted inferred profile.
-
-Implementation reviewed at app commit `f31d79ba01660fedbe6a6c0e7a1a2390d8fd8764`
-on `codex/archive-recall-player-book-sources`, especially
-`Features/Assistant/AssistantView.swift` and `Services/RemoteAIService.swift`.
-The current implementation uses bounded selected references, not automatic access
-to all historical records or a trained personal model. Homepage copy therefore
-pairs the long-term recording vision with explicit selection and consent language.
-No claim is made that all remote planning acceptance gates have passed.
-
-### Current screenshot provenance
-
-All files below are metadata-free WebP derivatives in `assets/images/features/`.
-Chinese screenshots are labelled as such on the English page. Images link to
-full-size local assets and preserve their original aspect ratios and contents.
-
-| Derivative | Original |
-| --- | --- |
-| work-mode.webp | Owner upload IMG_3385.jpeg, 2026-10-07 |
-| reference-consent.webp | Owner upload IMG_3386.png |
-| reference-groups.webp | Owner upload IMG_3387.png |
-| reference-details.webp | Owner upload IMG_3388.png |
-| chat-mode.webp | Owner upload IMG_3389.jpeg |
-| chat-context.webp | Owner upload IMG_3390.jpeg |
-| chat-suggestions.webp | Owner upload IMG_3391.jpeg |
-| chat-followup.webp | Owner upload IMG_3392.jpeg |
-| planner.webp | Docs/Evals/Evidence/PROJECT-LINK-002/2026-09-18/iphone-planner-uncompleted.png |
-| projects.webp | Docs/Evals/Evidence/PROJECT-OVERVIEW-EDIT-003/2026-09-23/zh-Hans-iphone-overview.png |
-| library.webp | Docs/Evals/Evidence/FEEDBACK-2026-09-26/2026-10-06-archive-branch/import-root-zh-compact.png |
-| memory.webp | Docs/Evals/Evidence/MEMORY-IA-002/2026-09-09/zh-Hans-iphone-6.1-memory-root.png |
-| garden.webp | Docs/Evals/Evidence/GARDEN-PARTIAL-HARVEST-001/2026-09-22/zh-Hans-se-six.png |
-
-Repository screenshots are from the app commit above. Some are historical UI or
-explicit validation fixtures; the site labels examples and potential version
-variation. Garden evidence confirms quantity/all harvesting but does not establish
-physical-device accessibility acceptance. The October 6 grouped-reference and
-DeepSeek smoke reports establish mode-specific reference selection and a live
-chat response; broader remote-work and provider-switch acceptance remains open.
-
-### Website verification for this update
-
-- `Scripts/verify_site.sh --source` and `--candidate`: passed.
-- Chromium checks on both homepages at 1440, 375 and 320 px: no horizontal
-  overflow, no failed images, no page errors; expandable conversation opens.
-- Desktop and mobile Chinese hero screenshots inspected with a CJK font installed
-  in the verification environment. All product images keep their original ratios.
-- No JavaScript, trackers, remote runtime assets or added production dependencies.
-
-## Product film
-
-Updated 2026-10-19 (WEB-PROMO-001): both homepages now embed the owner-supplied
-`WizardingOS_Narrated_Life_v3.mp4` as `assets/video/wizardingos-narrated-life-v3.mp4`
-in the hero at `#film`: 311 seconds, 1920×1080, H.264 video and AAC audio.
-Streams are copied without re-encoding; container metadata is stripped and the
-MP4 index is moved to the beginning for progressive playback. The JPEG poster
-is extracted at 2 seconds. The earlier film remains at its original URL for
-existing links, but is no longer used on either homepage.
-
-The native player has controls, inline mobile playback and `preload="none"`;
-there is no autoplay or third-party embed. A download link provides access to
-the complete MP4. Non-video assets retain a 12 MB budget; on-demand MP4 assets
-have a separate 30 MB budget to accommodate the full owner-supplied film.
-The audit checks posters, the v3 source, landscape dimensions and opt-in loading.
-
-Both languages lead with AI-assisted planning, explain goal → review → action,
-and keep the detailed screenshot gallery available in a native disclosure.
-App Store availability, prices and app data/schema are unchanged.
-
-## October 16 screenshot refresh
-
-Both homepages use owner-supplied screenshots in `assets/images/october-2026/`, including both garden views. Files are optimized WebP derivatives with metadata stripped and original aspect ratios preserved. The gallery links to complete captures. Earlier reference-permission images remain in their existing section. The existing film is unchanged. The third-party NanoKVM promotional image is not published as a Wizarding OS product.
-
-App references supplied by owner: `198b91b1ac7c717456c5a0c0e58fa05850d05f09` (validation evidence) and `69f31dc2c4ee3eceb8a72a72467d236f3866d4ae` (accessibility typography). Screenshot binary provenance is owner upload, not an assertion that these images were generated from either exact commit.
-
-| Upload | Asset |
-|---|---|
-| IMG_3128.png | planner.webp |
-| IMG_3130.png | projects.webp |
-| IMG_3131.png | library.webp |
-| IMG_3132.png | memory.webp |
-| IMG_3133.png | memory-list.webp |
-| IMG_3134.png | memory-bubbles.webp |
-| IMG_3135.png | journeys.webp |
-| Picsew_20261016162843.jpeg | work-mode.webp |
-| Picsew_20261016163211.jpeg | work-conversation.webp |
-| Picsew_20261016163342.jpeg | planning-conversation.webp |
-| Picsew_20261016163416.jpeg | hall.webp |
-| Picsew_20261016163947.jpeg | chat-mode.webp |
-| Picsew_20261016162902.jpeg | persona.webp |
-| IMG_3103.png | styles.webp |
-| Picsew_20261016163903.jpeg | recall.webp |
-| IMG_3144.png | garden.webp |
-| IMG_3145.png | garden-harvest.webp |
-
-### October 19 verification
-
-- Source/candidate audit and whitespace checks passed (10 HTML pages, 8 routes).
-- Browser checks: both languages at 320 CSS px; English at 1440 CSS px;
-  Chinese at 780 and 1800 CSS px. No horizontal document overflow after fixing
-  the homepage minimum width to account for a visible scrollbar.
-- Narrated video played with readyState 4, duration 311 seconds, progressing
-  beyond 19 seconds. Language switch, film anchor and screenshot disclosure
-  exercised; gallery contains 17 full-size image links.
-- H.264/AAC streams and 1920×1080 dimensions verified with ffprobe.
-- Physical iOS devices and a full screen-reader audit were not exercised.
