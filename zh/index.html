@@ -52,12 +52,19 @@
 
     <section class="section rule" id="how-it-works">
       <div class="shell">
-        <div class="section-heading"><p class="eyebrow">三步行动闭环</p><h2>从一句话目标，到真正做完的一小步。</h2><p>0.4.5 将日常行动收敛为三个清晰环节，所有改动都先预览再落库，不会在后台擅自替你写计划。</p></div>
-        <ol class="steps">
-          <li><span class="step-number">01</span><h3>拆解目标</h3><p>在助手输入框写下或说出你想完成的事，或从计划页点击目标卡片请求 AI 拆解。先阅读并按需修改步骤草稿，确认后再保存。</p></li>
-          <li><span class="step-number">02</span><h3>安排待办</h3><p>保存后的目标与步骤统一收纳在计划页。向左滑动任意步骤即可打开日历设置日期与开始时间，把计划放进今天的具体时段。</p></li>
-          <li><span class="step-number">03</span><h3>反馈总结</h3><p>通过助手首页「可以复盘了」入口或每日复盘通知打开复盘弹窗，快速勾选已完成事项或筛出未完成项，支持一键撤销并继续找下一步。</p></li>
+        <div class="pet-carousel-header">
+          <div class="section-heading"><p class="eyebrow">三步行动闭环</p><h2>从一句话目标，到真正做完的一小步。</h2><p>0.4.5 将日常行动收敛为三个清晰环节，所有改动都先预览再落库，不会在后台擅自替你写计划。</p></div>
+          <div class="pet-carousel-controls" aria-label="三步行动闭环轮播控制">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-how-it-works" data-carousel-dir="-1" aria-label="向左滑动查看上一步">← 向左滑动</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-how-it-works" data-carousel-dir="1" aria-label="向右滑动查看下一步">向右滑动 →</button>
+          </div>
+        </div>
+        <ol class="pet-carousel step-carousel" id="carousel-how-it-works" aria-label="三步行动闭环水平滑动窗口" tabindex="0">
+          <li class="step-card"><span class="pet-card-badge">环节 01 · 拆解目标</span><span class="step-number">01</span><h3>拆解目标</h3><p>在助手输入框写下或说出你想完成的事，或从计划页点击目标卡片请求 AI 拆解。先阅读并按需修改步骤草稿，确认后再保存。</p></li>
+          <li class="step-card"><span class="pet-card-badge">环节 02 · 安排待办</span><span class="step-number">02</span><h3>安排待办</h3><p>保存后的目标与步骤统一收纳在计划页。向左滑动任意步骤即可打开日历设置日期与开始时间，把计划放进今天的具体时段。</p></li>
+          <li class="step-card"><span class="pet-card-badge">环节 03 · 反馈总结</span><span class="step-number">03</span><h3>反馈总结</h3><p>通过助手首页「可以复盘了」入口或每日复盘通知打开复盘弹窗，快速勾选已完成事项或筛出未完成项，支持一键撤销并继续找下一步。</p></li>
         </ol>
+        <p class="pet-carousel-hint">提示：左右滑动窗口查看「拆解目标 → 安排待办 → 反馈总结」三步闭环。</p>
       </div>
     </section>
 
@@ -92,108 +99,134 @@
 
     <section class="section rule" id="features">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">01 · 核心界面</p>
-          <h2>去掉繁杂入口，只留推进目标最需要的三块界面。</h2>
-          <p>0.4.5 将全部体验集中在助手首页、计划储存页与每日复盘弹窗三处，不设多余入口。</p>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">01 · 核心界面</p>
+            <h2>去掉繁杂入口，只留推进目标最需要的核心界面。</h2>
+            <p>0.4.5 将全部体验集中在助手首页、计划储存页与每日复盘三处，左右滑动窗口即可逐一查看。</p>
+          </div>
+          <div class="pet-carousel-controls" aria-label="核心界面轮播控制">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-features" data-carousel-dir="-1" aria-label="向左滑动查看上一张核心界面">← 向左滑动</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-features" data-carousel-dir="1" aria-label="向右滑动查看下一张核心界面">向右滑动 →</button>
+          </div>
         </div>
-        <div class="feature-grid">
-          <article class="input-card"><div class="input-copy"><p class="feature-index">01 · 拆解目标</p><h3>助手首页与今日卡片</h3><h4>说出想法，先看预览再确认</h4><p>助手首页直接展示「今日」待办事项，并提供「可以复盘了」与「帮我找下一步」快捷入口；支持语音或键盘输入目标，生成方案经你确认后才会写入计划。</p></div>
+        <div class="pet-carousel" id="carousel-features" role="region" aria-label="01 核心界面水平滑动窗口" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">01 · 拆解目标</span><h3>助手首页与今日卡片</h3><h4>说出想法，先看预览再确认</h4><p>助手首页直接展示「今日」待办事项，并提供「可以复盘了」与「帮我找下一步」快捷入口；生成方案经你确认后才会写入计划。</p></div>
             <figure class="product-shot"><a href="/assets/images/features/assistant-home.webp" aria-label="0.4.5 助手首页展示今日事项卡片、可以复盘了与帮我找下一步入口"><img src="/assets/images/features/assistant-home.webp" width="828" height="1795" alt="0.4.5 助手首页展示今日事项卡片、可以复盘了与帮我找下一步入口" loading="lazy"></a><figcaption>助手首页与今日卡片</figcaption></figure>
           </article>
-          <article class="input-card"><div class="input-copy"><p class="feature-index">02 · 安排待办</p><h3>计划储存页与目标卡片</h3><h4>轻松上手、待开始、目标与步骤一目了然</h4><p>计划页将「轻松上手」微习惯建议、「待开始」步骤、「目标与步骤」折叠卡片与「已完成」清晰分区，左滑步骤即可调出日历排期。</p></div>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">02 · 安排待办</span><h3>计划储存页与目标卡片</h3><h4>轻松上手、待开始、目标与步骤一目了然</h4><p>计划页将「轻松上手」微习惯建议、「待开始」步骤、「目标与步骤」折叠卡片与「已完成」清晰分区，左滑步骤即可调出日历排期。</p></div>
             <figure class="product-shot"><a href="/assets/images/features/plan-storage.webp" aria-label="0.4.5 计划储存页展示轻松上手、待开始、目标与步骤及已完成分区"><img src="/assets/images/features/plan-storage.webp" width="828" height="1792" alt="0.4.5 计划储存页展示轻松上手、待开始、目标与步骤及已完成分区" loading="lazy"></a><figcaption>计划储存页</figcaption></figure>
           </article>
-          <article class="input-card"><div class="input-copy"><p class="feature-index">03 · 反馈总结</p><h3>每日复盘与总结确认</h3><h4>睡前核对今日完成项，未完成事项清楚留存</h4><p>到达设定复盘时间（默认 21:00，可在「设置 · 每日复盘」修改）后打开复盘弹窗，支持一键全选完成、点掉未完成项并确认保存，也可随时撤销本次完成。</p></div>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">03 · 反馈总结</span><h3>今日事项与「可以复盘了」</h3><h4>睡前核对今日完成项，未完成事项清楚留存</h4><p>在猫头鹰助手首页点击「可以复盘了」或到达设定复盘时间后打开复盘界面，核对今日完成项并继续推进下一步。</p></div>
             <figure class="product-shot"><a href="/assets/images/features/daily-review-sheet.webp" aria-label="Owl 0.4.5 猫头鹰助手首页展示今日事项与可以复盘了入口"><img src="/assets/images/features/daily-review-sheet.webp" width="828" height="1792" alt="Owl 0.4.5 猫头鹰助手首页展示今日事项与可以复盘了入口" loading="lazy"></a><figcaption>今日事项与「可以复盘了」入口</figcaption></figure>
           </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">04 · 复盘提醒设置</span><h3>自定义每日复盘时间</h3><h4>随时开关提醒，按你的作息复盘</h4><p>在「设置 · 每日复盘」中可随时开启或关闭复盘提醒，并自由设定每晚提醒的具体时间（默认 21:00）。</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/09-daily-review-settings.webp" aria-label="设置中的每日复盘开关与提醒时间选择"><img src="/assets/images/october-2026/09-daily-review-settings.webp" width="828" height="1800" alt="设置中的每日复盘开关与提醒时间选择" loading="lazy"></a><figcaption>每日复盘提醒设置</figcaption></figure>
+          </article>
         </div>
+        <p class="pet-carousel-hint">提示：左右滑动窗口依次查看助手首页、计划储存页、复盘入口与每日复盘提醒设置。</p>
       </div>
     </section>
 
     <section class="section rule" id="assistant">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">02 · 目标拆解与排期细节</p>
-          <h2>先拆成可执行的小步骤，再放进日历的具体时间。</h2>
-          <p>无论是从对话发起新目标，还是在计划页点开已有目标请求 AI 拆解，每一步都由你预览确认并亲手安排时间。</p>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">02 · 目标拆解与排期细节</p>
+            <h2>先拆成可执行的小步骤，再放进日历的具体时间。</h2>
+            <p>无论是从对话发起新目标，还是在计划页点开已有目标请求 AI 拆解，每一步都由你预览确认并亲手安排时间。左右滑动窗口查看完整五步细节。</p>
+          </div>
+          <div class="pet-carousel-controls" aria-label="目标拆解与排期轮播控制">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-assistant" data-carousel-dir="-1" aria-label="向左滑动查看上一张目标拆解细节">← 向左滑动</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-assistant" data-carousel-dir="1" aria-label="向右滑动查看下一张目标拆解细节">向右滑动 →</button>
+          </div>
         </div>
-
-        <article class="mode-panel">
-          <div class="mode-copy">
-            <p class="eyebrow">环节一 · 目标拆解</p>
-            <h3>把大目标拆成今天就能开始的一小步。</h3>
-            <p>向助手描述你的目标，或在计划页点击目标卡片触发「是否用 AI 拆解该目标」确认框。助手会在对话中生成结构化步骤方案，你可以先阅读、修改名称或时长，满意后再点确认保存。</p>
-            <ul class="check-list">
-              <li>在计划页点击目标卡片时，先弹窗确认是否调用 AI 拆解</li>
-              <li>生成的步骤方案支持在对话卡片内逐条阅读与编辑，不自动覆盖已有计划</li>
-              <li>多个目标卡片支持独立展开、折叠与拖拽排序</li>
-            </ul>
-            <details class="example-details"><summary>查看目标拆解确认框与目标列表界面</summary>
-              <div class="reference-gallery">
-                <figure class="product-shot"><a href="/assets/images/features/goal-breakdown-confirm.webp" aria-label="目标卡片弹窗询问是否使用 AI 拆解该目标"><img src="/assets/images/features/goal-breakdown-confirm.webp" width="828" height="1792" alt="目标卡片弹窗询问是否使用 AI 拆解该目标" loading="lazy"></a><figcaption>目标拆解确认弹窗</figcaption></figure>
-                <figure class="product-shot"><a href="/assets/images/features/goals-and-steps.webp" aria-label="计划页中的目标与步骤卡片列表及排序"><img src="/assets/images/features/goals-and-steps.webp" width="828" height="1797" alt="计划页中的目标与步骤卡片列表及排序" loading="lazy"></a><figcaption>目标与步骤列表</figcaption></figure>
-              </div>
-            </details>
-          </div>
-          <figure class="product-shot"><a href="/assets/images/features/goal-plan-preview.webp" aria-label="助手对话中生成的每日 20 分钟阅读计划步骤预览"><img src="/assets/images/features/goal-plan-preview.webp" width="828" height="1797" alt="助手对话中生成的每日 20 分钟阅读计划步骤预览" loading="lazy"></a><figcaption>助手生成的目标拆解方案预览</figcaption></figure>
-        </article>
-
-        <article class="mode-panel mode-panel--chat">
-          <div class="mode-copy">
-            <p class="eyebrow">环节二 · 待办排期与每日复盘</p>
-            <h3>左滑步骤设定开始时间，晚上按时复盘。</h3>
-            <p>方案保存到计划页后，向左滑动任意步骤即可露出日历与重点标记按钮。点开日历选择日期并开启具体开始时间，点击确认后生效；到了晚间复盘时段，在复盘卡片中勾选今日真正做完的事项。</p>
-            <ul class="check-list">
-              <li>左滑任务露出日历排期与重点叹号按钮，操作直接不藏层级</li>
-              <li>日历弹窗支持选择日期与开始时间，未点确认前不会改动原计划</li>
-              <li>可在「设置 · 每日复盘」随时开关每日复盘提醒并自定义提醒时间</li>
-            </ul>
-          </div>
-          <figure class="product-shot"><a href="/assets/images/features/task-swipe-calendar.webp" aria-label="在计划页向左滑动任务露出日历与重点标记按钮"><img src="/assets/images/features/task-swipe-calendar.webp" width="828" height="1792" alt="在计划页向左滑动任务露出日历与重点标记按钮" loading="lazy"></a><figcaption>步骤左滑排期与重点操作</figcaption></figure>
-        </article>
+        <div class="pet-carousel" id="carousel-assistant" role="region" aria-label="02 目标拆解与排期细节水平滑动窗口" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">细节 01 · 拆解确认</span><h3>点击目标卡片请求 AI 拆解</h3><h4>先弹窗询问确认，不擅自改写</h4><p>在计划页点击任意目标卡片时，先弹出「是否用 AI 拆解该目标」确认框，由你决定是否交给助手拆解。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/goal-breakdown-confirm.webp" aria-label="目标卡片弹窗询问是否使用 AI 拆解该目标"><img src="/assets/images/features/goal-breakdown-confirm.webp" width="828" height="1792" alt="目标卡片弹窗询问是否使用 AI 拆解该目标" loading="lazy"></a><figcaption>目标拆解确认弹窗</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">细节 02 · 方案预览</span><h3>对话内生成步骤草稿</h3><h4>先阅读、修改名称或时长，满意再保存</h4><p>助手在对话卡片内列出拆解好的小步骤，支持逐条阅读与编辑，只有点击确认保存后才会写入计划页。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/goal-plan-preview.webp" aria-label="助手对话中生成的每日 20 分钟阅读计划步骤预览"><img src="/assets/images/features/goal-plan-preview.webp" width="828" height="1797" alt="助手对话中生成的每日 20 分钟阅读计划步骤预览" loading="lazy"></a><figcaption>助手生成的目标拆解方案预览</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">细节 03 · 目标管理</span><h3>目标与步骤折叠列表</h3><h4>独立展开、折叠与拖拽排序</h4><p>多个目标卡片在计划页中清晰显示完成进度，支持独立展开或收起子步骤，也可按优先级调整顺序。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/goals-and-steps.webp" aria-label="计划页中的目标与步骤卡片列表及排序"><img src="/assets/images/features/goals-and-steps.webp" width="828" height="1797" alt="计划页中的目标与步骤卡片列表及排序" loading="lazy"></a><figcaption>目标与步骤列表</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">细节 04 · 左滑操作</span><h3>左滑步骤露出日历与重点按钮</h3><h4>高频操作直接顺手，不藏深层菜单</h4><p>在计划页向左滑动任意步骤，即可露出日历排期与重点叹号标记按钮，一键进入时间安排。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/task-swipe-calendar.webp" aria-label="在计划页向左滑动任务露出日历与重点标记按钮"><img src="/assets/images/features/task-swipe-calendar.webp" width="828" height="1792" alt="在计划页向左滑动任务露出日历与重点标记按钮" loading="lazy"></a><figcaption>步骤左滑排期与重点操作</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">细节 05 · 日历设定</span><h3>选择日期与具体开始时间</h3><h4>把小步骤放进今天的具体时段</h4><p>在日历弹窗中点选日期并开启开始时间，点击确认后生效，未点确认前不会改动原有计划。</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/07-task-calendar-picker.webp" aria-label="在日历弹窗中为步骤选择日期与开始时间"><img src="/assets/images/october-2026/07-task-calendar-picker.webp" width="828" height="1792" alt="在日历弹窗中为步骤选择日期与开始时间" loading="lazy"></a><figcaption>步骤日历与开始时间设置</figcaption></figure>
+          </article>
+        </div>
+        <p class="pet-carousel-hint">提示：左右滑动窗口查看从目标拆解确认、方案预览、目标列表到左滑日历排期的完整细节。</p>
       </div>
     </section>
 
     <section class="section rule" id="tutorial">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">03 · 新手教程</p>
-          <h2>跟着做一次，10 步跑通你的第一个真实目标。</h2>
-          <p>0.4.5 内置交互式新手教程，引导条固定在页面上方，不遮挡对话正文与任务列表；支持随时暂停浏览并一键回到当前步骤。</p>
-        </div>
-        <article class="mode-panel">
-          <div class="mode-copy">
-            <p class="eyebrow">交互式引导 · 应用内真实示例</p>
-            <h3>「点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。」</h3>
-            <p>新手教程不是静态说明图，而是带你在真实界面里亲手走完一次「拆解目标 → 保存计划 → 左滑排期 → 认识完成标记」的完整闭环：</p>
-            <ul class="check-list">
-              <li>第 1–4 步：在输入框写下目标（例如：这周开始阅读一本书，每天 20 分钟），点箭头发送，阅读并按需编辑助手生成的方案后点击确认保存</li>
-              <li>第 5–8 步：切到底部计划页，向左滑动高亮任务露出日历按钮，选定日期与开始时间（如 9:00 - 9:20）并点确认保存</li>
-              <li>第 9–10 步：认识任务左侧的完成圆圈——「真正做完后，点这个圆圈标记完成。现在还没做，就先留着」，不强迫提前打卡</li>
-            </ul>
-            <div class="reference-gallery">
-              <figure class="product-shot"><a href="/assets/images/features/tutorial-schedule-picker.webp" aria-label="新手教程第 8 步：在日历弹窗中选择日期并设置 9:00 - 9:20 开始时间"><img src="/assets/images/features/tutorial-schedule-picker.webp" width="828" height="1797" alt="新手教程第 8 步：在日历弹窗中选择日期并设置 9:00 - 9:20 开始时间" loading="lazy"></a><figcaption>第 8 步 · 选择日期与开始时间</figcaption></figure>
-              <figure class="product-shot"><a href="/assets/images/features/tutorial-step-complete.webp" aria-label="新手教程第 9 步：高亮任务完成圆圈并提示真正做完后再点"><img src="/assets/images/features/tutorial-step-complete.webp" width="828" height="1797" alt="新手教程第 9 步：高亮任务完成圆圈并提示真正做完后再点" loading="lazy"></a><figcaption>第 9 步 · 完成圆圈引导说明</figcaption></figure>
-            </div>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">03 · 新手教程</p>
+            <h2>跟着做一次，10 步跑通你的第一个真实目标。</h2>
+            <p>0.4.5 内置交互式新手教程，引导条固定在页面上方，不遮挡对话正文与任务列表。左右滑动窗口按顺序浏览新手教程完整步骤。</p>
           </div>
-          <figure class="product-shot"><a href="/assets/images/features/tutorial-step-input.webp" aria-label="新手教程第 1 步顶部引导条：点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。"><img src="/assets/images/features/tutorial-step-input.webp" width="828" height="1797" alt="新手教程第 1 步顶部引导条：点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。" loading="lazy"></a><figcaption>第 1 步 · 输入你的第一个目标</figcaption></figure>
-        </article>
+          <div class="pet-carousel-controls" aria-label="新手教程轮播控制">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-tutorial" data-carousel-dir="-1" aria-label="向左滑动查看上一步新手教程">← 向左滑动</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-tutorial" data-carousel-dir="1" aria-label="向右滑动查看下一步新手教程">向右滑动 →</button>
+          </div>
+        </div>
+        <div class="pet-carousel" id="carousel-tutorial" role="region" aria-label="03 新手教程水平滑动窗口" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">欢迎引导 · 交互式教程</span><h3>说出目标、确认计划、安排时间</h3><h4>在真实界面里亲手走完一次闭环</h4><p>首次进入应用时展示简短欢迎引导，支持随时暂停浏览自由界面，并可一键回到当前教学步骤。</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/10-tutorial-welcome.webp" aria-label="新手教程欢迎卡：说出目标、确认计划，再安排第一步的时间"><img src="/assets/images/october-2026/10-tutorial-welcome.webp" width="828" height="1800" alt="新手教程欢迎卡：说出目标、确认计划，再安排第一步的时间" loading="lazy"></a><figcaption>欢迎引导 · 开启 10 步教程</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">第 1 步 · 输入目标</span><h3>写下你想完成的事</h3><h4>「例如：这周开始阅读一本书，每天 20 分钟。」</h4><p>顶部引导条提示点击输入框，直接输入或使用内置示例目标开始第一次拆解。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/tutorial-step-input.webp" aria-label="新手教程第 1 步顶部引导条：点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。"><img src="/assets/images/features/tutorial-step-input.webp" width="828" height="1797" alt="新手教程第 1 步顶部引导条：点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。" loading="lazy"></a><figcaption>第 1 步 · 输入你的第一个目标</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">第 2 步 · 发送目标</span><h3>点击箭头发送给助手</h3><h4>把一句话目标交给助手拆解</h4><p>输入目标后点击发送按钮，助手即刻为你生成结构化的可执行小步骤草稿。</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/12-tutorial-send-goal.webp" aria-label="新手教程第 2 步：点击箭头发送，让助手拆成小步骤"><img src="/assets/images/october-2026/12-tutorial-send-goal.webp" width="828" height="1797" alt="新手教程第 2 步：点击箭头发送，让助手拆成小步骤" loading="lazy"></a><figcaption>第 2 步 · 发送目标拆解</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">第 3 步 · 检查方案</span><h3>阅读并按需修改步骤草稿</h3><h4>先过目每一条步骤，再决定保存</h4><p>引导你查看生成的步骤清单与预计时长，可在卡片内按需编辑调整。</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/13-tutorial-review-draft.webp" aria-label="新手教程第 3 步：阅读并按需编辑助手生成的方案"><img src="/assets/images/october-2026/13-tutorial-review-draft.webp" width="828" height="1797" alt="新手教程第 3 步：阅读并按需编辑助手生成的方案" loading="lazy"></a><figcaption>第 3 步 · 阅读并检查方案</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">第 4 步 · 确认保存</span><h3>点击确认存入计划页</h3><h4>经你确认后正式落入计划储存页</h4><p>确认步骤无误后点击保存按钮，目标与拆解步骤即同步收纳到计划页。</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/14-tutorial-save-plan.webp" aria-label="新手教程第 4 步：点击方案中的确认保存按钮"><img src="/assets/images/october-2026/14-tutorial-save-plan.webp" width="828" height="1800" alt="新手教程第 4 步：点击方案中的确认保存按钮" loading="lazy"></a><figcaption>第 4 步 · 确认保存方案</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">第 8 步 · 日历排期</span><h3>选定日期与 9:00 - 9:20 开始时间</h3><h4>切到计划页左滑步骤安排具体时段</h4><p>在计划页左滑刚保存的任务打开日历弹窗，选好日期与开始时间并点击确认。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/tutorial-schedule-picker.webp" aria-label="新手教程第 8 步：在日历弹窗中选择日期并设置 9:00 - 9:20 开始时间"><img src="/assets/images/features/tutorial-schedule-picker.webp" width="828" height="1797" alt="新手教程第 8 步：在日历弹窗中选择日期并设置 9:00 - 9:20 开始时间" loading="lazy"></a><figcaption>第 8 步 · 选择日期与开始时间</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">第 9 步 · 认识完成标记</span><h3>真正做完后再点圆圈标记完成</h3><h4>「现在还没做，就先留着」</h4><p>认识任务左侧的完成圆圈，不强迫你在教程里提前打卡，等真正做完再回来勾选。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/tutorial-step-complete.webp" aria-label="新手教程第 9 步：高亮任务完成圆圈并提示真正做完后再点"><img src="/assets/images/features/tutorial-step-complete.webp" width="828" height="1797" alt="新手教程第 9 步：高亮任务完成圆圈并提示真正做完后再点" loading="lazy"></a><figcaption>第 9 步 · 完成圆圈引导说明</figcaption></figure>
+          </article>
+        </div>
+        <p class="pet-carousel-hint">提示：左右滑动窗口按顺序查看从欢迎卡、输入目标、保存方案到左滑日历排期的新手教程全流程。</p>
       </div>
     </section>
 
     <section class="section rule" id="privacy-summary">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">04 · 认识你（个人画像）与参考资料</p>
-          <h2>三问建立「这是我目前了解到的你」，引用权限完全由你掌控。</h2>
-          <p>Owl 0.4.5（Build 68）内置三问迎新访谈与「个人画像」，按「当前状态与生活节奏」「近期目标与行动阻力」「帮助方式与沟通边界」三栏原话整理你的回答，不做性格评判，并支持在「参考资料」中随时开关是否允许 AI 引用。</p>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">04 · 认识你（个人画像）与参考资料</p>
+            <h2>三问建立「这是我目前了解到的你」，引用权限完全由你掌控。</h2>
+            <p>Owl 0.4.5（Build 68）内置三问迎新访谈与「个人画像」，按三栏原话整理你的回答，不做性格评判，并支持在「参考资料」中随时开关是否允许 AI 引用。</p>
+          </div>
+          <div class="pet-carousel-controls" aria-label="个人画像与参考资料轮播控制">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-privacy" data-carousel-dir="-1" aria-label="向左滑动查看上一张个人画像与参考资料截图">← 向左滑动</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-privacy" data-carousel-dir="1" aria-label="向右滑动查看下一张个人画像与参考资料截图">向右滑动 →</button>
+          </div>
         </div>
-        <div class="reference-gallery">
-          <figure class="product-shot"><a href="/assets/images/features/reference-consent.webp" aria-label="认识你 1/3：最近的你，是什么样的？支持语音回答、打字或跳过"><img src="/assets/images/features/reference-consent.webp" width="828" height="1797" alt="认识你 1/3：最近的你，是什么样的？支持语音回答、打字或跳过" loading="lazy"></a><figcaption>认识你 · 三问语音/文字回答</figcaption></figure>
-          <figure class="product-shot"><a href="/assets/images/features/reference-groups.webp" aria-label="这是我目前了解到的你：按三类整理原话，支持直接修改与开启 AI 资料引用"><img src="/assets/images/features/reference-groups.webp" width="828" height="1792" alt="这是我目前了解到的你：按三类整理原话，支持直接修改与开启 AI 资料引用" loading="lazy"></a><figcaption>这是我目前了解到的你 · 画像确认</figcaption></figure>
-          <figure class="product-shot"><a href="/assets/images/features/reference-details.webp" aria-label="参考资料列表：管理目标、资料库文件及画像与偏好的引用开关"><img src="/assets/images/features/reference-details.webp" width="828" height="1792" alt="参考资料列表：管理目标、资料库文件及画像与偏好的引用开关" loading="lazy"></a><figcaption>参考资料 · 逐条开关管理</figcaption></figure>
+        <div class="pet-carousel" id="carousel-privacy" role="region" aria-label="04 认识你与参考资料水平滑动窗口" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">01 · 三问迎新访谈</span><h3>认识你 1/3：最近的你，是什么样的？</h3><h4>支持本地语音转写、打字或随时跳过</h4><p>围绕近期状态、想完成的目标与希望的陪伴方式三道问题，用你自己的原话建立初始背景，不保存录音文件。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/reference-consent.webp" aria-label="认识你 1/3：最近的你，是什么样的？支持语音回答、打字或跳过"><img src="/assets/images/features/reference-consent.webp" width="828" height="1797" alt="认识你 1/3：最近的你，是什么样的？支持语音回答、打字或跳过" loading="lazy"></a><figcaption>认识你 · 三问语音/文字回答</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">02 · 个人画像确认</span><h3>这是我目前了解到的你</h3><h4>按三栏整理原话，可随时修改或彻底忘记</h4><p>按「当前状态与生活节奏」「近期目标与行动阻力」「帮助方式与沟通边界」三栏呈现，不做性格标签评判。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/reference-groups.webp" aria-label="这是我目前了解到的你：按三类整理原话，支持直接修改与开启 AI 资料引用"><img src="/assets/images/features/reference-groups.webp" width="828" height="1792" alt="这是我目前了解到的你：按三类整理原话，支持直接修改与开启 AI 资料引用" loading="lazy"></a><figcaption>这是我目前了解到的你 · 画像确认</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">03 · 参考资料开关</span><h3>逐条管理 AI 引用范围</h3><h4>显式授权引用，默认关闭画像上传</h4><p>在「参考资料」中可分别开关「目标」「资料库文件」与「画像与偏好」，仅发送你显式勾选的文本摘要。</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/reference-details.webp" aria-label="参考资料列表：管理目标、资料库文件及画像与偏好的引用开关"><img src="/assets/images/features/reference-details.webp" width="828" height="1792" alt="参考资料列表：管理目标、资料库文件及画像与偏好的引用开关" loading="lazy"></a><figcaption>参考资料 · 逐条开关管理</figcaption></figure>
+          </article>
         </div>
+        <p class="pet-carousel-hint">提示：左右滑动窗口查看三问迎新访谈、「这是我目前了解到的你」画像确认与参考资料权限管理。</p>
         <div class="context-disclosure">
           <p><strong>个人画像与「参考资料」隐私边界：</strong></p>
           <ul class="check-list">

@@ -52,12 +52,19 @@
 
     <section class="section rule" id="how-it-works">
       <div class="shell">
-        <div class="section-heading"><p class="eyebrow">Three-step loop</p><h2>From a vague intention to a scheduled step you can actually finish.</h2><p>Every action in 0.4.5 is built around three connected moments—without automatic writes behind your back.</p></div>
-        <ol class="steps">
-          <li><span class="step-number">01</span><h3>Break down the goal</h3><p>Describe what you want to accomplish in the assistant, or select an existing goal card and choose Ask AI. Review and edit the proposed steps before saving.</p></li>
-          <li><span class="step-number">02</span><h3>Schedule your to-dos</h3><p>Saved goals and steps live in Plans. Swipe any step left to open the calendar picker, set a date and start time, or mark priority items.</p></li>
-          <li><span class="step-number">03</span><h3>Review and summarize</h3><p>Open Review from the Today card or your daily reminder, check off finished items or filter unfinished ones, undo if needed, and ask the assistant for your next step.</p></li>
+        <div class="pet-carousel-header">
+          <div class="section-heading"><p class="eyebrow">Three-step loop</p><h2>From a vague intention to a scheduled step you can actually finish.</h2><p>Every action in 0.4.5 is built around three connected moments—without automatic writes behind your back.</p></div>
+          <div class="pet-carousel-controls" aria-label="Three-step loop carousel controls">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-how-it-works" data-carousel-dir="-1" aria-label="Scroll left through the three steps">← Scroll left</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-how-it-works" data-carousel-dir="1" aria-label="Scroll right through the three steps">Scroll right →</button>
+          </div>
+        </div>
+        <ol class="pet-carousel step-carousel" id="carousel-how-it-works" aria-label="Three-step loop horizontal sliding window" tabindex="0">
+          <li class="step-card"><span class="pet-card-badge">Step 01 · Break Down</span><span class="step-number">01</span><h3>Break down the goal</h3><p>Describe what you want to accomplish in the assistant, or select an existing goal card and choose Ask AI. Review and edit the proposed steps before saving.</p></li>
+          <li class="step-card"><span class="pet-card-badge">Step 02 · Schedule</span><span class="step-number">02</span><h3>Schedule your to-dos</h3><p>Saved goals and steps live in Plans. Swipe any step left to open the calendar picker, set a date and start time, or mark priority items.</p></li>
+          <li class="step-card"><span class="pet-card-badge">Step 03 · Review</span><span class="step-number">03</span><h3>Review and summarize</h3><p>Open Review from the Today card or your daily reminder, check off finished items or filter unfinished ones, undo if needed, and ask the assistant for your next step.</p></li>
         </ol>
+        <p class="pet-carousel-hint">Tip: Swipe horizontally across the window to view all three steps of the action loop.</p>
       </div>
     </section>
 
@@ -92,108 +99,134 @@
 
     <section class="section rule" id="features">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">01 · Core workflow</p>
-          <h2>Three focused surfaces instead of scattered menus.</h2>
-          <p>Version 0.4.5 removes legacy collection modules and centers the entire app on the Assistant workspace, the Plans storage view, and the Daily Review sheet. Screenshots below are from the Chinese 0.4.5 build.</p>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">01 · Core workflow</p>
+            <h2>Three focused surfaces instead of scattered menus.</h2>
+            <p>Version 0.4.5 removes legacy collection modules and centers the entire app on the Assistant workspace, the Plans storage view, and Daily Review. Swipe horizontally to inspect each surface.</p>
+          </div>
+          <div class="pet-carousel-controls" aria-label="Core workflow carousel controls">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-features" data-carousel-dir="-1" aria-label="Scroll left through core workflow surfaces">← Scroll left</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-features" data-carousel-dir="1" aria-label="Scroll right through core workflow surfaces">Scroll right →</button>
+          </div>
         </div>
-        <div class="feature-grid">
-          <article class="input-card"><div class="input-copy"><p class="feature-index">01 · BREAK DOWN GOALS</p><h3>Assistant &amp; Today Card</h3><h4>Speak or type a goal, then inspect the draft</h4><p>The assistant home surfaces today’s scheduled tasks alongside quick actions to start a daily review or find your next step. Nothing is written to Plans until you confirm the preview.</p></div>
-            <figure class="product-shot"><a href="/assets/images/features/assistant-home.webp" aria-label="0.4.5 Assistant home showing Today tasks, Review ready prompt, and Help me find the next step"><img src="/assets/images/features/assistant-home.webp" width="828" height="1795" alt="0.4.5 Assistant home showing Today tasks, Review ready prompt, and Help me find the next step" loading="lazy"></a><figcaption>Assistant home with Today card and Review entry (Chinese UI)</figcaption></figure>
+        <div class="pet-carousel" id="carousel-features" role="region" aria-label="01 Core workflow horizontal sliding window" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">01 · BREAK DOWN GOALS</span><h3>Assistant &amp; Today Card</h3><h4>Speak or type a goal, then inspect the draft</h4><p>The assistant home surfaces today’s scheduled tasks alongside quick actions to start a daily review or find your next step. Nothing is written to Plans until you confirm the preview.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/assistant-home.webp" aria-label="0.4.5 Assistant home showing Today tasks, Review ready prompt, and Help me find the next step"><img src="/assets/images/features/assistant-home.webp" width="828" height="1795" alt="0.4.5 Assistant home showing Today tasks, Review ready prompt, and Help me find the next step" loading="lazy"></a><figcaption>Assistant home with Today card and Review entry</figcaption></figure>
           </article>
-          <article class="input-card"><div class="input-copy"><p class="feature-index">02 · SCHEDULE TO-DOS</p><h3>Plans &amp; Goals Storage</h3><h4>Keep starter steps, active goals, and scheduled tasks in one place</h4><p>Plans organizes quick-start suggestions, unscheduled steps, collapsible goal cards, and completed items. Swipe left on any step to set its date and start time.</p></div>
-            <figure class="product-shot"><a href="/assets/images/features/plan-storage.webp" aria-label="0.4.5 Plans storage page showing Get Started Easily, To Start, Goals and Steps, and Completed sections"><img src="/assets/images/features/plan-storage.webp" width="828" height="1792" alt="0.4.5 Plans storage page showing Get Started Easily, To Start, Goals and Steps, and Completed sections" loading="lazy"></a><figcaption>Plans storage view with Goals & Steps (Chinese UI)</figcaption></figure>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">02 · SCHEDULE TO-DOS</span><h3>Plans &amp; Goals Storage</h3><h4>Keep starter steps, active goals, and scheduled tasks in one place</h4><p>Plans organizes quick-start suggestions, unscheduled steps, collapsible goal cards, and completed items. Swipe left on any step to set its date and start time.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/plan-storage.webp" aria-label="0.4.5 Plans storage page showing Get Started Easily, To Start, Goals and Steps, and Completed sections"><img src="/assets/images/features/plan-storage.webp" width="828" height="1792" alt="0.4.5 Plans storage page showing Get Started Easily, To Start, Goals and Steps, and Completed sections" loading="lazy"></a><figcaption>Plans storage view with Goals &amp; Steps</figcaption></figure>
           </article>
-          <article class="input-card"><div class="input-copy"><p class="feature-index">03 · FEEDBACK &amp; REVIEW</p><h3>Daily Review Sheet</h3><h4>Confirm what got done and carry unfinished work forward</h4><p>When your daily review window arrives, check all completed tasks at once or uncheck the ones still in progress, with one-tap undo and configurable reminder times in Settings.</p></div>
-            <figure class="product-shot"><a href="/assets/images/features/daily-review-sheet.webp" aria-label="Owl 0.4.5 Assistant home showing Today tasks and Review ready entry"><img src="/assets/images/features/daily-review-sheet.webp" width="828" height="1792" alt="Owl 0.4.5 Assistant home showing Today tasks and Review ready entry" loading="lazy"></a><figcaption>Today tasks & Review ready entry (Chinese UI)</figcaption></figure>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">03 · FEEDBACK &amp; REVIEW</span><h3>Today Card &amp; Review Entry</h3><h4>Confirm what got done and carry unfinished work forward</h4><p>Start your review directly from the Owl assistant Today card or when your daily reminder arrives, checking off finished tasks and carrying unfinished ones forward.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/daily-review-sheet.webp" aria-label="Owl 0.4.5 Assistant home showing Today tasks and Review ready entry"><img src="/assets/images/features/daily-review-sheet.webp" width="828" height="1792" alt="Owl 0.4.5 Assistant home showing Today tasks and Review ready entry" loading="lazy"></a><figcaption>Today tasks &amp; Review ready entry</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">04 · REMINDER SETTINGS</span><h3>Configurable Daily Review Hour</h3><h4>Toggle reminders and pick your evening check-in time</h4><p>Enable or pause Daily Review reminders anytime in Settings · Daily Review and customize the exact reminder hour that fits your routine.</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/09-daily-review-settings.webp" aria-label="Daily review reminder toggle and time picker in Settings"><img src="/assets/images/october-2026/09-daily-review-settings.webp" width="828" height="1800" alt="Daily review reminder toggle and time picker in Settings" loading="lazy"></a><figcaption>Daily review reminder settings</figcaption></figure>
           </article>
         </div>
+        <p class="pet-carousel-hint">Tip: Swipe horizontally across the window to inspect Assistant home, Plans storage, Review entry, and Daily Review settings.</p>
       </div>
     </section>
 
     <section class="section rule" id="assistant">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">02 · Goal breakdown &amp; scheduling</p>
-          <h2>Preview the plan first, then put the first step on your calendar.</h2>
-          <p>Whether you start from the conversation bar or tap a goal card in Plans, AI breakdown and calendar scheduling stay under your explicit confirmation.</p>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">02 · Goal breakdown &amp; scheduling</p>
+            <h2>Preview the plan first, then put the first step on your calendar.</h2>
+            <p>Whether you start from the conversation bar or tap a goal card in Plans, AI breakdown and calendar scheduling stay under your explicit confirmation. Swipe horizontally through all five details.</p>
+          </div>
+          <div class="pet-carousel-controls" aria-label="Goal breakdown and scheduling carousel controls">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-assistant" data-carousel-dir="-1" aria-label="Scroll left through goal breakdown and scheduling cards">← Scroll left</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-assistant" data-carousel-dir="1" aria-label="Scroll right through goal breakdown and scheduling cards">Scroll right →</button>
+          </div>
         </div>
-
-        <article class="mode-panel">
-          <div class="mode-copy">
-            <p class="eyebrow">STEP 1 · GOAL BREAKDOWN</p>
-            <h3>Turn a goal into concrete, editable steps.</h3>
-            <p>Ask the assistant to break down a new goal or tap an existing goal card to request AI suggestions. The assistant proposes a structured list of small steps right inside the conversation so you can read, edit, or refine before saving.</p>
-            <ul class="check-list">
-              <li>Confirm whether to break down a goal with AI from the goal card prompt</li>
-              <li>Inspect every proposed step in the draft receipt before saving to Plans</li>
-              <li>Keep multiple goals collapsed or expanded independently with step counts</li>
-            </ul>
-            <details class="example-details"><summary>View goal breakdown confirmation and goals list screenshots</summary>
-              <div class="reference-gallery">
-                <figure class="product-shot"><a href="/assets/images/features/goal-breakdown-confirm.webp" aria-label="Prompt asking Break down this goal with AI? with Not now and Ask AI buttons"><img src="/assets/images/features/goal-breakdown-confirm.webp" width="828" height="1792" alt="Prompt asking Break down this goal with AI? with Not now and Ask AI buttons" loading="lazy"></a><figcaption>Confirming AI breakdown for a goal</figcaption></figure>
-                <figure class="product-shot"><a href="/assets/images/features/goals-and-steps.webp" aria-label="Goals and steps list showing reordered goals and step counts"><img src="/assets/images/features/goals-and-steps.webp" width="828" height="1797" alt="Goals and steps list showing reordered goals and step counts" loading="lazy"></a><figcaption>Goals & steps list in Plans</figcaption></figure>
-              </div>
-            </details>
-          </div>
-          <figure class="product-shot"><a href="/assets/images/features/goal-plan-preview.webp" aria-label="Assistant conversation showing a generated reading plan broken into daily 20-minute steps"><img src="/assets/images/features/goal-plan-preview.webp" width="828" height="1797" alt="Assistant conversation showing a generated reading plan broken into daily 20-minute steps" loading="lazy"></a><figcaption>Draft plan preview in Assistant (Chinese UI)</figcaption></figure>
-        </article>
-
-        <article class="mode-panel mode-panel--chat">
-          <div class="mode-copy">
-            <p class="eyebrow">STEP 2 · SCHEDULE &amp; REVIEW</p>
-            <h3>Swipe left to schedule a time, then review at night.</h3>
-            <p>Once a plan is saved, open Plans and swipe any step left to reveal its calendar button and priority toggle. Pick a date and start time, confirm to save, and let Daily Review remind you at your chosen hour (default 21:00).</p>
-            <ul class="check-list">
-              <li>Left-swipe a step to open the date and time picker or mark it important</li>
-              <li>Nothing changes on your schedule until you tap Confirm in the calendar sheet</li>
-              <li>Configure or toggle your Daily Review reminder time anytime in Settings · Daily Review</li>
-            </ul>
-          </div>
-          <figure class="product-shot"><a href="/assets/images/features/task-swipe-calendar.webp" aria-label="Swiping a task row left in Plans to reveal calendar and priority buttons"><img src="/assets/images/features/task-swipe-calendar.webp" width="828" height="1792" alt="Swiping a task row left in Plans to reveal calendar and priority buttons" loading="lazy"></a><figcaption>Left-swipe scheduling action in Plans (Chinese UI)</figcaption></figure>
-        </article>
+        <div class="pet-carousel" id="carousel-assistant" role="region" aria-label="02 Goal breakdown and scheduling horizontal sliding window" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">DETAIL 01 · CONFIRMATION</span><h3>Ask AI to Break Down a Goal</h3><h4>Explicit confirmation before calling AI</h4><p>Tapping an existing goal card in Plans asks whether you want AI to break it down first—never overwriting your plan without permission.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/goal-breakdown-confirm.webp" aria-label="Prompt asking Break down this goal with AI? with Not now and Ask AI buttons"><img src="/assets/images/features/goal-breakdown-confirm.webp" width="828" height="1792" alt="Prompt asking Break down this goal with AI? with Not now and Ask AI buttons" loading="lazy"></a><figcaption>Confirming AI breakdown for a goal</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">DETAIL 02 · DRAFT PREVIEW</span><h3>Editable Steps in the Assistant</h3><h4>Read and refine every proposed step before saving</h4><p>The assistant proposes a structured list of small steps right inside the conversation so you can inspect titles and durations before saving to Plans.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/goal-plan-preview.webp" aria-label="Assistant conversation showing a generated reading plan broken into daily 20-minute steps"><img src="/assets/images/features/goal-plan-preview.webp" width="828" height="1797" alt="Assistant conversation showing a generated reading plan broken into daily 20-minute steps" loading="lazy"></a><figcaption>Draft plan preview in Assistant</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">DETAIL 03 · GOALS LIST</span><h3>Collapsible Goal Cards</h3><h4>Expand, collapse, and reorder goals independently</h4><p>Keep multiple active goals organized in Plans with clear step counts, independent collapse states, and drag-and-drop ordering.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/goals-and-steps.webp" aria-label="Goals and steps list showing reordered goals and step counts"><img src="/assets/images/features/goals-and-steps.webp" width="828" height="1797" alt="Goals and steps list showing reordered goals and step counts" loading="lazy"></a><figcaption>Goals &amp; steps list in Plans</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">DETAIL 04 · LEFT-SWIPE ACTIONS</span><h3>Swipe Left to Schedule or Prioritize</h3><h4>Direct actions without buried submenus</h4><p>Swipe any step row left in Plans to reveal its calendar button and priority exclamation toggle in one motion.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/task-swipe-calendar.webp" aria-label="Swiping a task row left in Plans to reveal calendar and priority buttons"><img src="/assets/images/features/task-swipe-calendar.webp" width="828" height="1792" alt="Swiping a task row left in Plans to reveal calendar and priority buttons" loading="lazy"></a><figcaption>Left-swipe scheduling action in Plans</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">DETAIL 05 · CALENDAR PICKER</span><h3>Pick a Date and Exact Start Time</h3><h4>Place the step into a real slot on your calendar</h4><p>Choose a date and toggle on a specific start time in the calendar sheet; nothing changes on your schedule until you tap Confirm.</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/07-task-calendar-picker.webp" aria-label="Scheduling a step with date and start time in the calendar sheet"><img src="/assets/images/october-2026/07-task-calendar-picker.webp" width="828" height="1792" alt="Scheduling a step with date and start time in the calendar sheet" loading="lazy"></a><figcaption>Step date &amp; start time picker</figcaption></figure>
+          </article>
+        </div>
+        <p class="pet-carousel-hint">Tip: Swipe horizontally across the window to view AI breakdown confirmation, draft preview, goals list, left-swipe actions, and the calendar picker.</p>
       </div>
     </section>
 
     <section class="section rule" id="tutorial">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">03 · Interactive tutorial</p>
-          <h2>Walk through your first real goal in 10 guided steps.</h2>
-          <p>First launch includes an interactive coach bar docked above the page so it never blocks your conversation. You can pause, browse around, and return to the current step at any time.</p>
-        </div>
-        <article class="mode-panel">
-          <div class="mode-copy">
-            <p class="eyebrow">GUIDED ONBOARDING · REAL APP EXAMPLE</p>
-            <h3>“Tap the input and describe a goal. For example: read a book this week, 20 minutes a day.”</h3>
-            <p>Instead of static slides, the 0.4.5 tutorial guides you through creating, saving, and scheduling a real goal of your own—using the built-in reading example (<code>例如：这周开始阅读一本书，每天 20 分钟</code>) as a prompt:</p>
-            <ul class="check-list">
-              <li>Steps 1–4: Enter your goal in the composer, send it to the assistant, review the generated small steps at your own pace, and tap Save</li>
-              <li>Steps 5–8: Open Plans, swipe the highlighted task left to reveal the calendar icon, pick a date and start time (for example 9:00 – 9:20), and tap Confirm</li>
-              <li>Steps 9–10: Learn where to tap the completion circle once you actually finish the step—without forcing you to mark it done prematurely</li>
-            </ul>
-            <div class="reference-gallery">
-              <figure class="product-shot"><a href="/assets/images/features/tutorial-schedule-picker.webp" aria-label="Tutorial step 8 showing the calendar picker with 9:00 - 9:20 selected"><img src="/assets/images/features/tutorial-schedule-picker.webp" width="828" height="1797" alt="Tutorial step 8 showing the calendar picker with 9:00 - 9:20 selected" loading="lazy"></a><figcaption>Step 8 · Pick date & start time</figcaption></figure>
-              <figure class="product-shot"><a href="/assets/images/features/tutorial-step-complete.webp" aria-label="Tutorial step 9 highlighting the completion circle with instruction not to check it until actually finished"><img src="/assets/images/features/tutorial-step-complete.webp" width="828" height="1797" alt="Tutorial step 9 highlighting the completion circle with instruction not to check it until actually finished" loading="lazy"></a><figcaption>Step 9 · Completion circle guide</figcaption></figure>
-            </div>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">03 · Interactive tutorial</p>
+            <h2>Walk through your first real goal in 10 guided steps.</h2>
+            <p>First launch includes an interactive coach bar docked above the page so it never blocks your conversation. Swipe horizontally across the window to follow the guided steps in order.</p>
           </div>
-          <figure class="product-shot"><a href="/assets/images/features/tutorial-step-input.webp" aria-label="Tutorial step 1 top instruction bar showing example: start reading a book this week, 20 minutes a day"><img src="/assets/images/features/tutorial-step-input.webp" width="828" height="1797" alt="Tutorial step 1 top instruction bar showing example: start reading a book this week, 20 minutes a day" loading="lazy"></a><figcaption>Step 1 · Guided goal input (Chinese UI)</figcaption></figure>
-        </article>
+          <div class="pet-carousel-controls" aria-label="Interactive tutorial carousel controls">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-tutorial" data-carousel-dir="-1" aria-label="Scroll left through tutorial steps">← Scroll left</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-tutorial" data-carousel-dir="1" aria-label="Scroll right through tutorial steps">Scroll right →</button>
+          </div>
+        </div>
+        <div class="pet-carousel" id="carousel-tutorial" role="region" aria-label="03 Interactive tutorial horizontal sliding window" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">WELCOME · GUIDED ONBOARDING</span><h3>State a Goal, Save the Plan, Schedule Step 1</h3><h4>Hands-on walkthrough inside the real interface</h4><p>The welcome card introduces the 10-step guided loop; you can pause to explore freely and resume the current step at any time.</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/10-tutorial-welcome.webp" aria-label="Interactive tutorial welcome card explaining goal, plan and first step schedule"><img src="/assets/images/october-2026/10-tutorial-welcome.webp" width="828" height="1800" alt="Interactive tutorial welcome card explaining goal, plan and first step schedule" loading="lazy"></a><figcaption>Welcome · Start the 10-step tutorial</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">STEP 1 · ENTER A GOAL</span><h3>Describe What You Want to Finish</h3><h4>“For example: read a book this week, 20 minutes a day.”</h4><p>The top coach bar prompts you to tap the input field and enter your own goal or try the built-in reading example.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/tutorial-step-input.webp" aria-label="Tutorial step 1 top instruction bar showing example: start reading a book this week, 20 minutes a day"><img src="/assets/images/features/tutorial-step-input.webp" width="828" height="1797" alt="Tutorial step 1 top instruction bar showing example: start reading a book this week, 20 minutes a day" loading="lazy"></a><figcaption>Step 1 · Guided goal input</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">STEP 2 · SEND TO ASSISTANT</span><h3>Tap the Arrow to Break It Down</h3><h4>Turn a single sentence into small executable steps</h4><p>Send your goal to the assistant and watch it generate a structured draft of actionable steps.</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/12-tutorial-send-goal.webp" aria-label="Tutorial step 2 guiding the user to send the goal for breakdown"><img src="/assets/images/october-2026/12-tutorial-send-goal.webp" width="828" height="1797" alt="Tutorial step 2 guiding the user to send the goal for breakdown" loading="lazy"></a><figcaption>Step 2 · Send goal for breakdown</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">STEP 3 · REVIEW THE DRAFT</span><h3>Inspect and Edit Proposed Steps</h3><h4>Review at your own pace before saving</h4><p>Read through the generated steps and adjust titles or durations directly inside the draft card.</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/13-tutorial-review-draft.webp" aria-label="Tutorial step 3 guiding the user to read and edit the generated draft"><img src="/assets/images/october-2026/13-tutorial-review-draft.webp" width="828" height="1797" alt="Tutorial step 3 guiding the user to read and edit the generated draft" loading="lazy"></a><figcaption>Step 3 · Review and edit draft</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">STEP 4 · SAVE THE PLAN</span><h3>Confirm and Save to Plans</h3><h4>Nothing is written until you tap Save</h4><p>Tap the highlighted Save button on the draft card to store the goal and its steps into Plans.</p></div>
+            <figure class="product-shot"><a href="/assets/images/october-2026/14-tutorial-save-plan.webp" aria-label="Tutorial step 4 highlighting the Save button on the generated plan"><img src="/assets/images/october-2026/14-tutorial-save-plan.webp" width="828" height="1800" alt="Tutorial step 4 highlighting the Save button on the generated plan" loading="lazy"></a><figcaption>Step 4 · Confirm and save plan</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">STEP 8 · SCHEDULE A TIME</span><h3>Pick a Date and 9:00 – 9:20 Slot</h3><h4>Swipe left in Plans to open the calendar picker</h4><p>Switch to Plans, swipe the highlighted step left to open the calendar sheet, select a date and start time, and tap Confirm.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/tutorial-schedule-picker.webp" aria-label="Tutorial step 8 showing the calendar picker with 9:00 - 9:20 selected"><img src="/assets/images/features/tutorial-schedule-picker.webp" width="828" height="1797" alt="Tutorial step 8 showing the calendar picker with 9:00 - 9:20 selected" loading="lazy"></a><figcaption>Step 8 · Pick date &amp; start time</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">STEP 9 · COMPLETION CIRCLE</span><h3>Mark Complete Only When Finished</h3><h4>“Leave it unchecked for now until you actually do it”</h4><p>Learn where the completion circle sits without being forced to check off a task before you have actually done it.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/tutorial-step-complete.webp" aria-label="Tutorial step 9 highlighting the completion circle with instruction not to check it until actually finished"><img src="/assets/images/features/tutorial-step-complete.webp" width="828" height="1797" alt="Tutorial step 9 highlighting the completion circle with instruction not to check it until actually finished" loading="lazy"></a><figcaption>Step 9 · Completion circle guide</figcaption></figure>
+          </article>
+        </div>
+        <p class="pet-carousel-hint">Tip: Swipe horizontally across the window to follow the interactive tutorial from welcome card to scheduling and completion.</p>
       </div>
     </section>
 
     <section class="section rule" id="privacy-summary">
       <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">04 · Get to know you (Personal Profile) &amp; Reference Materials</p>
-          <h2>Build “What I know about you so far” in 3 questions, with explicit Reference Materials control.</h2>
-          <p>Owl 0.4.5 (Build 68) includes a 3-question onboarding interview and editable Personal Profile organized in your own words across rhythm, goals, and support boundaries—governed by explicit toggles in Reference Materials.</p>
+        <div class="pet-carousel-header">
+          <div class="section-heading">
+            <p class="eyebrow">04 · Get to know you (Personal Profile) &amp; Reference Materials</p>
+            <h2>Build “What I know about you so far” in 3 questions, with explicit Reference Materials control.</h2>
+            <p>Owl 0.4.5 (Build 68) includes a 3-question onboarding interview and editable Personal Profile organized in your own words across rhythm, goals, and support boundaries—governed by explicit toggles in Reference Materials.</p>
+          </div>
+          <div class="pet-carousel-controls" aria-label="Personal Profile and Reference Materials carousel controls">
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-privacy" data-carousel-dir="-1" aria-label="Scroll left through Personal Profile and Reference Materials cards">← Scroll left</button>
+            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-privacy" data-carousel-dir="1" aria-label="Scroll right through Personal Profile and Reference Materials cards">Scroll right →</button>
+          </div>
         </div>
-        <div class="reference-gallery">
-          <figure class="product-shot"><a href="/assets/images/features/reference-consent.webp" aria-label="Permissions and data authorization screen with optional toggles"><img src="/assets/images/features/reference-consent.webp" width="828" height="1797" alt="Permissions and data authorization screen with optional toggles" loading="lazy"></a><figcaption>Explicit permission & reference notice</figcaption></figure>
-          <figure class="product-shot"><a href="/assets/images/features/reference-groups.webp" aria-label="Reference materials view showing enabled reference toggle in Assistant"><img src="/assets/images/features/reference-groups.webp" width="828" height="1792" alt="Reference materials view showing enabled reference toggle in Assistant" loading="lazy"></a><figcaption>Reference Materials toggle & scope</figcaption></figure>
-          <figure class="product-shot"><a href="/assets/images/features/reference-details.webp" aria-label="On-demand reference help and individual item inspection"><img src="/assets/images/features/reference-details.webp" width="828" height="1792" alt="On-demand reference help and individual item inspection" loading="lazy"></a><figcaption>Inspect & manage reference entries</figcaption></figure>
+        <div class="pet-carousel" id="carousel-privacy" role="region" aria-label="04 Personal Profile and Reference Materials horizontal sliding window" tabindex="0">
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">01 · 3-QUESTION INTERVIEW</span><h3>Get to Know You 1/3: How Have Things Been Lately?</h3><h4>Answer by voice transcription, typing, or skip anytime</h4><p>Three lightweight questions capture your current rhythm, goals, and preferred support style in your own words without storing audio recordings.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/reference-consent.webp" aria-label="Get to know you 1/3 screen asking how things have been lately with voice, text, and skip options"><img src="/assets/images/features/reference-consent.webp" width="828" height="1797" alt="Get to know you 1/3 screen asking how things have been lately with voice, text, and skip options" loading="lazy"></a><figcaption>Get to know you · 3-question interview</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">02 · PROFILE CONFIRMATION</span><h3>What I Know About You So Far</h3><h4>Organized in three clear sections, editable at any time</h4><p>Your answers are organized verbatim across current rhythm, recent goals, and support boundaries—without personality labels—and can be edited or erased anytime.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/reference-groups.webp" aria-label="What I know about you so far screen showing three editable sections and AI reference toggle"><img src="/assets/images/features/reference-groups.webp" width="828" height="1792" alt="What I know about you so far screen showing three editable sections and AI reference toggle" loading="lazy"></a><figcaption>What I know about you so far · Profile confirmation</figcaption></figure>
+          </article>
+          <article class="flow-card"><div class="flow-card-copy"><span class="pet-card-badge">03 · REFERENCE TOGGLES</span><h3>Granular Reference Materials Control</h3><h4>Explicit opt-in for Goals, Library files, and Profile</h4><p>Inspect and toggle whether the assistant may reference your Goals, Library files, or Personal Profile in Reference Materials.</p></div>
+            <figure class="product-shot"><a href="/assets/images/features/reference-details.webp" aria-label="Reference materials list with individual toggles for Goals, Library files, and Personal Profile"><img src="/assets/images/features/reference-details.webp" width="828" height="1792" alt="Reference materials list with individual toggles for Goals, Library files, and Personal Profile" loading="lazy"></a><figcaption>Reference Materials · Per-category toggles</figcaption></figure>
+          </article>
         </div>
+        <p class="pet-carousel-hint">Tip: Swipe horizontally across the window to view the 3-question interview, Personal Profile confirmation, and Reference Materials toggles.</p>
         <div class="context-disclosure">
           <p><strong>Personal Profile &amp; Reference Materials privacy boundaries:</strong></p>
           <ul class="check-list">

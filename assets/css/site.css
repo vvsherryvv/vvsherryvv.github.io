@@ -1082,3 +1082,101 @@ main {
   color: var(--muted);
   font-size: 0.86rem;
 }
+
+/* Section 01-04 horizontal sliding window cards */
+.step-carousel {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0.15rem 1.2rem;
+}
+.step-card {
+  flex: 0 0 clamp(20rem, 44vw, 31rem);
+  scroll-snap-align: start;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid rgba(216, 166, 83, 0.34);
+  border-radius: 1.3rem;
+  padding: 1.4rem 1.35rem;
+  background: linear-gradient(165deg, #17213a 0%, #0e1526 100%);
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+.step-card .step-number {
+  color: var(--brass-strong);
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+.step-card h3 {
+  font-size: 1.35rem;
+  margin: 0.75rem 0 0.5rem;
+  color: var(--ink);
+}
+.step-card p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.flow-card {
+  flex: 0 0 clamp(19.5rem, 42vw, 29rem);
+  scroll-snap-align: start;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(216, 166, 83, 0.34);
+  border-radius: 1.3rem;
+  padding: 1.15rem;
+  background: linear-gradient(165deg, #17213a 0%, #0e1526 100%);
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+.flow-card-copy {
+  padding-bottom: 1rem;
+}
+.flow-card-copy h3 {
+  font-size: 1.32rem;
+  line-height: 1.35;
+  margin: 0.45rem 0 0.4rem;
+  color: var(--ink);
+}
+.flow-card-copy h4 {
+  font-size: 0.96rem;
+  line-height: 1.5;
+  margin: 0 0 0.45rem;
+  color: var(--brass-strong);
+  font-weight: 700;
+}
+.flow-card-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.flow-card .product-shot a {
+  display: block;
+  border-radius: 1.05rem;
+  overflow: hidden;
+  background: #080d1c;
+  border: 1px solid rgba(216, 166, 83, 0.36);
+  padding: 0.35rem;
+}
+.flow-card .product-shot img {
+  display: block;
+  width: 100%;
+  height: 25rem;
+  object-fit: contain;
+  object-position: top center;
+  border: 0;
+  border-radius: 0.8rem;
+  box-shadow: none;
+}
+.flow-card .product-shot figcaption {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  text-align: center;
+}
