@@ -26,7 +26,7 @@ Static, bilingual product website for Wizarding OS `0.4.5` (TestFlight build `66
 
 ## Screenshot Provenance & Placeholder Notice
 
-All 13 images in `assets/images/features/*.webp`, 17 gallery images in `assets/images/october-2026/*.webp`, and 7 `828×1800` JPEG derivatives in `assets/images/screenshot-*.jpg` have been regenerated without EXIF/XMP metadata from `0.4.5` evidence captures, with a clearly labeled placeholder image (`assets/images/features/daily-review-sheet.webp`, `assets/images/october-2026/08-daily-review-sheet.webp`, `assets/images/screenshot-05-daily-review.jpg`) for the `AssistantReviewCard` Daily Review sheet pending a real-device capture.
+All 13 images in `assets/images/features/*.webp`, 17 gallery images in `assets/images/october-2026/*.webp`, and 7 `828×1800` JPEG derivatives in `assets/images/screenshot-*.jpg` have been regenerated without EXIF/XMP metadata from `0.4.5` captures (`daily-review-sheet.webp`, `08-daily-review-sheet.webp`, `09-daily-review-settings.webp`, and `screenshot-05-daily-review.jpg` updated with the latest 0.4.5 Daily Review captures).
 
 ## Verification
 
