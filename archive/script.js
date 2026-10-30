@@ -1,5 +1,29 @@
 const translations = {
   zh: {
+    brandSub: "Jieyi",
+    heroEyebrow: "AI Research · Indie App Developer · AI Investment",
+    heroAltName: "Jieyi Sheng",
+    heroLede: "科研方向为三维重建、三维人体重建与渲染；独立开发 Owl，用 AI 帮人拆解目标、安排待办并完成反馈总结。",
+    chipInvest: "AI × 投资研究",
+    statPapers: "2 篇",
+    statPapersLabel: "A 类论文投稿",
+    statAward: "全国三等奖",
+    statAwardLabel: "揭榜挂帅 · 2025",
+    statGrade: "90.37",
+    statGradeLabel: "上学年课程成绩",
+    nowResearch: "Now · 研究",
+    nowResearchTitle: "华中科技大学 · 智能科学与技术硕士",
+    nowResearchText: "三维重建 · 三维人体重建 · 渲染",
+    nowBuilding: "Now · 在做",
+    nowBuildingTitle: "独立开发 Owl",
+    nowBuildingText: "拆解目标 → 安排待办 → 反馈总结",
+    nowInternship: "Now · 实习",
+    flowStep1: "拆解目标",
+    flowStep2: "安排待办",
+    flowStep3: "反馈总结",
+    expGradSummary: "研究生科协常务中心、学院研会学术部、学院党建中心宣传部学生干部",
+    expandLabel: "展开",
+    collapseLabel: "收起",
     expGradAdmin: "完成研究生党支部换届材料“三上三下”审核、支部党员信息系统维护及发展对象结业材料检查。参与中央八项规定精神和党纪学习教育内容创作，制作 11 月与 2 月主题党日通知及学习摘编。",
     expGradEvents: "参与组织 2025 三院联合党史知识竞赛等学院活动，并担任华中科技大学 2026 年研究生人工智能创新大赛主持人。",
     expGradRoles: "担任华中科技大学研究生科学技术协会常务中心、人工智能与自动化学院研究生会学术部、学院党建中心宣传部学生干部。研究生科学技术协会在 2025 年度星级学生社团评选中获评五星学生社团。",
@@ -32,8 +56,6 @@ const translations = {
     expRuijiangTitle: "瑞江投资 · AI 领域企业投资助理",
     expRuijiangText: "参与 AI 赛道企业调研与投资分析，围绕 Personal Agent 方向（如 Today、Muse）开展竞品实测并撰写调研报告。",
     institution: "华中科技大学",
-    interestsTitle: "兴趣与方向",
-    viewDetails: "查看详情",
     interest1: "App 设计与开发",
     interest2: "三维重建与人体重建",
     interest3: "AI 应用与交互体验",
@@ -43,7 +65,7 @@ const translations = {
     aboutP2: "我的项目经历覆盖多模态视觉大模型、端侧部署、SLAM 与脑机接口，其中「萤狩—基于超轻量化视觉大模型的红外弱小目标智能感知系统」获 2025 年度中国青年科技创新“揭榜挂帅”擂台赛全国三等奖。",
     educationTitle: "教育背景",
     eduGradTitle: "华中科技大学 · 人工智能与自动化学院",
-    eduGradText: "智能科学与技术专业硕士研究生。上一学年课程成绩 90.37，专业排名 13 / 62。课程包括智能计算系统、凸优化理论及算法、矩阵论、数量统计等。",
+    eduGradText: "智能科学与技术专业硕士研究生。上一学年课程成绩 90.37，课程包括智能计算系统、凸优化理论及算法、矩阵论、数量统计等。",
     eduUnderTitle: "华中科技大学 · 未来技术学院",
     eduUnderText: "人工智能专业本科。加权成绩 88.89，主修数据科学基础、数据结构与算法设计、人工智能导论、模式识别与机器学习、概率论与数理统计、光电探测技术、单片机与嵌入式系统等课程。",
     projectsTitle: "精选项目",
@@ -80,6 +102,30 @@ const translations = {
     skillsTitle: "专业技能"
   },
   en: {
+    brandSub: "盛洁熠",
+    heroEyebrow: "AI Research · Indie App Developer · AI Investment",
+    heroAltName: "盛洁熠",
+    heroLede: "My research focuses on 3D reconstruction, 3D human reconstruction, and rendering. I independently build Owl, an AI app that helps break down goals, schedule to-dos, and review progress.",
+    chipInvest: "AI × investment research",
+    statPapers: "2 papers",
+    statPapersLabel: "Category A submissions",
+    statAward: "National Third Prize",
+    statAwardLabel: "Innovation Challenge 2025",
+    statGrade: "90.37",
+    statGradeLabel: "Previous-year course average",
+    nowResearch: "Now · Research",
+    nowResearchTitle: "HUST · M.S. in Intelligent Science and Technology",
+    nowResearchText: "3D reconstruction · 3D human reconstruction · rendering",
+    nowBuilding: "Now · Building",
+    nowBuildingTitle: "Building Owl independently",
+    nowBuildingText: "Break down goals → schedule to-dos → review",
+    nowInternship: "Now · Internship",
+    flowStep1: "Break down goals",
+    flowStep2: "Schedule to-dos",
+    flowStep3: "Review progress",
+    expGradSummary: "Student officer in the Graduate Science and Technology Association, Graduate Student Union, and Party Building Center",
+    expandLabel: "Expand",
+    collapseLabel: "Collapse",
     expGradAdmin: "Reviewed graduate Party branch election materials through the three-stage submission and approval process, maintained branch membership records, and checked completion documents for prospective members. Created educational materials on the central eight-point regulation and Party discipline, and prepared November and February themed Party Day notices and study digests.",
     expGradEvents: "Helped organize the 2025 inter-school Party history quiz competition across three schools and other school events. Hosted the HUST 2026 Graduate Artificial Intelligence Innovation Competition.",
     expGradRoles: "Student officer in the standing affairs center of the HUST Graduate Science and Technology Association, the Academic Department of the school’s Graduate Student Union, and the Publicity Department of the school’s Party Building Center. The Graduate Science and Technology Association received a five-star rating in the 2025 student association evaluation.",
@@ -107,23 +153,21 @@ const translations = {
     navAwards: "Awards",
     name: "Jieyi Sheng",
     title: "M.S. Student in Artificial Intelligence",
-    titleRuijiang: "AI-Sector Investment Assistant, Ruijiang Investment",
+    titleRuijiang: "AI Sector Investment Assistant, Ruijiang Investment",
     ruijiangDate: "Oct 2026 — Present",
-    expRuijiangTitle: "Ruijiang Investment · AI-Sector Investment Assistant",
+    expRuijiangTitle: "Ruijiang Investment · AI Sector Investment Assistant",
     expRuijiangText: "Research and investment analysis on companies in the AI sector, including hands-on competitive testing and research reports on Personal Agent products such as Today and Muse.",
     institution: "Huazhong University of Science and Technology",
-    interestsTitle: "Interests & Focus",
-    viewDetails: "View Details",
     interest1: "App design and development",
     interest2: "3D scene and human reconstruction",
     interest3: "AI applications and interaction design",
     updatedLabel: "Last updated: ",
     aboutTitle: "About",
-    aboutP1: "I am an M.S. student in Intelligent Science and Technology at the School of Artificial Intelligence and Automation, Huazhong University of Science and Technology, after a B.Eng. in Artificial Intelligence from the university's Future Technology College. My research focuses on 3D reconstruction, 3D human reconstruction, and rendering. I independently build Owl, an AI app that helps break down goals, schedule to-dos, and review progress, and I currently work as an AI-sector Investment Assistant at Ruijiang Investment.",
+    aboutP1: "I am an M.S. student in Intelligent Science and Technology at the School of Artificial Intelligence and Automation, Huazhong University of Science and Technology, after a B.Eng. in Artificial Intelligence from the university's Future Technology College. My research focuses on 3D reconstruction, 3D human reconstruction, and rendering. I independently build Owl, an AI app that helps break down goals, schedule to-dos, and review progress, and I currently work as an AI Sector Investment Assistant at Ruijiang Investment.",
     aboutP2: "My projects span multimodal vision-language models, edge deployment, SLAM, and brain-computer interfaces. YingShou: Infrared Dim and Small Target Intelligent Perception System Based on an Ultra-Lightweight Vision Foundation Model won a National Third Prize at the 2025 China Youth Science and Technology Innovation Challenge.",
     educationTitle: "Education",
     eduGradTitle: "Huazhong University of Science and Technology · School of Artificial Intelligence and Automation",
-    eduGradText: "M.S. student in Intelligent Science and Technology. Course average in the previous academic year: 90.37; ranked 13 out of 62 students in the program. Coursework includes intelligent computing systems, convex optimization theory and algorithms, matrix theory, and quantitative statistics.",
+    eduGradText: "M.S. student in Intelligent Science and Technology. Course average in the previous academic year: 90.37. Coursework includes intelligent computing systems, convex optimization theory and algorithms, matrix theory, and quantitative statistics.",
     eduUnderTitle: "Huazhong University of Science and Technology · Future Technology College",
     eduUnderText: "B.Eng. in Artificial Intelligence with a weighted average of 88.89. Coursework includes data science, data structures and algorithms, introduction to AI, pattern recognition and machine learning, probability and statistics, optoelectronic detection, microcontrollers, and embedded systems.",
     projectsTitle: "Selected Projects",
@@ -163,11 +207,16 @@ const translations = {
 
 const root = document.documentElement;
 root.classList.add("js");
+const OWL_URL = "https://www.wizardingos.club/zh/";
+const AVATAR_ALT = { zh: "\u76db\u6d01\u71a0\u5934\u50cf", en: "Portrait of Jieyi Sheng" };
 const languageButtons = document.querySelectorAll("[data-lang]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
 const themeToggle = document.querySelector("#themeToggle");
 const menuToggle = document.querySelector("#menuToggle");
 const mobileLinks = document.querySelector("#mobileLinks");
+const siteNav = document.querySelector(".site-nav");
+const hero = document.querySelector(".hero");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 // URL preferences keep sharing and reloads consistent without browser storage.
 const preferences = new URLSearchParams(location.search);
@@ -194,15 +243,16 @@ function setLanguage(lang) {
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-  document.querySelector("#productLink").href = "https://www.wizardingos.club/zh/";
-  document.querySelector(".product-home").href = "https://www.wizardingos.club/zh/";
-  document.querySelector(".avatar").alt = lang === "zh" ? "盛洁熠头像" : "Portrait of Jieyi Sheng";
+  document.querySelectorAll("#productLink, .product-home, .mobile-owl").forEach((link) => {
+    link.href = OWL_URL;
+  });
+  document.querySelector(".avatar").alt = AVATAR_ALT[lang];
   updateLabels();
 }
 function setTheme(theme) {
   root.classList.toggle("dark", theme === "dark");
   root.classList.toggle("light", theme !== "dark");
-  document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#0f172a" : "#fefffe";
+  document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#0F0D1A" : "#F8F6F1";
   updateLabels();
 }
 function closeMenu() {
@@ -236,12 +286,67 @@ document.addEventListener("keydown", (event) => {
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".site-nav")) closeMenu();
 });
-window.matchMedia("(min-width: 1181px)").addEventListener("change", (event) => {
+window.matchMedia("(min-width: 1100px)").addEventListener("change", (event) => {
   if (event.matches) closeMenu();
 });
 systemTheme.addEventListener("change", (event) => {
   if (!new URLSearchParams(location.search).has("theme")) setTheme(event.matches ? "dark" : "light");
 });
+
+// Capsule nav becomes more opaque once the hero has scrolled away.
+function updateNavState() {
+  const threshold = hero ? hero.offsetHeight - 120 : 80;
+  siteNav.classList.toggle("is-scrolled", window.scrollY > threshold);
+}
+window.addEventListener("scroll", updateNavState, { passive: true });
+window.addEventListener("resize", updateNavState, { passive: true });
+
+// Reveal-on-scroll; content is shown immediately without IntersectionObserver
+// or when the visitor prefers reduced motion.
+const revealNodes = document.querySelectorAll(".reveal");
+const revealAll = () => revealNodes.forEach((node) => node.classList.add("is-visible"));
+if ("IntersectionObserver" in window && !reducedMotion.matches) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
+  revealNodes.forEach((node) => revealObserver.observe(node));
+} else {
+  revealAll();
+}
+reducedMotion.addEventListener("change", () => {
+  if (reducedMotion.matches) revealAll();
+});
+
+// Scroll spy: highlight the nav link for the section currently in view.
+const navLinks = document.querySelectorAll(".desktop-links a, .mobile-links a[href^='#']");
+const spyTargets = [...new Set([...navLinks].map((link) => link.getAttribute("href")))]
+  .map((hash) => document.querySelector(hash))
+  .filter(Boolean);
+function setActive(id) {
+  navLinks.forEach((link) => {
+    const active = link.getAttribute("href") === `#${id}`;
+    link.classList.toggle("active", active);
+    if (active) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}
+if ("IntersectionObserver" in window && spyTargets.length) {
+  const visible = new Map();
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => visible.set(entry.target.id, entry.isIntersecting));
+    const current = [...spyTargets].reverse().find((target) => visible.get(target.id));
+    if (current) setActive(current.id);
+  }, { rootMargin: "-30% 0px -60% 0px" });
+  spyTargets.forEach((target) => spyObserver.observe(target));
+  setActive(spyTargets[0].id);
+}
+
 setLanguage(preferences.get("lang") || "zh");
 const theme = preferences.get("theme");
 setTheme(theme === "dark" || theme === "light" ? theme : systemTheme.matches ? "dark" : "light");
+updateNavState();
