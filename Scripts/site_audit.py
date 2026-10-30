@@ -53,6 +53,12 @@ APP_STORE_CLAIMS = [
     "已在 app store 上架",
     "前往 app store 下载",
 ]
+TESTFLIGHT_URL = "https://testflight.apple.com/join/9BAkFSvp"
+SCREEN_SLOTS = ["hero", "feature-profile", "feature-breakdown", "feature-schedule", "feature-review"]
+LEGACY_FEATURE_TERMS = [
+    "wizarding", "wizard", "magic", "hogwarts", "herb garden", "pensieve", "meditation", "museum",
+    "草药园", "典藏馆", "冥想盆", "记忆盆", "魔法", "巫师",
+]
 TEXT_SUFFIXES = {".html", ".css", ".js", ".xml", ".txt", ".md", ".yml", ".yaml", ".py", ".sh"}
 PUBLIC_SUFFIXES = {".html", ".css", ".js", ".xml", ".txt"}
 
@@ -301,13 +307,10 @@ def audit(mode: str) -> int:
         if expected not in sitemap:
             errors.append(f"sitemap missing {expected}")
 
-    screenshot_files = sorted((ROOT / "assets/images").glob("screenshot-*.jpg"))
-    if len(screenshot_files) != 7:
-        errors.append(f"expected 7 screenshot derivatives, found {len(screenshot_files)}")
-    for path in screenshot_files:
-        dimensions = jpeg_dimensions(path)
-        if dimensions != (828, 1800):
-            errors.append(f"{path.relative_to(ROOT)}: unexpected dimensions {dimensions}")
+    screen_files = [ROOT / "assets/screens" / f"{name}.png" for name in SCREEN_SLOTS]
+    for path in screen_files:
+        if not path.is_file():
+            errors.append(f"missing screenshot slot file: {path.relative_to(ROOT)}")
     image_files = sorted(path for path in ROOT.rglob("*") if path.is_file() and path.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"})
     private_markers = [b"Exif\x00\x00", b"GPSLatitude", b"GPSLongitude", b"/Users/", b"/private/tmp/", b"Photoshop 3.0", b"XML:com.adobe.xmp"]
     for path in image_files:
@@ -318,27 +321,22 @@ def audit(mode: str) -> int:
         if path.stat().st_size > 1_500_000:
             errors.append(f"{path.relative_to(ROOT)}: image exceeds 1.5 MB")
     total_bytes = sum(path.stat().st_size for path in ROOT.rglob("*") if path.is_file() and ".git" not in path.parts)
-    video_bytes = sum(path.stat().st_size for path in (ROOT / "assets/video").glob("*.mp4"))
-    if total_bytes - video_bytes > 12_000_000:
-        errors.append(f"non-video assets exceed 12 MB ({total_bytes - video_bytes} bytes)")
-    if video_bytes > 30_000_000:
-        errors.append(f"on-demand video assets exceed 30 MB ({video_bytes} bytes)")
+    if total_bytes > 12_000_000:
+        errors.append(f"static assets exceed 12 MB ({total_bytes} bytes)")
     for home in [ROOT / "index.html", ROOT / "zh/index.html"]:
         parser = parsers[home]
-        videos = [attrs for tag, attrs in parser.attrs if tag == "video"]
-        if len(videos) != 1:
-            errors.append(f"{home.relative_to(ROOT)}: expected one product film")
-        for video in videos:
-            if not {"controls", "playsinline"}.issubset(video) or video.get("preload") != "none" or "autoplay" in video:
-                errors.append(f"{home.relative_to(ROOT)}: film must be user-initiated with native controls")
-            if video.get("width") != "1920" or video.get("height") != "1080":
-                errors.append(f"{home.relative_to(ROOT)}: expected landscape film dimensions")
-            if not video.get("poster"):
-                errors.append(f"{home.relative_to(ROOT)}: film poster missing")
-        source = parser.first("source", src="/assets/video/wizardingos-narrated-life-v3.mp4")
-        if not source or source.get("type") != "video/mp4":
-            errors.append(f"{home.relative_to(ROOT)}: narrated v3 film missing")
-
+        text = home.read_text(encoding="utf-8")
+        if any(tag == "video" for tag, _ in parser.attrs):
+            errors.append(f"{home.relative_to(ROOT)}: promo video should not be embedded")
+        for name in SCREEN_SLOTS:
+            if f"/assets/screens/{name}.png" not in text:
+                errors.append(f"{home.relative_to(ROOT)}: screenshot slot {name}.png not used")
+        if TESTFLIGHT_URL not in text:
+            errors.append(f"{home.relative_to(ROOT)}: TestFlight CTA missing")
+        lowered_home = text.lower().replace("com.sherry.wizardingos", "")
+        for term in LEGACY_FEATURE_TERMS:
+            if term in lowered_home:
+                errors.append(f"{home.relative_to(ROOT)}: removed feature or old branding mentioned: {term}")
     legacy_markers = [
         LEGACY_CONTACT_MARKER,
         "support" + "@example.com",
@@ -383,7 +381,7 @@ def audit(mode: str) -> int:
     print(f"site verification passed ({mode})")
     print(f"  HTML pages: {len(html_files)}")
     print(f"  Required routes: {len(REQUIRED_ROUTES)}")
-    print(f"  Screenshot derivatives: {len(screenshot_files)}")
+    print(f"  Screenshot slots: {len(screen_files)}")
     print(f"  Total static bytes: {total_bytes}")
     for warning in warnings:
         print(f"  WARNING: {warning}")

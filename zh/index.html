@@ -3,218 +3,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
-  <title>Owl 0.4.5 — 拆解目标、安排待办与每日复盘的 iPhone 助手</title>
-  <meta name="description" content="Owl 0.4.5 聚焦「拆解目标 → 安排待办 → 反馈总结」三步闭环：在助手里把目标拆成小步骤，左滑安排日历时间，按时完成每日复盘，并通过参考资料掌控上下文权限。">
-  <meta name="theme-color" content="#130f24">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Owl — 把大目标拆成真正能做到的小步骤</title>
+  <meta name="description" content="Owl iPhone 版：三个问题认识你，用 AI 预览拆解目标，把步骤排进待办，晚上陪你做每日复盘。现已开放 TestFlight 测试。">
+  <meta name="theme-color" content="#F7F5F2">
   <link rel="canonical" href="https://vvsherryvv.github.io/zh/">
   <link rel="alternate" hreflang="en" href="https://vvsherryvv.github.io/">
   <link rel="alternate" hreflang="zh-Hans" href="https://vvsherryvv.github.io/zh/">
   <link rel="alternate" hreflang="x-default" href="https://vvsherryvv.github.io/">
-  <meta property="og:title" content="Owl 0.4.5 — 拆解目标、安排待办与反馈总结">
-  <meta property="og:description" content="说出你想完成的目标，预览确认小步骤后存入计划页，左滑安排开始时间，并在每日复盘中勾选完成情况。">
+  <meta property="og:title" content="Owl — 大目标，小步走">
+  <meta property="og:description" content="三问访谈、AI 目标拆解预览、待办排期与晚间复盘，还有猫头鹰、猫咪和蟾蜍陪着你。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://vvsherryvv.github.io/zh/">
   <meta property="og:site_name" content="Owl">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:image" content="https://vvsherryvv.github.io/assets/social/og-wizarding-os.jpg">
+  <meta property="og:image" content="https://vvsherryvv.github.io/assets/social/og-owl.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Owl 0.4.5 中文介绍：拆解目标、安排待办与每日复盘。">
+  <meta property="og:image:alt" content="Owl 应用图标与猫头鹰、猫咪、蟾蜍三位伙伴。">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Owl 0.4.5 — 拆解目标、安排待办与反馈总结">
-  <meta name="twitter:description" content="聚焦「拆解目标 → 安排待办 → 反馈总结」三步闭环，内置 10 步交互式新手教程与参考资料权限控制。">
-  <meta name="twitter:image" content="https://vvsherryvv.github.io/assets/social/og-wizarding-os.jpg">
+  <meta name="twitter:title" content="Owl — 大目标，小步走">
+  <meta name="twitter:description" content="三问访谈、AI 目标拆解预览、待办排期与晚间复盘，还有猫头鹰、猫咪和蟾蜍陪着你。">
+  <meta name="twitter:image" content="https://vvsherryvv.github.io/assets/social/og-owl.jpg">
   <link rel="icon" href="/assets/images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/site.css?v=20261028-p4">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20261030">
 </head>
 <body class="product-home">
   <a class="skip-link" href="#main-content">跳到主要内容</a>
   <header class="site-header">
-    <div class="shell nav-wrap"><a class="brand" href="/zh/"><img src="/assets/images/app-icon.png" width="256" height="256" alt=""><span>Owl</span></a>
-      <nav class="site-nav" aria-label="主导航"><a href="#companions">宠物伙伴</a><a href="#features">核心闭环</a><a href="#assistant">目标与待办</a><a href="#tutorial">新手教程</a><a href="#privacy-summary">参考资料</a><a href="/zh/privacy/">隐私</a><a href="/zh/support/">支持</a><a class="language-link" href="/" lang="en" hreflang="en">English</a></nav>
+    <div class="shell nav-wrap">
+      <a class="brand" href="/zh/"><img src="/assets/images/app-icon.png" width="256" height="256" alt=""><span>Owl</span></a>
+      <nav class="site-nav" aria-label="主导航"><a class="nav-section" href="#features">核心功能</a><a class="nav-section" href="#companions">宠物伙伴</a><a class="nav-section" href="#privacy">隐私</a><a class="language-link" href="/" lang="en" hreflang="en">English</a><a class="nav-cta" href="https://testflight.apple.com/join/9BAkFSvp">参与测试</a></nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="hero shell context-hero campaign-hero">
-      <div class="campaign-copy">
-        <p class="eyebrow">OWL · iOS 0.4.5</p>
-        <h1>把目标拆成小步骤，安排今天的时间，按时复盘。</h1>
-        <p class="hero-copy">Owl 0.4.5 收敛聚焦于「拆解目标 → 安排待办 → 反馈总结」三步闭环：在助手里说出想法并预览步骤，确认后存入计划页安排具体时间，晚上用每日复盘确认完成进度。</p>
-        <div class="hero-actions"><a class="button primary" href="#features">了解三步闭环</a><a class="button" href="#tutorial">查看新手教程</a><a class="button" href="#companions">浏览宠物伙伴</a><a class="button" href="#screenshots">浏览 0.4.5 截图</a></div>
-        <p class="release-note"><span>0.4.5 版本（TestFlight 68）：</span>精简旧版收藏模块，围绕助手与计划双核心、10 步交互式新手教程、每日复盘提醒与参考资料权限控制构建。</p>
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="pill"><span class="dot" aria-hidden="true"></span>Owl 0.4.5 · TestFlight 测试中</p>
+          <h1>把大目标，<br>拆成今天就能<span class="nowrap">迈出的小步。</span></h1>
+          <p class="lede">Owl 先认识你，再帮你把目标拆成清晰的步骤、排进日程，并在每天晚上陪你复盘。</p>
+          <div class="actions"><a class="button primary" href="https://testflight.apple.com/join/9BAkFSvp">加入 TestFlight 测试 <span class="arrow" aria-hidden="true">→</span></a><a class="button" href="#features">了解使用流程</a></div>
+          <p class="hero-note">适用于 iPhone · 通过 Apple TestFlight 测试</p>
+        </div>
+        <figure class="phone"><div class="phone-frame"><img src="/assets/screens/hero.png" width="1179" height="2556" alt="Owl 应用界面（截图占位）" loading="eager"></div></figure>
       </div>
-      <figure id="film" class="promo-film-player hero-film"><video controls playsinline preload="none" poster="/assets/video/wizardingos-narrated-life-v3.jpg" width="1920" height="1080" aria-label="Owl 产品演示视频（点击后播放）"><source src="/assets/video/wizardingos-narrated-life-v3.mp4" type="video/mp4">你的浏览器不支持 HTML5 视频。<a href="/assets/video/wizardingos-narrated-life-v3.mp4">下载 MP4 视频</a>。</video><figcaption><span>5 分 11 秒旁白演示 · 1080p MP4 · 点击播放后才会加载视频</span><a href="/assets/video/wizardingos-narrated-life-v3.mp4" download>下载 MP4（24 MB）</a></figcaption></figure>
     </section>
 
-    <section class="section rule" id="how-it-works">
+    <section class="section" id="features">
       <div class="shell">
-        <div class="pet-carousel-header">
-          <div class="section-heading"><p class="eyebrow">三步行动闭环</p><h2>从一句话目标，到真正做完的一小步。</h2><p>0.4.5 将日常行动收敛为三个清晰环节，所有改动都先预览再落库，不会在后台擅自替你写计划。</p></div>
-          <div class="pet-carousel-controls" aria-label="三步行动闭环轮播控制">
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-how-it-works" data-carousel-dir="-1" aria-label="向左滑动查看上一步">← 向左滑动</button>
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-how-it-works" data-carousel-dir="1" aria-label="向右滑动查看下一步">向右滑动 →</button>
-          </div>
-        </div>
-        <ol class="pet-carousel step-carousel" id="carousel-how-it-works" aria-label="三步行动闭环水平滑动窗口" tabindex="0">
-          <li class="pet-card step-card"><span class="pet-card-badge">环节 01 · 拆解目标</span><span class="step-number">01</span><h3>拆解目标</h3><p>在助手输入框写下或说出你想完成的事，或从计划页点击目标卡片请求 AI 拆解。先阅读并按需修改步骤草稿，确认后再保存。</p></li>
-          <li class="pet-card step-card"><span class="pet-card-badge">环节 02 · 安排待办</span><span class="step-number">02</span><h3>安排待办</h3><p>保存后的目标与步骤统一收纳在计划页。向左滑动任意步骤即可打开日历设置日期与开始时间，把计划放进今天的具体时段。</p></li>
-          <li class="pet-card step-card"><span class="pet-card-badge">环节 03 · 反馈总结</span><span class="step-number">03</span><h3>反馈总结</h3><p>通过助手首页「可以复盘了」入口或每日复盘通知打开复盘弹窗，快速勾选已完成事项或筛出未完成项，支持一键撤销并继续找下一步。</p></li>
+        <div class="section-head"><p class="eyebrow">使用流程</p><h2>每天一个温和的小闭环。</h2><p>四个环节层层衔接：从了解什么对你重要，到回顾这一天。</p></div>
+        <ol class="features">
+          <li class="feature"><span class="step" aria-hidden="true">1</span><h3>三个问题认识你</h3><p>简短的三问访谈为你建立个人画像，让建议更贴合你的生活。任何问题都可以跳过。</p><figure class="phone"><div class="phone-frame"><img src="/assets/screens/feature-profile.png" width="1179" height="2556" alt="Owl 认识你访谈（截图占位）" loading="lazy"></div></figure></li>
+          <li class="feature"><span class="step" aria-hidden="true">2</span><h3>拆解目标</h3><p>说出一个目标，Owl 会拟出可执行的小步骤。先预览 AI 方案，确认保留后才会保存。</p><figure class="phone"><div class="phone-frame"><img src="/assets/screens/feature-breakdown.png" width="1179" height="2556" alt="Owl AI 目标拆解预览（截图占位）" loading="lazy"></div></figure></li>
+          <li class="feature"><span class="step" aria-hidden="true">3</span><h3>排进待办</h3><p>把每个步骤作为待办排进日程，让下一步行动都有明确的时间。</p><figure class="phone"><div class="phone-frame"><img src="/assets/screens/feature-schedule.png" width="1179" height="2556" alt="Owl 待办排期（截图占位）" loading="lazy"></div></figure></li>
+          <li class="feature"><span class="step" aria-hidden="true">4</span><h3>晚间复盘</h3><p>晚上用简短的每日复盘收尾：看看完成了什么，并获得面向明天的温和反馈。</p><figure class="phone"><div class="phone-frame"><img src="/assets/screens/feature-review.png" width="1179" height="2556" alt="Owl 晚间每日复盘（截图占位）" loading="lazy"></div></figure></li>
         </ol>
-        <p class="pet-carousel-hint">提示：左右滑动窗口查看「拆解目标 → 安排待办 → 反馈总结」三步闭环。</p>
       </div>
     </section>
 
-    <section class="section rule" id="companions">
+    <section class="section pets-band" id="companions">
       <div class="shell">
-        <div class="pet-carousel-header">
-          <div class="section-heading">
-            <p class="eyebrow">宠物伙伴 · 横向滑动图集</p>
-            <h2>猫头鹰、虎斑猫与蟾蜍：陪你走完每一天的计划与复盘。</h2>
-            <p>左右滑动横栏依次查看：三只宠物书桌同框合照（首图）、宠物原版图、宠物圣诞版图，以及宠物生活版场景图。点击任意卡片可查看高清原图。</p>
-          </div>
-          <div class="pet-carousel-controls" aria-label="宠物轮播控制">
-            <button type="button" class="pet-carousel-btn" data-carousel-prev aria-label="向左滑动查看上一组宠物图">← 向左滑动</button>
-            <button type="button" class="pet-carousel-btn" data-carousel-next aria-label="向右滑动查看下一组宠物图">向右滑动 →</button>
-          </div>
-        </div>
-        <div class="pet-carousel" id="pet-carousel-track" role="region" aria-label="宠物伙伴水平滑动轮播栏" tabindex="0">
-          <figure class="pet-card pet-card--scene"><span class="pet-card-badge">首图 · 三宠合照</span><a href="/assets/images/pets/promo-group-together.png" aria-label="三只宠物书桌同框合照：猫头鹰、虎斑猫与蟾蜍在暖光书桌前陪伴今日计划"><img src="/assets/images/pets/promo-group-together.webp" width="864" height="1152" alt="三只宠物书桌同框合照：猫头鹰、虎斑猫与蟾蜍在暖光书桌前陪伴今日计划" loading="lazy"></a><figcaption><span class="pet-card-title">三只宠物书桌同框合照</span><span class="pet-card-sub">猫头鹰、虎斑猫与蟾蜍在暖光书桌前陪伴今日计划</span></figcaption></figure>
-          <figure class="pet-card"><span class="pet-card-badge">原版图 · 1:1</span><a href="/assets/images/pets/pet-owl-v2-1024.png" aria-label="猫头鹰原版（Owl）：清晰 · 敏锐 —— 陪你拆解目标、理清优先级"><img src="/assets/images/pets/pet-owl-v2-1024.webp" width="1024" height="1024" alt="猫头鹰原版（Owl）：清晰 · 敏锐 —— 陪你拆解目标、理清优先级" loading="lazy"></a><figcaption><span class="pet-card-title">猫头鹰原版（Owl）</span><span class="pet-card-sub">清晰 · 敏锐 —— 陪你拆解目标、理清优先级</span></figcaption></figure>
-          <figure class="pet-card"><span class="pet-card-badge">原版图 · 1:1</span><a href="/assets/images/pets/pet-cat-v2-1024.png" aria-label="虎斑猫原版（Cat）：好奇 · 温暖 —— 陪你记下灵感、轻松开启待办"><img src="/assets/images/pets/pet-cat-v2-1024.webp" width="1024" height="1024" alt="虎斑猫原版（Cat）：好奇 · 温暖 —— 陪你记下灵感、轻松开启待办" loading="lazy"></a><figcaption><span class="pet-card-title">虎斑猫原版（Cat）</span><span class="pet-card-sub">好奇 · 温暖 —— 陪你记下灵感、轻松开启待办</span></figcaption></figure>
-          <figure class="pet-card"><span class="pet-card-badge">原版图 · 1:1</span><a href="/assets/images/pets/pet-toad-v2-1024.png" aria-label="蟾蜍原版（Toad）：耐心 · 沉稳 —— 陪你安定节奏、一步步做完"><img src="/assets/images/pets/pet-toad-v2-1024.webp" width="1024" height="1024" alt="蟾蜍原版（Toad）：耐心 · 沉稳 —— 陪你安定节奏、一步步做完" loading="lazy"></a><figcaption><span class="pet-card-title">蟾蜍原版（Toad）</span><span class="pet-card-sub">耐心 · 沉稳 —— 陪你安定节奏、一步步做完</span></figcaption></figure>
-          <figure class="pet-card"><span class="pet-card-badge">圣诞版 · 1:1</span><a href="/assets/images/pets/pet-owl-christmas-clean-1024.png" aria-label="猫头鹰圣诞版：佩戴圣诞帽与红绿围巾的猫头鹰节日造型"><img src="/assets/images/pets/pet-owl-christmas-clean-1024.webp" width="1024" height="1024" alt="猫头鹰圣诞版：佩戴圣诞帽与红绿围巾的猫头鹰节日造型" loading="lazy"></a><figcaption><span class="pet-card-title">猫头鹰圣诞版</span><span class="pet-card-sub">佩戴圣诞帽与红绿围巾的猫头鹰节日造型</span></figcaption></figure>
-          <figure class="pet-card"><span class="pet-card-badge">圣诞版 · 1:1</span><a href="/assets/images/pets/pet-cat-christmas-clean-1024.png" aria-label="虎斑猫圣诞版：佩戴圣诞帽与红绿围巾的虎斑猫节日造型"><img src="/assets/images/pets/pet-cat-christmas-clean-1024.webp" width="1024" height="1024" alt="虎斑猫圣诞版：佩戴圣诞帽与红绿围巾的虎斑猫节日造型" loading="lazy"></a><figcaption><span class="pet-card-title">虎斑猫圣诞版</span><span class="pet-card-sub">佩戴圣诞帽与红绿围巾的虎斑猫节日造型</span></figcaption></figure>
-          <figure class="pet-card"><span class="pet-card-badge">圣诞版 · 1:1</span><a href="/assets/images/pets/pet-toad-christmas-clean-1024.png" aria-label="蟾蜍圣诞版：佩戴圣诞帽与红绿围巾的蟾蜍节日造型"><img src="/assets/images/pets/pet-toad-christmas-clean-1024.webp" width="1024" height="1024" alt="蟾蜍圣诞版：佩戴圣诞帽与红绿围巾的蟾蜍节日造型" loading="lazy"></a><figcaption><span class="pet-card-title">蟾蜍圣诞版</span><span class="pet-card-sub">佩戴圣诞帽与红绿围巾的蟾蜍节日造型</span></figcaption></figure>
-          <figure class="pet-card pet-card--scene"><span class="pet-card-badge">生活版 · 3:4</span><a href="/assets/images/pets/promo-owl-desk.png" aria-label="猫头鹰 · 夕阳书桌：在黄昏书桌前挥动翅膀微笑，陪你拆解今日目标"><img src="/assets/images/pets/promo-owl-desk.webp" width="864" height="1152" alt="猫头鹰 · 夕阳书桌：在黄昏书桌前挥动翅膀微笑，陪你拆解今日目标" loading="lazy"></a><figcaption><span class="pet-card-title">猫头鹰 · 夕阳书桌</span><span class="pet-card-sub">在黄昏书桌前挥动翅膀微笑，陪你拆解今日目标</span></figcaption></figure>
-          <figure class="pet-card pet-card--scene"><span class="pet-card-badge">生活版 · 3:4</span><a href="/assets/images/pets/promo-cat-window.png" aria-label="虎斑猫 · 阳光窗台：在洒满阳光的窗台眨眼抬爪，陪你安排每日待办"><img src="/assets/images/pets/promo-cat-window.webp" width="864" height="1152" alt="虎斑猫 · 阳光窗台：在洒满阳光的窗台眨眼抬爪，陪你安排每日待办" loading="lazy"></a><figcaption><span class="pet-card-title">虎斑猫 · 阳光窗台</span><span class="pet-card-sub">在洒满阳光的窗台眨眼抬爪，陪你安排每日待办</span></figcaption></figure>
-          <figure class="pet-card pet-card--scene"><span class="pet-card-badge">生活版 · 3:4</span><a href="/assets/images/pets/promo-toad-garden.png" aria-label="蟾蜍 · 花房热茶：在温暖花房里捧着热茶大笑，陪你睡前从容复盘"><img src="/assets/images/pets/promo-toad-garden.webp" width="864" height="1152" alt="蟾蜍 · 花房热茶：在温暖花房里捧着热茶大笑，陪你睡前从容复盘" loading="lazy"></a><figcaption><span class="pet-card-title">蟾蜍 · 花房热茶</span><span class="pet-card-sub">在温暖花房里捧着热茶大笑，陪你睡前从容复盘</span></figcaption></figure>
-        </div>
-        <p class="pet-carousel-hint">提示：支持触控板、手机屏幕直接左右滑动或点击上方按钮切换，依次浏览合照首图、原版图、圣诞版图与生活版场景图。</p>
+        <div class="section-head"><p class="eyebrow">宠物伙伴</p><h2>有伙伴陪着，计划更轻松。</h2><p>选一只猫头鹰、猫咪或蟾蜍陪你——还能换上圣诞装扮。</p></div>
+        <ul class="pets">
+          <li class="pet"><img src="/assets/images/pets/pet-owl-512.webp" data-holiday="/assets/images/pets/pet-owl-christmas-512.webp" data-alt-holiday="穿着圣诞装扮的猫头鹰伙伴" width="512" height="512" alt="猫头鹰伙伴" loading="lazy"><h3>猫头鹰</h3></li>
+          <li class="pet"><img src="/assets/images/pets/pet-cat-512.webp" data-holiday="/assets/images/pets/pet-cat-christmas-512.webp" data-alt-holiday="穿着圣诞装扮的猫咪伙伴" width="512" height="512" alt="猫咪伙伴" loading="lazy"><h3>猫咪</h3></li>
+          <li class="pet"><img src="/assets/images/pets/pet-toad-512.webp" data-holiday="/assets/images/pets/pet-toad-christmas-512.webp" data-alt-holiday="穿着圣诞装扮的蟾蜍伙伴" width="512" height="512" alt="蟾蜍伙伴" loading="lazy"><h3>蟾蜍</h3></li>
+        </ul>
+        <div class="pet-toggle-wrap"><button type="button" class="button pet-toggle" data-pet-toggle aria-pressed="false" hidden>🎄 看看圣诞装扮</button></div>
       </div>
     </section>
 
-    <section class="section rule" id="features">
+    <section class="section" id="privacy">
       <div class="shell">
-        <div class="pet-carousel-header">
-          <div class="section-heading">
-            <p class="eyebrow">01 · 核心界面</p>
-            <h2>去掉繁杂入口，只留推进目标最需要的核心界面。</h2>
-            <p>0.4.5 将全部体验集中在助手首页、计划储存页与每日复盘三处，左右滑动窗口即可逐一查看。</p>
-          </div>
-          <div class="pet-carousel-controls" aria-label="核心界面轮播控制">
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-features" data-carousel-dir="-1" aria-label="向左滑动查看上一张核心界面">← 向左滑动</button>
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-features" data-carousel-dir="1" aria-label="向右滑动查看下一张核心界面">向右滑动 →</button>
-          </div>
-        </div>
-        <div class="pet-carousel" id="carousel-features" role="region" aria-label="01 核心界面水平滑动窗口" tabindex="0">
-          <article class="pet-card flow-card"><span class="pet-card-badge">01 · 拆解目标</span><figure class="product-shot"><a href="/assets/images/features/assistant-home.webp" aria-label="0.4.5 助手首页展示今日事项卡片、可以复盘了与帮我找下一步入口"><img src="/assets/images/features/assistant-home.webp" width="828" height="1795" alt="0.4.5 助手首页展示今日事项卡片、可以复盘了与帮我找下一步入口" loading="lazy"></a><figcaption>助手首页与今日卡片</figcaption></figure><div class="flow-card-copy"><h3>助手首页与今日卡片</h3><h4>说出想法，先看预览再确认</h4><p>助手首页直接展示「今日」待办事项，并提供「可以复盘了」与「帮我找下一步」快捷入口；生成方案经你确认后才会写入计划。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">02 · 安排待办</span><figure class="product-shot"><a href="/assets/images/features/plan-storage.webp" aria-label="0.4.5 计划储存页展示轻松上手、待开始、目标与步骤及已完成分区"><img src="/assets/images/features/plan-storage.webp" width="828" height="1792" alt="0.4.5 计划储存页展示轻松上手、待开始、目标与步骤及已完成分区" loading="lazy"></a><figcaption>计划储存页</figcaption></figure><div class="flow-card-copy"><h3>计划储存页与目标卡片</h3><h4>轻松上手、待开始、目标与步骤一目了然</h4><p>计划页将「轻松上手」微习惯建议、「待开始」步骤、「目标与步骤」折叠卡片与「已完成」清晰分区，左滑步骤即可调出日历排期。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">03 · 反馈总结</span><figure class="product-shot"><a href="/assets/images/features/daily-review-sheet.webp" aria-label="Owl 0.4.5 猫头鹰助手首页展示今日事项与可以复盘了入口"><img src="/assets/images/features/daily-review-sheet.webp" width="828" height="1792" alt="Owl 0.4.5 猫头鹰助手首页展示今日事项与可以复盘了入口" loading="lazy"></a><figcaption>今日事项与「可以复盘了」入口</figcaption></figure><div class="flow-card-copy"><h3>今日事项与「可以复盘了」</h3><h4>睡前核对今日完成项，未完成事项清楚留存</h4><p>在猫头鹰助手首页点击「可以复盘了」或到达设定复盘时间后打开复盘界面，核对今日完成项并继续推进下一步。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">04 · 复盘提醒设置</span><figure class="product-shot"><a href="/assets/images/october-2026/09-daily-review-settings.webp" aria-label="设置中的每日复盘开关与提醒时间选择"><img src="/assets/images/october-2026/09-daily-review-settings.webp" width="828" height="1800" alt="设置中的每日复盘开关与提醒时间选择" loading="lazy"></a><figcaption>每日复盘提醒设置</figcaption></figure><div class="flow-card-copy"><h3>自定义每日复盘时间</h3><h4>随时开关提醒，按你的作息复盘</h4><p>在「设置 · 每日复盘」中可随时开启或关闭复盘提醒，并自由设定每晚提醒的具体时间（默认 21:00）。</p></div></article>
-        </div>
-        <p class="pet-carousel-hint">提示：左右滑动窗口依次查看助手首页、计划储存页、复盘入口与每日复盘提醒设置。</p>
-      </div>
-    </section>
-
-    <section class="section rule" id="assistant">
-      <div class="shell">
-        <div class="pet-carousel-header">
-          <div class="section-heading">
-            <p class="eyebrow">02 · 目标拆解与排期细节</p>
-            <h2>先拆成可执行的小步骤，再放进日历的具体时间。</h2>
-            <p>无论是从对话发起新目标，还是在计划页点开已有目标请求 AI 拆解，每一步都由你预览确认并亲手安排时间。左右滑动窗口查看完整五步细节。</p>
-          </div>
-          <div class="pet-carousel-controls" aria-label="目标拆解与排期轮播控制">
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-assistant" data-carousel-dir="-1" aria-label="向左滑动查看上一张目标拆解细节">← 向左滑动</button>
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-assistant" data-carousel-dir="1" aria-label="向右滑动查看下一张目标拆解细节">向右滑动 →</button>
-          </div>
-        </div>
-        <div class="pet-carousel" id="carousel-assistant" role="region" aria-label="02 目标拆解与排期细节水平滑动窗口" tabindex="0">
-          <article class="pet-card flow-card"><span class="pet-card-badge">细节 01 · 拆解确认</span><figure class="product-shot"><a href="/assets/images/features/goal-breakdown-confirm.webp" aria-label="目标卡片弹窗询问是否使用 AI 拆解该目标"><img src="/assets/images/features/goal-breakdown-confirm.webp" width="828" height="1792" alt="目标卡片弹窗询问是否使用 AI 拆解该目标" loading="lazy"></a><figcaption>目标拆解确认弹窗</figcaption></figure><div class="flow-card-copy"><h3>点击目标卡片请求 AI 拆解</h3><h4>先弹窗询问确认，不擅自改写</h4><p>在计划页点击任意目标卡片时，先弹出「是否用 AI 拆解该目标」确认框，由你决定是否交给助手拆解。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">细节 02 · 方案预览</span><figure class="product-shot"><a href="/assets/images/features/goal-plan-preview.webp" aria-label="助手对话中生成的每日 20 分钟阅读计划步骤预览"><img src="/assets/images/features/goal-plan-preview.webp" width="828" height="1797" alt="助手对话中生成的每日 20 分钟阅读计划步骤预览" loading="lazy"></a><figcaption>助手生成的目标拆解方案预览</figcaption></figure><div class="flow-card-copy"><h3>对话内生成步骤草稿</h3><h4>先阅读、修改名称或时长，满意再保存</h4><p>助手在对话卡片内列出拆解好的小步骤，支持逐条阅读与编辑，只有点击确认保存后才会写入计划页。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">细节 03 · 目标管理</span><figure class="product-shot"><a href="/assets/images/features/goals-and-steps.webp" aria-label="计划页中的目标与步骤卡片列表及排序"><img src="/assets/images/features/goals-and-steps.webp" width="828" height="1797" alt="计划页中的目标与步骤卡片列表及排序" loading="lazy"></a><figcaption>目标与步骤列表</figcaption></figure><div class="flow-card-copy"><h3>目标与步骤折叠列表</h3><h4>独立展开、折叠与拖拽排序</h4><p>多个目标卡片在计划页中清晰显示完成进度，支持独立展开或收起子步骤，也可按优先级调整顺序。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">细节 04 · 左滑操作</span><figure class="product-shot"><a href="/assets/images/features/task-swipe-calendar.webp" aria-label="在计划页向左滑动任务露出日历与重点标记按钮"><img src="/assets/images/features/task-swipe-calendar.webp" width="828" height="1792" alt="在计划页向左滑动任务露出日历与重点标记按钮" loading="lazy"></a><figcaption>步骤左滑排期与重点操作</figcaption></figure><div class="flow-card-copy"><h3>左滑步骤露出日历与重点按钮</h3><h4>高频操作直接顺手，不藏深层菜单</h4><p>在计划页向左滑动任意步骤，即可露出日历排期与重点叹号标记按钮，一键进入时间安排。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">细节 05 · 日历设定</span><figure class="product-shot"><a href="/assets/images/october-2026/07-task-calendar-picker.webp" aria-label="在日历弹窗中为步骤选择日期与开始时间"><img src="/assets/images/october-2026/07-task-calendar-picker.webp" width="828" height="1792" alt="在日历弹窗中为步骤选择日期与开始时间" loading="lazy"></a><figcaption>步骤日历与开始时间设置</figcaption></figure><div class="flow-card-copy"><h3>选择日期与具体开始时间</h3><h4>把小步骤放进今天的具体时段</h4><p>在日历弹窗中点选日期并开启开始时间，点击确认后生效，未点确认前不会改动原有计划。</p></div></article>
-        </div>
-        <p class="pet-carousel-hint">提示：左右滑动窗口查看从目标拆解确认、方案预览、目标列表到左滑日历排期的完整细节。</p>
-      </div>
-    </section>
-
-    <section class="section rule" id="tutorial">
-      <div class="shell">
-        <div class="pet-carousel-header">
-          <div class="section-heading">
-            <p class="eyebrow">03 · 新手教程</p>
-            <h2>跟着做一次，10 步跑通你的第一个真实目标。</h2>
-            <p>0.4.5 内置交互式新手教程，引导条固定在页面上方，不遮挡对话正文与任务列表。左右滑动窗口按顺序浏览新手教程完整步骤。</p>
-          </div>
-          <div class="pet-carousel-controls" aria-label="新手教程轮播控制">
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-tutorial" data-carousel-dir="-1" aria-label="向左滑动查看上一步新手教程">← 向左滑动</button>
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-tutorial" data-carousel-dir="1" aria-label="向右滑动查看下一步新手教程">向右滑动 →</button>
-          </div>
-        </div>
-        <div class="pet-carousel" id="carousel-tutorial" role="region" aria-label="03 新手教程水平滑动窗口" tabindex="0">
-          <article class="pet-card flow-card"><span class="pet-card-badge">欢迎引导 · 交互式教程</span><figure class="product-shot"><a href="/assets/images/october-2026/10-tutorial-welcome.webp" aria-label="新手教程欢迎卡：说出目标、确认计划，再安排第一步的时间"><img src="/assets/images/october-2026/10-tutorial-welcome.webp" width="828" height="1800" alt="新手教程欢迎卡：说出目标、确认计划，再安排第一步的时间" loading="lazy"></a><figcaption>欢迎引导 · 开启 10 步教程</figcaption></figure><div class="flow-card-copy"><h3>说出目标、确认计划、安排时间</h3><h4>在真实界面里亲手走完一次闭环</h4><p>首次进入应用时展示简短欢迎引导，支持随时暂停浏览自由界面，并可一键回到当前教学步骤。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">第 1 步 · 输入目标</span><figure class="product-shot"><a href="/assets/images/features/tutorial-step-input.webp" aria-label="新手教程第 1 步顶部引导条：点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。"><img src="/assets/images/features/tutorial-step-input.webp" width="828" height="1797" alt="新手教程第 1 步顶部引导条：点击输入框，写下你想完成的事。例如：这周开始阅读一本书，每天 20 分钟。" loading="lazy"></a><figcaption>第 1 步 · 输入你的第一个目标</figcaption></figure><div class="flow-card-copy"><h3>写下你想完成的事</h3><h4>「例如：这周开始阅读一本书，每天 20 分钟。」</h4><p>顶部引导条提示点击输入框，直接输入或使用内置示例目标开始第一次拆解。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">第 2 步 · 发送目标</span><figure class="product-shot"><a href="/assets/images/october-2026/12-tutorial-send-goal.webp" aria-label="新手教程第 2 步：点击箭头发送，让助手拆成小步骤"><img src="/assets/images/october-2026/12-tutorial-send-goal.webp" width="828" height="1797" alt="新手教程第 2 步：点击箭头发送，让助手拆成小步骤" loading="lazy"></a><figcaption>第 2 步 · 发送目标拆解</figcaption></figure><div class="flow-card-copy"><h3>点击箭头发送给助手</h3><h4>把一句话目标交给助手拆解</h4><p>输入目标后点击发送按钮，助手即刻为你生成结构化的可执行小步骤草稿。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">第 3 步 · 检查方案</span><figure class="product-shot"><a href="/assets/images/october-2026/13-tutorial-review-draft.webp" aria-label="新手教程第 3 步：阅读并按需编辑助手生成的方案"><img src="/assets/images/october-2026/13-tutorial-review-draft.webp" width="828" height="1797" alt="新手教程第 3 步：阅读并按需编辑助手生成的方案" loading="lazy"></a><figcaption>第 3 步 · 阅读并检查方案</figcaption></figure><div class="flow-card-copy"><h3>阅读并按需修改步骤草稿</h3><h4>先过目每一条步骤，再决定保存</h4><p>引导你查看生成的步骤清单与预计时长，可在卡片内按需编辑调整。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">第 4 步 · 确认保存</span><figure class="product-shot"><a href="/assets/images/october-2026/14-tutorial-save-plan.webp" aria-label="新手教程第 4 步：点击方案中的确认保存按钮"><img src="/assets/images/october-2026/14-tutorial-save-plan.webp" width="828" height="1800" alt="新手教程第 4 步：点击方案中的确认保存按钮" loading="lazy"></a><figcaption>第 4 步 · 确认保存方案</figcaption></figure><div class="flow-card-copy"><h3>点击确认存入计划页</h3><h4>经你确认后正式落入计划储存页</h4><p>确认步骤无误后点击保存按钮，目标与拆解步骤即同步收纳到计划页。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">第 8 步 · 日历排期</span><figure class="product-shot"><a href="/assets/images/features/tutorial-schedule-picker.webp" aria-label="新手教程第 8 步：在日历弹窗中选择日期并设置 9:00 - 9:20 开始时间"><img src="/assets/images/features/tutorial-schedule-picker.webp" width="828" height="1797" alt="新手教程第 8 步：在日历弹窗中选择日期并设置 9:00 - 9:20 开始时间" loading="lazy"></a><figcaption>第 8 步 · 选择日期与开始时间</figcaption></figure><div class="flow-card-copy"><h3>选定日期与 9:00 - 9:20 开始时间</h3><h4>切到计划页左滑步骤安排具体时段</h4><p>在计划页左滑刚保存的任务打开日历弹窗，选好日期与开始时间并点击确认。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">第 9 步 · 认识完成标记</span><figure class="product-shot"><a href="/assets/images/features/tutorial-step-complete.webp" aria-label="新手教程第 9 步：高亮任务完成圆圈并提示真正做完后再点"><img src="/assets/images/features/tutorial-step-complete.webp" width="828" height="1797" alt="新手教程第 9 步：高亮任务完成圆圈并提示真正做完后再点" loading="lazy"></a><figcaption>第 9 步 · 完成圆圈引导说明</figcaption></figure><div class="flow-card-copy"><h3>真正做完后再点圆圈标记完成</h3><h4>「现在还没做，就先留着」</h4><p>认识任务左侧的完成圆圈，不强迫你在教程里提前打卡，等真正做完再回来勾选。</p></div></article>
-        </div>
-        <p class="pet-carousel-hint">提示：左右滑动窗口按顺序查看从欢迎卡、输入目标、保存方案到左滑日历排期的新手教程全流程。</p>
-      </div>
-    </section>
-
-    <section class="section rule" id="privacy-summary">
-      <div class="shell">
-        <div class="pet-carousel-header">
-          <div class="section-heading">
-            <p class="eyebrow">04 · 认识你（个人画像）与参考资料</p>
-            <h2>三问建立「这是我目前了解到的你」，引用权限完全由你掌控。</h2>
-            <p>Owl 0.4.5（Build 68）内置三问迎新访谈与「个人画像」，按三栏原话整理你的回答，不做性格评判，并支持在「参考资料」中随时开关是否允许 AI 引用。</p>
-          </div>
-          <div class="pet-carousel-controls" aria-label="个人画像与参考资料轮播控制">
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-privacy" data-carousel-dir="-1" aria-label="向左滑动查看上一张个人画像与参考资料截图">← 向左滑动</button>
-            <button type="button" class="pet-carousel-btn" data-carousel-target="carousel-privacy" data-carousel-dir="1" aria-label="向右滑动查看下一张个人画像与参考资料截图">向右滑动 →</button>
-          </div>
-        </div>
-        <div class="pet-carousel" id="carousel-privacy" role="region" aria-label="04 认识你与参考资料水平滑动窗口" tabindex="0">
-          <article class="pet-card flow-card"><span class="pet-card-badge">01 · 三问迎新访谈</span><figure class="product-shot"><a href="/assets/images/features/reference-consent.webp" aria-label="认识你 1/3：最近的你，是什么样的？支持语音回答、打字或跳过"><img src="/assets/images/features/reference-consent.webp" width="828" height="1797" alt="认识你 1/3：最近的你，是什么样的？支持语音回答、打字或跳过" loading="lazy"></a><figcaption>认识你 · 三问语音/文字回答</figcaption></figure><div class="flow-card-copy"><h3>认识你 1/3：最近的你，是什么样的？</h3><h4>支持本地语音转写、打字或随时跳过</h4><p>围绕近期状态、想完成的目标与希望的陪伴方式三道问题，用你自己的原话建立初始背景，不保存录音文件。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">02 · 个人画像确认</span><figure class="product-shot"><a href="/assets/images/features/reference-groups.webp" aria-label="这是我目前了解到的你：按三类整理原话，支持直接修改与开启 AI 资料引用"><img src="/assets/images/features/reference-groups.webp" width="828" height="1792" alt="这是我目前了解到的你：按三类整理原话，支持直接修改与开启 AI 资料引用" loading="lazy"></a><figcaption>这是我目前了解到的你 · 画像确认</figcaption></figure><div class="flow-card-copy"><h3>这是我目前了解到的你</h3><h4>按三栏整理原话，可随时修改或彻底忘记</h4><p>按「当前状态与生活节奏」「近期目标与行动阻力」「帮助方式与沟通边界」三栏呈现，不做性格标签评判。</p></div></article>
-          <article class="pet-card flow-card"><span class="pet-card-badge">03 · 参考资料开关</span><figure class="product-shot"><a href="/assets/images/features/reference-details.webp" aria-label="参考资料列表：管理目标、资料库文件及画像与偏好的引用开关"><img src="/assets/images/features/reference-details.webp" width="828" height="1792" alt="参考资料列表：管理目标、资料库文件及画像与偏好的引用开关" loading="lazy"></a><figcaption>参考资料 · 逐条开关管理</figcaption></figure><div class="flow-card-copy"><h3>逐条管理 AI 引用范围</h3><h4>显式授权引用，默认关闭画像上传</h4><p>在「参考资料」中可分别开关「目标」「资料库文件」与「画像与偏好」，仅发送你显式勾选的文本摘要。</p></div></article>
-        </div>
-        <p class="pet-carousel-hint">提示：左右滑动窗口查看三问迎新访谈、「这是我目前了解到的你」画像确认与参考资料权限管理。</p>
-        <div class="context-disclosure">
-          <p><strong>个人画像与「参考资料」隐私边界：</strong></p>
-          <ul class="check-list">
-            <li><strong>三问自述，原话保存：</strong>围绕「最近的你是什么样的」「你最想改变或完成什么」「你希望我怎样陪你推进」三道问题，支持本地语音转写或打字输入，任何一题均可跳过，不保存录音文件。</li>
-            <li><strong>「这是我目前了解到的你」可改可忘：</strong>回答按三栏原样呈现，不自动推断性格标签；可在「设置 · 个人画像」中随时修改、补充或彻底忘记画像。</li>
-            <li><strong>显式授权引用：</strong>个人画像默认关闭 AI 引用；仅在你主动开启「允许在 AI 资料引用中选择画像」并同意资料引用时，才会随「目标」「资料库文件」一起作为参考文本发送，绝不包含照片原图字节或账号密钥。</li>
+        <div class="privacy-card">
+          <div class="intro"><p class="eyebrow">隐私与数据权限</p><h2>你的数据，始终属于你。</h2><p>Owl 只申请功能真正需要的权限，每一步都由你掌控。</p><a class="button" href="/zh/privacy/">阅读隐私政策 <span class="arrow" aria-hidden="true">→</span></a></div>
+          <ul class="promises">
+            <li><span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h12"/><path d="m13 6 6 6-6 6"/></svg></span><div><strong>每个问题都可以跳过</strong><span>访谈问题与权限请求都是可选的，跳过也能照常使用 Owl。</span></div></li>
+            <li><span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></svg></span><div><strong>授权随时可以收回</strong><span>只在你使用相应功能时才请求权限，并可随时在 iOS 设置中撤销。</span></div></li>
+            <li><span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg></span><div><strong>数据保存在你的设备上</strong><span>计划与复盘记录保存在本地；AI 请求只包含当前对话和你允许参考的内容。</span></div></li>
           </ul>
-          <div class="hero-actions"><a class="button" href="/zh/privacy/">阅读隐私政策</a><a class="button" href="/zh/terms/">阅读使用条款</a><a class="button" href="/zh/support/">查看支持与帮助</a></div>
         </div>
       </div>
     </section>
 
-    <section class="section rule" id="screenshots">
+    <section class="section" id="download">
       <div class="shell">
-        <div class="section-heading"><p class="eyebrow">0.4.5 界面总览</p><h2>展开查看全部 17 张 0.4.5 核心流程截图。</h2><p>包含猫头鹰助手首页、目标拆解确认、计划储存页、左滑日历排期、每日复盘入口与提醒设置、10 步新手教程及「认识你」个人画像界面。</p></div>
-        <details class="example-details screenshot-details"><summary>展开全部 17 张 0.4.5 界面截图</summary><div class="screenshot-grid"><figure class="screenshot-card"><a href="/assets/images/october-2026/01-assistant-home.webp" aria-label="0.4.5 助手首页：今日事项卡片、可以复盘了与帮我找下一步入口"><img src="/assets/images/october-2026/01-assistant-home.webp" width="828" height="1795" alt="0.4.5 助手首页：今日事项卡片、可以复盘了与帮我找下一步入口" loading="lazy"></a><figcaption>01 · 助手首页与今日卡片</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/02-goal-breakdown-confirm.webp" aria-label="目标拆解确认弹窗：询问是否使用 AI 拆解当前目标"><img src="/assets/images/october-2026/02-goal-breakdown-confirm.webp" width="828" height="1792" alt="目标拆解确认弹窗：询问是否使用 AI 拆解当前目标" loading="lazy"></a><figcaption>02 · 目标拆解确认</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/03-goal-plan-preview.webp" aria-label="助手生成每天 20 分钟阅读目标的步骤拆解预览"><img src="/assets/images/october-2026/03-goal-plan-preview.webp" width="828" height="1797" alt="助手生成每天 20 分钟阅读目标的步骤拆解预览" loading="lazy"></a><figcaption>03 · 目标拆解方案预览</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/04-plan-storage.webp" aria-label="计划储存页：轻松上手、待开始、目标与步骤、已完成"><img src="/assets/images/october-2026/04-plan-storage.webp" width="828" height="1792" alt="计划储存页：轻松上手、待开始、目标与步骤、已完成" loading="lazy"></a><figcaption>04 · 计划储存页</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/05-goals-and-steps.webp" aria-label="目标与步骤卡片列表及排序"><img src="/assets/images/october-2026/05-goals-and-steps.webp" width="828" height="1797" alt="目标与步骤卡片列表及排序" loading="lazy"></a><figcaption>05 · 目标与步骤列表</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/06-task-swipe-actions.webp" aria-label="左滑具体步骤露出日历排期与重点标记按钮"><img src="/assets/images/october-2026/06-task-swipe-actions.webp" width="828" height="1792" alt="左滑具体步骤露出日历排期与重点标记按钮" loading="lazy"></a><figcaption>06 · 步骤左滑快捷操作</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/07-task-calendar-picker.webp" aria-label="在日历弹窗中为步骤选择日期与开始时间"><img src="/assets/images/october-2026/07-task-calendar-picker.webp" width="828" height="1792" alt="在日历弹窗中为步骤选择日期与开始时间" loading="lazy"></a><figcaption>07 · 步骤日历与时间设置</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/08-daily-review-sheet.webp" aria-label="Owl 0.4.5 猫头鹰助手今日事项与可以复盘了入口"><img src="/assets/images/october-2026/08-daily-review-sheet.webp" width="828" height="1792" alt="Owl 0.4.5 猫头鹰助手今日事项与可以复盘了入口" loading="lazy"></a><figcaption>08 · 今日事项与复盘入口</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/09-daily-review-settings.webp" aria-label="设置中的每日复盘开关与提醒时间选择"><img src="/assets/images/october-2026/09-daily-review-settings.webp" width="828" height="1800" alt="设置中的每日复盘开关与提醒时间选择" loading="lazy"></a><figcaption>09 · 每日复盘提醒设置</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/10-tutorial-welcome.webp" aria-label="新手教程欢迎卡：说出目标、确认计划，再安排第一步的时间"><img src="/assets/images/october-2026/10-tutorial-welcome.webp" width="828" height="1800" alt="新手教程欢迎卡：说出目标、确认计划，再安排第一步的时间" loading="lazy"></a><figcaption>10 · 新手教程欢迎引导</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/11-tutorial-input-goal.webp" aria-label="新手教程第 1 步：点击输入框写下目标（例如：这周开始阅读一本书，每天 20 分钟）"><img src="/assets/images/october-2026/11-tutorial-input-goal.webp" width="828" height="1797" alt="新手教程第 1 步：点击输入框写下目标（例如：这周开始阅读一本书，每天 20 分钟）" loading="lazy"></a><figcaption>11 · 教程第 1 步：输入目标</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/12-tutorial-send-goal.webp" aria-label="新手教程第 2 步：点击箭头发送，让助手拆成小步骤"><img src="/assets/images/october-2026/12-tutorial-send-goal.webp" width="828" height="1797" alt="新手教程第 2 步：点击箭头发送，让助手拆成小步骤" loading="lazy"></a><figcaption>12 · 教程第 2 步：发送目标</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/13-tutorial-review-draft.webp" aria-label="新手教程第 3 步：阅读并按需编辑助手生成的方案"><img src="/assets/images/october-2026/13-tutorial-review-draft.webp" width="828" height="1797" alt="新手教程第 3 步：阅读并按需编辑助手生成的方案" loading="lazy"></a><figcaption>13 · 教程第 3 步：检查方案</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/14-tutorial-save-plan.webp" aria-label="新手教程第 4 步：点击方案中的确认保存按钮"><img src="/assets/images/october-2026/14-tutorial-save-plan.webp" width="828" height="1800" alt="新手教程第 4 步：点击方案中的确认保存按钮" loading="lazy"></a><figcaption>14 · 教程第 4 步：确认保存</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/15-tutorial-schedule-step.webp" aria-label="新手教程第 8 步：在日历中选日期并设置 9:00 - 9:20 开始时间"><img src="/assets/images/october-2026/15-tutorial-schedule-step.webp" width="828" height="1797" alt="新手教程第 8 步：在日历中选日期并设置 9:00 - 9:20 开始时间" loading="lazy"></a><figcaption>15 · 教程第 8 步：设置开始时间</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/16-tutorial-complete-step.webp" aria-label="新手教程第 9 步：真正做完后点圆圈标记完成"><img src="/assets/images/october-2026/16-tutorial-complete-step.webp" width="828" height="1797" alt="新手教程第 9 步：真正做完后点圆圈标记完成" loading="lazy"></a><figcaption>16 · 教程第 9 步：标记完成说明</figcaption></figure><figure class="screenshot-card"><a href="/assets/images/october-2026/17-reference-materials.webp" aria-label="认识你 1/3：三问建立个人画像并自主控制 AI 资料引用"><img src="/assets/images/october-2026/17-reference-materials.webp" width="828" height="1792" alt="认识你 1/3：三问建立个人画像并自主控制 AI 资料引用" loading="lazy"></a><figcaption>17 · 认识你（个人画像）</figcaption></figure></div></details>
+        <div class="cta">
+          <img class="cta-icon" src="/assets/images/app-icon.png" width="256" height="256" alt="">
+          <h2>在 TestFlight 上体验 Owl</h2>
+          <p>Owl 0.4.5 正在通过 Apple TestFlight 测试。在 iPhone 上打开链接即可安装。</p>
+          <div class="actions"><a class="button primary" href="https://testflight.apple.com/join/9BAkFSvp">加入 TestFlight 测试 <span class="arrow" aria-hidden="true">→</span></a></div>
+          <p class="fineprint">需要安装 Apple 的 TestFlight 应用。有疑问？请访问<a href="/zh/support/">支持页面</a>。</p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-wrap">
-      <div><p>© 2026 Owl。由盛洁熠（Sherry Sheng）开发。</p><p>Owl 0.4.5 iPhone 版本产品网站。</p></div>
-      <nav class="footer-links" aria-label="页脚导航"><a href="#companions">宠物伙伴</a><a href="#features">核心闭环</a><a href="#assistant">目标与待办</a><a href="#tutorial">新手教程</a><a href="/zh/privacy/">隐私政策</a><a href="/zh/terms/">使用条款</a><a href="/zh/support/">支持</a><a href="/archive/">开发者主页</a><a href="/" lang="en" hreflang="en">English</a></nav>
+      <p class="footer-brand"><img src="/assets/images/app-icon.png" width="256" height="256" alt=""><span>© 2026 Owl</span></p>
+      <nav class="footer-links" aria-label="页脚导航"><a href="/zh/support/">支持</a><a href="/zh/privacy/">隐私政策</a><a href="/zh/terms/">使用条款</a><a href="/" lang="en" hreflang="en">English</a></nav>
     </div>
   </footer>
-  <script src="/assets/js/pet-carousel.js?v=20261028-p4" defer></script>
+  <script src="/assets/js/site.js?v=20261030" defer></script>
 </body>
 </html>
