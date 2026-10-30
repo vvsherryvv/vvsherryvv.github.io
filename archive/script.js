@@ -235,6 +235,24 @@ function updateLabels() {
   themeToggle.setAttribute("aria-label", root.classList.contains("dark") ? dictionary.themeLight : dictionary.themeDark);
   menuToggle.setAttribute("aria-label", mobileLinks.classList.contains("open") ? dictionary.menuClose : dictionary.menuOpen);
 }
+// " · "-separated labels become nowrap items so a line never breaks inside one item.
+function setItems(node, text) {
+  const parts = [];
+  text.split(" \u00b7 ").forEach((item, index) => {
+    if (index) {
+      const sep = document.createElement("span");
+      sep.className = "eyebrow-sep";
+      sep.setAttribute("aria-hidden", "true");
+      sep.textContent = " \u00b7 ";
+      parts.push(sep);
+    }
+    const span = document.createElement("span");
+    span.className = "eyebrow-item";
+    span.textContent = item;
+    parts.push(span);
+  });
+  node.replaceChildren(...parts);
+}
 function setLanguage(lang) {
   lang = Object.hasOwn(translations, lang) ? lang : "zh";
   const dictionary = translations[lang];
@@ -242,7 +260,10 @@ function setLanguage(lang) {
   root.lang = HTML_LANG[lang];
   document.querySelector('meta[name="description"]').content = dictionary.metaDescription;
   translatableNodes.forEach((node) => {
-    if (dictionary[node.dataset.i18n]) node.textContent = dictionary[node.dataset.i18n];
+    const text = dictionary[node.dataset.i18n];
+    if (!text) return;
+    if (node.hasAttribute("data-i18n-items")) setItems(node, text);
+    else node.textContent = text;
   });
   languageButtons.forEach((button) => {
     const active = button.dataset.lang === lang;
