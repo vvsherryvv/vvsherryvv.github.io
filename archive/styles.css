@@ -297,14 +297,16 @@ html[lang="en"] .hero h1 { font-size: clamp(44px, 6.2vw, 84px); letter-spacing: 
 }
 html[lang="en"] .hero-en { font-style: normal; font-size: clamp(24px, 2.6vw, 34px); letter-spacing: .04em; }
 .hero-roles { display: grid; gap: 6px; margin-top: 22px; }
+/* Dot + text share one row; the text wraps inside its own box and the dot stays with line 1. */
 .hero-role {
-  display: flex; flex-wrap: wrap; align-items: center; column-gap: 10px; row-gap: 2px;
-  font-size: 17px; font-weight: 650; color: var(--ink);
+  display: flex; flex-wrap: nowrap; align-items: flex-start; column-gap: 10px;
+  font-size: 17px; line-height: 1.5; font-weight: 650; color: var(--ink);
 }
-.hero-role .sep { color: var(--ink-3); font-weight: 400; }
+.role-text { flex: 1 1 auto; min-width: 0; }
+.hero-role .sep { padding: 0 .45em; color: var(--ink-3); font-weight: 400; }
 .hero-role .institution { color: var(--ink-2); font-weight: 500; }
 .hero-role.invest { color: var(--amber-ink); }
-.role-mark { width: 8px; height: 8px; border-radius: 50%; background: var(--iris); flex: none; }
+.role-mark { width: 8px; height: 8px; margin-top: calc((1.5em - 8px) / 2); border-radius: 50%; background: var(--iris); flex: none; }
 .hero-role.invest .role-mark { background: var(--amber); }
 .lede { margin: 18px 0 22px; max-width: 560px; font-size: 19px; line-height: 1.65; color: var(--ink-2); }
 .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
@@ -611,6 +613,8 @@ details[open] .summary-text { display: none; }
   html[lang="en"] .hero-en { font-size: 24px; }
   .hero-roles { margin-top: 16px; }
   .hero-role { font-size: 15px; }
+  .hero-role .sep { display: none; }
+  .hero-role .institution { display: block; }
   .lede { margin: 14px 0 18px; font-size: 15.5px; }
   .chip-row { margin-bottom: 22px; }
   .cta-row .btn { flex: 1 1 auto; }
