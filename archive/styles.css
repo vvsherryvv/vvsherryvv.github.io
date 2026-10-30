@@ -150,6 +150,7 @@ main:focus { outline: none; }
 .chip.amber { background: var(--amber-soft); color: var(--amber-ink); }
 .chip.line { background: transparent; border: 1px solid var(--line); color: var(--ink-2); }
 .btn {
+  cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 46px; padding: 0 22px; border-radius: var(--r-pill);
   font-weight: 650; font-size: 15px;

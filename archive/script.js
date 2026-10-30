@@ -28,6 +28,8 @@ const translations = {
     papersTitle: "论文投稿",
     gradDate: "2025.09 — 至今",
     contactEmail: "邮件联系",
+    contactWeChat: "微信同名电话",
+    copyDone: "已复制",
     productType: "独立开发 · AI 应用",
     productText: "聚焦「拆解目标 → 安排待办 → 反馈总结」三步闭环，用 AI 辅助把目标拆成可执行的小步骤并落入日常日历与每日复盘。",
     productLink: "了解产品 →",
@@ -125,6 +127,8 @@ const translations = {
     papersTitle: "Paper Submissions",
     gradDate: "Sep 2025 — Present",
     contactEmail: "Email me",
+    contactWeChat: "WeChat (same as phone)",
+    copyDone: "Copied",
     productType: "Independent development · AI application",
     productText: "Focused on a three-step loop—breaking down goals, scheduling to-dos, and completing daily reviews—with AI-assisted step planning on iPhone.",
     productLink: "Explore the product →",
@@ -369,3 +373,44 @@ setLanguage(preferences.get("lang") || "zh");
 const theme = preferences.get("theme");
 setTheme(theme === "dark" || theme === "light" ? theme : systemTheme.matches ? "dark" : "light");
 updateNavState();
+
+// WeChat phone button: copy the phone number (same as the WeChat ID) on click.
+const copyWeChatButton = document.querySelector("#copyWeChatPhone");
+if (copyWeChatButton) {
+  copyWeChatButton.addEventListener("click", async () => {
+    const phone = copyWeChatButton.dataset.phone || "";
+    const label = copyWeChatButton.querySelector("[data-i18n='contactWeChat']");
+    let copied = false;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(phone);
+        copied = true;
+      }
+    } catch (error) {
+      copied = false;
+    }
+    if (!copied) {
+      const fallback = document.createElement("textarea");
+      fallback.value = phone;
+      fallback.setAttribute("readonly", "");
+      fallback.style.position = "fixed";
+      fallback.style.opacity = "0";
+      document.body.appendChild(fallback);
+      fallback.select();
+      try {
+        copied = document.execCommand("copy");
+      } catch (error) {
+        copied = false;
+      }
+      document.body.removeChild(fallback);
+    }
+    if (label && copied) {
+      const original = label.textContent;
+      const dictionary = translations[currentLang] || translations.zh;
+      label.textContent = dictionary.copyDone || "已复制";
+      window.setTimeout(() => {
+        label.textContent = original;
+      }, 2000);
+    }
+  });
+}
