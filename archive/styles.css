@@ -8,7 +8,7 @@
   /* ink */
   --ink: #1D1A2B;
   --ink-2: #4A4560;
-  --ink-3: #8A8499;
+  --ink-3: #6E6880;        /* AA: 4.92 on paper, 5.31 on surface, 4.58 on paper-2 */
   /* brand */
   --iris: #6B5CA5;
   --iris-strong: #54468A;
@@ -462,6 +462,8 @@ html[lang="en"] .hero-en { font-style: normal; font-size: clamp(24px, 2.6vw, 34p
   border-radius: 18px; background: var(--amber); color: #fff;
   box-shadow: 0 10px 22px rgba(185,133,63,.3);
 }
+/* Dark theme: dark ink icon on the light amber tile (10.0:1). */
+.dark .medal { color: var(--paper); }
 .medal svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .honor .eyebrow { color: var(--amber-ink); letter-spacing: .08em; line-height: 1.6; }
 .honor-body { max-width: 760px; }

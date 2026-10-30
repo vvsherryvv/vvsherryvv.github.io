@@ -1,5 +1,6 @@
 const translations = {
   zh: {
+    metaDescription: "盛洁熠的个人主页：App 设计与开发、Owl、三维重建研究与学生工作。",
     brandSub: "Jieyi",
     heroEyebrow: "AI Research · Indie App Developer · AI Investment",
     heroAltName: "Jieyi Sheng",
@@ -102,6 +103,7 @@ const translations = {
     skillsTitle: "专业技能"
   },
   en: {
+    metaDescription: "M.S. student in Artificial Intelligence and AI Sector Investment Assistant at Ruijiang Investment, independently building Owl, with a focus on 3D reconstruction and rendering.",
     brandSub: "盛洁熠",
     heroEyebrow: "AI Research · Indie App Developer · AI Investment",
     heroAltName: "盛洁熠",
@@ -197,7 +199,7 @@ const translations = {
     awardsHint: "Competitions, scholarships, and honors",
     awardAcademicTitle: "Academic and Service Honors",
     awardAcademicText: "Academic Excellence Scholarship, Optics Valley Morning Star Scholarship, Self-Improvement Scholarship, HUST Outstanding Student Cadre, and Self-Improvement Model of the School of Optics and Electronic Information.",
-    awardCompetitionTitle: "Competitions",
+    awardCompetitionTitle: "Competition Awards",
     awardCompetitionText: "National Third Prize in the 2025 China Youth Science and Technology Innovation Challenge.",
     awardPracticeTitle: "Practice and Campus Activities",
     awardPracticeText: "University-level excellent social-practice team, excellent social-practice individual, top-eight university debate result, and third place in the Optoelectronic Faculty-Student Badminton Team Competition.",
@@ -226,15 +228,19 @@ function updateURL(key, value) {
   url.searchParams.set(key, value);
   history.replaceState(null, "", url);
 }
+const HTML_LANG = { zh: "zh-CN", en: "en" };
+let currentLang = "zh";
 function updateLabels() {
-  const dictionary = translations[root.lang] || translations.zh;
+  const dictionary = translations[currentLang] || translations.zh;
   themeToggle.setAttribute("aria-label", root.classList.contains("dark") ? dictionary.themeLight : dictionary.themeDark);
   menuToggle.setAttribute("aria-label", mobileLinks.classList.contains("open") ? dictionary.menuClose : dictionary.menuOpen);
 }
 function setLanguage(lang) {
   lang = Object.hasOwn(translations, lang) ? lang : "zh";
   const dictionary = translations[lang];
-  root.lang = lang;
+  currentLang = lang;
+  root.lang = HTML_LANG[lang];
+  document.querySelector('meta[name="description"]').content = dictionary.metaDescription;
   translatableNodes.forEach((node) => {
     if (dictionary[node.dataset.i18n]) node.textContent = dictionary[node.dataset.i18n];
   });
@@ -263,7 +269,7 @@ function closeMenu() {
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     setLanguage(button.dataset.lang);
-    updateURL("lang", root.lang);
+    updateURL("lang", currentLang);
   });
 });
 themeToggle.addEventListener("click", () => {
@@ -324,10 +330,14 @@ reducedMotion.addEventListener("change", () => {
 
 // Scroll spy: highlight the nav link for the section currently in view.
 const navLinks = document.querySelectorAll(".desktop-links a, .mobile-links a[href^='#']");
-const spyTargets = [...new Set([...navLinks].map((link) => link.getAttribute("href")))]
+// Sections without their own nav link keep the preceding section's link lit.
+const SPY_ALIAS = { papers: "experience" };
+const spyTargets = [...new Set([...navLinks].map((link) => link.getAttribute("href")).concat(Object.keys(SPY_ALIAS).map((id) => `#${id}`)))]
   .map((hash) => document.querySelector(hash))
-  .filter(Boolean);
+  .filter(Boolean)
+  .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
 function setActive(id) {
+  id = SPY_ALIAS[id] || id;
   navLinks.forEach((link) => {
     const active = link.getAttribute("href") === `#${id}`;
     link.classList.toggle("active", active);
