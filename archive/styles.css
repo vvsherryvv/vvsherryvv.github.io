@@ -449,32 +449,37 @@ html[lang="en"] .hero-en { font-style: normal; font-size: clamp(24px, 2.6vw, 34p
 .paper .acr { font-family: var(--f-display); font-size: 32px; line-height: 1.1; color: var(--iris); }
 .paper h3 { font-size: 15px; line-height: 1.5; font-weight: 600; }
 
-/* 04 competition + 05 experience */
-.two-col { display: grid; grid-template-columns: 1fr 1.25fr; gap: 24px; align-items: start; }
-.two-col > .section { min-width: 0; }
+/* 03 experience (full-width timeline) + 05 competition (full-width honor card) */
 .honor {
-  position: relative; overflow: hidden; padding: 30px;
+  position: relative; overflow: hidden; padding: 36px;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 28px; align-items: start;
   background: linear-gradient(160deg, var(--surface) 0%, var(--amber-soft) 140%);
 }
 .dark .honor { background: linear-gradient(160deg, var(--surface) 0%, rgba(225,180,112,.20) 140%); }
 .medal {
   display: grid; place-items: center;
-  width: 56px; height: 56px; margin-bottom: 18px;
+  width: 56px; height: 56px; margin: 0;
   border-radius: 18px; background: var(--amber); color: #fff;
   box-shadow: 0 10px 22px rgba(185,133,63,.3);
 }
 .medal svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .honor .eyebrow { color: var(--amber-ink); letter-spacing: .08em; line-height: 1.6; }
-.honor h3 { margin-top: 8px; font-size: 30px; line-height: 1.2; letter-spacing: -.01em; }
-.honor p { margin-top: 10px; color: var(--ink-2); font-size: 14.5px; line-height: 1.7; }
+.honor-body { max-width: 760px; }
+.honor h3 { margin-top: 8px; font-size: 32px; line-height: 1.2; letter-spacing: -.01em; }
+.honor p { margin-top: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.7; }
 
-.timeline-card { padding: 28px 30px 8px; }
+.timeline-card { padding: 32px 36px 12px; }
 .timeline { position: relative; margin: 0; padding: 0 0 0 28px; list-style: none; }
 .timeline::before {
   content: ""; position: absolute; left: 7px; top: 8px; bottom: 26px; width: 2px; border-radius: 2px;
   background: linear-gradient(var(--owl), var(--lilac-2));
 }
-.ti { position: relative; padding: 0 0 22px; }
+.ti {
+  position: relative; padding: 0 0 24px;
+  display: grid; grid-template-columns: 172px minmax(0, 1fr); column-gap: 28px; align-items: start;
+}
+.ti > .date { grid-row: 1 / span 3; padding-top: 3px; }
+.ti > :not(.date) { grid-column: 2; }
 .ti::before {
   content: ""; position: absolute; left: -27px; top: 5px;
   width: 14px; height: 14px; border-radius: 50%;
@@ -574,7 +579,7 @@ details[open] .summary-text { display: none; }
 
   .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .feature { grid-column: span 2; grid-row: auto; min-height: 340px; }
-  .two-col { grid-template-columns: 1fr; gap: 0; }
+  .ti { grid-template-columns: 148px minmax(0, 1fr); column-gap: 20px; }
   .awards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -639,8 +644,11 @@ details[open] .summary-text { display: none; }
   .paper .acr { grid-area: acr; font-size: 22px; }
   .paper h3 { grid-area: title; font-size: 14px; }
   .paper .chip { grid-area: chip; }
+  .honor { display: block; }
+  .medal { margin-bottom: 16px; }
   .honor h3 { font-size: 26px; }
   .timeline-card { padding: 22px 20px 4px; }
+  .ti { display: block; padding-bottom: 22px; }
   .awards { grid-template-columns: 1fr; gap: 12px; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 0; padding-bottom: 28px; }
 }
