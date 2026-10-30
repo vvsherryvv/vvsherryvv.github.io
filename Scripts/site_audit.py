@@ -307,7 +307,8 @@ def audit(mode: str) -> int:
         if expected not in sitemap:
             errors.append(f"sitemap missing {expected}")
 
-    screen_files = [ROOT / "assets/screens" / f"{name}.png" for name in SCREEN_SLOTS]
+    # zh home uses <slot>.png; EN home uses <slot>-en.png (English-UI set, with a JS fallback to <slot>.png).
+    screen_files = [ROOT / "assets/screens" / f"{name}{suffix}.png" for name in SCREEN_SLOTS for suffix in ("", "-en")]
     for path in screen_files:
         if not path.is_file():
             errors.append(f"missing screenshot slot file: {path.relative_to(ROOT)}")
@@ -328,9 +329,10 @@ def audit(mode: str) -> int:
         text = home.read_text(encoding="utf-8")
         if any(tag == "video" for tag, _ in parser.attrs):
             errors.append(f"{home.relative_to(ROOT)}: promo video should not be embedded")
+        suffix = "-en" if home == ROOT / "index.html" else ""
         for name in SCREEN_SLOTS:
-            if f"/assets/screens/{name}.png" not in text:
-                errors.append(f"{home.relative_to(ROOT)}: screenshot slot {name}.png not used")
+            if f"/assets/screens/{name}{suffix}.png" not in text:
+                errors.append(f"{home.relative_to(ROOT)}: screenshot slot {name}{suffix}.png not used")
         if TESTFLIGHT_URL not in text:
             errors.append(f"{home.relative_to(ROOT)}: TestFlight CTA missing")
         lowered_home = text.lower().replace("com.sherry.wizardingos", "")
