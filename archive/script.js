@@ -1,6 +1,6 @@
 const translations = {
   zh: {
-    metaDescription: "盛洁熠的个人主页：App 设计与开发、Owl、三维人体重建、4DGS、3DGS 研究与学生工作。",
+    metaDescription: "人工智能方向硕士研究生、瑞江投资 AI 领域企业投资助理，独立开发 Owl，关注三维人体重建、4DGS、3DGS。",
     brandSub: "Jieyi",
     heroEyebrow: "AI Research · Indie App Developer · AI Investment",
     heroAltName: "Jieyi Sheng",
