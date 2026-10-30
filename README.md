@@ -40,7 +40,7 @@ Requirements:
 - Feature cards show the **top ~75 %** of the screenshot (the phone is cropped at the card's bottom edge), so keep the key UI in the upper part of the screen.
 - Export without EXIF/GPS metadata (the verifier rejects it) and keep each file under 1.5 MB; consider re-encoding to keep the page light.
 - Status bar: clean (full battery, 9:41) and no personal data in the screenshot.
-- The current files are neutral placeholders labelled "Screenshot placeholder · <name>".
+- Current state (2026-10-30): `hero`, `feature-breakdown`, `feature-schedule`, `feature-review` are real 0.4.5 screenshots (zh UI, sample data, downscaled to 750 × 1626, 256-colour PNG, metadata stripped). `feature-profile.png` is still a neutral placeholder labelled "Screenshot placeholder · feature-profile". Keep the `width="1179" height="2556"` attributes — they only set the aspect ratio.
 
 Pet art: `assets/images/pets/pet-{owl,cat,toad}-512.webp` and `pet-*-christmas-512.webp` (512 px web versions of the finalized v2 / christmas-clean art).
 Share image: `assets/social/og-owl.jpg` (1200 × 630).
