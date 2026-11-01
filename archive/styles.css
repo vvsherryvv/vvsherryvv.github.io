@@ -347,11 +347,10 @@ html[lang="en"] .hero-role .institution { display: block; }
 }
 .carousel-slide.is-active { z-index: 1; opacity: 1; transform: scale(1); pointer-events: auto; }
 .carousel-slide:nth-child(1) .avatar { object-position: 48% 52%; }
-.carousel-slide:nth-child(2) .avatar { object-position: 66% 50%; }
-.carousel-slide:nth-child(3) .avatar { object-position: 52% 50%; }
-.carousel-slide:nth-child(4) .avatar { object-position: 57% 50%; }
-.carousel-slide:nth-child(5) .avatar { object-position: 58% 46%; }
-.carousel-slide:nth-child(6) .avatar { object-position: 62% 68%; }
+.carousel-slide:nth-child(2) .avatar { object-position: 52% 50%; }
+.carousel-slide:nth-child(3) .avatar { object-position: 57% 50%; }
+.carousel-slide:nth-child(4) .avatar { object-position: 58% 46%; }
+.carousel-slide:nth-child(5) .avatar { object-position: 62% 68%; }
 .carousel-arrow {
   position: absolute; z-index: 2; top: 50%; display: grid; place-items: center;
   width: 40px; height: 40px; padding: 0; border: 1px solid rgba(255,255,255,.5);
