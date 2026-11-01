@@ -337,6 +337,58 @@ html[lang="en"] .hero-role .institution { display: block; }
   background: var(--lilac);
 }
 .avatar { width: 100%; height: 100%; object-fit: cover; object-position: 58% center; }
+.portrait-carousel { position: relative; width: 100%; height: 100%; isolation: isolate; }
+.avatar-frame { touch-action: pan-y; }
+.carousel-slide {
+  position: absolute; inset: 0; z-index: 0;
+  opacity: 0; transform: scale(1.02);
+  transition: opacity .45s ease, transform .65s cubic-bezier(.2,.7,.2,1);
+  pointer-events: none;
+}
+.carousel-slide.is-active { z-index: 1; opacity: 1; transform: scale(1); pointer-events: auto; }
+.carousel-slide:nth-child(1) .avatar { object-position: 48% 52%; }
+.carousel-slide:nth-child(2) .avatar { object-position: 66% 50%; }
+.carousel-slide:nth-child(3) .avatar { object-position: 52% 50%; }
+.carousel-slide:nth-child(4) .avatar { object-position: 57% 50%; }
+.carousel-slide:nth-child(5) .avatar { object-position: 58% 46%; }
+.carousel-slide:nth-child(6) .avatar { object-position: 62% 68%; }
+.carousel-arrow {
+  position: absolute; z-index: 2; top: 50%; display: grid; place-items: center;
+  width: 40px; height: 40px; padding: 0; border: 1px solid rgba(255,255,255,.5);
+  border-radius: 50%; background: rgba(24,22,30,.42); color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.14); backdrop-filter: blur(8px);
+  cursor: pointer; transform: translateY(-50%); transition: background-color .2s ease, scale .2s ease;
+}
+.carousel-arrow:hover { background: rgba(24,22,30,.72); scale: 1.06; }
+.carousel-arrow:focus-visible, .carousel-dot:focus-visible, .portrait-carousel:focus-visible {
+  outline: 3px solid var(--iris-strong); outline-offset: 3px;
+}
+.carousel-arrow span { margin-top: -3px; font: 400 34px/1 var(--f-sans); }
+.carousel-previous { left: 12px; }
+.carousel-next { right: 12px; }
+.carousel-dots {
+  position: absolute; z-index: 2; left: 50%; bottom: 10px;
+  display: flex; align-items: center; gap: 2px; padding: 3px 6px;
+  border: 1px solid rgba(255,255,255,.28); border-radius: 999px;
+  background: rgba(24,22,30,.38); backdrop-filter: blur(8px);
+  transform: translateX(-50%);
+}
+.carousel-dot {
+  display: grid; place-items: center; flex: none; width: 22px; height: 24px;
+  padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer;
+}
+.carousel-dot::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,.65); transition: width .2s ease, border-radius .2s ease, background-color .2s ease;
+}
+.carousel-dot.is-active::before { width: 15px; border-radius: 999px; background: #fff; }
+.carousel-dot:hover::before { background: #fff; }
+.carousel-autoplay {
+  display: grid; place-items: center; flex: none; width: 25px; height: 24px;
+  margin-left: 3px; padding: 0 0 0 5px; border: 0; border-left: 1px solid rgba(255,255,255,.42);
+  background: transparent; color: #fff; font: 600 11px/1 var(--f-sans); cursor: pointer;
+}
+.carousel-autoplay:hover { color: #fff; }
 .arch-ring {
   position: absolute; z-index: 0; inset: -22px;
   width: calc(100% + 44px); height: calc(100% + 44px);
@@ -585,14 +637,17 @@ details[open] .summary-text { display: none; }
 
   .hero { padding: 96px 0 40px; }
   .hero-inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "avatar" "copy"; gap: 0; }
-  .portrait { display: contents; }
+  .portrait { display: block; grid-area: avatar; width: min(64vw, 240px); height: min(76vw, 280px); margin-bottom: 26px; }
   .arch-ring { display: none; }
   .avatar-frame {
-    grid-area: avatar;
-    width: 96px; height: 96px; margin-bottom: 22px;
+    width: 100%; height: 100%;
     border-width: 4px; border-radius: var(--r-lg);
     box-shadow: var(--sh-1);
   }
+  .carousel-arrow { width: 34px; height: 34px; }
+  .carousel-previous { left: 8px; }
+  .carousel-next { right: 8px; }
+  .carousel-dots { bottom: 7px; }
   .eyebrow { font-size: 10.5px; }
   .hero h1 { margin-top: 12px; font-size: 54px; }
   html[lang="en"] .hero h1 { font-size: 44px; }
@@ -644,6 +699,7 @@ details[open] .summary-text { display: none; }
 
 /* ---------- no-JS fallback ---------- */
 html:not(.js) .language-switch, html:not(.js) .icon-button, html:not(.js) .menu-button { display: none; }
+html:not(.js) .carousel-arrow, html:not(.js) .carousel-dots { display: none; }
 @media (max-width: 1099px) {
   html:not(.js) .site-nav { position: absolute; }
   html:not(.js) .mobile-links { display: flex; flex-wrap: wrap; }

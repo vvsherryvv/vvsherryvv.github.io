@@ -37,6 +37,16 @@ const translations = {
     menuClose: "关闭导航菜单",
     themeLight: "切换为浅色主题",
     themeDark: "切换为深色主题",
+    photoCarousel: "个人照片轮播",
+    photoCarouselRole: "轮播",
+    photoSlideRole: "幻灯片",
+    photoNavigation: "选择照片",
+    previousPhoto: "上一张照片",
+    nextPhoto: "下一张照片",
+    showPhoto: "显示照片",
+    photoPosition: "第 {current} 张，共 {total} 张",
+    pauseSlideshow: "暂停自动播放",
+    playSlideshow: "恢复自动播放",
 
     brand: "盛洁熠",
     navAbout: "主页",
@@ -130,6 +140,16 @@ const translations = {
     menuClose: "Close navigation menu",
     themeLight: "Switch to light theme",
     themeDark: "Switch to dark theme",
+    photoCarousel: "Photo carousel",
+    photoCarouselRole: "carousel",
+    photoSlideRole: "slide",
+    photoNavigation: "Choose a photo",
+    previousPhoto: "Previous photo",
+    nextPhoto: "Next photo",
+    showPhoto: "Show photo",
+    photoPosition: "Photo {current} of {total}",
+    pauseSlideshow: "Pause automatic slideshow",
+    playSlideshow: "Resume automatic slideshow",
 
     brand: "Jieyi Sheng",
     navAbout: "About",
@@ -190,7 +210,6 @@ const translations = {
 const root = document.documentElement;
 root.classList.add("js");
 const OWL_URL = "https://www.wizardingos.club/zh/";
-const AVATAR_ALT = { zh: "\u76db\u6d01\u71a0\u5934\u50cf", en: "Portrait of Jieyi Sheng" };
 const languageButtons = document.querySelectorAll("[data-lang]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
 const themeToggle = document.querySelector("#themeToggle");
@@ -210,6 +229,59 @@ function updateURL(key, value) {
 }
 const HTML_LANG = { zh: "zh-CN", en: "en" };
 let currentLang = "zh";
+const photoCarousel = document.querySelector("[data-photo-carousel]");
+const photoSlides = photoCarousel ? [...photoCarousel.querySelectorAll(".carousel-slide")] : [];
+const photoDots = photoCarousel ? [...photoCarousel.querySelectorAll("[data-carousel-dot]")] : [];
+const photoPrevious = photoCarousel?.querySelector("[data-carousel-previous]");
+const photoNext = photoCarousel?.querySelector("[data-carousel-next]");
+const photoAutoplayToggle = photoCarousel?.querySelector("[data-carousel-autoplay]");
+const photoViewport = photoCarousel?.querySelector("[data-carousel-viewport]");
+let currentPhoto = 0;
+let photoAutoplayTimer = null;
+let userPausedAutoplay = false;
+let touchStart = null;
+function updatePhotoCarouselLabels() {
+  if (!photoCarousel) return;
+  const dictionary = translations[currentLang] || translations.zh;
+  photoCarousel.setAttribute("aria-label", dictionary.photoCarousel);
+  photoCarousel.setAttribute("aria-roledescription", dictionary.photoCarouselRole);
+  photoCarousel.querySelector("[data-carousel-dots]").setAttribute("aria-label", dictionary.photoNavigation);
+  photoPrevious.setAttribute("aria-label", dictionary.previousPhoto);
+  photoNext.setAttribute("aria-label", dictionary.nextPhoto);
+  photoAutoplayToggle.hidden = reducedMotion.matches;
+  photoAutoplayToggle.setAttribute("aria-label", userPausedAutoplay ? dictionary.playSlideshow : dictionary.pauseSlideshow);
+  photoAutoplayToggle.setAttribute("aria-pressed", String(userPausedAutoplay));
+  photoAutoplayToggle.querySelector("[data-carousel-autoplay-icon]").textContent = userPausedAutoplay ? "▶" : "Ⅱ";
+  photoSlides.forEach((slide, index) => {
+    slide.setAttribute("aria-roledescription", dictionary.photoSlideRole);
+    slide.setAttribute("aria-label", dictionary.photoPosition.replace("{current}", String(index + 1)).replace("{total}", String(photoSlides.length)));
+    const image = slide.querySelector("img");
+    image.alt = image.dataset[currentLang === "zh" ? "altZh" : "altEn"] || image.alt;
+    photoDots[index].setAttribute("aria-label", `${dictionary.showPhoto} ${index + 1}`);
+  });
+}
+function showPhoto(index) {
+  if (!photoSlides.length) return;
+  currentPhoto = (index + photoSlides.length) % photoSlides.length;
+  photoSlides.forEach((slide, slideIndex) => {
+    const active = slideIndex === currentPhoto;
+    slide.classList.toggle("is-active", active);
+    slide.setAttribute("aria-hidden", String(!active));
+    photoDots[slideIndex].classList.toggle("is-active", active);
+    if (active) photoDots[slideIndex].setAttribute("aria-current", "true");
+    else photoDots[slideIndex].removeAttribute("aria-current");
+  });
+}
+function stopPhotoAutoplay() {
+  if (photoAutoplayTimer !== null) {
+    window.clearInterval(photoAutoplayTimer);
+    photoAutoplayTimer = null;
+  }
+}
+function startPhotoAutoplay() {
+  if (!photoCarousel || reducedMotion.matches || userPausedAutoplay || document.hidden || photoAutoplayTimer !== null) return;
+  photoAutoplayTimer = window.setInterval(() => showPhoto(currentPhoto + 1), 5500);
+}
 function updateLabels() {
   const dictionary = translations[currentLang] || translations.zh;
   themeToggle.setAttribute("aria-label", root.classList.contains("dark") ? dictionary.themeLight : dictionary.themeDark);
@@ -253,7 +325,7 @@ function setLanguage(lang) {
   document.querySelectorAll("#productLink, .product-home, .mobile-owl").forEach((link) => {
     link.href = OWL_URL;
   });
-  document.querySelector(".avatar").alt = AVATAR_ALT[lang];
+  updatePhotoCarouselLabels();
   updateLabels();
 }
 function setTheme(theme) {
@@ -357,10 +429,60 @@ if ("IntersectionObserver" in window && spyTargets.length) {
   setActive(spyTargets[0].id);
 }
 
+if (photoCarousel) {
+  const resumePhotoAutoplay = () => {
+    if (!photoCarousel.matches(":hover") && !photoCarousel.contains(document.activeElement)) startPhotoAutoplay();
+  };
+  photoPrevious.addEventListener("click", () => showPhoto(currentPhoto - 1));
+  photoNext.addEventListener("click", () => showPhoto(currentPhoto + 1));
+  photoAutoplayToggle.addEventListener("click", () => {
+    userPausedAutoplay = !userPausedAutoplay;
+    updatePhotoCarouselLabels();
+    if (userPausedAutoplay) stopPhotoAutoplay();
+    else resumePhotoAutoplay();
+  });
+  photoDots.forEach((dot) => dot.addEventListener("click", () => showPhoto(Number(dot.dataset.carouselDot))));
+  photoCarousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showPhoto(currentPhoto - 1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showPhoto(currentPhoto + 1);
+    }
+  });
+  photoCarousel.addEventListener("mouseenter", stopPhotoAutoplay);
+  photoCarousel.addEventListener("mouseleave", resumePhotoAutoplay);
+  photoCarousel.addEventListener("focusin", stopPhotoAutoplay);
+  photoCarousel.addEventListener("focusout", (event) => {
+    if (!photoCarousel.contains(event.relatedTarget)) resumePhotoAutoplay();
+  });
+  photoViewport.addEventListener("touchstart", (event) => {
+    if (event.touches.length === 1) touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+  }, { passive: true });
+  photoViewport.addEventListener("touchend", (event) => {
+    if (!touchStart || !event.changedTouches.length) return;
+    const dx = event.changedTouches[0].clientX - touchStart.x;
+    const dy = event.changedTouches[0].clientY - touchStart.y;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) showPhoto(currentPhoto + (dx < 0 ? 1 : -1));
+    touchStart = null;
+  }, { passive: true });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopPhotoAutoplay();
+    else resumePhotoAutoplay();
+  });
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) stopPhotoAutoplay();
+    else resumePhotoAutoplay();
+    updatePhotoCarouselLabels();
+  });
+}
+
 setLanguage(preferences.get("lang") || "zh");
 const theme = preferences.get("theme");
 setTheme(theme === "dark" || theme === "light" ? theme : systemTheme.matches ? "dark" : "light");
 updateNavState();
+startPhotoAutoplay();
 
 // WeChat phone button: copy the phone number (same as the WeChat ID) on click.
 const copyWeChatButton = document.querySelector("#copyWeChatPhone");
