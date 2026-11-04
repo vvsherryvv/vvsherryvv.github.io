@@ -16,14 +16,15 @@ The root combines a personal introduction with a two-app portfolio. Owl keeps it
 
 ## Owl home page structure
 
-1. Sticky slim nav (How it works · Companions · Privacy · language · "Get the beta")
-2. Hero — one-line positioning, TestFlight CTA, hero phone screenshot
+1. Sticky slim nav (How it works · Companions · Pet · Privacy · language · "Get the beta")
+2. Hero — goals and to-dos plus a pet that levels up, TestFlight CTA, hero phone screenshot
 3. How it works — 4 steps, one phone screenshot each:
-   getting-to-know-you interview → goal breakdown with AI preview → schedule as todos → evening daily review
-4. Pet companions — owl, cat, toad (+ Christmas outfits toggle)
-5. Privacy & permissions — skippable, revocable, data stays yours → `/privacy/`
-6. Download — TestFlight CTA (`https://testflight.apple.com/join/9BAkFSvp`)
-7. Footer — Support, Privacy Policy, Terms of Use, language switch
+   getting-to-know-you interview → goal breakdown with AI preview → schedule as to-dos → evening daily review
+4. Pet companions — owl, cat, toad; the Christmas toggle only previews artwork (in the app each outfit costs 300 points)
+5. Pet — points, level, shop, co-raise (pet stays with the inviter after unbind), custom-pet reservation (2,000 points available to submit, charged when the schedule is confirmed, one open reservation), widgets and a Lock Screen Live Activity
+6. Privacy & permissions — local goals; account-backed points and co-raising → `/privacy/`
+7. Download — TestFlight CTA (`https://testflight.apple.com/join/9BAkFSvp`)
+8. Footer — Support, Privacy Policy, Terms of Use, language switch
 
 ## Screenshot slots (replace these files to update the site)
 
