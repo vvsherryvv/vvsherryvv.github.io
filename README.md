@@ -1,12 +1,12 @@
 # Jieyi Sheng website
 
 Static bilingual (EN / 简体中文) GitHub Pages site. No build step, no third-party requests.
-The root is a card landing. Owl keeps its product pages. Wizarding OS has a short landing page.
+The root combines a personal introduction with a two-app portfolio. Owl keeps its product pages. Wizarding OS has a short landing page.
 `assets/js/site.js` only adds the optional Christmas-outfit toggle on the Owl product pages.
 
 ## Routes
 
-- `/` and `/zh/` — card landing: Owl, Wizarding OS, and the personal homepage
+- `/` and `/zh/` — personal introduction and app portfolio: Owl, Wizarding OS, and an About link
 - `/owl/` and `/zh/owl/` — Owl product home (kept structurally parallel)
 - `/wizarding-os/` and `/zh/wizarding-os/` — Wizarding OS landing
 - `/privacy/`, `/zh/privacy/` — Owl Privacy Policy (paths unchanged)
