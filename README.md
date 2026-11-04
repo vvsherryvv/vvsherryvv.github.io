@@ -21,7 +21,7 @@ The root combines a personal introduction with a two-app portfolio. Owl keeps it
 3. How it works — 4 steps, one phone screenshot each:
    getting-to-know-you interview → goal breakdown with AI preview → schedule as to-dos → evening daily review
 4. Pet companions — owl, cat, toad; the Christmas toggle only previews artwork (in the app each outfit costs 300 points)
-5. Pet — points, level, shop, co-raise, custom-pet reservation, widgets
+5. Pet — points, level, shop, co-raise (pet stays with the inviter after unbind), custom-pet reservation (2,000 points available to submit, charged when the schedule is confirmed, one open reservation), widgets and a Lock Screen Live Activity
 6. Privacy & permissions — local goals; account-backed points and co-raising → `/privacy/`
 7. Download — TestFlight CTA (`https://testflight.apple.com/join/9BAkFSvp`)
 8. Footer — Support, Privacy Policy, Terms of Use, language switch
