@@ -63,6 +63,25 @@
 }
 .studio-go span { display: inline-block; }
 .studio-go:hover { color: var(--iris-deep); }
+/* The three primary destination links use solid button styling. */
+.studio .studio-button {
+  justify-content: center;
+  min-height: 48px;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+  line-height: 1.5;
+  box-shadow: 0 2px 4px rgba(41, 37, 31, .08);
+}
+.studio .studio-button:hover { background: #454039; color: #fff; }
+.studio-owl .studio-button { background: #655080; }
+.studio-wos .studio-button { background: #84483f; }
+.studio-owl:hover .studio-button { background: #513d6c; }
+.studio-wos:hover .studio-button { background: #6e392f; }
+.studio-card:focus-visible .studio-button { outline: 3px solid var(--iris); outline-offset: 3px; }
+
 .studio-photo { margin: 0; transform: rotate(2deg); }
 .studio-portrait {
   width: 100%;
