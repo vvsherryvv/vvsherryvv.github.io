@@ -1,18 +1,20 @@
-# Owl website
+# Jieyi Sheng website
 
-Static, bilingual (EN / 简体中文) product website for **Owl** — iPhone app, current version `0.4.5` on TestFlight.
-Hosted on GitHub Pages. No build step, no third-party requests, works without JavaScript
-(`assets/js/site.js` only adds the optional Christmas-outfit toggle for the pet companions).
+Static bilingual (EN / 简体中文) GitHub Pages site. No build step, no third-party requests.
+The root is a card landing. Owl keeps its product pages. Wizarding OS has a short landing page.
+`assets/js/site.js` only adds the optional Christmas-outfit toggle on the Owl product pages.
 
 ## Routes
 
-- `/` and `/zh/` — product home (kept structurally parallel)
-- `/privacy/`, `/zh/privacy/` — Privacy Policy
-- `/terms/`, `/zh/terms/` — Terms of Use
-- `/support/`, `/zh/support/` — Support
-- `/archive/` — separate personal homepage (not part of the product site)
+- `/` and `/zh/` — card landing: Owl, Wizarding OS, and the personal homepage
+- `/owl/` and `/zh/owl/` — Owl product home (kept structurally parallel)
+- `/wizarding-os/` and `/zh/wizarding-os/` — Wizarding OS landing
+- `/privacy/`, `/zh/privacy/` — Owl Privacy Policy (paths unchanged)
+- `/terms/`, `/zh/terms/` — Owl Terms of Use (paths unchanged)
+- `/support/`, `/zh/support/` — Owl Support (paths unchanged)
+- `/archive/` — personal homepage
 
-## Home page structure
+## Owl home page structure
 
 1. Sticky slim nav (How it works · Companions · Privacy · language · "Get the beta")
 2. Hero — one-line positioning, TestFlight CTA, hero phone screenshot
@@ -40,7 +42,7 @@ Requirements:
 - Feature cards show the **top ~75 %** of the screenshot (the phone is cropped at the card's bottom edge), so keep the key UI in the upper part of the screen.
 - Export without EXIF/GPS metadata (the verifier rejects it) and keep each file under 1.5 MB; consider re-encoding to keep the page light.
 - Status bar: clean (full battery, 9:41) and no personal data in the screenshot.
-- **Two sets:** the zh home (`/zh/`) uses `assets/screens/<slot>.png` (Chinese UI); the EN home (`/`) uses `assets/screens/<slot>-en.png` (English UI). `assets/js/site.js` falls back to `<slot>.png` if an `-en` file is missing. `verify_site.sh` requires both sets.
+- **Two sets:** the zh Owl home (`/zh/owl/`) uses `assets/screens/<slot>.png` (Chinese UI); the EN Owl home (`/owl/`) uses `assets/screens/<slot>-en.png` (English UI). `assets/js/site.js` falls back to `<slot>.png` if an `-en` file is missing. `verify_site.sh` requires both sets.
 - Current state (2026-10-30, screenshot set v2, demo data work/study/fitness): all ten files are real 0.4.5 screenshots (750 × 1626, 256-colour PNG, metadata stripped) — zh set `hero`, `feature-profile` (interview Q1), `feature-breakdown`, `feature-schedule`, `feature-review`; English-UI set `hero-en`, `feature-profile-en`, `feature-breakdown-en`, `feature-schedule-en`, `feature-review-en`. Keep the `width="1179" height="2556"` attributes — they only set the aspect ratio.
 
 Pet art: `assets/images/pets/pet-{owl,cat,toad}-512.webp` and `pet-*-christmas-512.webp` (512 px web versions of the finalized v2 / christmas-clean art).

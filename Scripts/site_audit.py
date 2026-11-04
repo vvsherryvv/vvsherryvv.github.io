@@ -16,10 +16,14 @@ SUPPORT_EMAIL = "JieyiSheng17@gmail.com"
 LEGACY_CONTACT_MARKER = " ".join(["[OWNER", "ACTION", "REQUIRED:", "INSERT", "SUPPORT", "EMAIL]"])
 REQUIRED_ROUTES = {
     "/": ROOT / "index.html",
+    "/zh/": ROOT / "zh/index.html",
+    "/owl/": ROOT / "owl/index.html",
+    "/zh/owl/": ROOT / "zh/owl/index.html",
+    "/wizarding-os/": ROOT / "wizarding-os/index.html",
+    "/zh/wizarding-os/": ROOT / "zh/wizarding-os/index.html",
     "/privacy/": ROOT / "privacy/index.html",
     "/support/": ROOT / "support/index.html",
     "/terms/": ROOT / "terms/index.html",
-    "/zh/": ROOT / "zh/index.html",
     "/zh/privacy/": ROOT / "zh/privacy/index.html",
     "/zh/support/": ROOT / "zh/support/index.html",
     "/zh/terms/": ROOT / "zh/terms/index.html",
@@ -307,7 +311,7 @@ def audit(mode: str) -> int:
         if expected not in sitemap:
             errors.append(f"sitemap missing {expected}")
 
-    # zh home uses <slot>.png; EN home uses <slot>-en.png (English-UI set, with a JS fallback to <slot>.png).
+    # Owl zh home uses <slot>.png; Owl EN home uses <slot>-en.png (English-UI set, with a JS fallback to <slot>.png).
     screen_files = [ROOT / "assets/screens" / f"{name}{suffix}.png" for name in SCREEN_SLOTS for suffix in ("", "-en")]
     for path in screen_files:
         if not path.is_file():
@@ -324,12 +328,20 @@ def audit(mode: str) -> int:
     total_bytes = sum(path.stat().st_size for path in ROOT.rglob("*") if path.is_file() and ".git" not in path.parts)
     if total_bytes > 12_000_000:
         errors.append(f"static assets exceed 12 MB ({total_bytes} bytes)")
-    for home in [ROOT / "index.html", ROOT / "zh/index.html"]:
-        parser = parsers[home]
-        text = home.read_text(encoding="utf-8")
+    portal_homes = [ROOT / "index.html", ROOT / "zh/index.html"]
+    owl_homes = [ROOT / "owl/index.html", ROOT / "zh/owl/index.html"]
+    wos_homes = [ROOT / "wizarding-os/index.html", ROOT / "zh/wizarding-os/index.html"]
+    for home in portal_homes + owl_homes + wos_homes:
+        if not home.is_file():
+            continue
+        parser = parsers.get(home) or html_parser(home)
         if any(tag == "video" for tag, _ in parser.attrs):
             errors.append(f"{home.relative_to(ROOT)}: promo video should not be embedded")
-        suffix = "-en" if home == ROOT / "index.html" else ""
+    for home in owl_homes:
+        if not home.is_file():
+            continue
+        text = home.read_text(encoding="utf-8")
+        suffix = "-en" if home == ROOT / "owl/index.html" else ""
         for name in SCREEN_SLOTS:
             if f"/assets/screens/{name}{suffix}.png" not in text:
                 errors.append(f"{home.relative_to(ROOT)}: screenshot slot {name}{suffix}.png not used")
