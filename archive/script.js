@@ -1,16 +1,16 @@
 const translations = {
   zh: {
-    metaDescription: "人工智能方向硕士研究生，独立开发 Owl，关注三维人体重建、4DGS、3DGS。",
+    metaDescription: "人工智能方向硕士研究生，独立开发 Owl 与 Wizarding OS，关注三维人体重建、4DGS、3DGS。",
     brandSub: "Jieyi",
     heroEyebrow: "AI Research · Indie App Developer",
     heroAltName: "Jieyi Sheng",
-    heroLede: "科研方向为三维人体重建、4DGS、3DGS；独立开发 Owl，用 AI 帮人拆解目标、安排待办并完成反馈总结。",
+    heroLede: "科研方向为三维人体重建、4DGS、3DGS；独立开发 {owl} 与 {wos}。{owl} 用 AI 帮人拆解目标、安排待办并完成反馈总结；{wos} 是面向 iPhone 的工作与生活助手，可在 {store} 查看。",
     nowResearch: "Now · 研究",
     nowResearchTitle: "华中科技大学 · 智能科学与技术硕士",
     nowResearchText: "三维人体重建 · 4DGS · 3DGS",
     nowBuilding: "Now · 在做",
-    nowBuildingTitle: "独立开发 Owl",
-    nowBuildingText: "拆解目标 → 安排待办 → 反馈总结",
+    nowBuildingTitle: "独立开发 {owl} 与 {wos}",
+    nowBuildingText: "Owl：拆解目标 → 待办 → 反馈；Wizarding OS：工作与生活",
     flowStep1: "拆解目标",
     flowStep2: "安排待办",
     flowStep3: "反馈总结",
@@ -30,7 +30,9 @@ const translations = {
     copyDone: "已复制",
     productType: "独立开发 · AI 应用",
     productText: "聚焦「拆解目标 → 安排待办 → 反馈总结」三步闭环，用 AI 辅助把目标拆成可执行的小步骤并落入日常日历与每日复盘。",
-    productLink: "了解产品 →",
+    productLink: "了解 Owl →",
+    wosProductText: "面向 iPhone 的工作与生活助手，可在 {store} 查看。",
+    wosProductLink: "了解 Wizarding OS →",
     footerText: "盛洁熠 · 研究与实践",
     backTop: "返回顶部 ↑",
     menuOpen: "打开导航菜单",
@@ -62,7 +64,7 @@ const translations = {
     interest3: "AI 应用与交互体验",
     updatedLabel: "最近更新：",
     aboutTitle: "关于我",
-    aboutP1: "我在华中科技大学人工智能与自动化学院攻读智能科学与技术硕士，本科毕业于华中科技大学未来技术学院人工智能专业，科研方向为三维人体重建、4DGS、3DGS。我独立开发 Owl，用 AI 帮人拆解目标、安排待办并完成反馈总结。",
+    aboutP1: "我在华中科技大学人工智能与自动化学院攻读智能科学与技术硕士，本科毕业于华中科技大学未来技术学院人工智能专业，科研方向为三维人体重建、4DGS、3DGS。我独立开发 {owl} 与 {wos}。{owl} 用 AI 帮人拆解目标、安排待办并完成反馈总结；{wos} 是面向 iPhone 的工作与生活助手，可在 {store} 查看。",
     aboutP2: "我的项目经历覆盖多模态视觉大模型、SLAM 与脑机接口，其中「萤狩—基于超轻量化视觉大模型的红外弱小目标智能感知系统」获 2025 年度中国青年科技创新“揭榜挂帅”擂台赛全国三等奖。",
     educationTitle: "教育背景",
     eduGradTitle: "华中科技大学 · 人工智能与自动化学院",
@@ -103,17 +105,17 @@ const translations = {
     skillsTitle: "专业技能"
   },
   en: {
-    metaDescription: "M.S. student in Artificial Intelligence, independently building Owl, with a focus on 3D human reconstruction, 4DGS, and 3DGS.",
+    metaDescription: "M.S. student in Artificial Intelligence, independently building Owl and Wizarding OS, with a focus on 3D human reconstruction, 4DGS, and 3DGS.",
     brandSub: "盛洁熠",
     heroEyebrow: "AI Research · Indie App Developer",
     heroAltName: "盛洁熠",
-    heroLede: "My research focuses on 3D human reconstruction, 4DGS, and 3DGS. I independently build Owl, an AI app that helps break down goals, schedule to-dos, and review progress.",
+    heroLede: "My research focuses on 3D human reconstruction, 4DGS, and 3DGS. I independently build {owl} and {wos}. {owl} helps break down goals, schedule to-dos, and review progress. {wos} is a work and life assistant for iPhone, on the {store}.",
     nowResearch: "Now · Research",
     nowResearchTitle: "HUST · M.S. in Intelligent Science and Technology",
     nowResearchText: "3D human reconstruction · 4DGS · 3DGS",
     nowBuilding: "Now · Building",
-    nowBuildingTitle: "Building Owl independently",
-    nowBuildingText: "Break down goals → schedule to-dos → review",
+    nowBuildingTitle: "Building {owl} and {wos}",
+    nowBuildingText: "Owl: goals → to-dos → review. Wizarding OS: work and life",
     flowStep1: "Break down goals",
     flowStep2: "Schedule to-dos",
     flowStep3: "Review progress",
@@ -133,7 +135,9 @@ const translations = {
     copyDone: "Copied",
     productType: "Independent development · AI application",
     productText: "Focused on a three-step loop—breaking down goals, scheduling to-dos, and completing daily reviews—with AI-assisted step planning on iPhone.",
-    productLink: "Explore the product →",
+    productLink: "Explore Owl →",
+    wosProductText: "A work and life assistant for iPhone, on the {store}.",
+    wosProductLink: "Explore Wizarding OS →",
     footerText: "Jieyi Sheng · Research & Practice",
     backTop: "Back to top ↑",
     menuOpen: "Open navigation menu",
@@ -165,7 +169,7 @@ const translations = {
     interest3: "AI applications and interaction design",
     updatedLabel: "Last updated: ",
     aboutTitle: "About",
-    aboutP1: "I am an M.S. student in Intelligent Science and Technology at the School of Artificial Intelligence and Automation, Huazhong University of Science and Technology, after a B.Eng. in Artificial Intelligence from the university's Future Technology College. My research focuses on 3D human reconstruction, 4DGS, and 3DGS. I independently build Owl, an AI app that helps break down goals, schedule to-dos, and review progress.",
+    aboutP1: "I am an M.S. student in Intelligent Science and Technology at the School of Artificial Intelligence and Automation, Huazhong University of Science and Technology, after a B.Eng. in Artificial Intelligence from the university's Future Technology College. My research focuses on 3D human reconstruction, 4DGS, and 3DGS. I independently build {owl} and {wos}. {owl} helps break down goals, schedule to-dos, and review progress. {wos} is a work and life assistant for iPhone, on the {store}.",
     aboutP2: "My projects span multimodal vision-language models, SLAM, and brain-computer interfaces. YingShou: Infrared Dim and Small Target Intelligent Perception System Based on an Ultra-Lightweight Vision Foundation Model won a National Third Prize at the 2025 China Youth Science and Technology Innovation Challenge.",
     educationTitle: "Education",
     eduGradTitle: "Huazhong University of Science and Technology · School of Artificial Intelligence and Automation",
@@ -209,7 +213,38 @@ const translations = {
 
 const root = document.documentElement;
 root.classList.add("js");
-const OWL_URL = "https://www.wizardingos.club/zh/";
+const APP_LINKS = {
+  zh: { owl: "/zh/owl/", wos: "/zh/wizarding-os/" },
+  en: { owl: "/owl/", wos: "/wizarding-os/" },
+};
+const STORE_URL = "https://apps.apple.com/app/id6790730397";
+function fillLinks(node, template) {
+  const urls = APP_LINKS[currentLang] || APP_LINKS.zh;
+  const hrefs = { owl: urls.owl, wos: urls.wos, store: STORE_URL };
+  const labels = { owl: "Owl", wos: "Wizarding OS", store: "App Store" };
+  const frag = document.createDocumentFragment();
+  const re = /\{(owl|wos|store)\}/g;
+  let last = 0;
+  for (const match of template.matchAll(re)) {
+    if (match.index > last) frag.appendChild(document.createTextNode(template.slice(last, match.index)));
+    const key = match[1];
+    const link = document.createElement("a");
+    link.className = "name-link";
+    link.href = hrefs[key];
+    link.textContent = labels[key];
+    frag.appendChild(link);
+    last = match.index + match[0].length;
+  }
+  if (last < template.length) frag.appendChild(document.createTextNode(template.slice(last)));
+  node.replaceChildren(frag);
+}
+function applyAppLinks() {
+  const urls = APP_LINKS[currentLang] || APP_LINKS.zh;
+  document.querySelectorAll("[data-app-link]").forEach((link) => {
+    const href = urls[link.dataset.appLink];
+    if (href) link.href = href;
+  });
+}
 const languageButtons = document.querySelectorAll("[data-lang]");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
 const themeToggle = document.querySelector("#themeToggle");
@@ -311,10 +346,13 @@ function setLanguage(lang) {
   currentLang = lang;
   root.lang = HTML_LANG[lang];
   document.querySelector('meta[name="description"]').content = dictionary.metaDescription;
+  document.querySelector('meta[property="og:description"]').content = dictionary.metaDescription;
+  document.querySelector('meta[name="twitter:description"]').content = dictionary.metaDescription;
   translatableNodes.forEach((node) => {
     const text = dictionary[node.dataset.i18n];
     if (!text) return;
     if (node.hasAttribute("data-i18n-items")) setItems(node, text);
+    else if (node.hasAttribute("data-i18n-links")) fillLinks(node, text);
     else node.textContent = text;
   });
   languageButtons.forEach((button) => {
@@ -322,9 +360,7 @@ function setLanguage(lang) {
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-  document.querySelectorAll("#productLink, .product-home, .mobile-owl").forEach((link) => {
-    link.href = OWL_URL;
-  });
+  applyAppLinks();
   updatePhotoCarouselLabels();
   updateLabels();
 }
