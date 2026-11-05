@@ -32,15 +32,17 @@ Every phone frame loads a fixed file. To swap in real screenshots, overwrite the
 
 | File | Used for |
 |---|---|
-| `assets/screens/hero.png` | Hero phone |
-| `assets/screens/feature-profile.png` | 1 · Getting-to-know-you interview / personal profile |
-| `assets/screens/feature-breakdown.png` | 2 · Goal breakdown with AI preview |
-| `assets/screens/feature-schedule.png` | 3 · Steps scheduled as todos |
-| `assets/screens/feature-review.png` | 4 · Evening daily review & feedback |
+| `assets/screens/home.webp` | Hero phone (Owl page and the app hub card) |
+| `assets/screens/breakdown.webp` | Features · Goal breakdown with AI preview |
+| `assets/screens/pets.webp` | Features · Pet companion picker |
+| `assets/screens/redeem.webp` | Points & pets · Redeem page |
+| `assets/screens/coraise.webp` | Points & pets · Co-raise page |
+
+English pages use the same names with `-en` (e.g. `home-en.webp`).
 
 Requirements:
-- iPhone **portrait** PNG, ideally **1179 × 2556** (iPhone 15/16 Pro). Any portrait iPhone size works; the frame uses `object-fit: cover`, so other aspect ratios are cropped slightly. If you use a different size, also update `width`/`height` on the `<img>` tags.
-- Feature cards show the **top ~75 %** of the screenshot (the phone is cropped at the card's bottom edge), so keep the key UI in the upper part of the screen.
+- iPhone **portrait** WebP, currently **900 × 1957** (downscaled from 1206 × 2622, iPhone 17 Pro). Any portrait iPhone size works; the frame uses `object-fit: cover`, so other aspect ratios are cropped slightly. If you use a different size, also update `width`/`height` on the `<img>` tags.
+- Screenshot cards show the **top ~85 %** of the screenshot (the phone is cropped at the card's bottom edge), so keep the key UI in the upper part of the screen.
 - Export without EXIF/GPS metadata (the verifier rejects it) and keep each file under 1.5 MB; consider re-encoding to keep the page light.
 - Status bar: clean (full battery, 9:41) and no personal data in the screenshot.
 - **Two sets:** the zh Owl home (`/zh/owl/`) uses `assets/screens/<slot>.png` (Chinese UI); the EN Owl home (`/owl/`) uses `assets/screens/<slot>-en.png` (English UI). `assets/js/site.js` falls back to `<slot>.png` if an `-en` file is missing. `verify_site.sh` requires both sets.
