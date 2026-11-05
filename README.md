@@ -65,3 +65,7 @@ bash Scripts/verify_site.sh --candidate
 - Assets: `assets/images/flight/witch.svg`, `clouds.svg`; presentation: `assets/css/flight.css`; optional interactions: `assets/js/flight.js`.
 - Checks: both source and candidate audits passed (14 HTML pages, 12 required routes, 10 screenshot slots); JavaScript syntax check passed.
 - Browser verification: English at 1440 × 900 and Chinese at 390 × 844; working product navigation, no unloaded images on the tested home, no horizontal overflow at 390 px, and pause/resume state verified. Route navigation to projects updated progress to 25% and the selected destination. System Reduced Motion is handled in CSS and JavaScript; actual OS preference switching was not exercised.
+
+### Readability follow-up — 2026-11-05
+
+Removed the extra witch self-description and GitHub contact link in both languages. Increased body copy to 16–18 px, enlarged navigation, captions and controls, strengthened heading/control weights, and improved secondary text contrast. The About link is now a 56 px minimum-height filled button, full width on small screens. About switches to one column on tablet widths to avoid cramped text. Both site audits and whitespace checks passed; browser inspection confirmed the removed content, 17 px About text, 600-weight headings, filled button and no horizontal overflow in a narrow layout.
