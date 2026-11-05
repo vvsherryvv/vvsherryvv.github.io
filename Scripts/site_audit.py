@@ -58,7 +58,7 @@ APP_STORE_CLAIMS = [
     "前往 app store 下载",
 ]
 TESTFLIGHT_URL = "https://testflight.apple.com/join/9BAkFSvp"
-SCREEN_SLOTS = ["hero", "feature-profile", "feature-breakdown", "feature-schedule", "feature-review"]
+SCREEN_SLOTS = ["home", "breakdown", "pets", "redeem", "coraise"]
 LEGACY_FEATURE_TERMS = [
     "wizarding", "wizard", "magic", "hogwarts", "herb garden", "pensieve", "meditation", "museum",
     "草药园", "典藏馆", "冥想盆", "记忆盆", "魔法", "巫师",
@@ -311,8 +311,8 @@ def audit(mode: str) -> int:
         if expected not in sitemap:
             errors.append(f"sitemap missing {expected}")
 
-    # Owl zh home uses <slot>.png; Owl EN home uses <slot>-en.png (English-UI set, with a JS fallback to <slot>.png).
-    screen_files = [ROOT / "assets/screens" / f"{name}{suffix}.png" for name in SCREEN_SLOTS for suffix in ("", "-en")]
+    # Owl zh home uses <slot>.webp; Owl EN home uses <slot>-en.webp (English-UI set).
+    screen_files = [ROOT / "assets/screens" / f"{name}{suffix}.webp" for name in SCREEN_SLOTS for suffix in ("", "-en")]
     for path in screen_files:
         if not path.is_file():
             errors.append(f"missing screenshot slot file: {path.relative_to(ROOT)}")
@@ -343,8 +343,8 @@ def audit(mode: str) -> int:
         text = home.read_text(encoding="utf-8")
         suffix = "-en" if home == ROOT / "owl/index.html" else ""
         for name in SCREEN_SLOTS:
-            if f"/assets/screens/{name}{suffix}.png" not in text:
-                errors.append(f"{home.relative_to(ROOT)}: screenshot slot {name}{suffix}.png not used")
+            if f"/assets/screens/{name}{suffix}.webp" not in text:
+                errors.append(f"{home.relative_to(ROOT)}: screenshot slot {name}{suffix}.webp not used")
         if TESTFLIGHT_URL not in text:
             errors.append(f"{home.relative_to(ROOT)}: TestFlight CTA missing")
         lowered_home = text.lower().replace("com.sherry.wizardingos", "")
