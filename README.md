@@ -1,8 +1,8 @@
 # Jieyi Sheng website
 
 Static bilingual (EN / 简体中文) GitHub Pages site. No build step, no third-party requests.
-The root combines a personal introduction with a two-app portfolio. Owl keeps its product pages. Wizarding OS has a short landing page.
-`assets/js/site.js` only adds the optional Christmas-outfit toggle on the Owl product pages.
+The bilingual root is a witch-flight personal portfolio: an original SVG witch, a dusk sky, optional scroll parallax and ambient movement, two app projects, a personal introduction, and contact links. Owl and Wizarding OS keep their existing product pages.
+`assets/js/flight.js` progressively enhances the homepage with route progress and a motion toggle. All content and navigation work without JavaScript. Reduced Motion disables animation and parallax; the toggle also pauses smooth scrolling. `assets/js/site.js` handles product screenshot fallbacks. Homepage art, fonts, CSS, and scripts are served locally; no third-party runtime requests, cookies, or browser storage are introduced.
 
 ## Routes
 
@@ -57,3 +57,15 @@ Share image: `assets/social/og-owl.jpg` (1200 × 630).
 bash Scripts/verify_site.sh --source
 bash Scripts/verify_site.sh --candidate
 ```
+
+## Witch-flight homepage — 2026-11-05
+
+- Scope: English and Chinese homepage only; existing product, policy, support, and archive routes retained.
+- Visual direction: dusk blue, warm moonlight, original glasses-wearing witch on a broom, illustrated cloud layers, serif typography, and a four-stop flight log. Inspired by the scroll-led exploration of the supplied Anna Cheng reference; no reference assets or source code are reused.
+- Assets: `assets/images/flight/witch.svg`, `clouds.svg`; presentation: `assets/css/flight.css`; optional interactions: `assets/js/flight.js`.
+- Checks: both source and candidate audits passed (14 HTML pages, 12 required routes, 10 screenshot slots); JavaScript syntax check passed.
+- Browser verification: English at 1440 × 900 and Chinese at 390 × 844; working product navigation, no unloaded images on the tested home, no horizontal overflow at 390 px, and pause/resume state verified. Route navigation to projects updated progress to 25% and the selected destination. System Reduced Motion is handled in CSS and JavaScript; actual OS preference switching was not exercised.
+
+### Readability follow-up — 2026-11-05
+
+Removed the extra witch self-description and GitHub contact link in both languages. Increased body copy to 16–18 px, enlarged navigation, captions and controls, strengthened heading/control weights, and improved secondary text contrast. The About link is now a 56 px minimum-height filled button, full width on small screens. About switches to one column on tablet widths to avoid cramped text. Both site audits and whitespace checks passed; browser inspection confirmed the removed content, 17 px About text, 600-weight headings, filled button and no horizontal overflow in a narrow layout.

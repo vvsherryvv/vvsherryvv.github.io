@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <title>Jieyi Sheng — Indie developer &amp; AI researcher</title>
   <meta name="description" content="I’m Jieyi Sheng, an AI researcher and indie developer building Owl and Wizarding OS to help people organize their days and move their plans forward.">
-  <meta name="theme-color" content="#F8F5EF">
+  <meta name="theme-color" content="#24283f">
   <link rel="canonical" href="https://vvsherryvv.github.io/">
   <link rel="alternate" hreflang="en" href="https://vvsherryvv.github.io/">
   <link rel="alternate" hreflang="zh-Hans" href="https://vvsherryvv.github.io/zh/">
@@ -23,101 +23,45 @@
   <link rel="icon" href="/assets/images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/css/site.css?v=20261105-2">
-  <link rel="stylesheet" href="/assets/css/studio.css?v=20261105-2">
+  <link rel="stylesheet" href="/assets/css/flight.css?v=20261105-2">
+  <script src="/assets/js/flight.js?v=20261105-1" defer></script>
 </head>
-<body class="studio">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="shell nav-wrap">
-      <a class="brand" href="/">Jieyi Sheng</a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#apps">Apps</a>
-        <a href="/archive/">About</a>
-        <a class="language-link" href="/zh/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a>
-      </nav>
+<body class="flight">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="flight-header">
+  <a class="wordmark" href="/" aria-label="Jieyi Sheng, home">JS<span aria-hidden="true">✧</span></a>
+  <nav aria-label="Primary navigation">
+    <a href="#apps">Selected work</a><a href="#about">About me</a>
+    <a href="/zh/" lang="zh-Hans">中文</a>
+  </nav>
+</header>
+<div class="sky" aria-hidden="true"><div class="stars"></div><div class="halo"></div><div class="moon"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img class="cloudscape" src="/assets/images/flight/clouds.svg" width="1600" height="800" alt=""></div>
+<main id="main-content">
+  <section class="flight-hero" id="takeoff" aria-labelledby="intro-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✧</span> A LITTLE CURIOSITY. A LITTLE MAGIC.</p>
+      <h1 id="intro-title">Jieyi<br><em>Sheng.</em></h1>
+      <p class="hero-role">AI researcher. Indie developer.</p>
+      <a class="takeoff-link" href="#apps">Come fly with me <span aria-hidden="true">↘</span></a>
     </div>
-  </header>
-
-  <main id="main-content" class="studio-main">
-    <section class="studio-intro" id="personal" aria-labelledby="intro-title">
-      <div class="studio-intro-copy">
-        <p class="studio-kicker">Indie developer · AI researcher</p>
-        <h1 id="intro-title">Jieyi Sheng</h1>
-        <p class="studio-bio">I study artificial intelligence and build AI assistants to help people organize their days and move their plans forward. Here are my two apps, Owl and Wizarding OS.</p>
-        <a class="studio-go studio-button" href="/archive/">More about me <span aria-hidden="true">↗</span></a>
-      </div>
-      <figure class="studio-photo">
-        <img class="studio-portrait" src="/archive/assets/photos/portrait-01.webp" width="1800" height="1200" fetchpriority="high" alt="Jieyi Sheng sitting at a desk, wearing a cap and holding a telephone">
-        <figcaption>Research, making things, and life in between.</figcaption>
-      </figure>
-    </section>
-
-    <section class="studio-work" id="apps" aria-labelledby="apps-title">
-      <div class="studio-section-head">
-        <h2 id="apps-title">Things I’m building</h2>
-        <p>For the next small step, and the moments worth keeping.</p>
-      </div>
-      <div class="studio-apps">
-        <a class="studio-card studio-owl" href="/owl/" aria-labelledby="owl-title" aria-describedby="owl-description">
-          <div class="studio-app-copy">
-            <div class="studio-app-heading">
-              <img class="studio-mark" src="/assets/images/app-icon.png" width="256" height="256" alt="">
-              <div><p class="studio-kicker">Goals &amp; action</p><h3 id="owl-title">Owl</h3></div>
-            </div>
-            <p class="studio-app-description" id="owl-description">Break a goal into to-dos, and raise a pet companion as you finish them.</p>
-          </div>
-          <div class="studio-preview studio-owl-preview">
-            <div class="studio-companions" aria-hidden="true">
-              <img src="/assets/images/pets/pet-owl-512.webp" width="512" height="512" alt="" loading="lazy">
-              <img src="/assets/images/pets/pet-cat-512.webp" width="512" height="512" alt="" loading="lazy">
-              <img src="/assets/images/pets/pet-toad-512.webp" width="512" height="512" alt="" loading="lazy">
-            </div>
-            <figure class="phone studio-phone">
-              <div class="phone-frame">
-                <img src="/assets/screens/home-en.webp" width="900" height="1957" alt="Owl assistant home with today’s tasks" loading="lazy">
-              </div>
-            </figure>
-          </div>
-          <div class="studio-app-footer"><span class="studio-go studio-button">Explore Owl <span aria-hidden="true">→</span></span><span class="studio-status">TestFlight beta</span></div>
-        </a>
-
-        <a class="studio-card studio-wos" href="/wizarding-os/" aria-labelledby="wos-title" aria-describedby="wos-description">
-          <div class="studio-app-copy">
-            <div class="studio-app-heading">
-              <img class="studio-mark" src="/assets/images/wizarding-os-icon-256.webp" width="256" height="256" alt="">
-              <div><p class="studio-kicker">Capture &amp; reflect</p><h3 id="wos-title">Wizarding OS</h3></div>
-            </div>
-            <p class="studio-app-description" id="wos-description">Keep memories, journeys, and everyday notes together, with an AI companion to help you reflect and plan what’s next.</p>
-          </div>
-          <div class="studio-preview studio-wos-preview">
-            <p class="studio-preview-label">A place for your everyday life</p>
-            <ul class="studio-records">
-              <li><span aria-hidden="true">01</span><div><strong>Memories &amp; journeys</strong><p>Save a moment. Revisit it later.</p></div></li>
-              <li><span aria-hidden="true">02</span><div><strong>Books &amp; films</strong><p>Keep the stories you’ve read and watched.</p></div></li>
-              <li><span aria-hidden="true">03</span><div><strong>Goals &amp; tasks</strong><p>Work out your next step with your assistant.</p></div></li>
-            </ul>
-          </div>
-          <div class="studio-app-footer"><span class="studio-go studio-button">Explore Wizarding OS <span aria-hidden="true">→</span></span><span class="studio-status">App Store</span></div>
-        </a>
-      </div>
-    </section>
-
-    <section class="studio-contact" aria-labelledby="contact-title">
-      <div><h2 id="contact-title">Let’s keep in touch</h2><p>About an app, research, or an interesting idea.</p></div>
-      <a class="studio-go" href="mailto:2689868116@qq.com">Send me a note <span aria-hidden="true">↗</span></a>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="shell footer-wrap">
-      <p class="footer-brand"><span>© 2026 Jieyi Sheng</span></p>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/archive/">About</a>
-        <a href="/support/">Owl support</a>
-        <a href="/privacy/">Owl privacy</a>
-        <a href="/terms/">Owl terms</a>
-      </nav>
-    </div>
-  </footer>
-</body>
-</html>
+    <div class="witch-flight"><img class="witch" src="/assets/images/flight/witch.svg" width="780" height="600" alt="An illustration of Jieyi as a dark-haired witch with glasses, riding a broom through the evening sky."><span class="flight-scribble" aria-hidden="true">a head full of ideas<span>↗</span></span></div>
+    <div class="hero-bottom"><span>RESEARCH × CODE × EVERYDAY WONDER</span><a href="#apps">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span class="coordinates">EST. 2026 · EARTH</span></div>
+  </section>
+  <section class="work-section" id="apps" aria-labelledby="work-title">
+    <div class="section-heading"><p class="eyebrow">01 / THE THINGS I MAKE</p><h2 id="work-title">Ideas, brought<br>down to <em>earth.</em></h2><p>I build AI companions for the next small step,<br>and the moments worth keeping.</p></div>
+    <article class="project project-owl" aria-labelledby="owl-title">
+      <div class="project-copy"><p class="eyebrow">01 — GOALS & ACTION</p><img class="app-mark" src="/assets/images/app-icon.png" width="256" height="256" alt=""><h3 id="owl-title">Owl</h3><p>Big dreams.<br>Small steps.<br>A companion along the way.</p><p class="project-detail">Break a goal into to-dos. Make progress, earn points, and grow with your pet.</p><a class="pill-link" href="/owl/">Explore Owl <span aria-hidden="true">↗</span></a><span class="project-status">TestFlight beta</span></div>
+      <div class="owl-art"><span class="art-orbit" aria-hidden="true"></span><span class="art-note" aria-hidden="true">one small step at a time</span><img class="owl-pet" src="/assets/images/pets/pet-owl-512.webp" width="512" height="512" alt="Owl pet companion" loading="lazy"><div class="phone-preview"><img src="/assets/screens/home-en.webp" width="900" height="1957" alt="Owl assistant and today’s tasks" loading="lazy"></div><span class="art-spark" aria-hidden="true">✧</span></div>
+    </article>
+    <article class="project project-wos" aria-labelledby="wos-title">
+      <div class="project-copy"><p class="eyebrow">02 — CAPTURE & REFLECT</p><img class="app-mark" src="/assets/images/wizarding-os-icon-256.webp" width="256" height="256" alt=""><h3 id="wos-title">Wizarding OS</h3><p>A little room<br>for a life<br>worth remembering.</p><p class="project-detail">Memories, journeys, and everyday notes, with an AI companion to reflect and plan what’s next.</p><a class="pill-link" href="/wizarding-os/">Explore Wizarding OS <span aria-hidden="true">↗</span></a></div>
+      <div class="memory-art"><div class="memory-orbit" aria-hidden="true"></div><p class="memory-caption">THE EVERYDAY, REMEMBERED.</p><div class="memory-sheet"><span class="eyebrow">A FEW THINGS TO KEEP</span><span class="memory-star" aria-hidden="true">✧</span><div><span>01</span><p>Memories & journeys<small>A moment, made lasting.</small></p></div><div><span>02</span><p>Books & films<small>Stories that stay with you.</small></p></div><div><span>03</span><p>Goals & tasks<small>A place for what comes next.</small></p></div></div><span class="memory-footnote" aria-hidden="true">little moments, a whole life.</span></div>
+    </article>
+  </section>
+  <section class="about-section" id="about" aria-labelledby="about-title"><div class="about-photo"><img src="/archive/assets/photos/portrait-01.webp" width="1800" height="1200" alt="Jieyi Sheng at a desk with a telephone" loading="lazy"><span>THE WITCH BEHIND THE WORK</span></div><div class="about-copy"><p class="eyebrow">02 / BEHIND THE BROOM</p><h2 id="about-title">Grounded in research.<br>Driven by <em>wonder.</em></h2><p>I’m Jieyi, an AI researcher and indie developer. I’m interested in the space between what technology can do and what makes everyday life a little better.</p><p>For me, making things is a way of staying curious. These apps are a few of my ideas finding their way into the world.</p><a class="about-button" href="/archive/">More about me ↗</a></div></section>
+  <section class="contact-section" id="contact" aria-labelledby="contact-title"><p class="eyebrow">03 / THE NEXT ADVENTURE</p><span class="contact-star" aria-hidden="true">✧</span><h2 id="contact-title">Good things start<br>with a <em>hello.</em></h2><p>An app, a research question, or a wonderfully odd idea?</p><a class="pill-link" href="mailto:2689868116@qq.com">Send me a note <span aria-hidden="true">↗</span></a></section>
+</main>
+<aside class="flight-instruments" aria-label="Flight route"><span class="instrument-label">FLIGHT LOG</span><nav aria-label="Jump to a destination"><a href="#takeoff" aria-label="Takeoff" aria-current="location"><span>00</span></a><a href="#apps" aria-label="Selected work"><span>01</span></a><a href="#about" aria-label="About me"><span>02</span></a><a href="#contact" aria-label="Contact"><span>03</span></a></nav><span class="route-progress">0%</span></aside>
+<button class="motion-toggle" type="button" aria-pressed="false" data-pause="Pause motion" data-resume="Resume motion"><span aria-hidden="true">Ⅱ</span><span class="motion-label">Pause motion</span></button>
+<footer class="flight-footer"><span>© 2026 Jieyi Sheng</span><span class="footer-message">Made with curiosity & a little magic.</span><nav aria-label="Footer navigation"><a href="/support/">Support</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="#takeoff">Back to sky ↑</a></nav></footer>
+</body></html>

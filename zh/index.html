@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <title>盛洁熠 — 独立开发者与 AI 研究者</title>
   <meta name="description" content="我是盛洁熠，从事人工智能研究，独立开发 Owl 与 Wizarding OS。探索用 AI 助手整理日常、推进计划。">
-  <meta name="theme-color" content="#F8F5EF">
+  <meta name="theme-color" content="#24283f">
   <link rel="canonical" href="https://vvsherryvv.github.io/zh/">
   <link rel="alternate" hreflang="en" href="https://vvsherryvv.github.io/">
   <link rel="alternate" hreflang="zh-Hans" href="https://vvsherryvv.github.io/zh/">
@@ -23,101 +23,45 @@
   <link rel="icon" href="/assets/images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/css/site.css?v=20261105-2">
-  <link rel="stylesheet" href="/assets/css/studio.css?v=20261105-2">
+  <link rel="stylesheet" href="/assets/css/flight.css?v=20261105-2">
+  <script src="/assets/js/flight.js?v=20261105-1" defer></script>
 </head>
-<body class="studio">
-  <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <header class="site-header">
-    <div class="shell nav-wrap">
-      <a class="brand" href="/zh/">盛洁熠</a>
-      <nav class="site-nav" aria-label="主导航">
-        <a href="#apps">作品</a>
-        <a href="/archive/">关于我</a>
-        <a class="language-link" href="/" lang="en" hreflang="en">English</a>
-      </nav>
+<body class="flight">
+<a class="skip-link" href="#main-content">跳到主要内容</a>
+<header class="flight-header">
+  <a class="wordmark" href="/zh/" aria-label="盛洁熠，首页">JS<span aria-hidden="true">✧</span></a>
+  <nav aria-label="主导航">
+    <a href="#apps">我的作品</a><a href="#about">关于我</a>
+    <a href="/" lang="en">EN</a>
+  </nav>
+</header>
+<div class="sky" aria-hidden="true"><div class="stars"></div><div class="halo"></div><div class="moon"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img class="cloudscape" src="/assets/images/flight/clouds.svg" width="1600" height="800" alt=""></div>
+<main id="main-content">
+  <section class="flight-hero" id="takeoff" aria-labelledby="intro-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✧</span> 带一点好奇，施一点魔法。</p>
+      <h1 id="intro-title">盛洁熠<span class="chinese-signature">Jieyi Sheng.</span></h1>
+      <p class="hero-role">AI 研究者 · 独立开发者</p>
+      <a class="takeoff-link" href="#apps">一起出发 <span aria-hidden="true">↘</span></a>
     </div>
-  </header>
-
-  <main id="main-content" class="studio-main">
-    <section class="studio-intro" id="personal" aria-labelledby="intro-title">
-      <div class="studio-intro-copy">
-        <p class="studio-kicker">独立开发者 · AI 研究</p>
-        <h1 id="intro-title">盛洁熠</h1>
-        <p class="studio-bio">我从事人工智能研究，也开发帮助人们整理日常、推进计划的 AI 助手。Owl 和 Wizarding OS 是我的两个作品。</p>
-        <a class="studio-go studio-button" href="/archive/">更多关于我 <span aria-hidden="true">↗</span></a>
-      </div>
-      <figure class="studio-photo">
-        <img class="studio-portrait" src="/archive/assets/photos/portrait-01.webp" width="1800" height="1200" fetchpriority="high" alt="盛洁熠戴着帽子坐在桌旁，手里拿着电话">
-        <figcaption>研究、创造，也认真生活。</figcaption>
-      </figure>
-    </section>
-
-    <section class="studio-work" id="apps" aria-labelledby="apps-title">
-      <div class="studio-section-head">
-        <h2 id="apps-title">我的作品</h2>
-        <p>从每天的一小步，到值得留下的片刻。</p>
-      </div>
-      <div class="studio-apps">
-        <a class="studio-card studio-owl" href="/zh/owl/" aria-labelledby="owl-title" aria-describedby="owl-description">
-          <div class="studio-app-copy">
-            <div class="studio-app-heading">
-              <img class="studio-mark" src="/assets/images/app-icon.png" width="256" height="256" alt="">
-              <div><p class="studio-kicker">目标与行动</p><h3 id="owl-title">Owl</h3></div>
-            </div>
-            <p class="studio-app-description" id="owl-description">拆解目标、完成待办，宠物按积分升级。</p>
-          </div>
-          <div class="studio-preview studio-owl-preview">
-            <div class="studio-companions" aria-hidden="true">
-              <img src="/assets/images/pets/pet-owl-512.webp" width="512" height="512" alt="" loading="lazy">
-              <img src="/assets/images/pets/pet-cat-512.webp" width="512" height="512" alt="" loading="lazy">
-              <img src="/assets/images/pets/pet-toad-512.webp" width="512" height="512" alt="" loading="lazy">
-            </div>
-            <figure class="phone studio-phone">
-              <div class="phone-frame">
-                <img src="/assets/screens/home.webp" width="900" height="1957" alt="Owl 助手首页与今日待办" loading="lazy">
-              </div>
-            </figure>
-          </div>
-          <div class="studio-app-footer"><span class="studio-go studio-button">了解 Owl <span aria-hidden="true">→</span></span><span class="studio-status">TestFlight 测试中</span></div>
-        </a>
-
-        <a class="studio-card studio-wos" href="/zh/wizarding-os/" aria-labelledby="wos-title" aria-describedby="wos-description">
-          <div class="studio-app-copy">
-            <div class="studio-app-heading">
-              <img class="studio-mark" src="/assets/images/wizarding-os-icon-256.webp" width="256" height="256" alt="">
-              <div><p class="studio-kicker">记录与回顾</p><h3 id="wos-title">Wizarding OS</h3></div>
-            </div>
-            <p class="studio-app-description" id="wos-description">汇集记忆、旅程与日常记录，让 AI 助手陪你回顾，也帮你规划下一步。</p>
-          </div>
-          <div class="studio-preview studio-wos-preview">
-            <p class="studio-preview-label">留在这里的日常</p>
-            <ul class="studio-records">
-              <li><span aria-hidden="true">01</span><div><strong>记忆与旅程</strong><p>记下此刻，回看那年今日</p></div></li>
-              <li><span aria-hidden="true">02</span><div><strong>书籍与电影</strong><p>留住读过、看过的故事</p></div></li>
-              <li><span aria-hidden="true">03</span><div><strong>目标与待办</strong><p>和助手一起，想想下一步</p></div></li>
-            </ul>
-          </div>
-          <div class="studio-app-footer"><span class="studio-go studio-button">了解 Wizarding OS <span aria-hidden="true">→</span></span><span class="studio-status">App Store</span></div>
-        </a>
-      </div>
-    </section>
-
-    <section class="studio-contact" aria-labelledby="contact-title">
-      <div><h2 id="contact-title">保持联系</h2><p>关于作品、研究，或一个有意思的想法。</p></div>
-      <a class="studio-go" href="mailto:2689868116@qq.com">给我写信 <span aria-hidden="true">↗</span></a>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="shell footer-wrap">
-      <p class="footer-brand"><span>© 2026 盛洁熠</span></p>
-      <nav class="footer-links" aria-label="页脚导航">
-        <a href="/archive/">关于我</a>
-        <a href="/zh/support/">Owl 支持</a>
-        <a href="/zh/privacy/">Owl 隐私政策</a>
-        <a href="/zh/terms/">Owl 使用条款</a>
-      </nav>
-    </div>
-  </footer>
-</body>
-</html>
+    <div class="witch-flight"><img class="witch" src="/assets/images/flight/witch.svg" width="780" height="600" alt="女巫形象的盛洁熠，黑色长发、戴着眼镜，骑飞天扫帚穿过暮色天空。"><span class="flight-scribble" aria-hidden="true">脑袋里装满了奇思妙想<span>↗</span></span></div>
+    <div class="hero-bottom"><span>研究 × 代码 × 日常的奇妙</span><a href="#apps">向下滚动，开启旅程 <span aria-hidden="true">↓</span></a><span class="coordinates">EST. 2026 · EARTH</span></div>
+  </section>
+  <section class="work-section" id="apps" aria-labelledby="work-title">
+    <div class="section-heading"><p class="eyebrow">01 / 沿途的作品</p><h2 id="work-title">让奇思妙想，<br><em>落到生活里。</em></h2><p>我开发 AI 助手，陪你迈出下一小步，<br>也留住值得珍藏的片刻。</p></div>
+    <article class="project project-owl" aria-labelledby="owl-title">
+      <div class="project-copy"><p class="eyebrow">01 — 目标与行动</p><img class="app-mark" src="/assets/images/app-icon.png" width="256" height="256" alt=""><h3 id="owl-title">Owl</h3><p>大大的目标，<br>小小的行动，<br>还有一路相伴的宠物。</p><p class="project-detail">把目标拆成待办。完成任务、积累积分，和你的宠物一起成长。</p><a class="pill-link" href="/zh/owl/">探索 Owl <span aria-hidden="true">↗</span></a><span class="project-status">TestFlight 测试中</span></div>
+      <div class="owl-art"><span class="art-orbit" aria-hidden="true"></span><span class="art-note" aria-hidden="true">每一小步，都算数。</span><img class="owl-pet" src="/assets/images/pets/pet-owl-512.webp" width="512" height="512" alt="Owl 猫头鹰伙伴" loading="lazy"><div class="phone-preview"><img src="/assets/screens/home.webp" width="900" height="1957" alt="Owl 助手与今日待办" loading="lazy"></div><span class="art-spark" aria-hidden="true">✧</span></div>
+    </article>
+    <article class="project project-wos" aria-labelledby="wos-title">
+      <div class="project-copy"><p class="eyebrow">02 — 记录与回顾</p><img class="app-mark" src="/assets/images/wizarding-os-icon-256.webp" width="256" height="256" alt=""><h3 id="wos-title">Wizarding OS</h3><p>为值得记住的生活，<br>留一个小小的空间。</p><p class="project-detail">汇集记忆、旅程与日常记录，让 AI 助手陪你回顾，也帮你规划下一步。</p><a class="pill-link" href="/zh/wizarding-os/">探索 Wizarding OS <span aria-hidden="true">↗</span></a></div>
+      <div class="memory-art"><div class="memory-orbit" aria-hidden="true"></div><p class="memory-caption">让日常，有迹可循。</p><div class="memory-sheet"><span class="eyebrow">把这些，留在这里</span><span class="memory-star" aria-hidden="true">✧</span><div><span>01</span><p>记忆与旅程<small>记下此刻，回看那年今日。</small></p></div><div><span>02</span><p>书籍与电影<small>留住读过、看过的故事。</small></p></div><div><span>03</span><p>目标与待办<small>和助手一起，想想下一步。</small></p></div></div><span class="memory-footnote" aria-hidden="true">细碎日常，拼成生活。</span></div>
+    </article>
+  </section>
+  <section class="about-section" id="about" aria-labelledby="about-title"><div class="about-photo"><img src="/archive/assets/photos/portrait-01.webp" width="1800" height="1200" alt="盛洁熠坐在桌旁，手里拿着电话" loading="lazy"><span>扫帚上的人，也是屏幕后的我。</span></div><div class="about-copy"><p class="eyebrow">02 / 扫帚背后的我</p><h2 id="about-title">脚踏实地研究，<br>也保持<em>天马行空。</em></h2><p>我是盛洁熠，从事人工智能研究，也是一名独立开发者。我对技术的可能性感兴趣，也关心它能怎样让每一天变得好一点。</p><p>对我来说，创造是保持好奇的一种方式。这些作品，就是一些正在慢慢落地的想法。</p><a class="about-button" href="/archive/">更多关于我 ↗</a></div></section>
+  <section class="contact-section" id="contact" aria-labelledby="contact-title"><p class="eyebrow">03 / 下一段旅程</p><span class="contact-star" aria-hidden="true">✧</span><h2 id="contact-title">新的故事，<br>从一句<em>你好</em>开始。</h2><p>关于作品、研究，或者一个天马行空的想法。</p><a class="pill-link" href="mailto:2689868116@qq.com">给我写信 <span aria-hidden="true">↗</span></a></section>
+</main>
+<aside class="flight-instruments" aria-label="飞行航线"><span class="instrument-label">飞行日志</span><nav aria-label="前往目的地"><a href="#takeoff" aria-label="起飞" aria-current="location"><span>00</span></a><a href="#apps" aria-label="我的作品"><span>01</span></a><a href="#about" aria-label="关于我"><span>02</span></a><a href="#contact" aria-label="联系"><span>03</span></a></nav><span class="route-progress">0%</span></aside>
+<button class="motion-toggle" type="button" aria-pressed="false" data-pause="暂停动态" data-resume="恢复动态"><span aria-hidden="true">Ⅱ</span><span class="motion-label">暂停动态</span></button>
+<footer class="flight-footer"><span>© 2026 盛洁熠</span><span class="footer-message">保持好奇，也相信一点魔法。</span><nav aria-label="页脚导航"><a href="/zh/support/">支持</a><a href="/zh/privacy/">隐私</a><a href="/zh/terms/">条款</a><a href="#takeoff">回到天空 ↑</a></nav></footer>
+</body></html>
