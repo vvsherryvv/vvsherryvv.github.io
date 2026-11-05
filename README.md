@@ -69,3 +69,7 @@ bash Scripts/verify_site.sh --candidate
 ### Readability follow-up — 2026-11-05
 
 Removed the extra witch self-description and GitHub contact link in both languages. Increased body copy to 16–18 px, enlarged navigation, captions and controls, strengthened heading/control weights, and improved secondary text contrast. The About link is now a 56 px minimum-height filled button, full width on small screens. About switches to one column on tablet widths to avoid cramped text. Both site audits and whitespace checks passed; browser inspection confirmed the removed content, 17 px About text, 600-weight headings, filled button and no horizontal overflow in a narrow layout.
+
+### Work-section anchor correction — 2026-11-05
+
+The homepage CTA previously targeted the padded work-section container: the 90 px scroll offset plus 140 px section padding left the section heading 230 px below the top. Both languages now put `#apps` on the visible section heading and use a 24 px scroll offset. The hero is completely above the viewport after navigation. Browser measurements: narrow Chinese layout (487 px wide), heading 23.75 px and hero bottom −56.25 px; wide English layout (1800 px wide, motion paused), heading 23.75 px and hero bottom −116.25 px. Route highlight remains `#apps`. Both site audits and whitespace checks passed.
