@@ -23,7 +23,7 @@ The bilingual root is a witch-flight personal portfolio: an original SVG witch, 
 4. Pet companions — owl, cat, toad; the Christmas toggle only previews artwork (in the app each outfit costs 300 points)
 5. Pet — points, level, shop, co-raise (pet stays with the inviter after unbind), custom-pet reservation (2,000 points available to submit, charged when the schedule is confirmed, one open reservation), widgets and a Lock Screen Live Activity
 6. Privacy & permissions — local goals; account-backed points and co-raising → `/privacy/`
-7. Download — App Store CTA (`https://apps.apple.com/app/id6829596943`)
+7. Download — App Store CTA (`https://apps.apple.com/cn/app/id6829596943`)
 8. Footer — Support, Privacy Policy, Terms of Use, language switch
 
 ## Screenshot slots (replace these files to update the site)
@@ -65,6 +65,10 @@ production distribution and the website update. Apple accepted availability
 setup on November 10: 148 regions are processing for availability; 27 EU
 regions are blocked by failed trader contact verification. This is not a
 claim that all storefronts are already live.
+
+The China product listing is verified live. Download links use its explicit
+`/cn/` path because the generic and US paths still redirected to Apple's Today
+page during launch propagation. Do not treat HTTP 200 alone as a working listing.
 
 Both portfolio homes, Owl product pages, support installation instructions
 and policy-page navigation now use the Owl App Store link. Existing Wizarding OS

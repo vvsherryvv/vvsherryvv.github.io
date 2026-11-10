@@ -49,7 +49,7 @@ FRANCHISE_TERMS = [
     "dementor",
     "patronus",
 ]
-APP_STORE_URL = "https://apps.apple.com/app/id6829596943"
+APP_STORE_URL = "https://apps.apple.com/cn/app/id6829596943"
 SCREEN_SLOTS = ["home", "breakdown", "pets", "redeem", "coraise"]
 LEGACY_FEATURE_TERMS = [
     "wizarding", "wizard", "magic", "hogwarts", "herb garden", "pensieve", "meditation", "museum",
