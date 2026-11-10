@@ -16,14 +16,14 @@ The bilingual root is a witch-flight personal portfolio: an original SVG witch, 
 
 ## Owl home page structure
 
-1. Sticky slim nav (How it works · Companions · Pet · Privacy · language · "Get the beta")
-2. Hero — goals and to-dos plus a pet that levels up, TestFlight CTA, hero phone screenshot
+1. Sticky slim nav (How it works · Companions · Pet · Privacy · language · App Store)
+2. Hero — goals and to-dos plus a pet that levels up, App Store CTA, hero phone screenshot
 3. How it works — 4 steps, one phone screenshot each:
    getting-to-know-you interview → goal breakdown with AI preview → schedule as to-dos → evening daily review
 4. Pet companions — owl, cat, toad; the Christmas toggle only previews artwork (in the app each outfit costs 300 points)
 5. Pet — points, level, shop, co-raise (pet stays with the inviter after unbind), custom-pet reservation (2,000 points available to submit, charged when the schedule is confirmed, one open reservation), widgets and a Lock Screen Live Activity
 6. Privacy & permissions — local goals; account-backed points and co-raising → `/privacy/`
-7. Download — TestFlight CTA (`https://testflight.apple.com/join/9BAkFSvp`)
+7. Download — App Store CTA (`https://apps.apple.com/app/id6829596943`)
 8. Footer — Support, Privacy Policy, Terms of Use, language switch
 
 ## Screenshot slots (replace these files to update the site)
@@ -57,6 +57,24 @@ Share image: `assets/social/og-owl.jpg` (1200 × 630).
 bash Scripts/verify_site.sh --source
 bash Scripts/verify_site.sh --candidate
 ```
+
+## App Store release — 2026-11-10
+
+Owl 1.0.0 (8), App Store ID `6829596943`, is approved. The owner authorized
+production distribution and the website update. Apple accepted availability
+setup on November 10: 148 regions are processing for availability; 27 EU
+regions are blocked by failed trader contact verification. This is not a
+claim that all storefronts are already live.
+
+Both portfolio homes, Owl product pages, support installation instructions
+and policy-page navigation now use the Owl App Store link. Existing Wizarding OS
+links, prices and policy content are preserved. Source and candidate audits
+pass; English and Chinese product-page screenshots were visually checked in
+Chrome. The audit rejects obsolete TestFlight invitation links.
+
+Production uses the existing Vercel project `vvsherryvv-github-io` in
+`vvsherryvvs-projects`, connected to this repository's `main` branch, at
+`https://www.wizardingos.club/`. GitHub Pages remains available.
 
 ## Witch-flight homepage — 2026-11-05
 

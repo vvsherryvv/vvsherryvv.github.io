@@ -49,15 +49,7 @@ FRANCHISE_TERMS = [
     "dementor",
     "patronus",
 ]
-APP_STORE_CLAIMS = [
-    "available on the app store",
-    "download on the app store",
-    "get it on the app store",
-    "now on the app store",
-    "已在 app store 上架",
-    "前往 app store 下载",
-]
-TESTFLIGHT_URL = "https://testflight.apple.com/join/9BAkFSvp"
+APP_STORE_URL = "https://apps.apple.com/app/id6829596943"
 SCREEN_SLOTS = ["home", "breakdown", "pets", "redeem", "coraise"]
 LEGACY_FEATURE_TERMS = [
     "wizarding", "wizard", "magic", "hogwarts", "herb garden", "pensieve", "meditation", "museum",
@@ -272,9 +264,8 @@ def audit(mode: str) -> int:
     for term in FRANCHISE_TERMS:
         if term in combined_public:
             errors.append(f"prohibited third-party entertainment term found: {term}")
-    for claim in APP_STORE_CLAIMS:
-        if claim in combined_public:
-            errors.append(f"premature App Store availability claim found: {claim}")
+    if "testflight.apple.com/join/" in combined_public:
+        errors.append("outdated TestFlight download link found in public source")
     if re.search(r"(?:localStorage|sessionStorage|document\.cookie)", combined_public, re.IGNORECASE):
         errors.append("browser storage or cookies found in public source")
     if re.search(r"<(?:form|iframe)\b", combined_public, re.IGNORECASE):
@@ -345,8 +336,8 @@ def audit(mode: str) -> int:
         for name in SCREEN_SLOTS:
             if f"/assets/screens/{name}{suffix}.webp" not in text:
                 errors.append(f"{home.relative_to(ROOT)}: screenshot slot {name}{suffix}.webp not used")
-        if TESTFLIGHT_URL not in text:
-            errors.append(f"{home.relative_to(ROOT)}: TestFlight CTA missing")
+        if APP_STORE_URL not in text:
+            errors.append(f"{home.relative_to(ROOT)}: Owl App Store CTA missing")
         lowered_home = text.lower().replace("com.sherry.wizardingos", "")
         for term in LEGACY_FEATURE_TERMS:
             if term in lowered_home:
