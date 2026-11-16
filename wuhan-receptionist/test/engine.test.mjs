@@ -82,6 +82,13 @@ ok('空密钥不升为模型模式', detectMode({ OPENAI_API_KEY: '  ' }).mode =
 ok('输入截断', sanitizeInput('汉'.repeat(3000)).length === 2000);
 ok('意图识别行程', detectIntent('帮我做一日游', false) === 'itinerary');
 
+const hello = await ask('你好');
+ok('问候自称城市AI接待员小熠', hello.intent === 'greeting' && /我是城市AI接待员小熠/.test(hello.reply.text));
+ok('问候不把鲸豚形象原名说成小熠', !/本来名叫小熠|官方名字是小熠|形象名叫小熠/.test(hello.reply.text));
+const who = await ask('你叫什么');
+ok('被问名字时自称城市AI接待员小熠', who.intent === 'identity' && /我是城市AI接待员小熠/.test(who.reply.text));
+ok('被问名字时说明形象没有公布官方名字', /没有公布这个形象的官方名字/.test(who.reply.text) && !/本来名叫小熠/.test(who.reply.text));
+
 const pageFiles = ['index.html', 'styles.css', 'app.js', 'chat-ui.js', 'engine.js'];
 const bundled = pageFiles.map((name) => readFileSync(join(ROOT, name), 'utf8')).join('\n');
 ok('移动布局含媒体查询', /@media \(max-width: 860px\)/.test(readFileSync(join(ROOT, 'styles.css'), 'utf8')));
