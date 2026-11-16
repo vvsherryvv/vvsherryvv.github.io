@@ -487,8 +487,13 @@ h1 {
 .answer-figure img {
   display: block;
   width: 100%;
-  height: auto;
-  background: var(--river-mist);
+  height: 168px;
+  object-fit: contain;
+  object-position: center;
+  background: #e7efe9;
+}
+@media (min-width: 861px) {
+  .answer-figure img { height: 210px; }
 }
 .answer-figure figcaption {
   padding: 8px 10px 10px;
@@ -506,6 +511,8 @@ h1 {
 }
 .figure-kind.kind-photo { background: var(--river-mist); color: var(--pine); }
 .figure-kind.kind-design { background: #efe6d4; color: #6a4e1e; }
+.figure-credit { display: block; margin-top: 4px; }
+.figure-credit a { color: var(--river); text-decoration: underline; }
 
 .loading-row {
   display: flex;

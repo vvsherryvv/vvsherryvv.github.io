@@ -515,6 +515,54 @@ export const PLACE_IMAGES = [
     caption: '智民里鸟瞰设计图，标出A1至A5。设计图，不是实拍。',
     kind: '设计图',
     stops: [/智民里/]
+  },
+  {
+    id: 'yellow-crane',
+    file: 'wuhan-yellow-crane.jpg',
+    width: 1600,
+    height: 1200,
+    alt: '武汉黄鹤楼，楼额写有黄鹤楼三字',
+    caption: '黄鹤楼，武汉蛇山。这是楼体近景，不是江城全景。',
+    kind: '实拍',
+    stops: [/黄鹤楼/],
+    credit: {
+      author: '螺钉',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:武汉黄鹤楼.jpg'
+    }
+  },
+  {
+    id: 'east-lake',
+    file: 'wuhan-east-lake.jpg',
+    width: 1600,
+    height: 1200,
+    alt: '武汉东湖景区水面与对岸城市天际线',
+    caption: '东湖，武汉东湖景区。这是湖面一景，不是整个东湖的全景。',
+    kind: '实拍',
+    stops: [/东湖/],
+    credit: {
+      author: 'Fxqf',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Wuhan_East_Lake_03.jpg'
+    }
+  },
+  {
+    id: 'mulan-tianchi',
+    file: 'wuhan-mulan-tianchi.jpg',
+    width: 1600,
+    height: 1200,
+    alt: '武汉黄陂木兰天池的大天池，湖中可见隐仙居',
+    caption: '木兰天池的大天池，湖中为隐仙居。它在武汉黄陂，是木兰文化生态旅游区里的一个子景区；这不是整个生态区的鸟瞰，也不是云南的木兰。',
+    kind: '实拍',
+    stops: [/木兰/],
+    credit: {
+      author: 'Wang31',
+      license: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:木兰天池_2024-04-24.jpg'
+    }
   }
 ];
 
@@ -542,23 +590,37 @@ export function selectImages({ intent, text = '', answerText = '', itinerary = n
       height: img.height,
       alt: img.alt,
       caption: img.caption,
-      kind: img.kind
+      kind: img.kind,
+      credit: img.credit || null
     });
   };
   if (items.length) {
-    for (const img of library) {
-      const matched = items.some((stop) => (img.stops || []).some((re) => re.test(stopText(stop))));
-      if (matched) add(img);
+    for (const stop of items) {
+      for (const img of library) {
+        if ((img.stops || []).some((re) => re.test(stopText(stop)))) add(img);
+      }
     }
     return picked;
   }
-  if (intent === 'wuhan' || intent === 'spu' || intent === 'greeting' || intent === 'identity') return [];
+  if (intent === 'wuhan') {
+    const views = [
+      { id: 'yellow-crane', test: /黄鹤楼/ },
+      { id: 'east-lake', test: /东湖/ },
+      { id: 'mulan-tianchi', test: /木兰/ }
+    ];
+    const focused = views.filter((view) => view.test.test(text));
+    const ids = focused.length ? focused.map((view) => view.id) : views.map((view) => view.id);
+    for (const id of ids) add(library.find((img) => img.id === id));
+    return picked;
+  }
+  if (intent === 'spu' || intent === 'greeting' || intent === 'identity') return [];
   const blob = `${text}\n${answerText}`;
   if (/巴公/.test(text) && !/智民里|六站|A\d/.test(text)) return [];
   if (/黎黄陂/.test(text) && !/智民里|六站/.test(text)) return [];
   if (intent === 'six' || intent === 'community') {
     const designOnly = /A3|路演|是实景吗|实拍吗|示意图/.test(text) && !/六站|怎么走|导览|社区/.test(text);
     for (const img of library) {
+      if (!String(img.id || '').startsWith('zhiminli')) continue;
       if (designOnly && img.kind !== '设计图') continue;
       add(img);
     }
