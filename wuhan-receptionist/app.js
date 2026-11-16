@@ -178,7 +178,7 @@ function showLoading(on) {
     return;
   }
   if (existing) return;
-  const row = el('<div class="loading-row" id="loadingRow" role="status">正在检索本地资料…</div>');
+  const row = el('<div class="loading-row" id="loadingRow" role="status">正在整理回答…</div>');
   $('thread').appendChild(row);
   maybeFollowScroll();
 }
@@ -250,6 +250,30 @@ function loadMode() {
   setMode({ mode: 'local' });
 }
 
+async function answerFromAgentOrLocal(payload, signal) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 9000);
+  const onAbort = () => controller.abort();
+  if (signal) signal.addEventListener('abort', onAbort, { once: true });
+  try {
+    const res = await fetch('/api/receptionist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload || {}),
+      signal: controller.signal
+    });
+    if (!res.ok) return answerLocally(payload);
+    const data = await res.json();
+    if (!data || data.ok === false || !data.reply) return answerLocally(payload);
+    return data;
+  } catch {
+    return answerLocally(payload);
+  } finally {
+    clearTimeout(timer);
+    if (signal) signal.removeEventListener('abort', onAbort);
+  }
+}
+
 async function send(text) {
   const msg = String(text || '').trim();
   if (!canAcceptSend(state.busy, msg)) return;
@@ -275,7 +299,7 @@ async function send(text) {
   showLoading(true);
 
   const result = await performChatRequest({
-    answerFn: (payload) => answerLocally(payload),
+    answerFn: (payload) => answerFromAgentOrLocal(payload, run.signal),
     payload: {
       message: msg,
       history: state.history,

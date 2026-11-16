@@ -227,6 +227,7 @@ ok('HTML不再包含模式徽标', !/id="modeBadge"/.test(htmlNow) && !/id="mode
 ok('JS不再渲染来源展开', !/sourceList/.test(appNow) && !/class="sources"/.test(appNow) && /itineraryCard\(payload\.itinerary\);/.test(appNow) && !/itineraryCard\(payload\.itinerary\) \+/.test(appNow));
 ok('setMode不写回可见徽标', !/modeBadge/.test(appNow) && !/modeInline/.test(appNow));
 ok('页面不调用不可用接口', !/\/api\/mode|\/api\/chat|localhost:8788/.test(appNow + uiNow) && /answerFn/.test(appNow) && /function setMode/.test(appNow));
+ok('无服务端时回退本地回答', /\/api\/receptionist/.test(appNow) && /answerLocally\(payload\)/.test(appNow) && !/DEEPSEEK_API_KEY|sk-/.test(appNow + uiNow));
 ok('欢迎语已去掉指定说明', /我可以介绍武汉/.test(appNow) && !/手册记载为准/.test(appNow) && !/如实标明/.test(appNow));
 ok('页面标题主标题与对话区名称一致', /<title>城市AI接待员小熠<\/title>/.test(htmlNow) && /<h1>城市AI接待员小熠<\/h1>/.test(htmlNow) && /id="deskTitle">城市AI接待员小熠</.test(htmlNow));
 ok('欢迎自称城市AI接待员小熠', /你好，我是城市AI接待员小熠。/.test(appNow));
