@@ -232,7 +232,8 @@ ok('页面标题主标题与对话区名称一致', /<title>城市AI接待员小
 ok('欢迎自称城市AI接待员小熠', /你好，我是城市AI接待员小熠。/.test(appNow));
 ok('页面不声称鲸豚形象原名是小熠', !/本来名叫小熠|官方名字是小熠|形象名叫小熠/.test(htmlNow + appNow));
 ok('回答配图懒加载且失败可移除', /appendAnswerImages\(meta, payload\.images\)/.test(appNow) && /loading = 'lazy'/.test(uiNow) && /addEventListener\('error'/.test(uiNow));
-ok('配图不接收鲸豚头像文件', /zhiminli-photo\.jpg/.test(uiNow) && /zhiminli-design\.jpg/.test(uiNow) && !/avatar-front/.test(appNow + uiNow));
+ok('配图不接收鲸豚头像文件', /wuhan-yellow-crane\.jpg/.test(uiNow) && /zhiminli-photo\.jpg/.test(uiNow) && !/avatar-front/.test(appNow + uiNow));
+ok('图注署名使用链接而不是来源区', /figure-credit/.test(uiNow) && /licenseUrl/.test(uiNow) && !/sourceList/.test(appNow));
 ok('侧栏仍保留筹备与示意区分', /还在筹备/.test(htmlNow) && /示意图·AI生成/.test(htmlNow) && /设计图，不是实拍/.test(htmlNow));
 ok('对话主页面与四入口仍在', /id="desk"/.test(htmlNow) && /id="thread"/.test(htmlNow) && /id="input"/.test(htmlNow) && /介绍武汉/.test(htmlNow) && /安排行程/.test(htmlNow));
 ok('强调色为砖红', /--accent:\s*#A84436/i.test(cssNow) && !/--coral:\s*#d4654a/i.test(cssNow));

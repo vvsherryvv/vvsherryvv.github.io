@@ -91,11 +91,19 @@ ok('被问名字时说明形象没有公布官方名字', /没有公布这个形
 
 const { selectImages, PLACE_IMAGES } = await import('../engine.js');
 const placeFiles = PLACE_IMAGES.map((img) => img.file);
-ok('配图只用现有智民里素材', placeFiles.includes('zhiminli-photo.jpg') && placeFiles.includes('zhiminli-design.jpg') && placeFiles.every((file) => !/avatar|鲸|豚/.test(file)));
+ok('配图含智民里和三处武汉实景', placeFiles.includes('zhiminli-photo.jpg') && placeFiles.includes('wuhan-yellow-crane.jpg') && placeFiles.includes('wuhan-east-lake.jpg') && placeFiles.includes('wuhan-mulan-tianchi.jpg') && placeFiles.every((file) => !/avatar|鲸|豚/.test(file)));
 const wuhanImages = (await ask('请介绍一下武汉')).reply.images;
-ok('介绍武汉无可靠城市照片时不配图', Array.isArray(wuhanImages) && wuhanImages.length === 0);
+ok('介绍武汉配黄鹤楼东湖和木兰天池', wuhanImages.map((img) => img.id).join(',') === 'yellow-crane,east-lake,mulan-tianchi');
+ok('木兰图标明大天池而不是整个生态区或云南', /大天池/.test(wuhanImages[2].caption) && /黄陂/.test(wuhanImages[2].caption) && /不是整个生态区的鸟瞰/.test(wuhanImages[2].caption) && /不是云南/.test(wuhanImages[2].caption));
+ok('武汉图带可核验署名', wuhanImages.every((img) => img.credit && img.credit.licenseUrl.startsWith('https://creativecommons.org/') && img.credit.sourceUrl.startsWith('https://commons.wikimedia.org/wiki/File:')));
+const craneOnly = (await ask('黄鹤楼在蛇山吗')).reply.images;
+ok('只问黄鹤楼不配东湖或木兰', craneOnly.length === 1 && craneOnly[0].id === 'yellow-crane');
+const lakeOnly = (await ask('介绍东湖')).reply.images;
+ok('只问东湖不配黄鹤楼', lakeOnly.length === 1 && lakeOnly[0].id === 'east-lake');
+const mulanOnly = (await ask('木兰天池是哪里')).reply.images;
+ok('只问木兰不配黄鹤楼', mulanOnly.length === 1 && mulanOnly[0].id === 'mulan-tianchi');
 const sixImages = (await ask('智民里六站怎么走')).reply.images;
-ok('六站配实拍和设计图', sixImages.length >= 1 && sixImages.length <= 3 && sixImages.some((img) => img.kind === '实拍') && sixImages.some((img) => img.kind === '设计图' && /不是实拍/.test(img.caption)));
+ok('六站配实拍和设计图', sixImages.length === 2 && sixImages.every((img) => img.id.startsWith('zhiminli')) && sixImages.some((img) => img.kind === '实拍') && sixImages.some((img) => img.kind === '设计图' && /不是实拍/.test(img.caption)));
 const a3Images = (await ask('A3栋是什么，是实景吗')).reply.images;
 ok('A3只配设计图不把实拍当实景', a3Images.length === 1 && a3Images[0].kind === '设计图');
 const spuImages = (await ask('数命SPU是什么，公式怎么写')).reply.images;
@@ -122,6 +130,10 @@ ok('去掉黎黄陂路后不再保留该站配图', !afterDrop.some((img) => img
 ok('去掉黎黄陂后智民里图仍可留下', afterDrop.some((img) => img.id === 'zhiminli-photo'));
 const noCommunity = await ask('不要智民里', plan.reply.itinerary);
 ok('去掉智民里后不再配智民里图', !(noCommunity.reply.images || []).some((img) => /zhiminli/.test(img.file)));
+const craneDay = await ask('从黄鹤楼出发，安排一天行程');
+ok('黄鹤楼行程配黄鹤楼图', (craneDay.reply.images || []).some((img) => img.id === 'yellow-crane'));
+const noCrane = await ask('不要黄鹤楼', craneDay.reply.itinerary);
+ok('去掉黄鹤楼后不再配黄鹤楼图', !(noCrane.reply.images || []).some((img) => img.id === 'yellow-crane'));
 
 const pageFiles = ['index.html', 'styles.css', 'app.js', 'chat-ui.js', 'engine.js'];
 const bundled = pageFiles.map((name) => readFileSync(join(ROOT, name), 'utf8')).join('\n');

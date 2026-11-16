@@ -208,7 +208,13 @@ export function canAcceptSend(busy, message) {
   return true;
 }
 
-const ANSWER_IMAGE_FILES = new Set(['zhiminli-photo.jpg', 'zhiminli-design.jpg']);
+const ANSWER_IMAGE_FILES = new Set([
+  'zhiminli-photo.jpg',
+  'zhiminli-design.jpg',
+  'wuhan-yellow-crane.jpg',
+  'wuhan-east-lake.jpg',
+  'wuhan-mulan-tianchi.jpg'
+]);
 
 export function appendAnswerImages(parent, images) {
   if (!parent || !Array.isArray(images) || !images.length) return;
@@ -235,6 +241,22 @@ export function appendAnswerImages(parent, images) {
     kind.className = img.kind === '设计图' ? 'figure-kind kind-design' : 'figure-kind kind-photo';
     kind.textContent = img.kind || '';
     cap.append(kind, document.createTextNode(img.caption || ''));
+    const credit = img.credit;
+    if (credit && /^https:\/\//.test(credit.licenseUrl || '') && /^https:\/\//.test(credit.sourceUrl || '')) {
+      const line = document.createElement('span');
+      line.className = 'figure-credit';
+      line.append(document.createTextNode(`${credit.author || '作者'}，`));
+      const license = document.createElement('a');
+      license.href = credit.licenseUrl;
+      license.rel = 'noreferrer noopener';
+      license.textContent = credit.license || '许可';
+      const source = document.createElement('a');
+      source.href = credit.sourceUrl;
+      source.rel = 'noreferrer noopener';
+      source.textContent = '文件页';
+      line.append(license, document.createTextNode('，'), source, document.createTextNode('。照片已缩小并压缩。'));
+      cap.append(line);
+    }
     fig.append(image, cap);
     box.append(fig);
   });
