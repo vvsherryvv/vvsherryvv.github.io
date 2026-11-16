@@ -208,6 +208,39 @@ export function canAcceptSend(busy, message) {
   return true;
 }
 
+const ANSWER_IMAGE_FILES = new Set(['zhiminli-photo.jpg', 'zhiminli-design.jpg']);
+
+export function appendAnswerImages(parent, images) {
+  if (!parent || !Array.isArray(images) || !images.length) return;
+  const box = document.createElement('div');
+  box.className = 'answer-figures';
+  images.slice(0, 3).forEach((img) => {
+    const file = String(img && img.file || '');
+    if (!ANSWER_IMAGE_FILES.has(file)) return;
+    const fig = document.createElement('figure');
+    fig.className = 'answer-figure';
+    const image = document.createElement('img');
+    image.alt = img.alt || img.caption || '配图';
+    image.width = Number(img.width) || 1600;
+    image.height = Number(img.height) || 900;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.src = `assets/${file}`;
+    image.addEventListener('error', () => {
+      fig.remove();
+      if (!box.childElementCount) box.remove();
+    });
+    const cap = document.createElement('figcaption');
+    const kind = document.createElement('span');
+    kind.className = img.kind === '设计图' ? 'figure-kind kind-design' : 'figure-kind kind-photo';
+    kind.textContent = img.kind || '';
+    cap.append(kind, document.createTextNode(img.caption || ''));
+    fig.append(image, cap);
+    box.append(fig);
+  });
+  if (box.childElementCount) parent.append(box);
+}
+
 export function errorReply(kind) {
   if (kind === 'reply_failed') {
     return { text: '这次没有回答成功，请稍后再试，或换一种问法。', sources: [] };

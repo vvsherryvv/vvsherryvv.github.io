@@ -89,6 +89,40 @@ const who = await ask('你叫什么');
 ok('被问名字时自称城市AI接待员小熠', who.intent === 'identity' && /我是城市AI接待员小熠/.test(who.reply.text));
 ok('被问名字时说明形象没有公布官方名字', /没有公布这个形象的官方名字/.test(who.reply.text) && !/本来名叫小熠/.test(who.reply.text));
 
+const { selectImages, PLACE_IMAGES } = await import('../engine.js');
+const placeFiles = PLACE_IMAGES.map((img) => img.file);
+ok('配图只用现有智民里素材', placeFiles.includes('zhiminli-photo.jpg') && placeFiles.includes('zhiminli-design.jpg') && placeFiles.every((file) => !/avatar|鲸|豚/.test(file)));
+const wuhanImages = (await ask('请介绍一下武汉')).reply.images;
+ok('介绍武汉无可靠城市照片时不配图', Array.isArray(wuhanImages) && wuhanImages.length === 0);
+const sixImages = (await ask('智民里六站怎么走')).reply.images;
+ok('六站配实拍和设计图', sixImages.length >= 1 && sixImages.length <= 3 && sixImages.some((img) => img.kind === '实拍') && sixImages.some((img) => img.kind === '设计图' && /不是实拍/.test(img.caption)));
+const a3Images = (await ask('A3栋是什么，是实景吗')).reply.images;
+ok('A3只配设计图不把实拍当实景', a3Images.length === 1 && a3Images[0].kind === '设计图');
+const spuImages = (await ask('数命SPU是什么，公式怎么写')).reply.images;
+ok('SPU理念无场地图', spuImages.length === 0);
+const saigImages = (await ask('SAIG比赛是48小时通宵吗，赛程怎么安排')).reply.images;
+ok('SAIG提到智民里时配一张实拍', saigImages.length === 1 && saigImages[0].kind === '实拍' && /不是平和打包厂/.test(saigImages[0].caption));
+const tripImages = plan.reply.images || [];
+ok('含智民里的行程有配图', tripImages.some((img) => img.id === 'zhiminli-photo'));
+const droppedRoad = await ask('改一天，不要黎黄陂路', plan.reply.itinerary);
+const withFakeRoad = selectImages({
+  intent: 'itinerary_adjust',
+  text: '不要黎黄陂路',
+  itinerary: plan.reply.itinerary,
+  library: [...PLACE_IMAGES, { id: 'lihuangpi', file: 'lihuangpi.jpg', width: 4, height: 3, alt: '黎黄陂路', caption: '黎黄陂路', kind: '实拍', stops: [/黎黄陂/] }]
+});
+const afterDrop = selectImages({
+  intent: 'itinerary_adjust',
+  text: '不要黎黄陂路',
+  itinerary: droppedRoad.reply.itinerary,
+  library: [...PLACE_IMAGES, { id: 'lihuangpi', file: 'lihuangpi.jpg', width: 4, height: 3, alt: '黎黄陂路', caption: '黎黄陂路', kind: '实拍', stops: [/黎黄陂/] }]
+});
+ok('行程里有黎黄陂站时可以挂上该站图', withFakeRoad.some((img) => img.id === 'lihuangpi'));
+ok('去掉黎黄陂路后不再保留该站配图', !afterDrop.some((img) => img.id === 'lihuangpi') && !JSON.stringify(droppedRoad.reply.images).includes('lihuangpi'));
+ok('去掉黎黄陂后智民里图仍可留下', afterDrop.some((img) => img.id === 'zhiminli-photo'));
+const noCommunity = await ask('不要智民里', plan.reply.itinerary);
+ok('去掉智民里后不再配智民里图', !(noCommunity.reply.images || []).some((img) => /zhiminli/.test(img.file)));
+
 const pageFiles = ['index.html', 'styles.css', 'app.js', 'chat-ui.js', 'engine.js'];
 const bundled = pageFiles.map((name) => readFileSync(join(ROOT, name), 'utf8')).join('\n');
 ok('移动布局含媒体查询', /@media \(max-width: 860px\)/.test(readFileSync(join(ROOT, 'styles.css'), 'utf8')));
