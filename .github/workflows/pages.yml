@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v7
       - name: Verify production candidate
         run: bash Scripts/verify_site.sh --candidate
+      - name: Test Wuhan receptionist
+        run: node wuhan-receptionist/test/engine.test.mjs && node wuhan-receptionist/test/frontend-logic.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v6
       - name: Upload static site

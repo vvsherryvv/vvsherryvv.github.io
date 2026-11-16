@@ -6,7 +6,8 @@ The bilingual root is a witch-flight personal portfolio: an original SVG witch, 
 
 ## Routes
 
-- `/` and `/zh/` — personal introduction and app portfolio: Owl, Wizarding OS, and an About link
+- `/` and `/zh/` — personal introduction and app portfolio: Owl, 武汉城市AI接待员, Wizarding OS, and an About link
+- `/wuhan-receptionist/` — 武汉城市AI接待员，静态知识问答页。对话在浏览器内完成，不请求 Node、`/api/chat` 或外部模型接口
 - `/owl/` and `/zh/owl/` — Owl product home (kept structurally parallel)
 - `/wizarding-os/` and `/zh/wizarding-os/` — Wizarding OS landing
 - `/privacy/`, `/zh/privacy/` — Owl Privacy Policy (paths unchanged)
