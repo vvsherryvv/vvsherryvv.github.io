@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="武汉城市AI接待员。介绍武汉、智民里六站、可追问修改的短行程，以及数命SPU与SAIG。" />
+  <meta name="theme-color" content="#14302c" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <title>武汉城市AI接待员</title>
+  <link rel="canonical" href="https://vvsherryvv.github.io/wuhan-receptionist/" />
+  <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css?v=20261116e" />
+</head>
+<body>
+  <a class="skip" href="#input">跳到输入框</a>
+
+  <div class="shell">
+    <aside class="guide" id="guide" aria-labelledby="tourTitle">
+      <div class="guide-brand">
+        <img class="guide-mascot" src="assets/avatar-front-cutout.png" alt="赛题提供的蓝鲸豚形象正面" width="438" height="512" />
+        <p class="eyebrow">武汉 · 江岸智民里</p>
+        <h1>城市AI接待员</h1>
+        <p class="guide-lead">面向初到武汉、智民里或了解SAIG的来宾。</p>
+      </div>
+
+      <div class="guide-section">
+        <p class="eyebrow">参访手册 · 今天怎么走</p>
+        <h2 id="tourTitle">智民里六站路线</h2>
+        <p class="section-lead">路线按手册第2页：A1、A4·A5、A3、A2，再视情况前往巴公房子与黎黄陂路。黑客松现场「平和打包厂」不在当天参访路线上。</p>
+
+        <figure class="plan">
+          <img src="assets/zhiminli-design.jpg" alt="智民里鸟瞰设计图，标注A1至A5栋相对位置，此为设计图而非实拍" width="1600" height="990" />
+          <figcaption>智民里鸟瞰设计图，出自《数命SPU社区说明》。设计图，不是实拍。</figcaption>
+        </figure>
+
+        <ol class="route">
+          <li>
+            <button type="button" class="stop" data-send="A1栋是做什么的">
+              <span class="stop-num">1</span>
+              <span class="stop-body">
+                <span class="stop-name">A1栋</span>
+                <span class="stop-func">展厅 · 体验厅 · 智能体咨询与交付</span>
+                <span class="badge badge-note">含设计效果图，须与实拍区分</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="stop" data-send="A4和A5栋是什么">
+              <span class="stop-num">2</span>
+              <span class="stop-body">
+                <span class="stop-name">A4 · A5栋</span>
+                <span class="stop-func">教室与直播间</span>
+                <span class="badge badge-fact">手册记载</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="stop" data-send="A3栋是什么，是实景吗">
+              <span class="stop-num">3</span>
+              <span class="stop-body">
+                <span class="stop-name">A3栋</span>
+                <span class="stop-func">路演大厅 · 共享餐厅 · 共享会客室</span>
+                <span class="badge badge-sketch">示意，以建成后为准</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="stop" data-send="A2栋是什么">
+              <span class="stop-num">4</span>
+              <span class="stop-body">
+                <span class="stop-name">A2栋</span>
+                <span class="stop-func">场景展示 · AI产品的博物馆</span>
+                <span class="badge badge-fact">手册记载</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="stop" data-send="巴公房子能去吗？">
+              <span class="stop-num">5</span>
+              <span class="stop-body">
+                <span class="stop-name">巴公房子</span>
+                <span class="stop-func">机器人展与新品首发</span>
+                <span class="badge badge-prep">还在筹备</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="stop" data-send="黎黄陂路的AI集市怎么安排">
+              <span class="stop-num">6</span>
+              <span class="stop-body">
+                <span class="stop-name">黎黄陂路</span>
+                <span class="stop-func">AI集市与OPC一人公司摊位</span>
+                <span class="badge badge-plan">赛事期间计划</span>
+              </span>
+            </button>
+          </li>
+        </ol>
+
+        <p class="tour-footnote">手册另有机器人咖啡厅专页，主题是「让AI有温度」，配图多为「示意图·AI生成」，不能当成已经营业的实拍现场。巴公房子需先说明筹备状态；黎黄陂路集市是赛事期间的计划，日常仍可把这条街作为历史街区来走。</p>
+
+        <figure class="place">
+          <img src="assets/zhiminli-photo.jpg" alt="智民里红砖楼实拍，可见灰石基座与深色窗框的历史建筑立面" width="1600" height="900" />
+          <figcaption>智民里红砖楼实拍，出自《数命SPU社区说明》</figcaption>
+        </figure>
+      </div>
+
+      <p class="guide-foot">资料冲突以《数命SPU社区智民里参访手册》为准，日程以官网最终公布为准。不提供实时路况、余票、报名或下单。</p>
+    </aside>
+
+    <button type="button" class="backdrop" id="guideBackdrop" aria-label="关闭六站导览" hidden></button>
+
+    <main class="desk" id="desk" aria-labelledby="deskTitle">
+      <header class="desk-rail">
+        <div class="desk-identity">
+          <img class="desk-mascot" src="assets/avatar-front-cutout.png" alt="" width="72" height="84" />
+          <div>
+            <strong id="deskTitle">城市咨询台</strong>
+          </div>
+        </div>
+        <div class="desk-actions">
+          <nav aria-label="页面导航"><a class="text-btn" href="/zh/#apps">返回作品</a></nav>
+          <button type="button" class="text-btn" id="btnGuide" aria-expanded="false" aria-controls="guide">六站导览</button>
+          <button type="button" class="text-btn" id="btnReset">新对话</button>
+        </div>
+      </header>
+
+      <div class="entries" aria-label="四项接待快捷入口">
+        <button type="button" class="entry" data-send="介绍一下武汉"><span>01</span>介绍武汉</button>
+        <button type="button" class="entry" data-send="智民里六站怎么走"><span>02</span>智民里六站</button>
+        <button type="button" class="entry" data-send="从智民里出发，安排一天行程"><span>03</span>安排行程</button>
+        <button type="button" class="entry" data-send="数命SPU是什么"><span>04</span>数命SPU与SAIG</button>
+      </div>
+
+      <div class="chips" id="chips" aria-label="快捷问题"></div>
+
+      <div class="thread-wrap">
+        <section class="thread" id="thread" aria-live="polite"></section>
+        <button type="button" class="new-hint" id="newHint" hidden>有新回复，点此查看</button>
+      </div>
+
+      <div class="composer" id="composer">
+        <label class="sr-only" for="input">输入问题</label>
+        <textarea id="input" rows="1" maxlength="2000" placeholder="例如：从智民里出发，帮我安排一天行程" autocomplete="off"></textarea>
+        <button type="button" id="btnSend">发送</button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="app.js?v=20261116e"></script>
+</body>
+</html>
