@@ -176,7 +176,7 @@ export async function runAgent({ message, history, itinerary } = {}, deps = {}) 
   if (!local.ok) return withTransport(local, 'static', 'invalid');
   if (!hasApiKey(env)) return withTransport(local, 'static', 'no_key');
 
-  const fetchImpl = deps.fetchImpl;
+  const fetchImpl = deps.fetchImpl || globalThis.fetch;
   if (typeof fetchImpl !== 'function') return withTransport(local, 'static', 'no_client');
   const timeoutMs = Number(deps.timeoutMs) > 0 ? Number(deps.timeoutMs) : UPSTREAM_TIMEOUT_MS;
   const controller = new AbortController();
