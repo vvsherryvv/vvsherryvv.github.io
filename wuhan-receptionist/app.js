@@ -32,7 +32,7 @@ const STARTERS = [
 ];
 
 const WELCOME = {
-  text: '你好。我可以介绍武汉和数命SPU社区，按兴趣生成短行程，也可以说明SPU理念与SAIG比赛。',
+  text: '你好，我是城市AI接待员小熠。我可以介绍武汉和数命SPU社区，按兴趣生成短行程，也可以说明SPU理念与SAIG比赛。',
   suggestions: STARTERS
 };
 

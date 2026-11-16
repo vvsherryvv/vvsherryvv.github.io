@@ -228,6 +228,9 @@ ok('JS不再渲染来源展开', !/sourceList/.test(appNow) && !/class="sources"
 ok('setMode不写回可见徽标', !/modeBadge/.test(appNow) && !/modeInline/.test(appNow));
 ok('页面不调用不可用接口', !/\/api\/mode|\/api\/chat|localhost:8788/.test(appNow + uiNow) && /answerFn/.test(appNow) && /function setMode/.test(appNow));
 ok('欢迎语已去掉指定说明', /我可以介绍武汉/.test(appNow) && !/手册记载为准/.test(appNow) && !/如实标明/.test(appNow));
+ok('页面标题主标题与对话区名称一致', /<title>城市AI接待员小熠<\/title>/.test(htmlNow) && /<h1>城市AI接待员小熠<\/h1>/.test(htmlNow) && /id="deskTitle">城市AI接待员小熠</.test(htmlNow));
+ok('欢迎自称城市AI接待员小熠', /你好，我是城市AI接待员小熠。/.test(appNow));
+ok('页面不声称鲸豚形象原名是小熠', !/本来名叫小熠|官方名字是小熠|形象名叫小熠/.test(htmlNow + appNow));
 ok('侧栏仍保留筹备与示意区分', /还在筹备/.test(htmlNow) && /示意图·AI生成/.test(htmlNow) && /设计图，不是实拍/.test(htmlNow));
 ok('对话主页面与四入口仍在', /id="desk"/.test(htmlNow) && /id="thread"/.test(htmlNow) && /id="input"/.test(htmlNow) && /介绍武汉/.test(htmlNow) && /安排行程/.test(htmlNow));
 ok('强调色为砖红', /--accent:\s*#A84436/i.test(cssNow) && !/--coral:\s*#d4654a/i.test(cssNow));
