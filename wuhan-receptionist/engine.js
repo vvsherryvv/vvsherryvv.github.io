@@ -235,7 +235,7 @@ function tweakItinerary(prev, text) {
       itinerary.days = itinerary.days.filter((d) => d.items.length);
     }
   }
-  if (/加.*美食|再加.*吃|补一餐|加上过早/.test(text)) {
+  if (/加.*美食|再加.*吃|补一餐|加上过早|过早|多留时间.*吃/.test(text)) {
     const already = itinerary.days.some((d) => d.items.some((i) => i.name.includes('过早') || i.name.includes('美食')));
     if (!already) {
       itinerary.days[itinerary.days.length - 1].items.push(stop(

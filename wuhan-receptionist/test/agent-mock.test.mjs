@@ -115,6 +115,40 @@ ok('多轮去掉黄鹤楼站点', !stopNames.includes('黄鹤楼'));
 ok('多轮增加过早', /过早|美食/.test(stopNames));
 ok('去掉黄鹤楼后不再配黄鹤楼图', !(adjusted.reply.images || []).some((img) => img.id === 'yellow-crane') && !stopNames.includes('黄鹤楼'));
 
+let breakfastStep = 0;
+const breakfast = await runAgent({
+  message: '不要黄鹤楼，多留时间吃过早',
+  itinerary: first.reply.itinerary
+}, {
+  env: { DEEPSEEK_API_KEY: 'test-key' },
+  fetchImpl: async () => {
+    breakfastStep += 1;
+    if (breakfastStep === 1) {
+      return jsonResponse({
+        content: null,
+        tool_calls: [{ id: 'plan-2', type: 'function', function: { name: 'plan_itinerary', arguments: '{}' } }]
+      });
+    }
+    return jsonResponse({ content: '已按服务端行程留出过早。' });
+  }
+});
+const breakfastNames = JSON.stringify((breakfast.reply.itinerary.days || []).flatMap((day) => day.items.map((item) => item.name)));
+ok('多留时间吃过早会加入早餐站点', /过早|美食/.test(breakfastNames) && !breakfastNames.includes('黄鹤楼'));
+
+const originalFetch = globalThis.fetch;
+let usedGlobalFetch = false;
+globalThis.fetch = async () => {
+  usedGlobalFetch = true;
+  return jsonResponse({ content: '武汉是江城。' });
+};
+let globalResult;
+try {
+  globalResult = await runAgent({ message: '介绍一下武汉' }, { env: { DEEPSEEK_API_KEY: 'test-key' } });
+} finally {
+  globalThis.fetch = originalFetch;
+}
+ok('未传入客户端时使用运行时fetch', usedGlobalFetch && globalResult.transport === 'agent' && globalResult.fallback == null);
+
 let calls = 0;
 const timed = await runAgent({ message: prizeQuestion }, {
   env: { DEEPSEEK_API_KEY: 'test-key' },
