@@ -476,6 +476,36 @@ h1 {
   padding: 0 5px;
 }
 .suggest-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.answer-figures { display: grid; gap: 8px; }
+.answer-figure {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f7f3ec;
+}
+.answer-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--river-mist);
+}
+.answer-figure figcaption {
+  padding: 8px 10px 10px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.figure-kind {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.figure-kind.kind-photo { background: var(--river-mist); color: var(--pine); }
+.figure-kind.kind-design { background: #efe6d4; color: #6a4e1e; }
 
 .loading-row {
   display: flex;

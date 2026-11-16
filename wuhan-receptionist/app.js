@@ -10,7 +10,8 @@ import {
   performChatRequest,
   commitReplyContext,
   canAcceptSend,
-  errorReply
+  errorReply,
+  appendAnswerImages
 } from './chat-ui.js';
 import { reply as answerLocally } from './engine.js';
 
@@ -91,6 +92,7 @@ function itineraryCard(it) {
 function fillMeta(meta, payload) {
   if (!meta) return;
   meta.innerHTML = itineraryCard(payload.itinerary);
+  appendAnswerImages(meta, payload.images);
   if (payload.suggestions && payload.suggestions.length) {
     const row = document.createElement('div');
     row.className = 'suggest-row';

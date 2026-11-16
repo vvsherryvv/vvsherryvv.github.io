@@ -495,6 +495,81 @@ function localAnswer(intent, text, itinerary, history) {
   return { text: body, sources, scope: 'in' };
 }
 
+export const PLACE_IMAGES = [
+  {
+    id: 'zhiminli-photo',
+    file: 'zhiminli-photo.jpg',
+    width: 1600,
+    height: 900,
+    alt: '智民里红砖楼实拍，灰石基座与深色窗框',
+    caption: '智民里红砖楼实拍。这是建筑立面照片，不是设计图，也不是平和打包厂。',
+    kind: '实拍',
+    stops: [/智民里/]
+  },
+  {
+    id: 'zhiminli-design',
+    file: 'zhiminli-design.jpg',
+    width: 1600,
+    height: 990,
+    alt: '智民里鸟瞰设计图，标出A1至A5的相对位置，不是实拍',
+    caption: '智民里鸟瞰设计图，标出A1至A5。设计图，不是实拍。',
+    kind: '设计图',
+    stops: [/智民里/]
+  }
+];
+
+function stopText(stop) {
+  return `${stop && stop.name || ''} ${stop && stop.area || ''}`;
+}
+
+export function selectImages({ intent, text = '', answerText = '', itinerary = null, library = PLACE_IMAGES } = {}) {
+  const items = [];
+  if (itinerary && Array.isArray(itinerary.days)) {
+    for (const day of itinerary.days) {
+      for (const stop of day.items || []) items.push(stop);
+    }
+  }
+  const picked = [];
+  const seen = new Set();
+  const add = (img) => {
+    if (!img || seen.has(img.id) || picked.length >= 3) return;
+    if (/avatar|鲸|豚/i.test(img.file || '')) return;
+    seen.add(img.id);
+    picked.push({
+      id: img.id,
+      file: img.file,
+      width: img.width,
+      height: img.height,
+      alt: img.alt,
+      caption: img.caption,
+      kind: img.kind
+    });
+  };
+  if (items.length) {
+    for (const img of library) {
+      const matched = items.some((stop) => (img.stops || []).some((re) => re.test(stopText(stop))));
+      if (matched) add(img);
+    }
+    return picked;
+  }
+  if (intent === 'wuhan' || intent === 'spu' || intent === 'greeting' || intent === 'identity') return [];
+  const blob = `${text}\n${answerText}`;
+  if (/巴公/.test(text) && !/智民里|六站|A\d/.test(text)) return [];
+  if (/黎黄陂/.test(text) && !/智民里|六站/.test(text)) return [];
+  if (intent === 'six' || intent === 'community') {
+    const designOnly = /A3|路演|是实景吗|实拍吗|示意图/.test(text) && !/六站|怎么走|导览|社区/.test(text);
+    for (const img of library) {
+      if (designOnly && img.kind !== '设计图') continue;
+      add(img);
+    }
+    return picked;
+  }
+  if (intent === 'saig' && /智民里/.test(blob)) {
+    for (const img of library) if (img.id === 'zhiminli-photo') add(img);
+  }
+  return picked;
+}
+
 export async function reply({ message, history = [], itinerary = null } = {}) {
   const text = sanitizeInput(message);
   if (!text) {
@@ -518,7 +593,13 @@ export async function reply({ message, history = [], itinerary = null } = {}) {
       sources: local.sources || [],
       suggestions: local.suggestions || [],
       scope: local.scope || 'in',
-      itinerary: local.itinerary || null
+      itinerary: local.itinerary || null,
+      images: local.scope === 'out' ? [] : selectImages({
+        intent,
+        text,
+        answerText: local.text,
+        itinerary: local.itinerary || null
+      })
     }
   };
 }
