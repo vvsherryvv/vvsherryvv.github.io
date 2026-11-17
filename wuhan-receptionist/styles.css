@@ -636,7 +636,15 @@ h1 {
   .entries { grid-template-columns: 1fr 1fr; padding: 8px 12px; }
   .desk-rail, .thread { padding-left: 12px; padding-right: 12px; }
   .desk-rail { flex-wrap: wrap; row-gap: 8px; }
-  .desk-actions { flex-wrap: wrap; justify-content: flex-end; }
+  .desk-identity { flex: 1 0 100%; }
+  .desk-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .desk-actions .text-btn { padding: 0 8px; font-size: 13px; }
   .msg, .msg.user { max-width: 100%; }
   .entry, .text-btn, .chip, .suggest, .stop, .composer #btnSend, .trip-choice, .trip-go, .trip-text { min-height: 44px; }
 }
@@ -664,6 +672,7 @@ h1 {
   .entry:hover { transform: none; }
 }
 
+.trip[hidden] { display: none !important; }
 .trip {
   flex: 0 1 auto;
   min-height: 0;

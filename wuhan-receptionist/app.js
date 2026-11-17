@@ -384,12 +384,17 @@ function bindSenders() {
 }
 
 const tripRoot = $('trip');
+const tripButton = $('btnTrip');
 if (tripRoot) {
-  mountTripSheet(tripRoot, {
+  const tripSheet = mountTripSheet(tripRoot, {
     store: browserStore(),
     onChange(profile) { state.profile = profile; },
-    onPlan(text) { send(text); }
+    onPlan(text) { send(text); },
+    onToggle(open) {
+      if (tripButton) tripButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
   });
+  if (tripButton) tripButton.addEventListener('click', () => tripSheet.toggle());
 }
 
 $('btnSend').addEventListener('click', () => send($('input').value));
