@@ -1,4 +1,5 @@
 import knowledge from './knowledge.js';
+import { applyProfileSlots, sanitizeProfile, shapeTripItinerary } from './profile.mjs';
 
 export const MAX_MESSAGE_LEN = 2000;
 export const MAX_HISTORY = 16;
@@ -261,7 +262,7 @@ export function detectIntent(text, hasItinerary) {
   if (/你是谁|你叫什么|官方名字|形象叫|鲸|豚|吉祥物/.test(t) && !/规划|行程/.test(t)) return 'identity';
   if (/资料来源|引自哪|页码|根据什么文件|出处/.test(t)) return 'sources';
   if (/官网|网址|dlife/i.test(t) && !/行程|规划/.test(t)) return 'site';
-  const itineraryAsk = /行程|规划|路线|怎么玩|玩几天|安排一天|安排半天|三日游|一日游|从.+出发|想去/.test(t);
+  const itineraryAsk = /行程|规划|路线|怎么玩|玩几天|安排一天|安排半天|三日游|一日游|从.+出发|想去|【选择:/.test(t);
   const itineraryTweak = hasItinerary && /改成|改一天|调整|不要|去掉|换成|再加|更短|压缩|加点|改为|出发/.test(t);
   if (itineraryTweak) return 'itinerary_adjust';
   if (itineraryAsk) return 'itinerary';
@@ -339,7 +340,7 @@ function greeting() {
   };
 }
 
-function localAnswer(intent, text, itinerary, history) {
+function localAnswer(intent, text, itinerary, history, profile) {
   if (isOutOfScope(text)) {
     return {
       text: '这个问题已经超出我的知识范围。我只能依据赛题文件、2026旅游手册、武汉概览（年代较早）和《智民里参访手册》介绍武汉、数命SPU社区、旅游规划和SAIG比赛，不能提供实时天气、路况、余票，也不能处理下单、医疗或与武汉接待无关的事项。如果你愿意，可以换一个和来访、社区或行程有关的问题。',
@@ -390,13 +391,15 @@ function localAnswer(intent, text, itinerary, history) {
   }
 
   if (intent === 'itinerary' || intent === 'itinerary_adjust') {
-    const next = intent === 'itinerary_adjust' && itinerary
+    const built = intent === 'itinerary_adjust' && itinerary
       ? tweakItinerary(itinerary, text)
-      : buildItinerary(parseItinerarySlots(text, itinerary));
+      : buildItinerary(applyProfileSlots(parseItinerarySlots(text, itinerary), text, profile));
+    const next = shapeTripItinerary(built, text, profile);
     const lines = [
       intent === 'itinerary_adjust' ? '已按你的追问做了调整。' : '这是一份结构化短行程，可再告诉我缩短、换出发点或增减站点。',
       `主题：${next.theme}`
     ];
+    if (next.partyNote) lines.push(next.partyNote);
     next.days.forEach((day, i) => {
       lines.push(`\n${day.title}`);
       day.items.forEach((it, j) => {
@@ -632,7 +635,7 @@ export function selectImages({ intent, text = '', answerText = '', itinerary = n
   return picked;
 }
 
-export async function reply({ message, history = [], itinerary = null } = {}) {
+export async function reply({ message, history = [], itinerary = null, profile = null } = {}) {
   const text = sanitizeInput(message);
   if (!text) {
     return {
@@ -643,7 +646,7 @@ export async function reply({ message, history = [], itinerary = null } = {}) {
   }
   const safeHistory = Array.isArray(history) ? history.slice(-MAX_HISTORY) : [];
   const intent = detectIntent(text, Boolean(itinerary));
-  const local = localAnswer(intent, text, itinerary, safeHistory);
+  const local = localAnswer(intent, text, itinerary, safeHistory, sanitizeProfile(profile));
   return {
     ok: true,
     mode: 'local',

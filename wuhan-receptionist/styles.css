@@ -620,7 +620,7 @@ h1 {
   .desk-rail { flex-wrap: wrap; row-gap: 8px; }
   .desk-actions { flex-wrap: wrap; justify-content: flex-end; }
   .msg, .msg.user { max-width: 100%; }
-  .entry, .text-btn, .chip, .suggest, .stop, .composer #btnSend { min-height: 44px; }
+  .entry, .text-btn, .chip, .suggest, .stop, .composer #btnSend, .trip-choice, .trip-go, .trip-text { min-height: 44px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -634,3 +634,54 @@ h1 {
   .msg.bot.is-revealing .bubble::after { display: none; }
   .entry:hover { transform: none; }
 }
+
+.trip {
+  flex-shrink: 0;
+  padding: 8px 16px 0;
+  background: #f3eee6;
+}
+.trip-card {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  background: var(--ivory);
+  border-radius: 14px;
+  padding: 10px 12px 12px;
+}
+.trip-title {
+  margin: 0 0 4px;
+  color: var(--pine);
+  font-family: var(--serif);
+  font-size: 16px;
+}
+.trip-summary, .trip-scope, .trip-pick, .trip-bar p { margin: 4px 0; color: var(--muted); font-size: 13px; }
+.trip-summary { color: var(--ink); }
+.trip-choices, .trip-actions, .trip-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.trip-choice, .trip-go, .trip-text {
+  appearance: none;
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.trip-choice, .trip-text {
+  border: 1px solid var(--line-strong);
+  background: var(--cream);
+  color: var(--pine);
+}
+.trip-choice.is-on, .trip-go {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fffdf8;
+}
+.trip-note {
+  width: 100%;
+  margin-top: 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--ink);
+  padding: 8px 10px;
+  resize: none;
+}
+.trip-bar { align-items: center; justify-content: space-between; }

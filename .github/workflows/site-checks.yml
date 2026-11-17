@@ -17,4 +17,4 @@ jobs:
       - name: Verify source
         run: bash Scripts/verify_site.sh --source
       - name: Test Wuhan receptionist
-        run: node wuhan-receptionist/test/engine.test.mjs && node wuhan-receptionist/test/frontend-logic.mjs && node wuhan-receptionist/test/agent-mock.test.mjs
+        run: node wuhan-receptionist/test/engine.test.mjs && node wuhan-receptionist/test/frontend-logic.mjs && node wuhan-receptionist/test/agent-mock.test.mjs && node wuhan-receptionist/test/profile.test.mjs
