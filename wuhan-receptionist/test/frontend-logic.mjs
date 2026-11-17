@@ -237,6 +237,9 @@ ok('配图不接收鲸豚头像文件', /wuhan-yellow-crane\.jpg/.test(uiNow) &&
 ok('图注署名使用链接而不是来源区', /figure-credit/.test(uiNow) && /licenseUrl/.test(uiNow) && !/sourceList/.test(appNow));
 ok('侧栏仍保留筹备与示意区分', /还在筹备/.test(htmlNow) && /示意图·AI生成/.test(htmlNow) && /设计图，不是实拍/.test(htmlNow));
 ok('对话主页面与四入口仍在', /id="desk"/.test(htmlNow) && /id="thread"/.test(htmlNow) && /id="input"/.test(htmlNow) && /介绍武汉/.test(htmlNow) && /安排行程/.test(htmlNow));
+ok('出游偏好在新对话左边', /id="btnTrip"[^>]*>出游偏好<\/button>\s*<button[^>]*id="btnReset">新对话<\/button>/.test(htmlNow));
+const tripUi = readFileSync(join(PUBLIC, 'trip-ui.mjs'), 'utf8');
+ok('完成后收起画像且新对话不清偏好', /setExpanded\(false\)/.test(tripUi) && /root\.hidden/.test(tripUi) && /只保存在这台浏览器/.test(tripUi) && !/clearProfile/.test(appNow));
 ok('强调色为砖红', /--accent:\s*#A84436/i.test(cssNow) && !/--coral:\s*#d4654a/i.test(cssNow));
 
 function renderMetaStub(payload) {

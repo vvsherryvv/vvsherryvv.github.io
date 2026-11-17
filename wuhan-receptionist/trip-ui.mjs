@@ -1,7 +1,7 @@
 import {
   INTERESTS, PARTIES, HEADCOUNTS, NEEDS, PACES, TRANSPORTS,
   clearProfile, loadProfile, recommendPlaces, sanitizeNote, sanitizeProfile,
-  saveProfile, selectionMarker, summaryLine
+  saveProfile, selectionMarker
 } from './profile.mjs';
 
 const SCOPE = '只保存在这台浏览器，用来记住这次怎么逛。可以随时修改或清空。不会上传成账号，也不收集姓名、联系方式和精确位置。';
@@ -27,13 +27,17 @@ function choices(list, selected, onToggle) {
   return row;
 }
 
-export function mountTripSheet(root, { store, onChange, onPlan } = {}) {
+function cloneProfile(source) {
+  return { ...source, interests: [...(source.interests || [])], needs: [...(source.needs || [])] };
+}
+
+export function mountTripSheet(root, { store, onChange, onPlan, onToggle } = {}) {
   const loaded = loadProfile(store);
   let profile = loaded.profile;
   let failed = loaded.persisted === false;
   let step = 0;
-  let editing = !profile;
-  let draft = profile ? { ...profile, interests: [...(profile.interests || [])], needs: [...(profile.needs || [])] } : blank();
+  let expanded = !profile;
+  let draft = profile && !profile.skipped ? cloneProfile(profile) : blank();
 
   function blank() {
     return { interests: [], party: null, headcount: null, needs: [], pace: null, transport: null, note: '', skipped: false };
@@ -51,85 +55,28 @@ export function mountTripSheet(root, { store, onChange, onPlan } = {}) {
     if (onChange) onChange(profile);
   }
 
+  function setExpanded(next) {
+    expanded = next;
+    root.hidden = !expanded;
+    if (onToggle) onToggle(expanded);
+    if (!expanded) {
+      root.replaceChildren();
+      return;
+    }
+    render();
+  }
+
   function render() {
     root.innerHTML = '';
+    if (!expanded) return;
     const card = document.createElement('div');
     card.className = 'trip-card';
-    if (!editing && profile && profile.skipped) card.appendChild(skippedView());
-    else if (!editing && profile) card.appendChild(summaryView());
-    else card.appendChild(askView());
+    card.appendChild(askView());
     root.appendChild(card);
   }
 
-  function skippedView() {
-    const box = document.createElement('div');
-    box.className = 'trip-bar';
-    const text = document.createElement('p');
-    text.textContent = '这次先不填也可以直接问。想补充时再选。';
-    box.appendChild(text);
-    box.appendChild(button('补充这次怎么逛', 'trip-text', () => {
-      editing = true;
-      step = 0;
-      draft = blank();
-      render();
-    }));
-    return box;
-  }
-
-  function summaryView() {
-    const box = document.createElement('div');
-    const title = document.createElement('p');
-    title.className = 'trip-title';
-    title.textContent = '这次怎么逛';
-    box.appendChild(title);
-    const line = document.createElement('p');
-    line.className = 'trip-summary';
-    line.textContent = summaryLine(profile) || '已记下这次的选择。';
-    box.appendChild(line);
-    const scope = document.createElement('p');
-    scope.className = 'trip-scope';
-    scope.textContent = failed ? '浏览器没能保存，这次选择只留在当前页面。' : SCOPE;
-    box.appendChild(scope);
-    const actions = document.createElement('div');
-    actions.className = 'trip-actions';
-    actions.appendChild(button('修改', 'trip-text', () => {
-      editing = true;
-      step = 0;
-      draft = { ...profile, interests: [...profile.interests], needs: [...profile.needs] };
-      render();
-    }));
-    actions.appendChild(button('清空', 'trip-text', () => {
-      editing = true;
-      step = 0;
-      draft = blank();
-      publish(null, true);
-      render();
-    }));
-    box.appendChild(actions);
-    const picks = recommendPlaces(profile);
-    if (picks.length) {
-      const list = document.createElement('div');
-      list.className = 'trip-picks';
-      picks.forEach((item) => {
-        const row = document.createElement('p');
-        row.className = 'trip-pick';
-        row.textContent = `${item.name}：${item.reason}`;
-        list.appendChild(row);
-      });
-      box.appendChild(list);
-      const mobility = picks[0].mobility;
-      if (mobility) {
-        const note = document.createElement('p');
-        note.className = 'trip-scope';
-        note.textContent = mobility;
-        box.appendChild(note);
-      }
-      box.appendChild(button('用这些安排行程', 'trip-go', () => {
-        const names = picks.map((item) => item.name).join('、');
-        if (onPlan) onPlan(`按这次选择安排：${names}。${selectionMarker(picks.map((item) => item.id))}`);
-      }));
-    }
-    return box;
+  function savedChoices() {
+    return profile && !profile.skipped;
   }
 
   function askView() {
@@ -205,27 +152,61 @@ export function mountTripSheet(root, { store, onChange, onPlan } = {}) {
 
     const scope = document.createElement('p');
     scope.className = 'trip-scope';
-    scope.textContent = SCOPE;
+    scope.textContent = failed ? `浏览器没能保存，这次选择只留在当前页面。${SCOPE}` : SCOPE;
     box.appendChild(scope);
     const actions = document.createElement('div');
     actions.className = 'trip-actions';
     if (step > 0) actions.appendChild(button('返回', 'trip-text', () => { step -= 1; render(); }));
     actions.appendChild(button(step === 2 ? '完成' : '下一步', 'trip-go', () => {
       if (step < 2) { step += 1; render(); return; }
-      editing = false;
       const clean = sanitizeProfile({ ...draft, skipped: false });
       publish(clean || { skipped: true }, true);
-      render();
+      setExpanded(false);
     }));
-    actions.appendChild(button('先跳过', 'trip-text', () => {
-      editing = false;
-      publish({ skipped: true }, true);
-      render();
-    }));
+    if (savedChoices()) {
+      actions.appendChild(button('取消', 'trip-text', () => {
+        draft = cloneProfile(profile);
+        step = 0;
+        setExpanded(false);
+      }));
+      actions.appendChild(button('清空', 'trip-text', () => {
+        draft = blank();
+        step = 0;
+        publish(null, true);
+        setExpanded(false);
+      }));
+      const picks = recommendPlaces(profile);
+      if (picks.length && onPlan) {
+        actions.appendChild(button('用这些安排行程', 'trip-text', () => {
+          const names = picks.map((item) => item.name).join('、');
+          onPlan(`按这次选择安排：${names}。${selectionMarker(picks.map((item) => item.id))}`);
+          setExpanded(false);
+        }));
+      }
+    } else {
+      actions.appendChild(button('先跳过', 'trip-text', () => {
+        publish({ skipped: true }, true);
+        setExpanded(false);
+      }));
+    }
     box.appendChild(actions);
     return box;
   }
 
-  render();
-  return { getProfile: () => profile };
+  setExpanded(expanded);
+  return {
+    getProfile: () => profile,
+    isOpen: () => expanded,
+    toggle() {
+      if (expanded) {
+        if (savedChoices()) draft = cloneProfile(profile);
+        step = 0;
+        setExpanded(false);
+        return;
+      }
+      step = 0;
+      draft = savedChoices() ? cloneProfile(profile) : blank();
+      setExpanded(true);
+    }
+  };
 }
