@@ -159,6 +159,15 @@ export function mountTripSheet(root, { store, onChange, onPlan } = {}) {
       note.placeholder = '可写一句备忘，最多80字。不必留姓名或联系方式。';
       note.value = draft.note || '';
       note.addEventListener('input', () => { draft.note = sanitizeNote(note.value); });
+      note.addEventListener('focus', () => {
+        const scroller = note.closest('.trip');
+        if (!scroller) return;
+        const noteBox = note.getBoundingClientRect();
+        const view = scroller.getBoundingClientRect();
+        if (noteBox.top < view.top || noteBox.bottom > view.bottom) {
+          scroller.scrollTop += noteBox.top - view.top - 8;
+        }
+      });
       box.appendChild(note);
     }
     if (step === 1) {
@@ -194,6 +203,10 @@ export function mountTripSheet(root, { store, onChange, onPlan } = {}) {
       box.appendChild(choices(TRANSPORTS, draft.transport, (id) => { draft.transport = draft.transport === id ? null : id; render(); }));
     }
 
+    const scope = document.createElement('p');
+    scope.className = 'trip-scope';
+    scope.textContent = SCOPE;
+    box.appendChild(scope);
     const actions = document.createElement('div');
     actions.className = 'trip-actions';
     if (step > 0) actions.appendChild(button('返回', 'trip-text', () => { step -= 1; render(); }));
@@ -210,10 +223,6 @@ export function mountTripSheet(root, { store, onChange, onPlan } = {}) {
       render();
     }));
     box.appendChild(actions);
-    const scope = document.createElement('p');
-    scope.className = 'trip-scope';
-    scope.textContent = SCOPE;
-    box.appendChild(scope);
     return box;
   }
 

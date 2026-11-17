@@ -27,7 +27,15 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+}
 body {
   font-family: var(--sans);
   color: var(--ink);
@@ -57,8 +65,14 @@ a:hover { color: var(--accent-deep); }
 .shell {
   display: grid;
   grid-template-columns: var(--guide-w) minmax(0, 1fr);
-  height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   height: 100dvh;
+  overflow: hidden;
 }
 
 /* ---------- Guide / six-station sidebar ---------- */
@@ -243,6 +257,7 @@ h1 {
   min-width: 0;
   min-height: 0;
   height: 100%;
+  overflow: hidden;
   background: var(--ivory);
 }
 .desk-rail {
@@ -359,11 +374,12 @@ h1 {
 .chip:disabled, .suggest:disabled { opacity: 0.55; cursor: wait; }
 
 .thread-wrap {
-  flex: 1;
+  flex: 1 0 96px;
   min-height: 0;
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .thread {
   flex: 1;
@@ -593,7 +609,9 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
+    height: 100%;
+    height: 100dvh;
+    bottom: auto;
     width: min(90vw, 360px);
     z-index: 30;
     transform: translateX(-100%);
@@ -622,6 +640,17 @@ h1 {
   .msg, .msg.user { max-width: 100%; }
   .entry, .text-btn, .chip, .suggest, .stop, .composer #btnSend, .trip-choice, .trip-go, .trip-text { min-height: 44px; }
 }
+@media (max-height: 520px) {
+  .entries {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+  }
+  .entry { flex: 0 0 auto; }
+  .trip { flex: 1 1 auto; max-height: none; }
+  .thread-wrap { flex: 0 1 48px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -636,8 +665,13 @@ h1 {
 }
 
 .trip {
-  flex-shrink: 0;
-  padding: 8px 16px 0;
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: 62%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 16px 8px;
   background: #f3eee6;
 }
 .trip-card {
@@ -656,6 +690,8 @@ h1 {
 .trip-summary, .trip-scope, .trip-pick, .trip-bar p { margin: 4px 0; color: var(--muted); font-size: 13px; }
 .trip-summary { color: var(--ink); }
 .trip-choices, .trip-actions, .trip-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.trip { position: relative; z-index: 1; }
+.thread-wrap { z-index: 0; }
 .trip-choice, .trip-go, .trip-text {
   appearance: none;
   border-radius: 999px;
