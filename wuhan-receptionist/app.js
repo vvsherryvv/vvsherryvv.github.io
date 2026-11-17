@@ -325,7 +325,7 @@ async function send(text) {
     await addBotMessage(errorReply(result.error), { typewrite: false, run, instant: true });
     if (runs.isCurrent(run.id)) {
       setBusyUI(false);
-      if (input) input.focus();
+      focusComposerIfRoom();
     }
     return;
   }
@@ -339,7 +339,7 @@ async function send(text) {
 
   if (runs.isCurrent(run.id)) {
     setBusyUI(false);
-    if (input) input.focus();
+    focusComposerIfRoom();
   }
 }
 
@@ -413,7 +413,42 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') setGuideOpen(false);
 });
 
+function composerMayTakeFocus() {
+  const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  return !coarse && height >= 780;
+}
+
+function focusComposerIfRoom() {
+  const input = $('input');
+  if (!input || !composerMayTakeFocus()) return;
+  input.focus({ preventScroll: true });
+}
+
+function pinShell() {
+  const shell = document.querySelector('.shell');
+  const vv = window.visualViewport;
+  const height = Math.round(Math.min(window.innerHeight, vv ? vv.height : window.innerHeight));
+  const top = vv && vv.height <= window.innerHeight + 1 ? Math.round(vv.offsetTop) : 0;
+  if (!shell) return;
+  shell.style.height = `${height}px`;
+  shell.style.top = `${top}px`;
+  const guide = document.querySelector('.guide');
+  if (guide && window.matchMedia('(max-width: 860px)').matches) {
+    guide.style.height = `${height}px`;
+    guide.style.top = `${top}px`;
+  }
+}
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', pinShell);
+  window.visualViewport.addEventListener('scroll', pinShell);
+}
+window.addEventListener('resize', pinShell);
+window.addEventListener('orientationchange', () => { setTimeout(pinShell, 60); });
+pinShell();
+
 bindSenders();
 welcome();
 loadMode();
-if ($('input')) $('input').focus();
+focusComposerIfRoom();

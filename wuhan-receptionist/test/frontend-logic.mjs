@@ -250,6 +250,9 @@ const rendered = renderMetaStub({
 });
 ok('动态meta忽略sources', !rendered.includes('资料来源') && !rendered.includes('第2页') && rendered.includes('半天行程'));
 ok('CSS已删除来源与徽标样式而非隐藏', !/\.sources\b/.test(cssNow) && !/\.mode\b/.test(cssNow) && !/\.composer-note\b/.test(cssNow) && !/display:\s*none[^\n]*sources/.test(cssNow));
+ok('画像卡在剩余高度内滚动', /\.trip\s*\{[^}]*min-height:\s*0/.test(cssNow) && /\.trip\s*\{[^}]*overflow:\s*auto/.test(cssNow) && !/\.trip\s*\{[^}]*flex-shrink:\s*0/.test(cssNow));
+ok('窄屏加载时不聚焦底部输入框', /function focusComposerIfRoom/.test(appNow) && /visualViewport/.test(appNow) && !/if \(\$\('input'\)\) \$\('input'\)\.focus\(\)/.test(appNow));
+ok('视口声明跟随键盘且隐私说明仍在', /interactive-widget=resizes-content/.test(htmlNow) && /只保存在这台浏览器/.test(readFileSync(join(PUBLIC, 'trip-ui.mjs'), 'utf8')) && /先跳过/.test(readFileSync(join(PUBLIC, 'trip-ui.mjs'), 'utf8')));
 
 console.log('\nFrontendResult', { passed, failed: failures.length, failures });
 if (failures.length) process.exit(1);
