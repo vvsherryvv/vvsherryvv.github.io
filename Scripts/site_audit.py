@@ -268,6 +268,16 @@ def audit(mode: str) -> int:
         errors.append("outdated TestFlight download link found in public source")
     if re.search(r"(?:localStorage|sessionStorage|document\.cookie)", combined_public, re.IGNORECASE):
         errors.append("browser storage or cookies found in public source")
+    for path in ROOT.rglob("*.mjs"):
+        if not path.is_file() or ".git" in path.parts:
+            continue
+        module_text = path.read_text(encoding="utf-8", errors="ignore")
+        uses_storage = re.search(r"(?:localStorage|sessionStorage|document\.cookie)", module_text, re.IGNORECASE)
+        allowed = path.relative_to(ROOT).as_posix() == "wuhan-receptionist/profile.mjs"
+        if uses_storage and not allowed:
+            errors.append(f"{path.relative_to(ROOT)}: browser storage is only allowed in the trip profile module")
+        if allowed and re.search(r"document\.cookie", module_text, re.IGNORECASE):
+            errors.append("trip profile must not use cookies")
     if re.search(r"<(?:form|iframe)\b", combined_public, re.IGNORECASE):
         errors.append("form or iframe found in public source")
     for path in public_text:

@@ -14,12 +14,15 @@ import {
   appendAnswerImages
 } from './chat-ui.js';
 import { reply as answerLocally } from './engine.js';
+import { browserStore, loadProfile } from './profile.mjs';
+import { mountTripSheet } from './trip-ui.mjs';
 
 const $ = (id) => document.getElementById(id);
 
 const state = {
   history: [],
   itinerary: null,
+  profile: null,
   mode: 'local',
   busy: false
 };
@@ -86,7 +89,8 @@ function itineraryCard(it) {
     }).join('');
     return `<p><strong>${escapeHtml(d.title)}</strong></p><ol>${lis}</ol>`;
   }).join('');
-  return `<div class="itinerary-card"><strong>${escapeHtml(it.theme)}</strong>${days}<p>${escapeHtml(it.disclaimer || '')}</p></div>`;
+  const party = it.partyNote ? `<p>${escapeHtml(it.partyNote)}</p>` : '';
+  return `<div class="itinerary-card"><strong>${escapeHtml(it.theme)}</strong>${days}${party}<p>${escapeHtml(it.disclaimer || '')}</p></div>`;
 }
 
 function fillMeta(meta, payload) {
@@ -303,7 +307,8 @@ async function send(text) {
     payload: {
       message: msg,
       history: state.history,
-      itinerary: state.itinerary
+      itinerary: state.itinerary,
+      profile: state.profile && !state.profile.skipped ? state.profile : null
     },
     signal: run.signal
   });
@@ -375,6 +380,15 @@ function setGuideOpen(open) {
 function bindSenders() {
   document.querySelectorAll('[data-send]').forEach((node) => {
     node.addEventListener('click', () => send(node.getAttribute('data-send')));
+  });
+}
+
+const tripRoot = $('trip');
+if (tripRoot) {
+  mountTripSheet(tripRoot, {
+    store: browserStore(),
+    onChange(profile) { state.profile = profile; },
+    onPlan(text) { send(text); }
   });
 }
 

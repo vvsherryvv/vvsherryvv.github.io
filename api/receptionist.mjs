@@ -42,7 +42,8 @@ export default async function handler(req, res) {
     const limited = await runAgent({
       message: body.message,
       history: body.history,
-      itinerary: body.itinerary
+      itinerary: body.itinerary,
+      profile: body.profile
     }, { env: {} });
     res.status(200).json({ ...limited, fallback: 'rate_limit' });
     return;
@@ -50,7 +51,8 @@ export default async function handler(req, res) {
   const result = await runAgent({
     message: body.message,
     history: body.history,
-    itinerary: body.itinerary
+    itinerary: body.itinerary,
+    profile: body.profile
   }, { env: process.env });
   res.status(200).json(result);
 }

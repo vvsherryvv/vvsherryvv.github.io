@@ -1,0 +1,222 @@
+import {
+  INTERESTS, PARTIES, HEADCOUNTS, NEEDS, PACES, TRANSPORTS,
+  clearProfile, loadProfile, recommendPlaces, sanitizeNote, sanitizeProfile,
+  saveProfile, selectionMarker, summaryLine
+} from './profile.mjs';
+
+const SCOPE = '只保存在这台浏览器，用来记住这次怎么逛。可以随时修改或清空。不会上传成账号，也不收集姓名、联系方式和精确位置。';
+
+function button(label, className, onClick) {
+  const node = document.createElement('button');
+  node.type = 'button';
+  node.className = className;
+  node.textContent = label;
+  node.addEventListener('click', onClick);
+  return node;
+}
+
+function choices(list, selected, onToggle) {
+  const row = document.createElement('div');
+  row.className = 'trip-choices';
+  list.forEach((item) => {
+    const on = Array.isArray(selected) ? selected.includes(item.id) : selected === item.id;
+    const node = button(item.label, 'trip-choice' + (on ? ' is-on' : ''), () => onToggle(item.id));
+    node.setAttribute('aria-pressed', on ? 'true' : 'false');
+    row.appendChild(node);
+  });
+  return row;
+}
+
+export function mountTripSheet(root, { store, onChange, onPlan } = {}) {
+  const loaded = loadProfile(store);
+  let profile = loaded.profile;
+  let failed = loaded.persisted === false;
+  let step = 0;
+  let editing = !profile;
+  let draft = profile ? { ...profile, interests: [...(profile.interests || [])], needs: [...(profile.needs || [])] } : blank();
+
+  function blank() {
+    return { interests: [], party: null, headcount: null, needs: [], pace: null, transport: null, note: '', skipped: false };
+  }
+
+  function publish(next, persist) {
+    const clean = sanitizeProfile(next);
+    if (persist) {
+      const saved = next ? saveProfile(store, next) : clearProfile(store);
+      profile = saved.profile;
+      failed = saved.persisted === false;
+    } else {
+      profile = clean;
+    }
+    if (onChange) onChange(profile);
+  }
+
+  function render() {
+    root.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'trip-card';
+    if (!editing && profile && profile.skipped) card.appendChild(skippedView());
+    else if (!editing && profile) card.appendChild(summaryView());
+    else card.appendChild(askView());
+    root.appendChild(card);
+  }
+
+  function skippedView() {
+    const box = document.createElement('div');
+    box.className = 'trip-bar';
+    const text = document.createElement('p');
+    text.textContent = '这次先不填也可以直接问。想补充时再选。';
+    box.appendChild(text);
+    box.appendChild(button('补充这次怎么逛', 'trip-text', () => {
+      editing = true;
+      step = 0;
+      draft = blank();
+      render();
+    }));
+    return box;
+  }
+
+  function summaryView() {
+    const box = document.createElement('div');
+    const title = document.createElement('p');
+    title.className = 'trip-title';
+    title.textContent = '这次怎么逛';
+    box.appendChild(title);
+    const line = document.createElement('p');
+    line.className = 'trip-summary';
+    line.textContent = summaryLine(profile) || '已记下这次的选择。';
+    box.appendChild(line);
+    const scope = document.createElement('p');
+    scope.className = 'trip-scope';
+    scope.textContent = failed ? '浏览器没能保存，这次选择只留在当前页面。' : SCOPE;
+    box.appendChild(scope);
+    const actions = document.createElement('div');
+    actions.className = 'trip-actions';
+    actions.appendChild(button('修改', 'trip-text', () => {
+      editing = true;
+      step = 0;
+      draft = { ...profile, interests: [...profile.interests], needs: [...profile.needs] };
+      render();
+    }));
+    actions.appendChild(button('清空', 'trip-text', () => {
+      editing = true;
+      step = 0;
+      draft = blank();
+      publish(null, true);
+      render();
+    }));
+    box.appendChild(actions);
+    const picks = recommendPlaces(profile);
+    if (picks.length) {
+      const list = document.createElement('div');
+      list.className = 'trip-picks';
+      picks.forEach((item) => {
+        const row = document.createElement('p');
+        row.className = 'trip-pick';
+        row.textContent = `${item.name}：${item.reason}`;
+        list.appendChild(row);
+      });
+      box.appendChild(list);
+      const mobility = picks[0].mobility;
+      if (mobility) {
+        const note = document.createElement('p');
+        note.className = 'trip-scope';
+        note.textContent = mobility;
+        box.appendChild(note);
+      }
+      box.appendChild(button('用这些安排行程', 'trip-go', () => {
+        const names = picks.map((item) => item.name).join('、');
+        if (onPlan) onPlan(`按这次选择安排：${names}。${selectionMarker(picks.map((item) => item.id))}`);
+      }));
+    }
+    return box;
+  }
+
+  function askView() {
+    const box = document.createElement('div');
+    const title = document.createElement('p');
+    title.className = 'trip-title';
+    title.textContent = step === 0 ? '这次想看什么？' : step === 1 ? '和谁一起？' : '时间和怎么走？';
+    box.appendChild(title);
+    const hint = document.createElement('p');
+    hint.className = 'trip-scope';
+    hint.textContent = step === 0
+      ? '选一两项就够，也可以先跳过。这是这次出游的偏好，不是性格测试。'
+      : '缺的信息只在需要时再问。可以返回或跳过。';
+    box.appendChild(hint);
+
+    if (step === 0) {
+      box.appendChild(choices(INTERESTS, draft.interests, (id) => {
+        draft.interests = draft.interests.includes(id)
+          ? draft.interests.filter((item) => item !== id)
+          : draft.interests.concat(id).slice(0, 4);
+        render();
+      }));
+      const note = document.createElement('textarea');
+      note.className = 'trip-note';
+      note.maxLength = 80;
+      note.rows = 2;
+      note.placeholder = '可写一句备忘，最多80字。不必留姓名或联系方式。';
+      note.value = draft.note || '';
+      note.addEventListener('input', () => { draft.note = sanitizeNote(note.value); });
+      box.appendChild(note);
+    }
+    if (step === 1) {
+      box.appendChild(choices(PARTIES, draft.party, (id) => {
+        draft.party = draft.party === id ? null : id;
+        if (draft.party !== 'family') draft.needs = [];
+        if (draft.party !== 'friends' && draft.party !== 'study') draft.headcount = null;
+        render();
+      }));
+      if (draft.party === 'family') {
+        const extra = document.createElement('p');
+        extra.className = 'trip-scope';
+        extra.textContent = '家庭的话，有没有老人、孩子，或希望少走路？';
+        box.appendChild(extra);
+        box.appendChild(choices(NEEDS, draft.needs, (id) => {
+          draft.needs = draft.needs.includes(id) ? draft.needs.filter((item) => item !== id) : draft.needs.concat(id);
+          render();
+        }));
+      }
+      if (draft.party === 'friends' || draft.party === 'study') {
+        const extra = document.createElement('p');
+        extra.className = 'trip-scope';
+        extra.textContent = '大概几位？用来提醒核对载客，不会叫车。';
+        box.appendChild(extra);
+        box.appendChild(choices(HEADCOUNTS, draft.headcount, (id) => {
+          draft.headcount = draft.headcount === id ? null : id;
+          render();
+        }));
+      }
+    }
+    if (step === 2) {
+      box.appendChild(choices(PACES, draft.pace, (id) => { draft.pace = draft.pace === id ? null : id; render(); }));
+      box.appendChild(choices(TRANSPORTS, draft.transport, (id) => { draft.transport = draft.transport === id ? null : id; render(); }));
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'trip-actions';
+    if (step > 0) actions.appendChild(button('返回', 'trip-text', () => { step -= 1; render(); }));
+    actions.appendChild(button(step === 2 ? '完成' : '下一步', 'trip-go', () => {
+      if (step < 2) { step += 1; render(); return; }
+      editing = false;
+      const clean = sanitizeProfile({ ...draft, skipped: false });
+      publish(clean || { skipped: true }, true);
+      render();
+    }));
+    actions.appendChild(button('先跳过', 'trip-text', () => {
+      editing = false;
+      publish({ skipped: true }, true);
+      render();
+    }));
+    box.appendChild(actions);
+    const scope = document.createElement('p');
+    scope.className = 'trip-scope';
+    scope.textContent = SCOPE;
+    box.appendChild(scope);
+    return box;
+  }
+
+  render();
+  return { getProfile: () => profile };
+}
