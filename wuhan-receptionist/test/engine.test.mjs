@@ -143,6 +143,41 @@ ok('页面不依赖不可用服务', !/localhost:8788|\/api\/chat|\/api\/mode|se
 ok('页面资产使用相对路径', /src="assets\/avatar-front-cutout\.png"/.test(bundled) && /src="app\.js/.test(bundled) && /href="styles\.css/.test(bundled));
 ok('没有表单标签', !/<form\b/i.test(bundled));
 
+const zhiminHistory = [
+  { role: 'user', content: '智民里六站怎么走' },
+  { role: 'assistant', content: '六站是A1、A4、A3、A2、巴公房子和黎黄陂路。' },
+  { role: 'user', content: '周边怎么逛，按片区分组推荐' },
+  { role: 'assistant', content: '周边可以按江岸社区和稍远的武昌地标分开看。' }
+];
+const halfWalk = await reply({ message: '我们只有半天，能不能少走一点', history: zhiminHistory });
+const halfNames = (halfWalk.reply.itinerary?.days || []).flatMap((day) => day.items.map((item) => item.name)).join(' | ');
+ok('半天少走仍留在智民里', halfWalk.intent === 'itinerary_adjust' && /智民里/.test(halfNames) && !/黄鹤楼/.test(halfNames) && !/黎黄陂/.test(halfNames), halfNames);
+const dropBagong = await reply({
+  message: '去掉巴公房子，再给一个行程',
+  history: zhiminHistory.concat([{ role: 'user', content: '我们只有半天，能不能少走一点' }]),
+  itinerary: halfWalk.reply.itinerary
+});
+const bagongNames = (dropBagong.reply.itinerary?.days || []).flatMap((day) => day.items.map((item) => item.name)).join(' | ');
+const bagongBlob = `${dropBagong.reply.text}\n${JSON.stringify(dropBagong.reply.itinerary)}`;
+ok('去掉巴公后卡片和文字都不是黄鹤楼', /智民里/.test(bagongNames) && !/黄鹤楼公园/.test(bagongNames) && !/巴公房子（/.test(bagongBlob) && !/黄鹤楼公园/.test(dropBagong.reply.text), bagongNames);
+ok('去掉巴公后不配黄鹤楼图', !(dropBagong.reply.images || []).some((img) => img.id === 'yellow-crane'));
+
+const craneRoute = await ask('从黄鹤楼出发，安排一天行程');
+const craneHalf = await reply({
+  message: '改成半天，少走路',
+  history: [{ role: 'user', content: '从黄鹤楼出发，安排一天行程' }],
+  itinerary: craneRoute.reply.itinerary
+});
+const craneHalfNames = (craneHalf.reply.itinerary?.days || []).flatMap((day) => day.items.map((item) => item.name)).join(' | ');
+ok('非社区路线少走不会改去智民里', /黄鹤楼/.test(craneHalfNames) && !/智民里/.test(craneHalfNames), craneHalfNames);
+const toLake = await reply({
+  message: '改去东湖，安排半天',
+  history: zhiminHistory,
+  itinerary: halfWalk.reply.itinerary
+});
+const lakeNames = (toLake.reply.itinerary?.days || []).flatMap((day) => day.items.map((item) => item.name)).join(' | ');
+ok('明确换区时可以离开智民里', /东湖/.test(lakeNames) && !/智民里 A1/.test(lakeNames), lakeNames);
+
 function walk(dir, acc = []) {
   for (const name of readdirSync(dir)) {
     if (name === 'test') continue;

@@ -191,5 +191,21 @@ for (let i = 0; i < RATE_LIMIT_PER_MINUTE + 2; i += 1) {
 ok('基本速率限制', allowed === RATE_LIMIT_PER_MINUTE);
 resetRateLimit();
 
+const contextPlan = await runAgent({
+  message: '去掉巴公房子，再给一个行程',
+  history: [
+    { role: 'user', content: '智民里六站怎么走' },
+    { role: 'assistant', content: '六站含巴公房子，还在筹备。' }
+  ]
+}, {
+  env: { DEEPSEEK_API_KEY: 'test-key' },
+  fetchImpl: async () => jsonResponse({
+    content: '那我们改去黄鹤楼吧。',
+    tool_calls: [{ id: 'plan-ctx', type: 'function', function: { name: 'plan_itinerary', arguments: '{"stops":["黄鹤楼"]}' } }]
+  })
+});
+const contextNames = JSON.stringify((contextPlan.reply.itinerary?.days || []).flatMap((day) => day.items.map((item) => item.name)));
+ok('模型要求黄鹤楼时服务端仍沿用智民里上下文', contextPlan.transport === 'agent' && /智民里/.test(contextNames) && !contextNames.includes('黄鹤楼') && !/黄鹤楼公园/.test(contextPlan.reply.text), contextNames);
+
 console.log('\nMockAgentResult', { passed, failed: failures.length, failures, realApiTested: false });
 if (failures.length) process.exit(1);
