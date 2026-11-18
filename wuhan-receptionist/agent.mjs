@@ -122,7 +122,8 @@ function withTransport(local, transport, fallback) {
 function finishFromPlan(local, message, text, plan) {
   const itinerary = plan && plan.itinerary ? plan.itinerary : (local.reply && local.reply.itinerary) || null;
   const names = itinerary ? (itinerary.days || []).flatMap((day) => day.items || []).map((item) => item.name).filter(Boolean) : [];
-  let answerText = text || (local.reply && local.reply.text) || '';
+  const engineText = (plan && plan.itinerary && plan.text) || (local.reply && local.reply.itinerary ? local.reply.text : '');
+  let answerText = itinerary && engineText ? engineText : (text || (local.reply && local.reply.text) || '');
   if (names.length && names.some((name) => !answerText.includes(name))) {
     const note = itinerary.partyNote ? `${itinerary.partyNote}` : '';
     answerText = `${answerText}\n${note}这次按偏好排了：${names.join('、')}。`.trim();
@@ -222,7 +223,7 @@ export async function runAgent({ message, history, itinerary, profile } = {}, de
           const args = parseArgs(call.function.arguments);
           payload = { ok: true, chunks: searchKnowledge(args.query || userText) };
         } else {
-          const planned = await localReply({ message: userText, itinerary: plan ? plan.itinerary : (itinerary || null), profile: trip });
+          const planned = await localReply({ message: userText, history, itinerary: plan ? plan.itinerary : (itinerary || null), profile: trip });
           plan = {
             text: planned.reply && planned.reply.text,
             itinerary: planned.reply && planned.reply.itinerary

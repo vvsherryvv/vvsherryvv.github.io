@@ -103,6 +103,47 @@ export function parseItinerarySlots(text, prev = null) {
   };
 }
 
+function withoutDrops(text) {
+  return String(text || '').replace(/(?:不要|去掉|删除|取消|别去)[^，。,.]{0,16}/g, ' ');
+}
+
+function placeIn(raw) {
+  const text = withoutDrops(raw);
+  if (/光谷/.test(text)) return { interest: INTERESTS.find((item) => item.id === 'tech'), start: STARTS.find((item) => item.id === 'eastlake') };
+  if (/东湖|磨山|绿道/.test(text)) return { interest: INTERESTS.find((item) => item.id === 'lake'), start: STARTS.find((item) => item.id === 'eastlake') };
+  if (/黄鹤楼|蛇山/.test(text)) return { interest: INTERESTS.find((item) => item.id === 'heritage'), start: STARTS.find((item) => item.id === 'wuchang') };
+  if (/智民|六站|黎黄陂|巴公|江岸/.test(text)) return { interest: INTERESTS.find((item) => item.id === 'oldtown'), start: STARTS.find((item) => item.id === 'jiangan') };
+  if (/武昌/.test(text)) return { interest: INTERESTS.find((item) => item.id === 'heritage'), start: STARTS.find((item) => item.id === 'wuchang') };
+  return null;
+}
+
+export function inferPlace(history) {
+  const turns = (Array.isArray(history) ? history : []).filter((item) => !item || item.role !== 'assistant');
+  for (let i = turns.length - 1; i >= 0; i -= 1) {
+    const found = placeIn(turns[i] && turns[i].content);
+    if (found && found.interest && found.start) return found;
+  }
+  return null;
+}
+
+export function resolveSlots(text, history, itinerary, profile) {
+  const current = placeIn(text);
+  const inherited = inferPlace(history);
+  const prev = itinerary
+    ? { interest: itinerary.interest, duration: itinerary.duration, start: itinerary.start }
+    : (current || inherited);
+  const slots = applyProfileSlots(parseItinerarySlots(text, prev), text, profile);
+  const anchor = current || ((!itinerary && inherited) ? inherited : null);
+  if (itinerary && !current) {
+    slots.interest = itinerary.interest;
+    slots.start = itinerary.start;
+  } else if (anchor) {
+    slots.interest = anchor.interest;
+    slots.start = anchor.start;
+  }
+  return slots;
+}
+
 function stop(name, area, why, note, cites, status = '事实') {
   return { name, area, why, note, cites, status };
 }
@@ -200,6 +241,27 @@ function buildItinerary(slots) {
   };
 }
 
+function applyWalkLimits(itinerary, text) {
+  if (!itinerary) return itinerary;
+  if (/少走|走少|走不动/.test(text)) {
+    for (const day of itinerary.days) {
+      const kept = (day.items || []).filter((it) => !/黎黄陂|巴公/.test(it.name));
+      if (kept.length) day.items = kept;
+    }
+    itinerary.days = itinerary.days.filter((day) => day.items && day.items.length);
+  }
+  if (/不要|去掉|删除|取消/.test(text) && /巴公/.test(text)) {
+    for (const day of itinerary.days || []) {
+      day.items = (day.items || []).filter((it) => !/巴公/.test(it.name));
+      for (const it of day.items) {
+        if (it.note) it.note = String(it.note).replace(/巴公房子不在本段。?/g, '这段只走社区内部。');
+      }
+    }
+    itinerary.days = itinerary.days.filter((day) => day.items && day.items.length);
+  }
+  return itinerary;
+}
+
 function tweakItinerary(prev, text) {
   if (!prev) return buildItinerary(parseItinerarySlots(text));
   let slots = {
@@ -226,7 +288,8 @@ function tweakItinerary(prev, text) {
     [/省博|博物馆/, '博物馆'],
     [/光谷/, '光谷'],
     [/木兰/, '木兰'],
-    [/美食|过早/, '过早']
+    [/美食|过早/, '过早'],
+    [/巴公/, '巴公']
   ];
   for (const [re, key] of dropMap) {
     if ((/不要|去掉|删除|取消|路过即可|跳过/.test(text)) && re.test(text)) {
@@ -248,6 +311,7 @@ function tweakItinerary(prev, text) {
       ));
     }
   }
+  applyWalkLimits(itinerary, text);
   itinerary.theme = `${slots.duration.label} · ${slots.interest.label} · 从${slots.start.label}出发（已按追问调整）`;
   itinerary.interest = slots.interest;
   itinerary.duration = slots.duration;
@@ -255,7 +319,7 @@ function tweakItinerary(prev, text) {
   return itinerary;
 }
 
-export function detectIntent(text, hasItinerary) {
+export function detectIntent(text, hasItinerary, history = []) {
   const t = text;
   if (!t) return 'greeting';
   if (/你(现在)?(用的|是|接了|接入).{0,8}(大模型|GPT|ChatGPT|联网)|是不是(联网)?大模型|有没有接入大模型|模型状态|你是模型吗/.test(t)) return 'model_status';
@@ -263,7 +327,9 @@ export function detectIntent(text, hasItinerary) {
   if (/资料来源|引自哪|页码|根据什么文件|出处/.test(t)) return 'sources';
   if (/官网|网址|dlife/i.test(t) && !/行程|规划/.test(t)) return 'site';
   const itineraryAsk = /行程|规划|路线|怎么玩|玩几天|安排一天|安排半天|三日游|一日游|从.+出发|想去|【选择:/.test(t);
-  const itineraryTweak = hasItinerary && /改成|改一天|调整|不要|去掉|换成|再加|更短|压缩|加点|改为|出发/.test(t);
+  const inheritedPlace = inferPlace(history);
+  const wantsAdjust = /改成|改一天|调整|不要|去掉|换成|再加|更短|压缩|加点|改为|出发|少走|走少|半天|半日/.test(t);
+  const itineraryTweak = wantsAdjust && (hasItinerary || inheritedPlace) && !/六站怎么走|怎么走/.test(t);
   if (itineraryTweak) return 'itinerary_adjust';
   if (itineraryAsk) return 'itinerary';
   if (/六站|怎么走|导览|A1|A2|A3|A4|A5|巴公|黎黄陂|咖啡厅|打包厂/.test(t)) return 'six';
@@ -391,9 +457,9 @@ function localAnswer(intent, text, itinerary, history, profile) {
   }
 
   if (intent === 'itinerary' || intent === 'itinerary_adjust') {
-    const built = intent === 'itinerary_adjust' && itinerary
+    const built = applyWalkLimits(intent === 'itinerary_adjust' && itinerary
       ? tweakItinerary(itinerary, text)
-      : buildItinerary(applyProfileSlots(parseItinerarySlots(text, itinerary), text, profile));
+      : buildItinerary(resolveSlots(text, history, itinerary, profile)), text);
     const next = shapeTripItinerary(built, text, profile);
     const lines = [
       intent === 'itinerary_adjust' ? '已按你的追问做了调整。' : '这是一份结构化短行程，可再告诉我缩短、换出发点或增减站点。',
@@ -645,7 +711,7 @@ export async function reply({ message, history = [], itinerary = null, profile =
     };
   }
   const safeHistory = Array.isArray(history) ? history.slice(-MAX_HISTORY) : [];
-  const intent = detectIntent(text, Boolean(itinerary));
+  const intent = detectIntent(text, Boolean(itinerary), safeHistory);
   const local = localAnswer(intent, text, itinerary, safeHistory, sanitizeProfile(profile));
   return {
     ok: true,

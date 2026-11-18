@@ -206,7 +206,7 @@ export function shapeTripItinerary(itinerary, text, profile) {
         return { name: place.name, area: place.area, why: place.why, note: place.note, cites: [{ id: 'tourism', locator: '本次选择对应的手册景点' }], status: id === 'event' ? '赛事期间计划' : '事实' };
       })
     }];
-  } else if (p && genericTrip(text)) {
+  } else if (p && genericTrip(text) && !(copy.start && copy.start.id && copy.start.id !== 'unspecified' && /半天|少走|缩短|去掉|不要/.test(text))) {
     if (p.party === 'study') {
       copy.days = [{ title: '研学 · 博物馆与智民里', items: [presetStop('museum'), presetStop('zhiminli')].filter(Boolean) }];
     } else if (p.party === 'solo') {
